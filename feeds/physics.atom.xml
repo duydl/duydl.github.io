@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>π-Radiant Archive - Physics</title><link href="/" rel="alternate"></link><link href="/feeds/physics.atom.xml" rel="self"></link><id>/</id><updated>2020-05-03T19:30:00+09:00</updated><entry><title>My super title</title><link href="/articles/my-super-title.html" rel="alternate"></link><published>2020-05-03T10:20:00+09:00</published><updated>2020-05-03T19:30:00+09:00</updated><author><name>duydl</name></author><id>tag:None,2020-05-03:/articles/my-super-title.html</id><summary type="html">&lt;h4&gt;Fourier Series&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>π-Radiant Archive - Physics</title><link href="/" rel="alternate"></link><link href="/feeds/physics.atom.xml" rel="self"></link><id>/</id><updated>2020-05-03T19:30:00+09:00</updated><entry><title>&gt;Wave and Fourier Transform</title><link href="/articles/wave-and-fourier-transform.html" rel="alternate"></link><published>2020-05-03T10:20:00+09:00</published><updated>2020-05-03T19:30:00+09:00</updated><author><name>duydl</name></author><id>tag:None,2020-05-03:/articles/wave-and-fourier-transform.html</id><summary type="html">&lt;p&gt;&lt;b&gt;Fourier Series&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;The initial shape of the string can be expressed as:
 &lt;/p&gt;
 &lt;div class="math"&gt;$$ 
 y(x,0) = \begin{cases} \frac{3a}{L} x &amp;amp;\text{for } 0 \leq x &amp;lt; \frac{L}{3}\\ \frac{3a}{2L}(L-x) &amp;amp;\text{for } \frac{L}{3} \leq x \leq L \end{cases}
 $$&lt;/div&gt;
-&lt;p&gt;We are goin to express the …&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Fourier Series&lt;/h4&gt;
+&lt;p&gt;We are goin to express the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;b&gt;Fourier Series&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;The initial shape of the string can be expressed as:
 &lt;/p&gt;
 &lt;div class="math"&gt;$$ 
