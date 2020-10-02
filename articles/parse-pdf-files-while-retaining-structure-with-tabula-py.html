@@ -1,137 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Parse PDF Files While Retaining Structure with Tabula-py</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="/articles/parse-pdf-files-while-retaining-structure-with-tabula-py.html" rel="canonical" />
+  <!-- Feed -->
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="π-Radiant Archive Full Atom Feed" />
+          <link href="/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="π-Radiant Archive Categories Atom Feed" />
+
+  <link href="/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
 
 
-        <meta name="author" content="duydl" />
+    <meta name="description" content="{% notebook downloads/notebooks/parse-pdf-files-while-retaining-structure-with-tabula-py.ipynb cells[0:1] %}">
 
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/ipynb.css" media="screen">
+    <meta name="author" content="duydl">
 
-        <style>
-            #progressBar::-webkit-progress-value {
-                background-color: blue;
-            }
-            #progressBar::-moz-progress-bar {
-                background-color: blue;
-            }
-        </style>
+    <meta name="tags" content="data-mining">
+    <meta name="tags" content="pdf">
+    <meta name="tags" content="tabula">
 
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="π-Radiant Archive"/>
+<meta property="og:title" content="Parse PDF Files While Retaining Structure with Tabula-py"/>
+<meta property="og:description" content="{% notebook downloads/notebooks/parse-pdf-files-while-retaining-structure-with-tabula-py.ipynb cells[0:1] %}"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/articles/parse-pdf-files-while-retaining-structure-with-tabula-py.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-02-02 00:00:00+09:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/duydl.html">
+<meta property="article:section" content="Others"/>
+<meta property="article:tag" content="data-mining"/>
+<meta property="article:tag" content="pdf"/>
+<meta property="article:tag" content="tabula"/>
+<meta property="og:image" content="/theme/images/post-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Parse PDF Files While Retaining Structure with Tabula-py",
+  "headline": "Parse PDF Files While Retaining Structure with Tabula-py",
+  "datePublished": "2019-02-02 00:00:00+09:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "duydl",
+    "url": "/author/duydl.html"
+  },
+  "image": "/theme/images/post-bg.jpg",
+  "url": "/articles/parse-pdf-files-while-retaining-structure-with-tabula-py.html",
+  "description": "{% notebook downloads/notebooks/parse-pdf-files-while-retaining-structure-with-tabula-py.ipynb cells[0:1] %}"
+}
+</script>
 </head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
 
 
-<body>
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
 
-    <header id="banner" class="body">
-        <h1><a href="/">π-Radiant Archive</a></h1>
-    </header><!-- /#banner -->
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" >
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Parse PDF Files While Retaining Structure with Tabula-py</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="/author/duydl.html">Duydl</a>
+            | <time datetime="Sat 02 February 2019">Sat 02 February 2019</time>
+        </span>
+        <!-- TODO : Modified check -->
+      </div>
+    </header>
 
+  <section id="wrapper">
+    <a class="hidden-close"></a>
 
-    <div class="fixme">
-        <div class="read-next-card row no-margin pop-over" style="background-image: url('/')">
-            <header class="read-next-card-header">
-                <small class="read-next-card-header-sitetitle">— π-Radiant Archive —</small>
-                <h3 class="read-next-card-header-title"></h3>
-            </header>
-            <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path></svg>
-</div>
-            <div class="read-next-card-content">
-                <ul>
-           
-                </ul>
-            </div>
-            <div class="read-next-card-footer">
-                <a href="/">Go to Archive →</a>
-            </div>
-        </div>
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>{% notebook downloads/notebooks/parse-pdf-files-while-retaining-structure-with-tabula-py.ipynb cells[:] %}</p>
+            </section>
 
-
-    <div class="banner-wrapper row" style="background-color: #24292e;">
-        <div class="banner">
-            <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light container">
-                <div class="container navbar-title">
-                    <a href="/"><img id="banner-logo" src="/" style="height: 40px; margin: 6px 0;"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Parse PDF Files While Retaining Structure with Tabula-py&amp;url=/articles/parse-pdf-files-while-retaining-structure-with-tabula-py.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=/articles/parse-pdf-files-while-retaining-structure-with-tabula-py.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=/articles/parse-pdf-files-while-retaining-structure-with-tabula-py.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
                 </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style="margin-bottom: 6.5px;margin-top: 6.5px">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link rem_08" href="/">About</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li id="second-item" class="nav-item">
-                        <a class="nav-link rem_08" href="/">Archive</a>
-                    </li>
-                 </ul>
-                <ul class="navbar-nav">
-                <form id="search-form" class="form-inline my-2 my-lg-0 justify-content-center" action="/search.html">
-                    <div id="third-item" class="search-box-div row" style="margin-top:-3.5px;">
-                        <input id="tipue_search_input" class="form-control mr-md-2 rem_08 col-9" type="text" name="q" pattern=".{3,}" title="At least 3 characters" required="" aria-label="Search"/>
-                        <button id="search-btn" class="btn btn-search btn-outline-success btn-circle rem_08 col-3" type="submit" for="tipue_search_input" style="margin-left: 3px;">Search</button>
-                    </div>
-                </form>
-                </ul>
+
+                <aside class="post-tags">
+<a href="/tag/data-mining.html">data-mining</a><a href="/tag/pdf.html">pdf</a><a href="/tag/tabula.html">tabula</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
             </div>
-            </nav>
-        </div>
-    </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
 
-    <nav id="menu"><ul>
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
 
 
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
 
-            <li ><a href="/category/machine-learning.html">Machine Learning</a></li>
-            <li ><a href="/category/natural-language-processing.html">Natural Language Processing</a></li>
-            <li  class="active"><a href="/category/others.html">Others</a></li>
-            <li ><a href="/category/physics.html">Physics</a></li>
-            <li ><a href="/category/statistics.html">Statistics</a></li>
-
-    </ul></nav><!-- /#menu -->
-
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="/articles/parse-pdf-files-while-retaining-structure-with-tabula-py.html" rel="bookmark"
-         title="Permalink to Parse PDF Files While Retaining Structure with Tabula-py">Parse PDF Files While Retaining Structure with Tabula-py</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-02-02T00:00:00+09:00">
-      Sat 02 February 2019
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="/author/duydl.html">duydl</a>
-    </address>
-    <div class="category">
-        Category: <a href="/category/others.html">Others</a>
-    </div>
-    <div class="tags">
-        Tags:
-            <a href="/tag/data-mining.html">data-mining</a>
-            <a href="/tag/pdf.html">pdf</a>
-            <a href="/tag/tabula.html">tabula</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <p>{% notebook downloads/notebooks/parse-pdf-files-while-retaining-structure-with-tabula-py.ipynb cells[:] %}</p>
-  </div><!-- /.entry-content -->
-</section>
-
-    <footer id="contentinfo" class="body">
-            <address id="about" class="vcard body">
-            Made with <a href="https://getpelican.com/">Pelican</a>.
-            </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/theme/js/script.js"></script>
 
 </body>
 </html>
