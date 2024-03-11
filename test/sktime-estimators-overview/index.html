@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  table {
+      border-collapse: collapse;
+      width: 100%;
+  }
+  th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+  }
+</style>
+</head>
+
+
+<body>
+ <!-- Dropdown menu for options -->
+<select id="options" onchange="filterTable()">
+  <option value="all">ALL</option>
+  <option value="forecaster">Forecaster</option>
+</select>
+
+<table id="jsonTable"></table>
+
+<script>
+  
+function fetchAndRenderTable() {
+    fetch('estimator_overview_db.json') 
+      .then(response => response.json())
+      .then(data => {
+        renderTable (data)
+        // Store data in sessionStorage
+        sessionStorage.setItem('jsonData', JSON.stringify(data));
+      })
+      .catch(error => console.error('Error:', error));
+}
+
+function renderTable(data) {
+    const table = document.getElementById('jsonTable');
+    const headers = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"]; // Default Headers
+    
+    // Clear table content
+    table.innerHTML = '';
+    
+    // Table header
+    let headerRow = '<tr>';
+    headers.forEach(header => {
+        headerRow += `<th>${header}</th>`;
+    });
+    headerRow += '</tr>';
+    table.innerHTML += headerRow;
+    
+    // Table rows
+    data.forEach(row => {
+        let rowContent = '<tr>';
+        headers.forEach(header => {
+          rowContent += `<td>${row[header]}</td>`;
+        });
+        rowContent += '</tr>';
+        table.innerHTML += rowContent;
+    });
+  }
+
+function filterTable() {
+  const selectedOption = document.getElementById('options').value;
+  
+  if (selectedOption === 'all') {
+    const cachedData = sessionStorage.getItem('jsonData');
+    if (cachedData) {
+      const data = JSON.parse(cachedData);
+      renderTable(data);
+    } else {
+      fetchAndRenderTable();
+    }
+  } else if (selectedOption === 'forecaster') {
+    const cachedData = sessionStorage.getItem('jsonData');
+    if (cachedData) {
+      const data = JSON.parse(cachedData);
+      const filteredData = data.filter(row => row["Estimator Type"] === "forecaster");
+      renderTable(filteredData); 
+    } else {
+      fetchAndRenderTable();
+    }
+  }
+}
+
+// Check data in sessionStorage
+const cachedData = sessionStorage.getItem('jsonData');
+if (cachedData) {
+    // Render table from cache
+    const data = JSON.parse(cachedData);
+    renderTable(data);
+} else {
+    // Fetch and render
+    fetchAndRenderTable();
+}
+</script>
+</body>
+</html>
