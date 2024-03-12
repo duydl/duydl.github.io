@@ -18,38 +18,42 @@
 
 
 <body>
- <!-- Dropdown menu for options -->
+<!-- Dropdown menu for options -->
 <select id="options" onchange="filterTable()">
   <option value="all">ALL</option>
   <option value="forecaster">Forecaster</option>
+  <option value="transformer">Transformer</option>
+  <option value="regressor">Regressor</option>
+  <option value="aligner">Aligner</option>
+  <option value="clusterer">Clusterer</option>
+  <option value="classifier">Classifier</option>
 </select>
 
 <table id="jsonTable"></table>
 
 <script>
-  
-function fetchAndRenderTable() {
+filterTable()
+function fetchAndRenderTable(header) {
     fetch('estimator_overview_db.json') 
       .then(response => response.json())
       .then(data => {
-        renderTable (data)
+        renderTable (data, header)
         // Store data in sessionStorage
         sessionStorage.setItem('jsonData', JSON.stringify(data));
       })
       .catch(error => console.error('Error:', error));
 }
 
-function renderTable(data) {
+function renderTable(data, header) {
     const table = document.getElementById('jsonTable');
-    const headers = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"]; // Default Headers
     
     // Clear table content
     table.innerHTML = '';
     
     // Table header
     let headerRow = '<tr>';
-    headers.forEach(header => {
-        headerRow += `<th>${header}</th>`;
+    header.forEach(headerItem => {
+        headerRow += `<th>${headerItem}</th>`;
     });
     headerRow += '</tr>';
     table.innerHTML += headerRow;
@@ -57,47 +61,64 @@ function renderTable(data) {
     // Table rows
     data.forEach(row => {
         let rowContent = '<tr>';
-        headers.forEach(header => {
-          rowContent += `<td>${row[header]}</td>`;
+        header.forEach(headerItem => {
+          rowContent += `<td>${row[headerItem]}</td>`;
         });
         rowContent += '</tr>';
         table.innerHTML += rowContent;
     });
-  }
+}
 
 function filterTable() {
-  const selectedOption = document.getElementById('options').value;
-  
-  if (selectedOption === 'all') {
-    const cachedData = sessionStorage.getItem('jsonData');
-    if (cachedData) {
-      const data = JSON.parse(cachedData);
-      renderTable(data);
-    } else {
-      fetchAndRenderTable();
-    }
-  } else if (selectedOption === 'forecaster') {
-    const cachedData = sessionStorage.getItem('jsonData');
-    if (cachedData) {
-      const data = JSON.parse(cachedData);
-      const filteredData = data.filter(row => row["Estimator Type"] === "forecaster");
-      renderTable(filteredData); 
-    } else {
-      fetchAndRenderTable();
-    }
-  }
-}
+    const selectedOption = document.getElementById('options').value;
+    let header, filterKey;
 
-// Check data in sessionStorage
-const cachedData = sessionStorage.getItem('jsonData');
-if (cachedData) {
-    // Render table from cache
-    const data = JSON.parse(cachedData);
-    renderTable(data);
-} else {
-    // Fetch and render
-    fetchAndRenderTable();
+    switch(selectedOption) {
+        case 'forecaster':
+            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
+            filterKey = "Estimator Type";
+            break;
+        case 'transformer':
+            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
+            filterKey = "Estimator Type";
+            break;
+        case 'regressor':
+            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
+            filterKey = "Estimator Type";
+            break;
+        case 'aligner':
+            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
+            filterKey = "Estimator Type";
+            break;
+        case 'clusterer':
+            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
+            filterKey = "Estimator Type";
+            break;
+        case 'classifier':
+            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
+            filterKey = "Estimator Type";
+            break;
+        default:
+            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
+            filterKey = null;
+    }
+
+    const cachedData = sessionStorage.getItem('jsonData');
+    if (cachedData) {
+        const data = JSON.parse(cachedData);
+        if (filterKey) {
+            const filteredData = data.filter(row => row[filterKey] === selectedOption);
+            renderTable(filteredData, header); 
+        } else {
+            renderTable(data, header);
+        }
+    } else {
+        fetchAndRenderTable(header);
+    }
 }
+</script>
+
+
 </script>
 </body>
 </html>
