@@ -4,10 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  table {
-      border-collapse: collapse;
-      width: 100%;
-  }
+
   th, td {
       border: 1px solid black;
       padding: 8px;
@@ -28,8 +25,8 @@
   <option value="clusterer">Clusterer</option>
   <option value="classifier">Classifier</option>
 </select>
-
 <table id="jsonTable"></table>
+<div id="pagination"></div>
 
 <script>
 filterTable()
@@ -44,12 +41,18 @@ function fetchAndRenderTable(header) {
       .catch(error => console.error('Error:', error));
 }
 
-function renderTable(data, header) {
+function renderTable(data, header, page = 1, pageSize = 10) {
     const table = document.getElementById('jsonTable');
+    const pagination = document.getElementById('pagination');
     
-    // Clear table content
+    // Clear table and pagination content
     table.innerHTML = '';
-    
+    pagination.innerHTML = '';
+
+    // Calculate pagination indexes
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = Math.min(startIndex + pageSize, data.length);
+
     // Table header
     let headerRow = '<tr>';
     header.forEach(headerItem => {
@@ -59,14 +62,23 @@ function renderTable(data, header) {
     table.innerHTML += headerRow;
     
     // Table rows
-    data.forEach(row => {
+    for (let i = startIndex; i < endIndex; i++) {
         let rowContent = '<tr>';
         header.forEach(headerItem => {
-          rowContent += `<td>${row[headerItem]}</td>`;
+          rowContent += `<td>${data[i][headerItem]}</td>`;
         });
         rowContent += '</tr>';
         table.innerHTML += rowContent;
-    });
+    }
+
+    // Pagination buttons
+    const totalPages = Math.ceil(data.length / pageSize);
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.innerText = i;
+        button.addEventListener('click', () => renderTable(data, header, i, pageSize));
+        pagination.appendChild(button);
+    }
 }
 
 function filterTable() {
@@ -117,6 +129,7 @@ function filterTable() {
     }
 }
 </script>
+
 
 
 </script>
