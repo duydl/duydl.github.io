@@ -5,11 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
-  th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: left;
-  }
+table {
+      border-collapse: collapse;
+      width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
 </style>
 </head>
 
@@ -29,7 +34,8 @@
 <div id="pagination"></div>
 
 <script>
-filterTable()
+let filter = "all";
+filterTable();
 function fetchAndRenderTable(header) {
     fetch('estimator_overview_db.json') 
       .then(response => response.json())
@@ -41,7 +47,7 @@ function fetchAndRenderTable(header) {
       .catch(error => console.error('Error:', error));
 }
 
-function renderTable(data, header, page = 1, pageSize = 10) {
+function renderTable(data, header, page = 1, pageSize = 100) {
     const table = document.getElementById('jsonTable');
     const pagination = document.getElementById('pagination');
     
@@ -58,27 +64,99 @@ function renderTable(data, header, page = 1, pageSize = 10) {
     header.forEach(headerItem => {
         headerRow += `<th>${headerItem}</th>`;
     });
+
+    if (filter != "all") {
+        for (const key in data[startIndex].Tags) {
+              headerRow += `<th>${key}</th>`;
+        }
+    }
+
     headerRow += '</tr>';
     table.innerHTML += headerRow;
     
     // Table rows
-    for (let i = startIndex; i < endIndex; i++) {
-        let rowContent = '<tr>';
-        header.forEach(headerItem => {
-          rowContent += `<td>${data[i][headerItem]}</td>`;
-        });
-        rowContent += '</tr>';
-        table.innerHTML += rowContent;
+
+    if (filter != "all") {
+        for (let i = startIndex; i < endIndex; i++) {
+            let rowContent = '<tr>';
+
+            header.forEach(headerItem => {
+                rowContent += `<td>${data[i][headerItem]}</td>`;
+            });
+
+            Object.keys(data[startIndex].Tags).forEach(key => {
+                rowContent += `<td>${data[i].Tags[key]}</td>`;
+            });
+            
+            rowContent += '</tr>';
+            table.innerHTML += rowContent;
+        }
+    } else {
+        for (let i = startIndex; i < endIndex; i++) {
+              let rowContent = '<tr>';
+
+              header.forEach(headerItem => {
+                  rowContent += `<td>${data[i][headerItem]}</td>`;
+              });
+              rowContent += '</tr>';
+              table.innerHTML += rowContent;
+        }
     }
+
+    
 
     // Pagination buttons
     const totalPages = Math.ceil(data.length / pageSize);
-    for (let i = 1; i <= totalPages; i++) {
+    const currentPage = page;
+
+    // Calculate start and end page indexes
+    let startPage = Math.max(1, currentPage - 1);
+    let endPage = Math.min(totalPages, startPage + 3);
+
+    // If there are less than 4 pages, adjust the end page index
+    if (endPage - startPage < 3) {
+        endPage = Math.min(totalPages, startPage + 3);
+        startPage = Math.max(1, endPage - 3);
+    }
+
+    // Add first page button
+    const firstButton = document.createElement('button');
+    firstButton.innerText = '<<';
+    firstButton.addEventListener('click', () => renderTable(data, header, 1, pageSize));
+    pagination.appendChild(firstButton);
+
+    // Add previous button
+    if (currentPage > 1) {
+        const prevButton = document.createElement('button');
+        prevButton.innerText = '<';
+        prevButton.addEventListener('click', () => renderTable(data, header, currentPage - 1, pageSize));
+        pagination.appendChild(prevButton);
+    }
+
+    // Add numbered buttons
+    for (let i = startPage; i <= endPage; i++) {
         const button = document.createElement('button');
         button.innerText = i;
+        if (i === currentPage) {
+            button.style.fontWeight = 'bold'; // Bolden the current page button
+        }
         button.addEventListener('click', () => renderTable(data, header, i, pageSize));
         pagination.appendChild(button);
     }
+
+    // Add next button
+    if (currentPage < totalPages) {
+        const nextButton = document.createElement('button');
+        nextButton.innerText = '>';
+        nextButton.addEventListener('click', () => renderTable(data, header, currentPage + 1, pageSize));
+        pagination.appendChild(nextButton);
+    }
+
+    // Add last page button
+    const lastButton = document.createElement('button');
+    lastButton.innerText = '>>';
+    lastButton.addEventListener('click', () => renderTable(data, header, totalPages, pageSize));
+    pagination.appendChild(lastButton);
 }
 
 function filterTable() {
@@ -89,30 +167,37 @@ function filterTable() {
         case 'forecaster':
             header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
             filterKey = "Estimator Type";
+            filter = 'forecaster';
             break;
         case 'transformer':
             header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
             filterKey = "Estimator Type";
+            filter = 'transformer';
             break;
         case 'regressor':
             header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
             filterKey = "Estimator Type";
+            filter = 'regressor';
             break;
         case 'aligner':
             header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
             filterKey = "Estimator Type";
+            filter = 'aligner';
             break;
         case 'clusterer':
             header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
             filterKey = "Estimator Type";
+            filter = 'clusterer';
             break;
         case 'classifier':
             header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
             filterKey = "Estimator Type";
+            filter = 'classifier';
             break;
         default:
             header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
             filterKey = null;
+            filter = 'all';
     }
 
     const cachedData = sessionStorage.getItem('jsonData');
@@ -125,7 +210,7 @@ function filterTable() {
             renderTable(data, header);
         }
     } else {
-        fetchAndRenderTable(header);
+        fetchAndRenderTable(header, selectedOption);
     }
 }
 </script>
