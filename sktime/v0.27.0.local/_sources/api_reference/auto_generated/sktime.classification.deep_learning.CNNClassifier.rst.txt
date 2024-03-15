@@ -1,0 +1,12 @@
+﻿CNNClassifier
+===============================================================
+
+.. currentmodule:: sktime.classification.deep_learning
+
+.. autoclass:: CNNClassifier
+
+.. include:: sktime.classification.deep_learning.CNNClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

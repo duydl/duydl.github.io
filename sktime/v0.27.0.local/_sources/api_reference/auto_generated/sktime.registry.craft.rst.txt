@@ -1,0 +1,12 @@
+﻿craft
+=========================================
+
+.. currentmodule:: sktime.registry
+
+.. autofunction:: craft
+
+.. include:: sktime.registry.craft.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

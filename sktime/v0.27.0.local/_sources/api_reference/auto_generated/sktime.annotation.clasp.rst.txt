@@ -1,0 +1,7 @@
+sktime.annotation.clasp module
+==============================
+
+.. automodule:: sktime.annotation.clasp
+   :members:
+   :undoc-members:
+   :show-inheritance:

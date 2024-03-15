@@ -1,0 +1,12 @@
+﻿KNeighborsTimeSeriesRegressor
+============================================================================
+
+.. currentmodule:: sktime.regression.distance_based
+
+.. autoclass:: KNeighborsTimeSeriesRegressor
+
+.. include:: sktime.regression.distance_based.KNeighborsTimeSeriesRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

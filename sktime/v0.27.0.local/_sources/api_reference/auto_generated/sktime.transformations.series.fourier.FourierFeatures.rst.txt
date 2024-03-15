@@ -1,0 +1,12 @@
+﻿FourierFeatures
+===================================================================
+
+.. currentmodule:: sktime.transformations.series.fourier
+
+.. autoclass:: FourierFeatures
+
+.. include:: sktime.transformations.series.fourier.FourierFeatures.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

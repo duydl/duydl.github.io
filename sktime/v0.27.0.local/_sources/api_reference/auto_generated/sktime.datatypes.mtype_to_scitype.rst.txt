@@ -1,0 +1,12 @@
+﻿mtype_to_scitype
+=====================================================
+
+.. currentmodule:: sktime.datatypes
+
+.. autofunction:: mtype_to_scitype
+
+.. include:: sktime.datatypes.mtype_to_scitype.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿MultioutputTimeSeriesRegressionForecaster
+==================================================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: MultioutputTimeSeriesRegressionForecaster
+
+.. include:: sktime.forecasting.compose.MultioutputTimeSeriesRegressionForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

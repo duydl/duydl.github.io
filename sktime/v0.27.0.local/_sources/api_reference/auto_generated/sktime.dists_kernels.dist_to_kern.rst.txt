@@ -1,0 +1,7 @@
+sktime.dists\_kernels.dist\_to\_kern module
+===========================================
+
+.. automodule:: sktime.dists_kernels.dist_to_kern
+   :members:
+   :undoc-members:
+   :show-inheritance:

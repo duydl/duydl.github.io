@@ -1,0 +1,12 @@
+﻿ProbabilityThresholdEarlyClassifier
+============================================================================================
+
+.. currentmodule:: sktime.classification.early_classification
+
+.. autoclass:: ProbabilityThresholdEarlyClassifier
+
+.. include:: sktime.classification.early_classification.ProbabilityThresholdEarlyClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

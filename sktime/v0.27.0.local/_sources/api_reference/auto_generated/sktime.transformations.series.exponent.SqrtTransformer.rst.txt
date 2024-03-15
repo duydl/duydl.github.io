@@ -1,0 +1,12 @@
+﻿SqrtTransformer
+====================================================================
+
+.. currentmodule:: sktime.transformations.series.exponent
+
+.. autoclass:: SqrtTransformer
+
+.. include:: sktime.transformations.series.exponent.SqrtTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

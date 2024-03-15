@@ -1,0 +1,12 @@
+﻿EAgglo
+=============================================
+
+.. currentmodule:: sktime.annotation.eagglo
+
+.. autoclass:: EAgglo
+
+.. include:: sktime.annotation.eagglo.EAgglo.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

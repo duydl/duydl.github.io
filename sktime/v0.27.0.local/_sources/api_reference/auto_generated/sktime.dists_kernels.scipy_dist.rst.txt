@@ -1,0 +1,7 @@
+sktime.dists\_kernels.scipy\_dist module
+========================================
+
+.. automodule:: sktime.dists_kernels.scipy_dist
+   :members:
+   :undoc-members:
+   :show-inheritance:

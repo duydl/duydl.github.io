@@ -1,0 +1,7 @@
+sktime.transformations.panel.rocket package
+===========================================
+
+.. automodule:: sktime.transformations.panel.rocket
+   :members:
+   :undoc-members:
+   :show-inheritance:

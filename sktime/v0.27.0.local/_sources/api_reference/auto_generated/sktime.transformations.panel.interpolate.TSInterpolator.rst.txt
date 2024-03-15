@@ -1,0 +1,12 @@
+﻿TSInterpolator
+=====================================================================
+
+.. currentmodule:: sktime.transformations.panel.interpolate
+
+.. autoclass:: TSInterpolator
+
+.. include:: sktime.transformations.panel.interpolate.TSInterpolator.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

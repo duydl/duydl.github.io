@@ -1,0 +1,12 @@
+﻿ParamFitterPipeline
+==========================================================
+
+.. currentmodule:: sktime.param_est.compose
+
+.. autoclass:: ParamFitterPipeline
+
+.. include:: sktime.param_est.compose.ParamFitterPipeline.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿BKFilter
+=============================================================
+
+.. currentmodule:: sktime.transformations.series.bkfilter
+
+.. autoclass:: BKFilter
+
+.. include:: sktime.transformations.series.bkfilter.BKFilter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿MLPRegressor
+==========================================================
+
+.. currentmodule:: sktime.regression.deep_learning
+
+.. autoclass:: MLPRegressor
+
+.. include:: sktime.regression.deep_learning.MLPRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

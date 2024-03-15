@@ -1,0 +1,12 @@
+﻿AlignerLuckyDtw
+====================================================
+
+.. currentmodule:: sktime.alignment.lucky
+
+.. autoclass:: AlignerLuckyDtw
+
+.. include:: sktime.alignment.lucky.AlignerLuckyDtw.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

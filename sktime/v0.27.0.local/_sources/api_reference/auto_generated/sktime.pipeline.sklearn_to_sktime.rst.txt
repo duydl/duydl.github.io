@@ -1,0 +1,12 @@
+﻿sklearn_to_sktime
+=====================================================
+
+.. currentmodule:: sktime.pipeline
+
+.. autofunction:: sklearn_to_sktime
+
+.. include:: sktime.pipeline.sklearn_to_sktime.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

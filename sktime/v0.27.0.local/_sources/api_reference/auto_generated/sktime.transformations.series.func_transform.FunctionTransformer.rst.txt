@@ -1,0 +1,12 @@
+﻿FunctionTransformer
+==============================================================================
+
+.. currentmodule:: sktime.transformations.series.func_transform
+
+.. autoclass:: FunctionTransformer
+
+.. include:: sktime.transformations.series.func_transform.FunctionTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

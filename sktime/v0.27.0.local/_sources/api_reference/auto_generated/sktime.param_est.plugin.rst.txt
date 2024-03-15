@@ -1,0 +1,7 @@
+sktime.param\_est.plugin package
+================================
+
+.. automodule:: sktime.param_est.plugin
+   :members:
+   :undoc-members:
+   :show-inheritance:

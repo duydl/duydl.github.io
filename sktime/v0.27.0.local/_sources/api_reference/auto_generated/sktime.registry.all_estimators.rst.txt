@@ -1,0 +1,12 @@
+﻿all_estimators
+==================================================
+
+.. currentmodule:: sktime.registry
+
+.. autofunction:: all_estimators
+
+.. include:: sktime.registry.all_estimators.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

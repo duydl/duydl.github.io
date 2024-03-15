@@ -1,0 +1,12 @@
+﻿HIVECOTEV2
+=====================================================
+
+.. currentmodule:: sktime.classification.hybrid
+
+.. autoclass:: HIVECOTEV2
+
+.. include:: sktime.classification.hybrid.HIVECOTEV2.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

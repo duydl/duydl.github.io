@@ -1,0 +1,7 @@
+sktime.alignment.lucky module
+=============================
+
+.. automodule:: sktime.alignment.lucky
+   :members:
+   :undoc-members:
+   :show-inheritance:

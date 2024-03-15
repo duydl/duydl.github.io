@@ -1,0 +1,7 @@
+sktime.networks.lstmfcn module
+==============================
+
+.. automodule:: sktime.networks.lstmfcn
+   :members:
+   :undoc-members:
+   :show-inheritance:

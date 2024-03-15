@@ -1,0 +1,12 @@
+﻿load_basic_motions
+======================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_basic_motions
+
+.. include:: sktime.datasets.load_basic_motions.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

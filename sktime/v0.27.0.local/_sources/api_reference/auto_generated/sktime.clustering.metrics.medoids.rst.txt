@@ -1,0 +1,7 @@
+sktime.clustering.metrics.medoids module
+========================================
+
+.. automodule:: sktime.clustering.metrics.medoids
+   :members:
+   :undoc-members:
+   :show-inheritance:

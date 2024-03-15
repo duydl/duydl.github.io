@@ -1,0 +1,12 @@
+﻿MultiplexTransformer
+=================================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: MultiplexTransformer
+
+.. include:: sktime.transformations.compose.MultiplexTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

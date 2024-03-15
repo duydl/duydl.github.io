@@ -1,0 +1,7 @@
+sktime.forecasting.naive module
+===============================
+
+.. automodule:: sktime.forecasting.naive
+   :members:
+   :undoc-members:
+   :show-inheritance:

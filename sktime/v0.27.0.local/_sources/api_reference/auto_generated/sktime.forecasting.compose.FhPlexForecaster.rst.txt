@@ -1,0 +1,12 @@
+﻿FhPlexForecaster
+=========================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: FhPlexForecaster
+
+.. include:: sktime.forecasting.compose.FhPlexForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

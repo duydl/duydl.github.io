@@ -1,0 +1,12 @@
+﻿ColumnConcatenator
+=====================================================================
+
+.. currentmodule:: sktime.transformations.panel.compose
+
+.. autoclass:: ColumnConcatenator
+
+.. include:: sktime.transformations.panel.compose.ColumnConcatenator.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

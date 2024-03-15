@@ -1,0 +1,7 @@
+sktime.transformations.series.scaledasinh module
+================================================
+
+.. automodule:: sktime.transformations.series.scaledasinh
+   :members:
+   :undoc-members:
+   :show-inheritance:

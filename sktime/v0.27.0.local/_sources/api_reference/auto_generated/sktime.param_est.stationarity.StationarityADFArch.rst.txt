@@ -1,0 +1,12 @@
+﻿StationarityADFArch
+===============================================================
+
+.. currentmodule:: sktime.param_est.stationarity
+
+.. autoclass:: StationarityADFArch
+
+.. include:: sktime.param_est.stationarity.StationarityADFArch.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.utils.estimators.dispatch module
+=======================================
+
+.. automodule:: sktime.utils.estimators.dispatch
+   :members:
+   :undoc-members:
+   :show-inheritance:

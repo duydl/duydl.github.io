@@ -1,0 +1,12 @@
+﻿TruncationTransformer
+===========================================================================
+
+.. currentmodule:: sktime.transformations.panel.truncation
+
+.. autoclass:: TruncationTransformer
+
+.. include:: sktime.transformations.panel.truncation.TruncationTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

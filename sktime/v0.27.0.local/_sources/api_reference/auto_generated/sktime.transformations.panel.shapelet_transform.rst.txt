@@ -1,0 +1,7 @@
+sktime.transformations.panel.shapelet\_transform module
+=======================================================
+
+.. automodule:: sktime.transformations.panel.shapelet_transform
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿TransformByLevel
+=============================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: TransformByLevel
+
+.. include:: sktime.transformations.compose.TransformByLevel.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

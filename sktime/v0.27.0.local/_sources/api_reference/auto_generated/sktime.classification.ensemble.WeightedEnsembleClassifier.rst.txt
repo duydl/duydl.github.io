@@ -1,0 +1,12 @@
+﻿WeightedEnsembleClassifier
+=======================================================================
+
+.. currentmodule:: sktime.classification.ensemble
+
+.. autoclass:: WeightedEnsembleClassifier
+
+.. include:: sktime.classification.ensemble.WeightedEnsembleClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

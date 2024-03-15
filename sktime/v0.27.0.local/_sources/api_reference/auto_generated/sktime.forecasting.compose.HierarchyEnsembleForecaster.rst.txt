@@ -1,0 +1,12 @@
+﻿HierarchyEnsembleForecaster
+====================================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: HierarchyEnsembleForecaster
+
+.. include:: sktime.forecasting.compose.HierarchyEnsembleForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

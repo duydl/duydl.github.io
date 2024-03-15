@@ -1,0 +1,7 @@
+sktime.forecasting.adapters package
+===================================
+
+.. automodule:: sktime.forecasting.adapters
+   :members:
+   :undoc-members:
+   :show-inheritance:

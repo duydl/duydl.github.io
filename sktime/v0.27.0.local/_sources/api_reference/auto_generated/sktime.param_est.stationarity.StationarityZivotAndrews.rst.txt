@@ -1,0 +1,12 @@
+﻿StationarityZivotAndrews
+====================================================================
+
+.. currentmodule:: sktime.param_est.stationarity
+
+.. autoclass:: StationarityZivotAndrews
+
+.. include:: sktime.param_est.stationarity.StationarityZivotAndrews.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

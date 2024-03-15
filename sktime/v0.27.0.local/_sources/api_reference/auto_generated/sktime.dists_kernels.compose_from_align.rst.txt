@@ -1,0 +1,7 @@
+sktime.dists\_kernels.compose\_from\_align module
+=================================================
+
+.. automodule:: sktime.dists_kernels.compose_from_align
+   :members:
+   :undoc-members:
+   :show-inheritance:

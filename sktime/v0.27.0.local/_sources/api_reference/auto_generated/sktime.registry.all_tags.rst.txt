@@ -1,0 +1,12 @@
+﻿all_tags
+============================================
+
+.. currentmodule:: sktime.registry
+
+.. autofunction:: all_tags
+
+.. include:: sktime.registry.all_tags.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

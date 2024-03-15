@@ -1,0 +1,7 @@
+sktime.transformations.hierarchical.aggregate module
+====================================================
+
+.. automodule:: sktime.transformations.hierarchical.aggregate
+   :members:
+   :undoc-members:
+   :show-inheritance:

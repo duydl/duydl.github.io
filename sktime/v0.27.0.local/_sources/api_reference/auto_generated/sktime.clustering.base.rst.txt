@@ -1,0 +1,7 @@
+sktime.clustering.base module
+=============================
+
+.. automodule:: sktime.clustering.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

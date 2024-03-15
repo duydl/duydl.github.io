@@ -1,0 +1,7 @@
+sktime.transformations.series.augmenter module
+==============================================
+
+.. automodule:: sktime.transformations.series.augmenter
+   :members:
+   :undoc-members:
+   :show-inheritance:

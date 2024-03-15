@@ -1,0 +1,7 @@
+sktime.forecasting.arch package
+===============================
+
+.. automodule:: sktime.forecasting.arch
+   :members:
+   :undoc-members:
+   :show-inheritance:

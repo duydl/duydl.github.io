@@ -1,0 +1,7 @@
+sktime.dists\_kernels.gak module
+================================
+
+.. automodule:: sktime.dists_kernels.gak
+   :members:
+   :undoc-members:
+   :show-inheritance:

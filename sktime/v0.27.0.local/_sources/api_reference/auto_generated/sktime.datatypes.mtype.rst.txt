@@ -1,0 +1,12 @@
+﻿mtype
+==========================================
+
+.. currentmodule:: sktime.datatypes
+
+.. autofunction:: mtype
+
+.. include:: sktime.datatypes.mtype.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

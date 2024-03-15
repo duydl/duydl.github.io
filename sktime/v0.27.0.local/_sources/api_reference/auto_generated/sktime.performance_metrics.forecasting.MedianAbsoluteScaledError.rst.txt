@@ -1,0 +1,13 @@
+﻿MedianAbsoluteScaledError
+===============================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autoclass:: MedianAbsoluteScaledError
+   :special-members: __call__
+
+.. include:: sktime.performance_metrics.forecasting.MedianAbsoluteScaledError.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

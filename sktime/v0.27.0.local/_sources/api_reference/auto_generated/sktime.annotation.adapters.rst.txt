@@ -1,0 +1,7 @@
+sktime.annotation.adapters package
+==================================
+
+.. automodule:: sktime.annotation.adapters
+   :members:
+   :undoc-members:
+   :show-inheritance:

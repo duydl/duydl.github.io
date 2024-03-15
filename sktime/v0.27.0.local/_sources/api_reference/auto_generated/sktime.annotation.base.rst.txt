@@ -1,0 +1,7 @@
+sktime.annotation.base package
+==============================
+
+.. automodule:: sktime.annotation.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

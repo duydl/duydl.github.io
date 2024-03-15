@@ -1,0 +1,7 @@
+sktime.proba.empirical module
+=============================
+
+.. automodule:: sktime.proba.empirical
+   :members:
+   :undoc-members:
+   :show-inheritance:

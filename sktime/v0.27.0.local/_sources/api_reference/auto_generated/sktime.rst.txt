@@ -1,0 +1,44 @@
+sktime package
+==============
+
+.. automodule:: sktime
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.alignment
+   sktime.annotation
+   sktime.base
+   sktime.benchmarking
+   sktime.classification
+   sktime.clustering
+   sktime.datasets
+   sktime.datatypes
+   sktime.distances
+   sktime.dists_kernels
+   sktime.forecasting
+   sktime.networks
+   sktime.param_est
+   sktime.performance_metrics
+   sktime.pipeline
+   sktime.proba
+   sktime.registry
+   sktime.regression
+   sktime.series_as_features
+   sktime.split
+   sktime.transformations
+   sktime.utils
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.exceptions

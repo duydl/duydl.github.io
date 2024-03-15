@@ -1,0 +1,7 @@
+sktime.transformations.series.peak module
+=========================================
+
+.. automodule:: sktime.transformations.series.peak
+   :members:
+   :undoc-members:
+   :show-inheritance:

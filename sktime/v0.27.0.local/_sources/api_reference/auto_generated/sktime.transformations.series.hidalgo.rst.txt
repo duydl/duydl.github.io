@@ -1,0 +1,7 @@
+sktime.transformations.series.hidalgo module
+============================================
+
+.. automodule:: sktime.transformations.series.hidalgo
+   :members:
+   :undoc-members:
+   :show-inheritance:

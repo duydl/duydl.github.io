@@ -1,0 +1,12 @@
+﻿RotationForest
+==========================================================
+
+.. currentmodule:: sktime.classification.sklearn
+
+.. autoclass:: RotationForest
+
+.. include:: sktime.classification.sklearn.RotationForest.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿WindowSummarizer
+======================================================================
+
+.. currentmodule:: sktime.transformations.series.summarize
+
+.. autoclass:: WindowSummarizer
+
+.. include:: sktime.transformations.series.summarize.WindowSummarizer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

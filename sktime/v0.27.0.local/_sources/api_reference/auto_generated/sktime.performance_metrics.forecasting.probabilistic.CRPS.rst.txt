@@ -1,0 +1,13 @@
+﻿CRPS
+========================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting.probabilistic
+
+.. autoclass:: CRPS
+   :special-members: __call__
+
+.. include:: sktime.performance_metrics.forecasting.probabilistic.CRPS.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

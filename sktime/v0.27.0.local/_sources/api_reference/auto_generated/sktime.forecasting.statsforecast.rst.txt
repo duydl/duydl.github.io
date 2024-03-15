@@ -1,0 +1,7 @@
+sktime.forecasting.statsforecast module
+=======================================
+
+.. automodule:: sktime.forecasting.statsforecast
+   :members:
+   :undoc-members:
+   :show-inheritance:

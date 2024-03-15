@@ -1,0 +1,12 @@
+﻿TabularToSeriesAdaptor
+========================================================================
+
+.. currentmodule:: sktime.transformations.series.adapt
+
+.. autoclass:: TabularToSeriesAdaptor
+
+.. include:: sktime.transformations.series.adapt.TabularToSeriesAdaptor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

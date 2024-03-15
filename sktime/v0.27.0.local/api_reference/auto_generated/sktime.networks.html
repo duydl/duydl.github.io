@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.networks package &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.networks';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sktime.networks.ltsf.html">sktime.networks.ltsf package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.ltsf.layers.html">sktime.networks.ltsf.layers module</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.base.html">sktime.networks.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.cinn.html">sktime.networks.cinn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.cnn.html">sktime.networks.cnn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.cntc.html">sktime.networks.cntc module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.fcn.html">sktime.networks.fcn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.inceptiontime.html">sktime.networks.inceptiontime module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.lstmfcn.html">sktime.networks.lstmfcn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.lstmfcn_layers.html">sktime.networks.lstmfcn_layers module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.macnn.html">sktime.networks.macnn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.mcdcnn.html">sktime.networks.mcdcnn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.mlp.html">sktime.networks.mlp module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.resnet.html">sktime.networks.resnet module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.rnn.html">sktime.networks.rnn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.tapnet.html">sktime.networks.tapnet module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.netwo...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.networks">
+<span id="sktime-networks-package"></span><h1>sktime.networks package<a class="headerlink" href="#module-sktime.networks" title="Link to this heading">#</a></h1>
+<p>Networks init.</p>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.ltsf.html">sktime.networks.ltsf package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.ltsf.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.ltsf.layers.html">sktime.networks.ltsf.layers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.nn_module"><code class="docutils literal notranslate"><span class="pre">nn_module</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.SeriesDecomposer"><code class="docutils literal notranslate"><span class="pre">SeriesDecomposer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.MovingAverage"><code class="docutils literal notranslate"><span class="pre">MovingAverage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.AutoCorrelation"><code class="docutils literal notranslate"><span class="pre">AutoCorrelation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.AutoCorrelationLayer"><code class="docutils literal notranslate"><span class="pre">AutoCorrelationLayer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.LTSFLayerNorm"><code class="docutils literal notranslate"><span class="pre">LTSFLayerNorm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.EncoderLayer"><code class="docutils literal notranslate"><span class="pre">EncoderLayer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.Encoder"><code class="docutils literal notranslate"><span class="pre">Encoder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.DecoderLayer"><code class="docutils literal notranslate"><span class="pre">DecoderLayer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.networks.ltsf.layers.html#sktime.networks.ltsf.layers.Decoder"><code class="docutils literal notranslate"><span class="pre">Decoder</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.base.html">sktime.networks.base module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.clone"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.reset"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.save"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.build_pytorch_train_dataloader"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.build_pytorch_train_dataloader</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.build_pytorch_pred_dataloader"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.build_pytorch_pred_dataloader</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_y_true"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_y_true</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.clone"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.clone_tags"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.create_test_instance"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.cutoff"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.cutoff</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.fh"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.fh</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.fit"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.fit_predict"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_class_tag"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_class_tags"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_config"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_param_names"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_params"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_tag"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_tags"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.get_test_params"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.is_composite"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.load_from_path"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.load_from_serial"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.predict"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.predict_interval"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.predict_interval</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.predict_proba"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.predict_proba</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.predict_quantiles"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.predict_quantiles</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.predict_residuals"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.predict_residuals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.predict_var"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.predict_var</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.reset"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.save"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.score"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.score</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.set_config"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.set_params"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.set_random_state"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.set_tags"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.update"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.update_predict"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.update_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.BaseDeepNetworkPyTorch.update_predict_single"><code class="docutils literal notranslate"><span class="pre">BaseDeepNetworkPyTorch.update_predict_single</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.PyTorchTrainDataset"><code class="docutils literal notranslate"><span class="pre">PyTorchTrainDataset</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.base.html#sktime.networks.base.PyTorchPredDataset"><code class="docutils literal notranslate"><span class="pre">PyTorchPredDataset</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.cinn.html">sktime.networks.cinn module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.cinn.html#sktime.networks.cinn.NNModule"><code class="docutils literal notranslate"><span class="pre">NNModule</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.cinn.html#sktime.networks.cinn.cINNNetwork"><code class="docutils literal notranslate"><span class="pre">cINNNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cinn.html#sktime.networks.cinn.cINNNetwork.build"><code class="docutils literal notranslate"><span class="pre">cINNNetwork.build</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.cnn.html">sktime.networks.cnn module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork"><code class="docutils literal notranslate"><span class="pre">CNNNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.clone"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.reset"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.save"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cnn.html#sktime.networks.cnn.CNNNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">CNNNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.cntc.html">sktime.networks.cntc module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.clone"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.reset"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.save"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.cntc.html#sktime.networks.cntc.CNTCNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">CNTCNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.fcn.html">sktime.networks.fcn module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork"><code class="docutils literal notranslate"><span class="pre">FCNNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.clone"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.reset"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.save"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.fcn.html#sktime.networks.fcn.FCNNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">FCNNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.inceptiontime.html">sktime.networks.inceptiontime module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.clone"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.reset"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.save"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.inceptiontime.html#sktime.networks.inceptiontime.InceptionTimeNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">InceptionTimeNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.lstmfcn.html">sktime.networks.lstmfcn module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.clone"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.reset"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.save"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.lstmfcn.html#sktime.networks.lstmfcn.LSTMFCNNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">LSTMFCNNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.lstmfcn_layers.html">sktime.networks.lstmfcn_layers module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.lstmfcn_layers.html#sktime.networks.lstmfcn_layers.make_attention_lstm"><code class="docutils literal notranslate"><span class="pre">make_attention_lstm</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.macnn.html">sktime.networks.macnn module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.clone"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.reset"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.save"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.macnn.html#sktime.networks.macnn.MACNNNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">MACNNNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.mcdcnn.html">sktime.networks.mcdcnn module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.clone"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.reset"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.save"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mcdcnn.html#sktime.networks.mcdcnn.MCDCNNNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">MCDCNNNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.mlp.html">sktime.networks.mlp module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork"><code class="docutils literal notranslate"><span class="pre">MLPNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.clone"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.reset"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.save"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.mlp.html#sktime.networks.mlp.MLPNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">MLPNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.resnet.html">sktime.networks.resnet module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.clone"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.reset"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.save"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.resnet.html#sktime.networks.resnet.ResNetNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">ResNetNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.rnn.html">sktime.networks.rnn module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork"><code class="docutils literal notranslate"><span class="pre">RNNNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.clone"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.reset"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.save"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.rnn.html#sktime.networks.rnn.RNNNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">RNNNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.networks.tapnet.html">sktime.networks.tapnet module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.output_conv_size"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.output_conv_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.euclidean_dist"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.euclidean_dist</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.build_network"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.build_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.clone"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.clone_tags"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.create_test_instance"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_class_tag"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_class_tags"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_config"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_param_names"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_params"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_tag"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_tags"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.get_test_params"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.is_composite"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.load_from_path"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.load_from_serial"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.reset"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.save"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.set_config"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.set_params"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.set_random_state"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.networks.tapnet.html#sktime.networks.tapnet.TapNetNetwork.set_tags"><code class="docutils literal notranslate"><span class="pre">TapNetNetwork.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

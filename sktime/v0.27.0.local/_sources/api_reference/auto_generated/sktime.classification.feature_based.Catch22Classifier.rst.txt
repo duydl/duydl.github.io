@@ -1,0 +1,12 @@
+﻿Catch22Classifier
+===================================================================
+
+.. currentmodule:: sktime.classification.feature_based
+
+.. autoclass:: Catch22Classifier
+
+.. include:: sktime.classification.feature_based.Catch22Classifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

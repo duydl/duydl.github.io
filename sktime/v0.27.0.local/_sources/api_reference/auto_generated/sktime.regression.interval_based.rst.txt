@@ -1,0 +1,7 @@
+sktime.regression.interval\_based package
+=========================================
+
+.. automodule:: sktime.regression.interval_based
+   :members:
+   :undoc-members:
+   :show-inheritance:

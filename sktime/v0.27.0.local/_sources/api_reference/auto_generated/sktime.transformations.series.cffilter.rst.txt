@@ -1,0 +1,7 @@
+sktime.transformations.series.cffilter module
+=============================================
+
+.. automodule:: sktime.transformations.series.cffilter
+   :members:
+   :undoc-members:
+   :show-inheritance:

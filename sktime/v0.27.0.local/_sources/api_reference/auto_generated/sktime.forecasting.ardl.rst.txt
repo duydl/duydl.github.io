@@ -1,0 +1,7 @@
+sktime.forecasting.ardl module
+==============================
+
+.. automodule:: sktime.forecasting.ardl
+   :members:
+   :undoc-members:
+   :show-inheritance:

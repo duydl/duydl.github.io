@@ -1,0 +1,12 @@
+﻿Merger
+==================================================
+
+.. currentmodule:: sktime.transformations.merger
+
+.. autoclass:: Merger
+
+.. include:: sktime.transformations.merger.Merger.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿RocketClassifier
+=================================================================
+
+.. currentmodule:: sktime.classification.kernel_based
+
+.. autoclass:: RocketClassifier
+
+.. include:: sktime.classification.kernel_based.RocketClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿mean_relative_absolute_error
+=======================================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autofunction:: mean_relative_absolute_error
+
+.. include:: sktime.performance_metrics.forecasting.mean_relative_absolute_error.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

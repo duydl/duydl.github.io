@@ -1,0 +1,12 @@
+﻿mean_linex_error
+===========================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autofunction:: mean_linex_error
+
+.. include:: sktime.performance_metrics.forecasting.mean_linex_error.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

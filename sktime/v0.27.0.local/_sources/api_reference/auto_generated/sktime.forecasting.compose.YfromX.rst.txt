@@ -1,0 +1,12 @@
+﻿YfromX
+===============================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: YfromX
+
+.. include:: sktime.forecasting.compose.YfromX.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.forecasting.trend package
+================================
+
+.. automodule:: sktime.forecasting.trend
+   :members:
+   :undoc-members:
+   :show-inheritance:

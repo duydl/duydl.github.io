@@ -1,0 +1,12 @@
+﻿geometric_mean_absolute_error
+========================================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autofunction:: geometric_mean_absolute_error
+
+.. include:: sktime.performance_metrics.forecasting.geometric_mean_absolute_error.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

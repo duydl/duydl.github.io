@@ -1,0 +1,17 @@
+sktime.datasets package
+=======================
+
+.. automodule:: sktime.datasets
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.datasets.setup
+   sktime.datasets.tsc_dataset_names
+   sktime.datasets.tsf_dataset_names

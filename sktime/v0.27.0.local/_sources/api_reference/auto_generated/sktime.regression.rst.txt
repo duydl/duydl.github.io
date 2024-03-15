@@ -1,0 +1,28 @@
+sktime.regression package
+=========================
+
+.. automodule:: sktime.regression
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.regression.compose
+   sktime.regression.deep_learning
+   sktime.regression.distance_based
+   sktime.regression.dummy
+   sktime.regression.interval_based
+   sktime.regression.kernel_based
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.regression.base

@@ -1,0 +1,12 @@
+﻿FeatureSelection
+==============================================================================
+
+.. currentmodule:: sktime.transformations.series.feature_selection
+
+.. autoclass:: FeatureSelection
+
+.. include:: sktime.transformations.series.feature_selection.FeatureSelection.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

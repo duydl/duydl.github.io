@@ -1,0 +1,1470 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Canonical Time-series Characteristics (catch22) transform &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/catch22';</script>
+    <script src="../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Channel Selection in Multivariate Time Series Classification" href="channel_selection.html" />
+    <link rel="prev" title="In-memory data representations and data loading" href="AA_datatypes_and_datasets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../user_guide.html">User Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_sktime_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_forecasting.html">Forecasting with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01a_forecasting_sklearn.html">Forecasting with sktime - appendix: forecasting, supervised regression, and pitfalls in confusing the two</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01b_forecasting_proba.html">Probabilistic Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01c_forecasting_hierarchical_global.html">Hierarchical, Global, and Panel Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_classification.html">Time Series Classification, Regression, Clustering &amp; More</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02a_classification_multivariate_cnn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="02b_classification_multivariate_lstmfcn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="02c_classification_multivariate_inceptiontime.html">Multi-variate time series classification using InceptionTime</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03_transformers.html">Overview of this notebook</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03a_transformers_cheat_sheet.html">Transformers cheat sheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03b_forecasting_transformers_pipelines_tuning.html">4 Forecasting Pipelines, Tuning, and AutoML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking.html">Benchmarking with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking_v2.html">Benchmarking - comparing estimator performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AA_datatypes_and_datasets.html">In-memory data representations and data loading</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Canonical Time-series Characteristics (catch22) transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="channel_selection.html">Channel Selection in Multivariate Time Series Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="dictionary_based_classification.html">Dictionary based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="early_classification.html">Early time series classification with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction_with_tsfresh.html">Feature extraction with tsfresh transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Time series interpolating with sktime</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="interval_based_classification.html">Interval based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading_data.html">Loading data into sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minirocket.html">MiniRocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partition_based_clustering.html">Partition based time series clustering in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plateau_finder.html">Demo of the PlateauFinder transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocket.html">Demo of ROCKET transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segmentation_with_clasp.html">Time Series Segmentation with sktime and ClaSP</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="signature_method.html">The Signature Method with Sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theta_transform.html">Theta Lines transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window_splitters.html">Window Splitters in Sktime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator_overview.html">Estimator Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../related_software.html">Related Software</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../users.html" class="nav-link">Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">The...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://mybinder.org/v2/gh/sktime/sktime/v0.27.0?filepath=examples/catch22.ipynb"><img alt="binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<section id="The-Canonical-Time-series-Characteristics-(catch22)-transform">
+<h1>The Canonical Time-series Characteristics (catch22) transform<a class="headerlink" href="#The-Canonical-Time-series-Characteristics-(catch22)-transform" title="Link to this heading">#</a></h1>
+<p>catch22[1] is a collection of 22 time series features extracted from the 7000+ present in the <em>hctsa</em> [2][3] toolbox. A hierarchical clustering was performed on the correlation matrix of features that performed better than random chance to remove redundancy. These clusters were sorted by balanced accuracy using a decision tree classifier and a single feature was selected from the 22 clusters formed, taking into account balanced accuracy results, computational efficiency and interpretability.</p>
+<p>In this notebook, we will demonstrate how to use the catch22 transformer on the ItalyPowerDemand univariate and BasicMotions multivariate datasets. We also show catch22 used for classification with a random forest classifier.</p>
+<section id="References:">
+<h2>References:<a class="headerlink" href="#References:" title="Link to this heading">#</a></h2>
+<p>[1] Lubba, C. H., Sethi, S. S., Knaute, P., Schultz, S. R., Fulcher, B. D., &amp; Jones, N. S. (2019). catch22: CAnonical Time-series CHaracteristics. Data Mining and Knowledge Discovery, 33(6), 1821-1852.</p>
+<p>[2] Fulcher, B. D., &amp; Jones, N. S. (2017). hctsa: A computational framework for automated time-series phenotyping using massive feature extraction. Cell systems, 5(5), 527-531.</p>
+<p>[3] Fulcher, B. D., Little, M. A., &amp; Jones, N. S. (2013). Highly comparative time-series analysis: the empirical structure of time series and their methods. Journal of the Royal Society Interface, 10(83), 20130048.</p>
+<section id="1.-Imports">
+<h3>1. Imports<a class="headerlink" href="#1.-Imports" title="Link to this heading">#</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+
+<span class="kn">from</span> <span class="nn">sktime.classification.feature_based</span> <span class="kn">import</span> <span class="n">Catch22Classifier</span>
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_basic_motions</span><span class="p">,</span> <span class="n">load_italy_power_demand</span>
+<span class="kn">from</span> <span class="nn">sktime.transformations.panel.catch22</span> <span class="kn">import</span> <span class="n">Catch22</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2.-Load-data">
+<h3>2. Load data<a class="headerlink" href="#2.-Load-data" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IPD_X_train</span><span class="p">,</span> <span class="n">IPD_y_train</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">IPD_X_test</span><span class="p">,</span> <span class="n">IPD_y_test</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">IPD_X_test</span> <span class="o">=</span> <span class="n">IPD_X_test</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span>
+<span class="n">IPD_y_test</span> <span class="o">=</span> <span class="n">IPD_y_test</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">IPD_X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">IPD_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">IPD_X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">IPD_y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">BM_X_train</span><span class="p">,</span> <span class="n">BM_y_train</span> <span class="o">=</span> <span class="n">load_basic_motions</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">BM_X_test</span><span class="p">,</span> <span class="n">BM_y_test</span> <span class="o">=</span> <span class="n">load_basic_motions</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">BM_X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">BM_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">BM_X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">BM_y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(67, 1) (67,) (50, 1) (50,)
+(40, 6) (40,) (40, 6) (40,)
+</pre></div></div>
+</div>
+</section>
+<section id="3.-catch22-transform">
+<h3>3. catch22 transform<a class="headerlink" href="#3.-catch22-transform" title="Link to this heading">#</a></h3>
+<section id="Univariate">
+<h4>Univariate<a class="headerlink" href="#Univariate" title="Link to this heading">#</a></h4>
+<p>The catch22 features are provided in the form of a transformer, <code class="docutils literal notranslate"><span class="pre">Catch22</span></code>. From this the transformed data can be used for a variety of time series analysis tasks.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c22_uv</span> <span class="o">=</span> <span class="n">Catch22</span><span class="p">()</span>
+<span class="n">c22_uv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">IPD_X_train</span><span class="p">,</span> <span class="n">IPD_y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<style>#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c {color: black;background-color: white;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c pre{padding: 0;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-toggleable {background-color: white;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-estimator:hover {background-color: #d4ebff;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-item {z-index: 1;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-parallel-item:only-child::after {width: 0;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c div.sk-text-repr-fallback {display: none;}</style><div id='sk-8f29edb6-8bf5-4530-aced-70f7f86ef71c' class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Catch22()</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('ec470465-643b-4953-9266-7c8b4cd6340d') type="checkbox" checked><label for=UUID('ec470465-643b-4953-9266-7c8b4cd6340d') class='sk-toggleable__label sk-toggleable__label-arrow'>Catch22</label><div class="sk-toggleable__content"><pre>Catch22()</pre></div></div></div></div></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transformed_data_uv</span> <span class="o">=</span> <span class="n">c22_uv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">IPD_X_train</span><span class="p">)</span>
+<span class="n">transformed_data_uv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/opt/homebrew/Caskroom/miniforge/base/envs/sktime/lib/python3.9/site-packages/numba/cpython/hashing.py:482: UserWarning: FNV hashing is not implemented in Numba. See PEP 456 https://www.python.org/dev/peps/pep-0456/ for rationale over not using FNV. Numba will continue to work, but hashes for built in types will be computed using siphash24. This will permit e.g. dictionaries to continue to behave as expected, however anything relying on the value of the hash opposed to hash as a derived property is likely to not work as expected.
+  warnings.warn(msg)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.158630</td>
+      <td>-0.217227</td>
+      <td>8.0</td>
+      <td>0.291667</td>
+      <td>-0.625000</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>0.468052</td>
+      <td>0.589049</td>
+      <td>0.836755</td>
+      <td>...</td>
+      <td>3.0</td>
+      <td>1.000000</td>
+      <td>5.0</td>
+      <td>1.778748</td>
+      <td>0.750000</td>
+      <td>0.240598</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.040000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.918162</td>
+      <td>-0.214762</td>
+      <td>15.0</td>
+      <td>0.208333</td>
+      <td>-0.666667</td>
+      <td>4.0</td>
+      <td>8.0</td>
+      <td>0.702775</td>
+      <td>0.196350</td>
+      <td>0.666160</td>
+      <td>...</td>
+      <td>4.0</td>
+      <td>0.869565</td>
+      <td>5.0</td>
+      <td>1.730238</td>
+      <td>0.500000</td>
+      <td>0.388217</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.111111</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.273180</td>
+      <td>-0.085856</td>
+      <td>4.0</td>
+      <td>0.875000</td>
+      <td>0.250000</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>0.310567</td>
+      <td>0.589049</td>
+      <td>0.865073</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>0.913043</td>
+      <td>5.0</td>
+      <td>1.836012</td>
+      <td>0.666667</td>
+      <td>0.089104</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.034014</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.048411</td>
+      <td>-0.450080</td>
+      <td>13.0</td>
+      <td>0.166667</td>
+      <td>-0.625000</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>0.804047</td>
+      <td>0.196350</td>
+      <td>0.648309</td>
+      <td>...</td>
+      <td>4.0</td>
+      <td>0.869565</td>
+      <td>6.0</td>
+      <td>1.605420</td>
+      <td>0.666667</td>
+      <td>0.332436</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.111111</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.426379</td>
+      <td>0.572566</td>
+      <td>16.0</td>
+      <td>0.291667</td>
+      <td>-0.666667</td>
+      <td>4.0</td>
+      <td>7.0</td>
+      <td>0.675485</td>
+      <td>0.196350</td>
+      <td>0.657946</td>
+      <td>...</td>
+      <td>4.0</td>
+      <td>0.913043</td>
+      <td>6.0</td>
+      <td>1.730238</td>
+      <td>0.500000</td>
+      <td>0.318405</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.111111</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div></div>
+</div>
+<p>Please note, that Catch22 doesn’t take labels (<code class="docutils literal notranslate"><span class="pre">y</span></code>) into consideration in the <code class="docutils literal notranslate"><span class="pre">fit(x,</span> <span class="pre">y=None)</span></code> method, so we can easily replace it with a single-step <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c22_uv_single_step</span> <span class="o">=</span> <span class="n">Catch22</span><span class="p">()</span>
+<span class="n">transformed_data_uv_single_step</span> <span class="o">=</span> <span class="n">c22_uv</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">IPD_X_train</span><span class="p">)</span>
+<span class="n">transformed_data_uv_single_step</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">transformed_data_uv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+</section>
+<section id="Multivariate">
+<h4>Multivariate<a class="headerlink" href="#Multivariate" title="Link to this heading">#</a></h4>
+<p>Transformation of multivariate data is supported by <code class="docutils literal notranslate"><span class="pre">Catch22</span></code>. The default procedure will concatenate each column prior to transformation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c22_mv</span> <span class="o">=</span> <span class="n">Catch22</span><span class="p">()</span>
+<span class="n">transformed_data_mv</span> <span class="o">=</span> <span class="n">c22_mv</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">BM_X_train</span><span class="p">)</span>
+<span class="n">transformed_data_mv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dim_0__0</th>
+      <th>dim_0__1</th>
+      <th>dim_0__2</th>
+      <th>dim_0__3</th>
+      <th>dim_0__4</th>
+      <th>dim_0__5</th>
+      <th>dim_0__6</th>
+      <th>dim_0__7</th>
+      <th>dim_0__8</th>
+      <th>dim_0__9</th>
+      <th>...</th>
+      <th>dim_5__12</th>
+      <th>dim_5__13</th>
+      <th>dim_5__14</th>
+      <th>dim_5__15</th>
+      <th>dim_5__16</th>
+      <th>dim_5__17</th>
+      <th>dim_5__18</th>
+      <th>dim_5__19</th>
+      <th>dim_5__20</th>
+      <th>dim_5__21</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.140988</td>
+      <td>-0.268073</td>
+      <td>6.0</td>
+      <td>-0.890</td>
+      <td>0.160</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>0.042638</td>
+      <td>0.736311</td>
+      <td>0.314500</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>0.707071</td>
+      <td>7.0</td>
+      <td>1.907929</td>
+      <td>1.00</td>
+      <td>0.658286</td>
+      <td>0.828571</td>
+      <td>0.228571</td>
+      <td>0.012550</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.387256</td>
+      <td>-0.126246</td>
+      <td>6.0</td>
+      <td>-0.920</td>
+      <td>-0.600</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>0.269591</td>
+      <td>0.490874</td>
+      <td>0.614552</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>0.727273</td>
+      <td>6.0</td>
+      <td>1.875354</td>
+      <td>0.50</td>
+      <td>0.206944</td>
+      <td>0.600000</td>
+      <td>0.257143</td>
+      <td>0.028935</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.028412</td>
+      <td>-0.224988</td>
+      <td>9.0</td>
+      <td>-0.335</td>
+      <td>-0.045</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>0.036650</td>
+      <td>1.030835</td>
+      <td>0.352408</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>0.818182</td>
+      <td>7.0</td>
+      <td>1.789838</td>
+      <td>0.75</td>
+      <td>0.791912</td>
+      <td>0.828571</td>
+      <td>0.228571</td>
+      <td>0.054977</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.147338</td>
+      <td>-0.199523</td>
+      <td>8.0</td>
+      <td>-0.540</td>
+      <td>0.180</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.013833</td>
+      <td>1.030835</td>
+      <td>0.212988</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>0.717172</td>
+      <td>6.0</td>
+      <td>1.904917</td>
+      <td>1.00</td>
+      <td>1.191592</td>
+      <td>0.600000</td>
+      <td>0.171429</td>
+      <td>0.015611</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.217645</td>
+      <td>-0.252015</td>
+      <td>7.0</td>
+      <td>-0.130</td>
+      <td>0.020</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.008072</td>
+      <td>0.883573</td>
+      <td>0.150597</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>0.707071</td>
+      <td>7.0</td>
+      <td>1.880930</td>
+      <td>1.00</td>
+      <td>3.141568</td>
+      <td>0.800000</td>
+      <td>0.200000</td>
+      <td>0.002449</td>
+      <td>10.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 132 columns</p>
+</div></div>
+</div>
+<p>We can also set specific column names, e.g., <code class="docutils literal notranslate"><span class="pre">&quot;short_str_feat&quot;</span></code> which will show short name of the feauture in the column name.</p>
+<p>If the location and spread of the raw time-series distribution may be important, set <code class="docutils literal notranslate"><span class="pre">catch24</span> <span class="pre">=</span> <span class="pre">true</span></code> to include additionally <code class="docutils literal notranslate"><span class="pre">Mean</span></code> and <code class="docutils literal notranslate"><span class="pre">StandardDeviation</span></code> values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c24_mv</span> <span class="o">=</span> <span class="n">Catch22</span><span class="p">(</span><span class="n">col_names</span><span class="o">=</span><span class="s2">&quot;short_str_feat&quot;</span><span class="p">,</span> <span class="n">catch24</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">c24_mv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">BM_X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<style>#sk-f40df984-b2db-4941-afd9-ed30d47165e4 {color: black;background-color: white;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 pre{padding: 0;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-toggleable {background-color: white;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-estimator:hover {background-color: #d4ebff;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-item {z-index: 1;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-parallel-item:only-child::after {width: 0;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-f40df984-b2db-4941-afd9-ed30d47165e4 div.sk-text-repr-fallback {display: none;}</style><div id='sk-f40df984-b2db-4941-afd9-ed30d47165e4' class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Catch22(catch24=True, col_names=&#x27;short_str_feat&#x27;)</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('844097ed-d4cd-4df6-91cc-5d9a9b79d7f7') type="checkbox" checked><label for=UUID('844097ed-d4cd-4df6-91cc-5d9a9b79d7f7') class='sk-toggleable__label sk-toggleable__label-arrow'>Catch22</label><div class="sk-toggleable__content"><pre>Catch22(catch24=True, col_names=&#x27;short_str_feat&#x27;)</pre></div></div></div></div></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c24_mv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">BM_X_train</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dim_0__mode_5</th>
+      <th>dim_0__mode_10</th>
+      <th>dim_0__stretch_decreasing</th>
+      <th>dim_0__outlier_timing_pos</th>
+      <th>dim_0__outlier_timing_neg</th>
+      <th>dim_0__acf_timescale</th>
+      <th>dim_0__acf_first_min</th>
+      <th>dim_0__centroid_freq</th>
+      <th>dim_0__low_freq_power</th>
+      <th>dim_0__forecast_error</th>
+      <th>...</th>
+      <th>dim_5__stretch_high</th>
+      <th>dim_5__rs_range</th>
+      <th>dim_5__whiten_timescale</th>
+      <th>dim_5__embedding_dist</th>
+      <th>dim_5__dfa</th>
+      <th>dim_5__rs_range</th>
+      <th>dim_5__transition_matrix</th>
+      <th>dim_5__periodicity</th>
+      <th>dim_5__mean</th>
+      <th>dim_5__std</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.140988</td>
+      <td>-0.268073</td>
+      <td>6.0</td>
+      <td>-0.890</td>
+      <td>0.160</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>0.042638</td>
+      <td>0.736311</td>
+      <td>0.314500</td>
+      <td>...</td>
+      <td>7.0</td>
+      <td>1.907929</td>
+      <td>1.00</td>
+      <td>0.658286</td>
+      <td>0.828571</td>
+      <td>0.228571</td>
+      <td>0.012550</td>
+      <td>9.0</td>
+      <td>0.054413</td>
+      <td>0.510274</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.387256</td>
+      <td>-0.126246</td>
+      <td>6.0</td>
+      <td>-0.920</td>
+      <td>-0.600</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>0.269591</td>
+      <td>0.490874</td>
+      <td>0.614552</td>
+      <td>...</td>
+      <td>6.0</td>
+      <td>1.875354</td>
+      <td>0.50</td>
+      <td>0.206944</td>
+      <td>0.600000</td>
+      <td>0.257143</td>
+      <td>0.028935</td>
+      <td>9.0</td>
+      <td>-0.102407</td>
+      <td>0.661172</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.028412</td>
+      <td>-0.224988</td>
+      <td>9.0</td>
+      <td>-0.335</td>
+      <td>-0.045</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>0.036650</td>
+      <td>1.030835</td>
+      <td>0.352408</td>
+      <td>...</td>
+      <td>7.0</td>
+      <td>1.789838</td>
+      <td>0.75</td>
+      <td>0.791912</td>
+      <td>0.828571</td>
+      <td>0.228571</td>
+      <td>0.054977</td>
+      <td>11.0</td>
+      <td>0.031881</td>
+      <td>0.499788</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.147338</td>
+      <td>-0.199523</td>
+      <td>8.0</td>
+      <td>-0.540</td>
+      <td>0.180</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>0.013833</td>
+      <td>1.030835</td>
+      <td>0.212988</td>
+      <td>...</td>
+      <td>6.0</td>
+      <td>1.904917</td>
+      <td>1.00</td>
+      <td>1.191592</td>
+      <td>0.600000</td>
+      <td>0.171429</td>
+      <td>0.015611</td>
+      <td>9.0</td>
+      <td>0.029537</td>
+      <td>0.248161</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.217645</td>
+      <td>-0.252015</td>
+      <td>7.0</td>
+      <td>-0.130</td>
+      <td>0.020</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>0.008072</td>
+      <td>0.883573</td>
+      <td>0.150597</td>
+      <td>...</td>
+      <td>7.0</td>
+      <td>1.880930</td>
+      <td>1.00</td>
+      <td>3.141568</td>
+      <td>0.800000</td>
+      <td>0.200000</td>
+      <td>0.002449</td>
+      <td>10.0</td>
+      <td>0.013344</td>
+      <td>0.163754</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 144 columns</p>
+</div></div>
+</div>
+</section>
+</section>
+<section id="4.-catch22-Forest-Classifier">
+<h3>4. catch22 Forest Classifier<a class="headerlink" href="#4.-catch22-Forest-Classifier" title="Link to this heading">#</a></h3>
+<p>For classification tasks the default classifier to use with the catch22 features is random forest classifier. An implementation making use of the <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> from sklearn built on catch22 features is provided in the form on the <code class="docutils literal notranslate"><span class="pre">Catch22Classifier</span></code> for ease of use.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c22f</span> <span class="o">=</span> <span class="n">Catch22Classifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">c22f</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">IPD_X_train</span><span class="p">,</span> <span class="n">IPD_y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<style>#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 {color: black;background-color: white;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 pre{padding: 0;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-toggleable {background-color: white;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-estimator:hover {background-color: #d4ebff;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-item {z-index: 1;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-parallel-item:only-child::after {width: 0;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-6102bcc1-e92f-4367-9239-29e5a44e6264 div.sk-text-repr-fallback {display: none;}</style><div id='sk-6102bcc1-e92f-4367-9239-29e5a44e6264' class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Catch22Classifier(random_state=0)</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('3ed534ad-4b0b-4186-81a8-57e37d4481dc') type="checkbox" checked><label for=UUID('3ed534ad-4b0b-4186-81a8-57e37d4481dc') class='sk-toggleable__label sk-toggleable__label-arrow'>Catch22Classifier</label><div class="sk-toggleable__content"><pre>Catch22Classifier(random_state=0)</pre></div></div></div></div></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c22f_preds</span> <span class="o">=</span> <span class="n">c22f</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">IPD_X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C22F Accuracy: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">IPD_y_test</span><span class="p">,</span> <span class="n">c22f_preds</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+C22F Accuracy: 0.86
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<p>Generated using <a class="reference external" href="https://nbsphinx.readthedocs.io/">nbsphinx</a>. The Jupyter notebook can be found <a class="reference external" href="https://github.com/sktime/sktime/tree/v0.27.0/examples/catch22.ipynb">here</a>.</p>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#References:">References:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#1.-Imports">1. Imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.-Load-data">2. Load data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#3.-catch22-transform">3. catch22 transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Univariate">Univariate</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Multivariate">Multivariate</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#4.-catch22-Forest-Classifier">4. catch22 Forest Classifier</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

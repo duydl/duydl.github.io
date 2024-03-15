@@ -1,0 +1,7 @@
+sktime.utils.deep\_equals package
+=================================
+
+.. automodule:: sktime.utils.deep_equals
+   :members:
+   :undoc-members:
+   :show-inheritance:

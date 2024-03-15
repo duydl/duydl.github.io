@@ -1,0 +1,16 @@
+sktime.transformations.series.holiday package
+=============================================
+
+.. automodule:: sktime.transformations.series.holiday
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.transformations.series.holiday.country_holidays
+   sktime.transformations.series.holiday.financial_holidays

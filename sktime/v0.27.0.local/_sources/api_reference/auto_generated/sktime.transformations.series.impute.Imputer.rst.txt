@@ -1,0 +1,12 @@
+﻿Imputer
+==========================================================
+
+.. currentmodule:: sktime.transformations.series.impute
+
+.. autoclass:: Imputer
+
+.. include:: sktime.transformations.series.impute.Imputer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

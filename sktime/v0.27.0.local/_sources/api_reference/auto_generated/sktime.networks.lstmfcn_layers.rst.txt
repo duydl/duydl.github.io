@@ -1,0 +1,7 @@
+sktime.networks.lstmfcn\_layers module
+======================================
+
+.. automodule:: sktime.networks.lstmfcn_layers
+   :members:
+   :undoc-members:
+   :show-inheritance:

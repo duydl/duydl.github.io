@@ -1,0 +1,31 @@
+sktime.split package
+====================
+
+.. automodule:: sktime.split
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.split.base
+   sktime.split.compose
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.split.cutoff
+   sktime.split.expandinggreedy
+   sktime.split.expandingwindow
+   sktime.split.sameloc
+   sktime.split.singlewindow
+   sktime.split.slidingwindow
+   sktime.split.temporal_train_test_split
+   sktime.split.testplustrain

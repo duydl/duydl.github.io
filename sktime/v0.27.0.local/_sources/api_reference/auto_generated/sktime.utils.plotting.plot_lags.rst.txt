@@ -1,0 +1,12 @@
+﻿plot_lags
+===================================================
+
+.. currentmodule:: sktime.utils.plotting
+
+.. autofunction:: plot_lags
+
+.. include:: sktime.utils.plotting.plot_lags.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

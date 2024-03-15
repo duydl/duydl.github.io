@@ -1,0 +1,26 @@
+sktime.classification.deep\_learning package
+============================================
+
+.. automodule:: sktime.classification.deep_learning
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.classification.deep_learning.base
+   sktime.classification.deep_learning.cnn
+   sktime.classification.deep_learning.cntc
+   sktime.classification.deep_learning.fcn
+   sktime.classification.deep_learning.inceptiontime
+   sktime.classification.deep_learning.lstmfcn
+   sktime.classification.deep_learning.macnn
+   sktime.classification.deep_learning.mcdcnn
+   sktime.classification.deep_learning.mlp
+   sktime.classification.deep_learning.resnet
+   sktime.classification.deep_learning.rnn
+   sktime.classification.deep_learning.tapnet

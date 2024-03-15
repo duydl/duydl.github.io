@@ -1,0 +1,12 @@
+﻿STLForecaster
+====================================================
+
+.. currentmodule:: sktime.forecasting.trend
+
+.. autoclass:: STLForecaster
+
+.. include:: sktime.forecasting.trend.STLForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

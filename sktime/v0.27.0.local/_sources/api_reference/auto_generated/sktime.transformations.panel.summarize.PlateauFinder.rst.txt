@@ -1,0 +1,12 @@
+﻿PlateauFinder
+==================================================================
+
+.. currentmodule:: sktime.transformations.panel.summarize
+
+.. autoclass:: PlateauFinder
+
+.. include:: sktime.transformations.panel.summarize.PlateauFinder.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

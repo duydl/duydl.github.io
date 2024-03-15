@@ -1,0 +1,7 @@
+sktime.forecasting.reconcile module
+===================================
+
+.. automodule:: sktime.forecasting.reconcile
+   :members:
+   :undoc-members:
+   :show-inheritance:

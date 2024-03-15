@@ -1,0 +1,7 @@
+sktime.networks.inceptiontime module
+====================================
+
+.. automodule:: sktime.networks.inceptiontime
+   :members:
+   :undoc-members:
+   :show-inheritance:

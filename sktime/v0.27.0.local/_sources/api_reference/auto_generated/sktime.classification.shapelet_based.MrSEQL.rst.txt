@@ -1,0 +1,12 @@
+﻿MrSEQL
+=========================================================
+
+.. currentmodule:: sktime.classification.shapelet_based
+
+.. autoclass:: MrSEQL
+
+.. include:: sktime.classification.shapelet_based.MrSEQL.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

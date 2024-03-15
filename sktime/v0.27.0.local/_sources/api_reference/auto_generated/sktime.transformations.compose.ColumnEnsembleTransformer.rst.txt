@@ -1,0 +1,12 @@
+﻿ColumnEnsembleTransformer
+======================================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: ColumnEnsembleTransformer
+
+.. include:: sktime.transformations.compose.ColumnEnsembleTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

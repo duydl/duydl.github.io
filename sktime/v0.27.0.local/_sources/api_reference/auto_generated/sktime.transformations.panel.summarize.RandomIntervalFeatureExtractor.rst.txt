@@ -1,0 +1,12 @@
+﻿RandomIntervalFeatureExtractor
+===================================================================================
+
+.. currentmodule:: sktime.transformations.panel.summarize
+
+.. autoclass:: RandomIntervalFeatureExtractor
+
+.. include:: sktime.transformations.panel.summarize.RandomIntervalFeatureExtractor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

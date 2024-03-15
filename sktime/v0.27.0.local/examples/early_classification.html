@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Early time series classification with sktime &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/early_classification';</script>
+    <script src="../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Feature extraction with tsfresh transformer" href="feature_extraction_with_tsfresh.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="distances.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../user_guide.html">User Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_sktime_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_forecasting.html">Forecasting with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01a_forecasting_sklearn.html">Forecasting with sktime - appendix: forecasting, supervised regression, and pitfalls in confusing the two</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01b_forecasting_proba.html">Probabilistic Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01c_forecasting_hierarchical_global.html">Hierarchical, Global, and Panel Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_classification.html">Time Series Classification, Regression, Clustering &amp; More</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02a_classification_multivariate_cnn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="02b_classification_multivariate_lstmfcn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="02c_classification_multivariate_inceptiontime.html">Multi-variate time series classification using InceptionTime</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03_transformers.html">Overview of this notebook</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03a_transformers_cheat_sheet.html">Transformers cheat sheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03b_forecasting_transformers_pipelines_tuning.html">4 Forecasting Pipelines, Tuning, and AutoML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking.html">Benchmarking with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking_v2.html">Benchmarking - comparing estimator performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AA_datatypes_and_datasets.html">In-memory data representations and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="catch22.html">The Canonical Time-series Characteristics (catch22) transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="channel_selection.html">Channel Selection in Multivariate Time Series Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="dictionary_based_classification.html">Dictionary based time series classification in sktime</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Early time series classification with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction_with_tsfresh.html">Feature extraction with tsfresh transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Time series interpolating with sktime</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="interval_based_classification.html">Interval based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading_data.html">Loading data into sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minirocket.html">MiniRocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partition_based_clustering.html">Partition based time series clustering in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plateau_finder.html">Demo of the PlateauFinder transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocket.html">Demo of ROCKET transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segmentation_with_clasp.html">Time Series Segmentation with sktime and ClaSP</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="signature_method.html">The Signature Method with Sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theta_transform.html">Theta Lines transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window_splitters.html">Window Splitters in Sktime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator_overview.html">Estimator Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../related_software.html">Related Software</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../users.html" class="nav-link">Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Early time...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://mybinder.org/v2/gh/sktime/sktime/v0.27.0?filepath=examples/early_classification.ipynb"><img alt="binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<section id="Early-time-series-classification-with-sktime">
+<h1>Early time series classification with sktime<a class="headerlink" href="#Early-time-series-classification-with-sktime" title="Link to this heading">#</a></h1>
+<p>Early time series classification (eTSC) is the problem of classifying a time series after as few measurements as possible with the highest possible accuracy. The most critical issue of any eTSC method is to decide when enough data of a time series has been seen to take a decision: Waiting for more data points usually makes the classification problem easier but delays the time in which a classification is made; in contrast, earlier classification has to cope with less input data, often leading to
+inferior accuracy.</p>
+<p>This notebook gives a quick guide to get you started with running eTSC algorithms in sktime.</p>
+<section id="References:">
+<h2>References:<a class="headerlink" href="#References:" title="Link to this heading">#</a></h2>
+<p>[1] Schäfer, P., &amp; Leser, U. (2020). TEASER: early and accurate time series classification. Data mining and knowledge discovery, 34(5), 1336-1362</p>
+<section id="Data-sets-and-problem-types">
+<h3>Data sets and problem types<a class="headerlink" href="#Data-sets-and-problem-types" title="Link to this heading">#</a></h3>
+<p>The UCR/UEA <a class="reference external" href="https://timeseriesclassification.com/">time series classification archive</a> contains a large number of example TSC problems that have been used thousands of times in the literature to assess TSC algorithms. Read the data loading documentation and notebooks for details on the sktime data formats and loading data for sktime.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports used in this notebook</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">sktime.classification.early_classification._teaser</span> <span class="kn">import</span> <span class="n">TEASER</span>
+<span class="kn">from</span> <span class="nn">sktime.classification.interval_based</span> <span class="kn">import</span> <span class="n">TimeSeriesForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_arrow_head</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load default train/test splits from sktime/datasets/data</span>
+<span class="n">arrow_train_X</span><span class="p">,</span> <span class="n">arrow_train_y</span> <span class="o">=</span> <span class="n">load_arrow_head</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3d&quot;</span><span class="p">)</span>
+<span class="n">arrow_test_X</span><span class="p">,</span> <span class="n">arrow_test_y</span> <span class="o">=</span> <span class="n">load_arrow_head</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3d&quot;</span><span class="p">)</span>
+
+<span class="n">arrow_test_X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Building-the-TEASER-classifier">
+<h3>Building the TEASER classifier<a class="headerlink" href="#Building-the-TEASER-classifier" title="Link to this heading">#</a></h3>
+<p>TEASER [1] is a two-tier model using a base classifier to make predictions and a decision making estimator to decide whether these predictions are safe. As a first tier, TEASER requires a TSC algorithm, such as WEASEL, which produces class probabilities as output. As a second tier an anomaly detector is required, such as a one-class SVM.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">teaser</span> <span class="o">=</span> <span class="n">TEASER</span><span class="p">(</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">classification_points</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">251</span><span class="p">],</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">TimeSeriesForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">teaser</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">arrow_train_X</span><span class="p">,</span> <span class="n">arrow_train_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Determine-the-accuracy-and-earliness-on-the-test-data">
+<h3>Determine the accuracy and earliness on the test data<a class="headerlink" href="#Determine-the-accuracy-and-earliness-on-the-test-data" title="Link to this heading">#</a></h3>
+<p>Commonly accuracy is used to determine the correctness of the predictions, while earliness is used to determine how much of the series is required on average to obtain said accuracy. I.e. for the below values, using just 43% of the full test data, we were able to get an accuracy of 69%.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">hm</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">earl</span> <span class="o">=</span> <span class="n">teaser</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">arrow_test_X</span><span class="p">,</span> <span class="n">arrow_test_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Earliness on Test Data </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">earl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on Test Data </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">acc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Harmonic Mean on Test Data </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">hm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Determine-the-accuracy-and-earliness-on-the-train-data">
+<h4>Determine the accuracy and earliness on the train data<a class="headerlink" href="#Determine-the-accuracy-and-earliness-on-the-train-data" title="Link to this heading">#</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Earliness on Train Data </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">teaser</span><span class="o">.</span><span class="n">_train_earliness</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on Train Data </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">teaser</span><span class="o">.</span><span class="n">_train_accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Comparison-to-Classification-on-full-Test-Data">
+<h4>Comparison to Classification on full Test Data<a class="headerlink" href="#Comparison-to-Classification-on-full-Test-Data" title="Link to this heading">#</a></h4>
+<p>With the full test data, we would obtain 68% accuracy with the same classifier.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">TimeSeriesForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">arrow_train_X</span><span class="p">,</span> <span class="n">arrow_train_y</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">arrow_test_X</span><span class="p">,</span> <span class="n">arrow_test_y</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on the full Test Data </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="Classifying-with-incomplete-time-series">
+<h3>Classifying with incomplete time series<a class="headerlink" href="#Classifying-with-incomplete-time-series" title="Link to this heading">#</a></h3>
+<p>The main draw of eTSC is the capabilility to make classifications with incomplete time series. sktime eTSC algorithms accept inputs with less time points than the full series length, and output two items: The prediction made and whether the algorithm thinks the prediction is safe. Information about the decision such as the time stamp it was made at can be obtained from the state_info attribute.</p>
+<section id="First-test-with-only-50-datapoints-(out-of-251)">
+<h4>First test with only 50 datapoints (out of 251)<a class="headerlink" href="#First-test-with-only-50-datapoints-(out-of-251)" title="Link to this heading">#</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">arrow_test_X</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span>
+<span class="n">probas</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">teaser</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">probas</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 Finished prediction</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 Probabilities of finished predictions</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">probas</span><span class="p">[</span><span class="n">idx</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">teaser</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">arrow_test_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy with 50 points on Test Data </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">acc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="We-may-also-do-predictions-in-a-streaming-scenario-where-more-data-becomes-available-from-time-to-time">
+<h4>We may also do predictions in a streaming scenario where more data becomes available from time to time<a class="headerlink" href="#We-may-also-do-predictions-in-a-streaming-scenario-where-more-data-becomes-available-from-time-to-time" title="Link to this heading">#</a></h4>
+<p>The rationale is to keep the state info from the previous predictions in the TEASER object and use it whenever new data is available.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">test_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">251</span><span class="p">]</span>
+<span class="n">final_states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">arrow_test_X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">final_decisions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">arrow_test_X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">open_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">arrow_test_X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">teaser</span><span class="o">.</span><span class="n">reset_state_info</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">test_points</span><span class="p">:</span>
+    <span class="n">probas</span><span class="p">,</span> <span class="n">decisions</span> <span class="o">=</span> <span class="n">teaser</span><span class="o">.</span><span class="n">update_predict_proba</span><span class="p">(</span><span class="n">arrow_test_X</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">final_states</span><span class="p">[</span><span class="n">open_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">teaser</span><span class="o">.</span><span class="n">get_state_info</span><span class="p">()</span>
+
+    <span class="n">arrow_test_X</span><span class="p">,</span> <span class="n">open_idx</span><span class="p">,</span> <span class="n">final_idx</span> <span class="o">=</span> <span class="n">teaser</span><span class="o">.</span><span class="n">split_indices_and_filter</span><span class="p">(</span>
+        <span class="n">arrow_test_X</span><span class="p">,</span> <span class="n">open_idx</span><span class="p">,</span> <span class="n">decisions</span>
+    <span class="p">)</span>
+    <span class="n">final_decisions</span><span class="p">[</span><span class="n">final_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+
+    <span class="p">(</span>
+        <span class="n">hm</span><span class="p">,</span>
+        <span class="n">acc</span><span class="p">,</span>
+        <span class="n">earliness</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n">teaser</span><span class="o">.</span><span class="n">_compute_harmonic_mean</span><span class="p">(</span><span class="n">final_states</span><span class="p">,</span> <span class="n">arrow_test_y</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Earliness on length </span><span class="si">%2i</span><span class="s2"> is </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">earliness</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on length </span><span class="si">%2i</span><span class="s2"> is </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">acc</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Harmonic Mean on length </span><span class="si">%2i</span><span class="s2"> is </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">hm</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...........&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time Stamp of final decisions&quot;</span><span class="p">,</span> <span class="n">final_decisions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<p>Generated using <a class="reference external" href="https://nbsphinx.readthedocs.io/">nbsphinx</a>. The Jupyter notebook can be found <a class="reference external" href="https://github.com/sktime/sktime/tree/v0.27.0/examples/early_classification.ipynb">here</a>.</p>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#References:">References:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Data-sets-and-problem-types">Data sets and problem types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Building-the-TEASER-classifier">Building the TEASER classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Determine-the-accuracy-and-earliness-on-the-test-data">Determine the accuracy and earliness on the test data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Determine-the-accuracy-and-earliness-on-the-train-data">Determine the accuracy and earliness on the train data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Comparison-to-Classification-on-full-Test-Data">Comparison to Classification on full Test Data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Classifying-with-incomplete-time-series">Classifying with incomplete time series</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#First-test-with-only-50-datapoints-(out-of-251)">First test with only 50 datapoints (out of 251)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#We-may-also-do-predictions-in-a-streaming-scenario-where-more-data-becomes-available-from-time-to-time">We may also do predictions in a streaming scenario where more data becomes available from time to time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

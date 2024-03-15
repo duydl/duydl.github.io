@@ -1,0 +1,12 @@
+﻿DynamicFactor
+=============================================================
+
+.. currentmodule:: sktime.forecasting.dynamic_factor
+
+.. autoclass:: DynamicFactor
+
+.. include:: sktime.forecasting.dynamic_factor.DynamicFactor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

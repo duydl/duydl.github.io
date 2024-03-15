@@ -1,0 +1,7 @@
+sktime.forecasting.var module
+=============================
+
+.. automodule:: sktime.forecasting.var
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿TemporalDictionaryEnsemble
+===============================================================================
+
+.. currentmodule:: sktime.classification.dictionary_based
+
+.. autoclass:: TemporalDictionaryEnsemble
+
+.. include:: sktime.classification.dictionary_based.TemporalDictionaryEnsemble.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

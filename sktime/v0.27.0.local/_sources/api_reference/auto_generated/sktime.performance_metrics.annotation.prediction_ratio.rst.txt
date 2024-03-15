@@ -1,0 +1,12 @@
+﻿prediction_ratio
+==========================================================================
+
+.. currentmodule:: sktime.performance_metrics.annotation
+
+.. autofunction:: prediction_ratio
+
+.. include:: sktime.performance_metrics.annotation.prediction_ratio.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.regression.compose package
+=================================
+
+.. automodule:: sktime.regression.compose
+   :members:
+   :undoc-members:
+   :show-inheritance:

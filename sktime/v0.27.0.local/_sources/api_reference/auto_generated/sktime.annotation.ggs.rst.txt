@@ -1,0 +1,7 @@
+sktime.annotation.ggs module
+============================
+
+.. automodule:: sktime.annotation.ggs
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,15 @@
+sktime.base package
+===================
+
+.. automodule:: sktime.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.base.adapters

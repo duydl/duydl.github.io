@@ -1,0 +1,12 @@
+﻿MovingBlockBootstrapTransformer
+==============================================================================
+
+.. currentmodule:: sktime.transformations.bootstrap
+
+.. autoclass:: MovingBlockBootstrapTransformer
+
+.. include:: sktime.transformations.bootstrap.MovingBlockBootstrapTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

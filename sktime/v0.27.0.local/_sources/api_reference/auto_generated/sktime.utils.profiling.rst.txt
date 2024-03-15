@@ -1,0 +1,7 @@
+sktime.utils.profiling module
+=============================
+
+.. automodule:: sktime.utils.profiling
+   :members:
+   :undoc-members:
+   :show-inheritance:

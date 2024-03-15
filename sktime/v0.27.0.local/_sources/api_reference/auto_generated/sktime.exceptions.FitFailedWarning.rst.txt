@@ -1,0 +1,12 @@
+﻿FitFailedWarning
+================================================
+
+.. currentmodule:: sktime.exceptions
+
+.. autoclass:: FitFailedWarning
+
+.. include:: sktime.exceptions.FitFailedWarning.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

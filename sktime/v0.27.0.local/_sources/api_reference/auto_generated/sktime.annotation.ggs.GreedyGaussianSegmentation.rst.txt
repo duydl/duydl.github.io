@@ -1,0 +1,12 @@
+﻿GreedyGaussianSegmentation
+==============================================================
+
+.. currentmodule:: sktime.annotation.ggs
+
+.. autoclass:: GreedyGaussianSegmentation
+
+.. include:: sktime.annotation.ggs.GreedyGaussianSegmentation.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

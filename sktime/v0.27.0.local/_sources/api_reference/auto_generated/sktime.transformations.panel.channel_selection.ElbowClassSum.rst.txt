@@ -1,0 +1,12 @@
+﻿ElbowClassSum
+==========================================================================
+
+.. currentmodule:: sktime.transformations.panel.channel_selection
+
+.. autoclass:: ElbowClassSum
+
+.. include:: sktime.transformations.panel.channel_selection.ElbowClassSum.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

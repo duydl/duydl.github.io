@@ -1,0 +1,12 @@
+﻿lcss_distance
+==================================================
+
+.. currentmodule:: sktime.distances
+
+.. autofunction:: lcss_distance
+
+.. include:: sktime.distances.lcss_distance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.transformations.series.theta module
+==========================================
+
+.. automodule:: sktime.transformations.series.theta
+   :members:
+   :undoc-members:
+   :show-inheritance:

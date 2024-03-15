@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Partition based time series clustering in sktime &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/partition_based_clustering';</script>
+    <script src="../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Demo of the PlateauFinder transformer" href="plateau_finder.html" />
+    <link rel="prev" title="MLflow" href="mlflow.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../user_guide.html">User Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_sktime_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_forecasting.html">Forecasting with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01a_forecasting_sklearn.html">Forecasting with sktime - appendix: forecasting, supervised regression, and pitfalls in confusing the two</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01b_forecasting_proba.html">Probabilistic Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01c_forecasting_hierarchical_global.html">Hierarchical, Global, and Panel Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_classification.html">Time Series Classification, Regression, Clustering &amp; More</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02a_classification_multivariate_cnn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="02b_classification_multivariate_lstmfcn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="02c_classification_multivariate_inceptiontime.html">Multi-variate time series classification using InceptionTime</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03_transformers.html">Overview of this notebook</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03a_transformers_cheat_sheet.html">Transformers cheat sheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03b_forecasting_transformers_pipelines_tuning.html">4 Forecasting Pipelines, Tuning, and AutoML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking.html">Benchmarking with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking_v2.html">Benchmarking - comparing estimator performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AA_datatypes_and_datasets.html">In-memory data representations and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="catch22.html">The Canonical Time-series Characteristics (catch22) transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="channel_selection.html">Channel Selection in Multivariate Time Series Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="dictionary_based_classification.html">Dictionary based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="early_classification.html">Early time series classification with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction_with_tsfresh.html">Feature extraction with tsfresh transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Time series interpolating with sktime</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="interval_based_classification.html">Interval based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading_data.html">Loading data into sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minirocket.html">MiniRocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.html">MLflow</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Partition based time series clustering in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plateau_finder.html">Demo of the PlateauFinder transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocket.html">Demo of ROCKET transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segmentation_with_clasp.html">Time Series Segmentation with sktime and ClaSP</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="signature_method.html">The Signature Method with Sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theta_transform.html">Theta Lines transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window_splitters.html">Window Splitters in Sktime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator_overview.html">Estimator Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../related_software.html">Related Software</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../users.html" class="nav-link">Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Partition...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://mybinder.org/v2/gh/sktime/sktime/v0.27.0?filepath=examples/partition_based_clustering.ipynb"><img alt="binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<section id="Partition-based-time-series-clustering-in-sktime">
+<h1>Partition based time series clustering in sktime<a class="headerlink" href="#Partition-based-time-series-clustering-in-sktime" title="Link to this heading">#</a></h1>
+<p>Partition based clustering algorithms for time series are those where k clusters are created from n time series. Each time series inside a cluster are homogeneous (similar) to each other and heterogeneous (dissimilar) to those outside the cluster.</p>
+<p>To measure homogeneity and place a time series into a cluster, a metrics is used (normally a distance). This metric is used to compare a time series to k other time series that are representations of each cluster. These representations are derived using a statistical sampling technique from when the model was trained. The time series is then assigned to the cluster that is most similar (or has the best score based on the metric), and is said to be a part of that cluster.</p>
+<p>Currently, in Sktime there are 2 supported partition algorithms supported. They are: K-means and K-medoids. These will be demonstrated below</p>
+<section id="Imports">
+<h2>Imports<a class="headerlink" href="#Imports" title="Link to this heading">#</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">sktime.clustering.k_means</span> <span class="kn">import</span> <span class="n">TimeSeriesKMeans</span>
+<span class="kn">from</span> <span class="nn">sktime.clustering.k_medoids</span> <span class="kn">import</span> <span class="n">TimeSeriesKMedoids</span>
+<span class="kn">from</span> <span class="nn">sktime.clustering.utils.plotting._plot_partitions</span> <span class="kn">import</span> <span class="n">plot_cluster_algorithm</span>
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_arrow_head</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-data">
+<h2>Load data<a class="headerlink" href="#Load-data" title="Link to this heading">#</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_arrow_head</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(158, 1) (158,) (53, 1) (53,)
+</pre></div></div>
+</div>
+</section>
+<section id="K-partition-algorithms">
+<h2>K-partition algorithms<a class="headerlink" href="#K-partition-algorithms" title="Link to this heading">#</a></h2>
+<p>K-partition algorithms are those that seek to create k clusters and assign each time series to a cluster using a distance measure. In Sktime the following are currently supported:</p>
+<li><p>K-means - one of the most well known clustering algorithms. The goal of the K-means algorithm is to minimise a criterion known as the inertia or within-cluster sum-of-squares (uses the mean of the values in a cluster as the center).</p>
+</li><li><p>K-medoids - A similar algorithm to K-means but instead of using the mean of each cluster to determine the center, the median series is used. Algorithmically the common way to approach these k-partition algorithms is known as Lloyds algorithm. This is an iterative process that involves:</p>
+<li><p>Initialisation</p>
+</li><li><p>Assignment</p>
+</li><li><p>Updating centroid</p>
+</li><li><p>Repeat assignment and updating until convergence</p>
+</li><section id="Center-initialisation">
+<h3>Center initialisation<a class="headerlink" href="#Center-initialisation" title="Link to this heading">#</a></h3>
+<p>Center initialisation is the first step and has been found to be critical in obtaining good results. There are three main center initialisation that will now be outlined:</p>
+<ul><li><p>K-means, K-medoids supported center initialisation:</p>
+<ul><li><p>Random - This is where each sample in the training dataset is randomly assigned to a cluster and update centers is run based on these random assignments i.e. for k-means the mean of these randomly assigned clusters is used and for k-medoids the median of these randomly assigned clusters is used as the initial center.</p>
+</li><li><p>Forgy - This is where k random samples are chosen from the training dataset</p>
+</li><li><p>K-means++ - This is where the first center is randomly chosen from the training dataset. Then for all the other time series in the training dataset, the distance between them and the randomly selected center is taken. The next center is then chosen from the training dataset so that the probability of being chosen is proportional to the distance (i.e. the greater the distance the more likely the time series will be chosen). The remaining centers are then generated using the same method. This
+means each center will be generated so that the probability of a being chosen becomes proportional to its closest center (i.e. the further from an already chosen center the more likely it will be chosen).</p>
+</li></ul></li></ul><p>These three cluster initialisation algorithms have been implemented and can be chosen to use when constructing either k-means or k-medoids partitioning algorithms by parsing the string values ‘random’ for random initialisation, ‘forgy’ for forgy and ‘k-means++’ for k-means++.</p>
+</section>
+<section id="Assignment-(distance-measure)">
+<h3>Assignment (distance measure)<a class="headerlink" href="#Assignment-(distance-measure)" title="Link to this heading">#</a></h3>
+<p>How a time series is assigned to a cluster is based on its distance from it to the cluster center. This means for some k-partition approaches, different distances can be used to get different results. While details on each of the distances won’t be discussed here the following are supported, and their parameter values are defined:</p>
+<ul><li><p>K-means, K-medoids supported distances:</p>
+<ul><li><p>Euclidean - parameter string ‘euclidean’</p>
+</li><li><p>DTW - parameter string ‘dtw’</p>
+</li><li><p>DDTW - parameter string ‘ddtw’</p>
+</li><li><p>WDTW - parameter string ‘wdtw’</p>
+</li><li><p>WDDTW - parameter string ‘wddtw’</p>
+</li><li><p>LCSS - parameter string ‘lcss’</p>
+</li><li><p>ERP - parameter string ‘erp’</p>
+</li><li><p>EDR - parameter string ‘edr’</p>
+</li><li><p>MSM - parameter string ‘msm’</p>
+</li></ul></li></ul></section>
+<section id="Updating-centroids">
+<h3>Updating centroids<a class="headerlink" href="#Updating-centroids" title="Link to this heading">#</a></h3>
+<p>Center updating is key to the refinement of clusters to improve their quality. How this is done depends on the algorithm, but the following are supported</p>
+<ul><li><p>K-means</p>
+<ul><li><p>Mean average - This is a standard mean average creating a new series that is that average of all the series inside the cluster. Ideal when using euclidean distance. Can be specified to use by parsing ‘means’ as the parameter for averaging_algorithm to k-means</p>
+</li><li><p>DTW Barycenter averaging (DBA) - This is a specialised averaging metric that is intended to be used with the dtw distance measure as it used the dtw matrix path to account for alignment when determining an average series. This provides a much better representation of the mean for time series. Can be specified to use by parsing ‘dba’ as the parameter for averaging_algorithm to k-means.</p>
+</li></ul></li><li><p>K-medoids</p>
+<ul><li><p>Median - Standard meadian which is the series in the middle of all series in a cluster. Used by default by k-medoids</p>
+</li></ul></li></li></ul></section>
+</section>
+<section id="K-means">
+<h2>K-means<a class="headerlink" href="#K-means" title="Link to this heading">#</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">k_means</span> <span class="o">=</span> <span class="n">TimeSeriesKMeans</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># Number of desired centers</span>
+    <span class="n">init_algorithm</span><span class="o">=</span><span class="s2">&quot;forgy&quot;</span><span class="p">,</span>  <span class="c1"># Center initialisation technique</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># Maximum number of iterations for refinement on training set</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>  <span class="c1"># Distance metric to use. Choose &quot;dtw&quot; for dynamic time warping</span>
+    <span class="n">averaging_method</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>  <span class="c1"># Averaging technique to use</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">k_means</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">plot_cluster_algorithm</span><span class="p">(</span><span class="n">k_means</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">k_means</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 360x720 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_partition_based_clustering_5_1.png" src="../_images/examples_partition_based_clustering_5_1.png" />
+</div>
+</div>
+</section>
+<section id="K-medoids">
+<h2>K-medoids<a class="headerlink" href="#K-medoids" title="Link to this heading">#</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">k_medoids</span> <span class="o">=</span> <span class="n">TimeSeriesKMedoids</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># Number of desired centers</span>
+    <span class="n">init_algorithm</span><span class="o">=</span><span class="s2">&quot;forgy&quot;</span><span class="p">,</span>  <span class="c1"># Center initialisation technique</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># Maximum number of iterations for refinement on training set</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Verbose</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>  <span class="c1"># Distance metric. Use &quot;dtw&quot; for dynamic time warping</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">k_medoids</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">plot_cluster_algorithm</span><span class="p">(</span><span class="n">k_medoids</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">k_medoids</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 500x1000 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_partition_based_clustering_7_1.png" src="../_images/examples_partition_based_clustering_7_1.png" />
+</div>
+</div>
+<p>The above shows the basic usage for K-medoids. This algorithm works essentially the same as K-means but instead of updating the center by taking the mean of the series inside the cluster, it takes the median series. This means the center is an existing series in the dataset and NOT a generated one. The parameter key to k-medoids is the metric and is what we can adjust to improve performance for time series. An example of using dtw as the metric is given below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">k_medoids</span> <span class="o">=</span> <span class="n">TimeSeriesKMedoids</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># Number of desired centers</span>
+    <span class="n">init_algorithm</span><span class="o">=</span><span class="s2">&quot;forgy&quot;</span><span class="p">,</span>  <span class="c1"># Center initialisation technique</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># Maximum number of iterations for refinement on training set</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>  <span class="c1"># Distance metric. Use &quot;dtw&quot; for dynamic time warping</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">k_medoids</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">plot_cluster_algorithm</span><span class="p">(</span><span class="n">k_medoids</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">k_medoids</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 500x1000 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_partition_based_clustering_9_1.png" src="../_images/examples_partition_based_clustering_9_1.png" />
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<p>Generated using <a class="reference external" href="https://nbsphinx.readthedocs.io/">nbsphinx</a>. The Jupyter notebook can be found <a class="reference external" href="https://github.com/sktime/sktime/tree/v0.27.0/examples/partition_based_clustering.ipynb">here</a>.</p>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#K-partition-algorithms">K-partition algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Center-initialisation">Center initialisation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Assignment-(distance-measure)">Assignment (distance measure)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Updating-centroids">Updating centroids</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#K-means">K-means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#K-medoids">K-medoids</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

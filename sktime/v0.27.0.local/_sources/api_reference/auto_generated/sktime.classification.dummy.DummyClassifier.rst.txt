@@ -1,0 +1,12 @@
+﻿DummyClassifier
+=========================================================
+
+.. currentmodule:: sktime.classification.dummy
+
+.. autoclass:: DummyClassifier
+
+.. include:: sktime.classification.dummy.DummyClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

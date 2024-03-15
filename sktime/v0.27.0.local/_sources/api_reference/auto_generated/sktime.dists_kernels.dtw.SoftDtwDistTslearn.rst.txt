@@ -1,0 +1,12 @@
+﻿SoftDtwDistTslearn
+=========================================================
+
+.. currentmodule:: sktime.dists_kernels.dtw
+
+.. autoclass:: SoftDtwDistTslearn
+
+.. include:: sktime.dists_kernels.dtw.SoftDtwDistTslearn.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

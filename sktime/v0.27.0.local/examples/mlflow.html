@@ -1,0 +1,1438 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MLflow &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/mlflow';</script>
+    <script src="../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Partition based time series clustering in sktime" href="partition_based_clustering.html" />
+    <link rel="prev" title="MiniRocket" href="minirocket.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../user_guide.html">User Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_sktime_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_forecasting.html">Forecasting with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01a_forecasting_sklearn.html">Forecasting with sktime - appendix: forecasting, supervised regression, and pitfalls in confusing the two</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01b_forecasting_proba.html">Probabilistic Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01c_forecasting_hierarchical_global.html">Hierarchical, Global, and Panel Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_classification.html">Time Series Classification, Regression, Clustering &amp; More</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02a_classification_multivariate_cnn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="02b_classification_multivariate_lstmfcn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="02c_classification_multivariate_inceptiontime.html">Multi-variate time series classification using InceptionTime</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03_transformers.html">Overview of this notebook</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03a_transformers_cheat_sheet.html">Transformers cheat sheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03b_forecasting_transformers_pipelines_tuning.html">4 Forecasting Pipelines, Tuning, and AutoML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking.html">Benchmarking with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking_v2.html">Benchmarking - comparing estimator performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AA_datatypes_and_datasets.html">In-memory data representations and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="catch22.html">The Canonical Time-series Characteristics (catch22) transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="channel_selection.html">Channel Selection in Multivariate Time Series Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="dictionary_based_classification.html">Dictionary based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="early_classification.html">Early time series classification with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction_with_tsfresh.html">Feature extraction with tsfresh transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Time series interpolating with sktime</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="interval_based_classification.html">Interval based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading_data.html">Loading data into sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minirocket.html">MiniRocket</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partition_based_clustering.html">Partition based time series clustering in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plateau_finder.html">Demo of the PlateauFinder transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocket.html">Demo of ROCKET transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segmentation_with_clasp.html">Time Series Segmentation with sktime and ClaSP</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="signature_method.html">The Signature Method with Sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theta_transform.html">Theta Lines transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window_splitters.html">Window Splitters in Sktime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator_overview.html">Estimator Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../related_software.html">Related Software</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../users.html" class="nav-link">Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">MLflow</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://mybinder.org/v2/gh/sktime/sktime/v0.27.0?filepath=examples/mlflow.ipynb"><img alt="binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<section id="MLflow">
+<h1>MLflow<a class="headerlink" href="#MLflow" title="Link to this heading">#</a></h1>
+<p>The sktime custom model flavor enables logging of sktime models in MLflow format via the <code class="docutils literal notranslate"><span class="pre">sktime.utils.mlflow_sktime.save_model()</span></code> and <code class="docutils literal notranslate"><span class="pre">sktime.utils.mlflow_sktime.log_model()</span></code> methods. These methods also add the <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor to the MLflow Models that they produce, allowing the model to be interpreted as generic Python functions for inference via <code class="docutils literal notranslate"><span class="pre">sktime.utils.mlflow_sktime.pyfunc.load_model()</span></code>. This loaded PyFunc model can only be scored with a DataFrame input. You can also use the
+<code class="docutils literal notranslate"><span class="pre">sktime.utils.mlflow_sktime.load_model()</span></code> method to load MLflow Models with the sktime model flavor in native sktime formats.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor of the model supports sktime predict methods <code class="docutils literal notranslate"><span class="pre">predict</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_interval</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_quantiles</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_var</span></code>.</p>
+<p>The interface for utilizing a sktime model loaded as a <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> type for generating forecasts requires passing an exogenous regressor as Pandas DataFrame to the <code class="docutils literal notranslate"><span class="pre">pyfunc.predict()</span></code> method (an empty DataFrame must be passed if no exogenous regressor is used). The configuration of predict methods and parameter values passed to the predict methods is defined by a dictionary to be saved as an attribute of the fitted sktime model instance. If no prediction configuration is defined
+<code class="docutils literal notranslate"><span class="pre">pyfunc.predict()</span></code> will return output from sktime <code class="docutils literal notranslate"><span class="pre">predict</span></code> method. Note that for <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor the forecasting horizon <code class="docutils literal notranslate"><span class="pre">fh</span></code> must be passed to the fit method.</p>
+<p>Predict methods and parameter values for <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor can be defined in two ways: - <code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">dict]</span></code> if parameter values are passed to <code class="docutils literal notranslate"><span class="pre">pyfunc.predict()</span></code>, for example <code class="docutils literal notranslate"><span class="pre">{&quot;predict_method&quot;:</span> <span class="pre">{&quot;predict&quot;:</span> <span class="pre">{},</span> <span class="pre">&quot;predict_interval&quot;:</span> <span class="pre">{&quot;coverage&quot;:</span> <span class="pre">[0.1,</span> <span class="pre">0.9]}}</span></code> - <code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">list]</span></code>, with default parameters in predict method, for example <code class="docutils literal notranslate"><span class="pre">{&quot;predict_method&quot;:</span> <span class="pre">[&quot;predict&quot;,</span> <span class="pre">&quot;predict_interval&quot;}</span></code> (Note: when including <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method the former approach must be followed as <code class="docutils literal notranslate"><span class="pre">quantiles</span></code>
+parameter has to be provided by the user) - If no prediction config is defined <code class="docutils literal notranslate"><span class="pre">pyfunc.predict()</span></code> will return output from sktime <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method</p>
+<p>Signature logging for sktime from a non-pyfunc artifact will not function correctly for <code class="docutils literal notranslate"><span class="pre">predict_interval</span></code> or <code class="docutils literal notranslate"><span class="pre">predict_quantiles</span></code>. The output of the native sktime model flavor for these methods is not a recognized signature type due to the MultiIndex column structure of the returned DataFrame. MLflow’s <code class="docutils literal notranslate"><span class="pre">infer_schema</span></code> will function correctly if using the <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor of the model, though.</p>
+<section id="1.-Setup">
+<h2>1. Setup<a class="headerlink" href="#1.-Setup" title="Link to this heading">#</a></h2>
+<section id="1.1-Config">
+<h3>1.1 Config<a class="headerlink" href="#1.1-Config" title="Link to this heading">#</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="1.1-Imports">
+<h3>1.1 Imports<a class="headerlink" href="#1.1-Imports" title="Link to this heading">#</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
+
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_longley</span>
+<span class="kn">from</span> <span class="nn">sktime.forecasting.naive</span> <span class="kn">import</span> <span class="n">NaiveForecaster</span>
+<span class="kn">from</span> <span class="nn">sktime.split</span> <span class="kn">import</span> <span class="n">temporal_train_test_split</span>
+<span class="kn">from</span> <span class="nn">sktime.utils</span> <span class="kn">import</span> <span class="n">mlflow_sktime</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="1.2-Load-sample-data">
+<h3>1.2 Load sample data<a class="headerlink" href="#1.2-Load-sample-data" title="Link to this heading">#</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">load_longley</span><span class="p">()</span>
+<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">temporal_train_test_split</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="2.-Example-usage-of-native-sktime-flavor-and-pyfunc-flavor">
+<h2>2. Example usage of native <code class="docutils literal notranslate"><span class="pre">sktime</span> <span class="pre">flavor</span></code> and <code class="docutils literal notranslate"><span class="pre">pyfunc</span> <span class="pre">flavor</span></code><a class="headerlink" href="#2.-Example-usage-of-native-sktime-flavor-and-pyfunc-flavor" title="Link to this heading">#</a></h2>
+<section id="2.1-Create-prediction-config-for-pyfunc-flavor">
+<h3>2.1 Create prediction config for pyfunc flavor<a class="headerlink" href="#2.1-Create-prediction-config-for-pyfunc-flavor" title="Link to this heading">#</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coverage</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+<span class="n">quantiles</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+
+<span class="n">pyfunc_predict_conf</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;predict_method&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;predict&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;predict_interval&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;coverage&quot;</span><span class="p">:</span> <span class="n">coverage</span><span class="p">},</span>
+        <span class="s2">&quot;predict_proba&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;quantiles&quot;</span><span class="p">:</span> <span class="n">quantiles</span><span class="p">},</span>
+        <span class="s2">&quot;predict_quantiles&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;predict_var&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2.2-Train-and-save-model">
+<h3>2.2 Train and save model<a class="headerlink" href="#2.2-Train-and-save-model" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+    <span class="n">forecaster</span> <span class="o">=</span> <span class="n">NaiveForecaster</span><span class="p">()</span>
+    <span class="n">forecaster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+        <span class="n">y_train</span><span class="p">,</span>
+        <span class="n">X</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span>
+        <span class="n">fh</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">forecaster</span><span class="o">.</span><span class="n">pyfunc_predict_conf</span> <span class="o">=</span> <span class="n">pyfunc_predict_conf</span>
+
+    <span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">forecaster</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/benjamin/anaconda3/envs/sktime-dev/lib/python3.8/site-packages/_distutils_hack/__init__.py:33: UserWarning: Setuptools is replacing distutils.
+  warnings.warn(&#34;Setuptools is replacing distutils.&#34;)
+</pre></div></div>
+</div>
+</section>
+<section id="2.3-Load-model">
+<h3>2.3 Load model<a class="headerlink" href="#2.3-Load-model" title="Link to this heading">#</a></h3>
+<section id="2.3.1-Native-sktime-flavor">
+<h4>2.3.1 Native sktime flavor<a class="headerlink" href="#2.3.1-Native-sktime-flavor" title="Link to this heading">#</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_model</span> <span class="o">=</span> <span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2.3.2-Pyfunc-flavor">
+<h4>2.3.2 Pyfunc flavor<a class="headerlink" href="#2.3.2-Pyfunc-flavor" title="Link to this heading">#</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_pyfunc</span> <span class="o">=</span> <span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">pyfunc</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="2.4-Generate-predictions">
+<h3>2.4 Generate predictions<a class="headerlink" href="#2.4-Generate-predictions" title="Link to this heading">#</a></h3>
+<section id="2.4.1-Native-sktime-flavor">
+<h4>2.4.1 Native sktime flavor<a class="headerlink" href="#2.4.1-Native-sktime-flavor" title="Link to this heading">#</a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1959    66513.0
+1960    66513.0
+1961    66513.0
+Freq: A-DEC, dtype: float64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_model</span><span class="o">.</span><span class="n">predict_interval</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_test</span><span class="p">,</span> <span class="n">coverage</span><span class="o">=</span><span class="n">coverage</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="4" halign="left">Coverage</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">0.8</th>
+      <th colspan="2" halign="left">0.9</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>lower</th>
+      <th>upper</th>
+      <th>lower</th>
+      <th>upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1959</th>
+      <td>64719.913711</td>
+      <td>68306.086289</td>
+      <td>64211.598663</td>
+      <td>68814.401337</td>
+    </tr>
+    <tr>
+      <th>1960</th>
+      <td>63977.193051</td>
+      <td>69048.806949</td>
+      <td>63258.327017</td>
+      <td>69767.672983</td>
+    </tr>
+    <tr>
+      <th>1961</th>
+      <td>63407.283445</td>
+      <td>69618.716555</td>
+      <td>62526.855956</td>
+      <td>70499.144044</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred_dist</span> <span class="o">=</span> <span class="n">loaded_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y_pred_dist_quantiles</span> <span class="o">=</span> <span class="n">y_pred_dist</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">quantiles</span><span class="p">)</span>
+<span class="n">y_pred_dist_quantiles</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-12-19 10:07:18.984171: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-19 10:07:19.137912: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-12-19 10:07:19.137942: I tensorflow/compiler/xla/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-12-19 10:07:19.961244: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2022-12-19 10:07:19.961430: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2022-12-19 10:07:19.961446: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2022-12-19 10:07:21.052618: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-19 10:07:21.053031: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-12-19 10:07:21.053101: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcublas.so.11&#39;; dlerror: libcublas.so.11: cannot open shared object file: No such file or directory
+2022-12-19 10:07:21.053161: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcublasLt.so.11&#39;; dlerror: libcublasLt.so.11: cannot open shared object file: No such file or directory
+2022-12-19 10:07:21.054924: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcusolver.so.11&#39;; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory
+2022-12-19 10:07:21.054986: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcusparse.so.11&#39;; dlerror: libcusparse.so.11: cannot open shared object file: No such file or directory
+2022-12-19 10:07:21.055042: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory
+2022-12-19 10:07:21.055054: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2022-12-19 10:07:21.055334: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Quantiles_0.1</th>
+      <th>Quantiles_0.9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1959</th>
+      <td>64719.914062</td>
+      <td>68306.085938</td>
+    </tr>
+    <tr>
+      <th>1960</th>
+      <td>63977.191406</td>
+      <td>69048.804688</td>
+    </tr>
+    <tr>
+      <th>1961</th>
+      <td>63407.281250</td>
+      <td>69618.718750</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_model</span><span class="o">.</span><span class="n">predict_quantiles</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">Quantiles</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>0.05</th>
+      <th>0.95</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1959</th>
+      <td>64211.598663</td>
+      <td>68814.401337</td>
+    </tr>
+    <tr>
+      <th>1960</th>
+      <td>63258.327017</td>
+      <td>69767.672983</td>
+    </tr>
+    <tr>
+      <th>1961</th>
+      <td>62526.855956</td>
+      <td>70499.144044</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_model</span><span class="o">.</span><span class="n">predict_var</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1959</th>
+      <td>1.957628e+06</td>
+    </tr>
+    <tr>
+      <th>1960</th>
+      <td>3.915256e+06</td>
+    </tr>
+    <tr>
+      <th>1961</th>
+      <td>5.872885e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="2.4.2-Pyfunc-flavor">
+<h4>2.4.2 Pyfunc flavor<a class="headerlink" href="#2.4.2-Pyfunc-flavor" title="Link to this heading">#</a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_pyfunc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>predict__0</th>
+      <th>predict_interval__Coverage__0.8__lower</th>
+      <th>predict_interval__Coverage__0.8__upper</th>
+      <th>predict_interval__Coverage__0.9__lower</th>
+      <th>predict_interval__Coverage__0.9__upper</th>
+      <th>predict_proba__Quantiles_0.1</th>
+      <th>predict_proba__Quantiles_0.9</th>
+      <th>predict_quantiles__Quantiles__0.05</th>
+      <th>predict_quantiles__Quantiles__0.95</th>
+      <th>predict_var__0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1959</th>
+      <td>66513.0</td>
+      <td>64719.913711</td>
+      <td>68306.086289</td>
+      <td>64211.598663</td>
+      <td>68814.401337</td>
+      <td>64719.914062</td>
+      <td>68306.085938</td>
+      <td>64211.598663</td>
+      <td>68814.401337</td>
+      <td>1.957628e+06</td>
+    </tr>
+    <tr>
+      <th>1960</th>
+      <td>66513.0</td>
+      <td>63977.193051</td>
+      <td>69048.806949</td>
+      <td>63258.327017</td>
+      <td>69767.672983</td>
+      <td>63977.191406</td>
+      <td>69048.804688</td>
+      <td>63258.327017</td>
+      <td>69767.672983</td>
+      <td>3.915256e+06</td>
+    </tr>
+    <tr>
+      <th>1961</th>
+      <td>66513.0</td>
+      <td>63407.283445</td>
+      <td>69618.716555</td>
+      <td>62526.855956</td>
+      <td>70499.144044</td>
+      <td>63407.281250</td>
+      <td>69618.718750</td>
+      <td>62526.855956</td>
+      <td>70499.144044</td>
+      <td>5.872885e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="3.-Model-deployment-example">
+<h2>3. Model deployment example<a class="headerlink" href="#3.-Model-deployment-example" title="Link to this heading">#</a></h2>
+<section id="3.1-Create-experiment">
+<h3>3.1 Create experiment<a class="headerlink" href="#3.1-Create-experiment" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">artifact_path</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
+
+<span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;Test Sktime&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
+    <span class="n">forecaster</span> <span class="o">=</span> <span class="n">NaiveForecaster</span><span class="p">()</span>
+    <span class="n">forecaster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">fh</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">forecaster</span><span class="o">.</span><span class="n">pyfunc_predict_conf</span> <span class="o">=</span> <span class="n">pyfunc_predict_conf</span>
+
+    <span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span><span class="n">sktime_model</span><span class="o">=</span><span class="n">forecaster</span><span class="p">,</span> <span class="n">artifact_path</span><span class="o">=</span><span class="n">artifact_path</span><span class="p">)</span>
+
+<span class="n">run_id</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MLflow run id: </span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022/12/19 10:07:21 INFO mlflow.tracking.fluent: Experiment with name &#39;Test Sktime&#39; does not exist. Creating a new experiment.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+MLflow run id: ec94d157fe354c1bbdd4dec0898e1ed6
+</pre></div></div>
+</div>
+</section>
+<section id="3.2-Deploy-pyfunc-model-to-local-REST-API-endpoint">
+<h3>3.2 Deploy pyfunc model to local REST API endpoint<a class="headerlink" href="#3.2-Deploy-pyfunc-model-to-local-REST-API-endpoint" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Open a terminal window and cd into <code class="docutils literal notranslate"><span class="pre">examples</span></code>directory</p></li>
+<li><p>In the terminal run: <code class="docutils literal notranslate"><span class="pre">mlflow</span> <span class="pre">models</span> <span class="pre">serve</span> <span class="pre">-m</span> <span class="pre">runs:/&lt;RUN_ID&gt;/model</span> <span class="pre">--env-manager</span> <span class="pre">local</span> <span class="pre">--host</span> <span class="pre">&lt;HOST&gt;</span></code></p>
+<ul>
+<li><p>where you substitute <code class="docutils literal notranslate"><span class="pre">&lt;RUN_ID&gt;</span></code> by the <code class="docutils literal notranslate"><span class="pre">run_id</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;HOST&gt;</span></code> by the network address to listen on (e.g. <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>)</p></li>
+</ul>
+</li>
+<li><p>More details here: <a class="reference external" href="https://www.mlflow.org/docs/latest/cli.html#mlflow-models-serve">https://www.mlflow.org/docs/latest/cli.html#mlflow-models-serve</a></p></li>
+</ul>
+</section>
+<section id="3.3-Request-predictions-from-local-REST-API-endpoint">
+<h3>3.3 Request predictions from local REST API endpoint<a class="headerlink" href="#3.3-Request-predictions-from-local-REST-API-endpoint" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>For more details see: <a class="reference external" href="https://www.mlflow.org/docs/latest/models.html#built-in-deployment-tools">https://www.mlflow.org/docs/latest/models.html#built-in-deployment-tools</a></p></li>
+</ul>
+<section id="3.3.1-JSON-input-using-dataframe_split-field-with-pandas-DataFrame-in-the-split-orientation">
+<h4>3.3.1 JSON input using <code class="docutils literal notranslate"><span class="pre">dataframe_split</span></code> field with pandas DataFrame in the <code class="docutils literal notranslate"><span class="pre">split</span></code> orientation<a class="headerlink" href="#3.3.1-JSON-input-using-dataframe_split-field-with-pandas-DataFrame-in-the-split-orientation" title="Link to this heading">#</a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:5000/invocations&quot;</span>
+
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;dataframe_split&quot;</span><span class="p">:</span> <span class="n">X_test</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;split&quot;</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+
+<span class="c1"># # Comment in the below lines to run the prediction request</span>
+<span class="c1"># import requests</span>
+<span class="c1"># response = requests.post(url, json=json_data)</span>
+<span class="c1"># response.json()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;dataframe_split&#39;: {&#39;index&#39;: [0, 1, 2, 3], &#39;columns&#39;: [&#39;GNPDEFL&#39;, &#39;GNP&#39;, &#39;UNEMP&#39;, &#39;ARMED&#39;, &#39;POP&#39;], &#39;data&#39;: [[112.6, 482704.0, 3813.0, 2552.0, 123366.0], [114.2, 502601.0, 3931.0, 2514.0, 125368.0], [115.7, 518173.0, 4806.0, 2572.0, 127852.0], [116.9, 554894.0, 4007.0, 2827.0, 130081.0]]}}
+</pre></div></div>
+</div>
+</section>
+<section id="3.3.2-JSON-input-using-dataframe_records-field-with-pandas-DataFrame-in-the-records-orientation">
+<h4>3.3.2 JSON input using <code class="docutils literal notranslate"><span class="pre">dataframe_records</span></code> field with pandas DataFrame in the <code class="docutils literal notranslate"><span class="pre">records</span></code> orientation<a class="headerlink" href="#3.3.2-JSON-input-using-dataframe_records-field-with-pandas-DataFrame-in-the-records-orientation" title="Link to this heading">#</a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;dataframe_records&quot;</span><span class="p">:</span> <span class="n">X_test</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+
+<span class="c1"># # Comment in the below lines to run the prediction request</span>
+<span class="c1"># response = requests.post(url, json=json_data)</span>
+<span class="c1"># response.json()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;dataframe_records&#39;: [{&#39;GNPDEFL&#39;: 112.6, &#39;GNP&#39;: 482704.0, &#39;UNEMP&#39;: 3813.0, &#39;ARMED&#39;: 2552.0, &#39;POP&#39;: 123366.0}, {&#39;GNPDEFL&#39;: 114.2, &#39;GNP&#39;: 502601.0, &#39;UNEMP&#39;: 3931.0, &#39;ARMED&#39;: 2514.0, &#39;POP&#39;: 125368.0}, {&#39;GNPDEFL&#39;: 115.7, &#39;GNP&#39;: 518173.0, &#39;UNEMP&#39;: 4806.0, &#39;ARMED&#39;: 2572.0, &#39;POP&#39;: 127852.0}, {&#39;GNPDEFL&#39;: 116.9, &#39;GNP&#39;: 554894.0, &#39;UNEMP&#39;: 4007.0, &#39;ARMED&#39;: 2827.0, &#39;POP&#39;: 130081.0}]}
+</pre></div></div>
+</div>
+</section>
+<section id="3.3.3-CSV-input-using-valid-pd.DataFrame-csv-representation">
+<h4>3.3.3 CSV input using valid <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> csv representation<a class="headerlink" href="#3.3.3-CSV-input-using-valid-pd.DataFrame-csv-representation" title="Link to this heading">#</a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;text/csv&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># # Comment in the below lines to run the prediction request</span>
+<span class="c1"># response = requests.post(url, headers=headers, data=data)</span>
+<span class="c1"># response.json()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+,GNPDEFL,GNP,UNEMP,ARMED,POP
+0,112.6,482704.0,3813.0,2552.0,123366.0
+1,114.2,502601.0,3931.0,2514.0,125368.0
+2,115.7,518173.0,4806.0,2572.0,127852.0
+3,116.9,554894.0,4007.0,2827.0,130081.0
+
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<p>Generated using <a class="reference external" href="https://nbsphinx.readthedocs.io/">nbsphinx</a>. The Jupyter notebook can be found <a class="reference external" href="https://github.com/sktime/sktime/tree/v0.27.0/examples/mlflow.ipynb">here</a>.</p>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#1.-Setup">1. Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#1.1-Config">1.1 Config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#1.1-Imports">1.1 Imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#1.2-Load-sample-data">1.2 Load sample data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.-Example-usage-of-native-sktime-flavor-and-pyfunc-flavor">2. Example usage of native <code class="docutils literal notranslate"><span class="pre">sktime</span> <span class="pre">flavor</span></code> and <code class="docutils literal notranslate"><span class="pre">pyfunc</span> <span class="pre">flavor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.1-Create-prediction-config-for-pyfunc-flavor">2.1 Create prediction config for pyfunc flavor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.2-Train-and-save-model">2.2 Train and save model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.3-Load-model">2.3 Load model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#2.3.1-Native-sktime-flavor">2.3.1 Native sktime flavor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#2.3.2-Pyfunc-flavor">2.3.2 Pyfunc flavor</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4-Generate-predictions">2.4 Generate predictions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4.1-Native-sktime-flavor">2.4.1 Native sktime flavor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4.2-Pyfunc-flavor">2.4.2 Pyfunc flavor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#3.-Model-deployment-example">3. Model deployment example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#3.1-Create-experiment">3.1 Create experiment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#3.2-Deploy-pyfunc-model-to-local-REST-API-endpoint">3.2 Deploy pyfunc model to local REST API endpoint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#3.3-Request-predictions-from-local-REST-API-endpoint">3.3 Request predictions from local REST API endpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#3.3.1-JSON-input-using-dataframe_split-field-with-pandas-DataFrame-in-the-split-orientation">3.3.1 JSON input using <code class="docutils literal notranslate"><span class="pre">dataframe_split</span></code> field with pandas DataFrame in the <code class="docutils literal notranslate"><span class="pre">split</span></code> orientation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#3.3.2-JSON-input-using-dataframe_records-field-with-pandas-DataFrame-in-the-records-orientation">3.3.2 JSON input using <code class="docutils literal notranslate"><span class="pre">dataframe_records</span></code> field with pandas DataFrame in the <code class="docutils literal notranslate"><span class="pre">records</span></code> orientation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#3.3.3-CSV-input-using-valid-pd.DataFrame-csv-representation">3.3.3 CSV input using valid <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> csv representation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

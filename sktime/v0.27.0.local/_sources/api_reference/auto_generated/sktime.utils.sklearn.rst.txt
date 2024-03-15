@@ -1,0 +1,7 @@
+sktime.utils.sklearn package
+============================
+
+.. automodule:: sktime.utils.sklearn
+   :members:
+   :undoc-members:
+   :show-inheritance:

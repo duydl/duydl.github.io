@@ -1,0 +1,12 @@
+﻿DtwPythonDist
+====================================================
+
+.. currentmodule:: sktime.dists_kernels.dtw
+
+.. autoclass:: DtwPythonDist
+
+.. include:: sktime.dists_kernels.dtw.DtwPythonDist.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

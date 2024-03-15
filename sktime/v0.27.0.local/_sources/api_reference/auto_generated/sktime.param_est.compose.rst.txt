@@ -1,0 +1,7 @@
+sktime.param\_est.compose package
+=================================
+
+.. automodule:: sktime.param_est.compose
+   :members:
+   :undoc-members:
+   :show-inheritance:

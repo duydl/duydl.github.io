@@ -1,0 +1,7 @@
+sktime.utils.strtobool module
+=============================
+
+.. automodule:: sktime.utils.strtobool
+   :members:
+   :undoc-members:
+   :show-inheritance:

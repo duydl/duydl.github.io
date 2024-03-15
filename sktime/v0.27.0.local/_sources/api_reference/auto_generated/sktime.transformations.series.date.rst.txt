@@ -1,0 +1,7 @@
+sktime.transformations.series.date module
+=========================================
+
+.. automodule:: sktime.transformations.series.date
+   :members:
+   :undoc-members:
+   :show-inheritance:

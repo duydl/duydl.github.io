@@ -1,0 +1,12 @@
+﻿CNNRegressor
+==========================================================
+
+.. currentmodule:: sktime.regression.deep_learning
+
+.. autoclass:: CNNRegressor
+
+.. include:: sktime.regression.deep_learning.CNNRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

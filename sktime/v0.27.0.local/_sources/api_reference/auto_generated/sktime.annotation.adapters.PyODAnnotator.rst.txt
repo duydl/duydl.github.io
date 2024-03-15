@@ -1,0 +1,12 @@
+﻿PyODAnnotator
+======================================================
+
+.. currentmodule:: sktime.annotation.adapters
+
+.. autoclass:: PyODAnnotator
+
+.. include:: sktime.annotation.adapters.PyODAnnotator.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿ConditionalDeseasonalizer
+=============================================================================
+
+.. currentmodule:: sktime.transformations.series.detrend
+
+.. autoclass:: ConditionalDeseasonalizer
+
+.. include:: sktime.transformations.series.detrend.ConditionalDeseasonalizer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

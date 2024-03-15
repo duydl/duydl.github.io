@@ -1,0 +1,12 @@
+﻿YtoX
+=================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: YtoX
+
+.. include:: sktime.transformations.compose.YtoX.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

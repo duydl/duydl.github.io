@@ -1,0 +1,7 @@
+sktime.transformations.panel.dwt module
+=======================================
+
+.. automodule:: sktime.transformations.panel.dwt
+   :members:
+   :undoc-members:
+   :show-inheritance:

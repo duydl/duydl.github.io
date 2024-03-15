@@ -1,0 +1,12 @@
+﻿InvertTransform
+============================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: InvertTransform
+
+.. include:: sktime.transformations.compose.InvertTransform.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

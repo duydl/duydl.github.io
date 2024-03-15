@@ -1,0 +1,7 @@
+sktime.dists\_kernels.compose module
+====================================
+
+.. automodule:: sktime.dists_kernels.compose
+   :members:
+   :undoc-members:
+   :show-inheritance:

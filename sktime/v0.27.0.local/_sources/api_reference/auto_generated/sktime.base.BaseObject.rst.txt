@@ -1,0 +1,12 @@
+﻿BaseObject
+====================================
+
+.. currentmodule:: sktime.base
+
+.. autoclass:: BaseObject
+
+.. include:: sktime.base.BaseObject.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

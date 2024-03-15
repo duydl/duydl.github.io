@@ -1,0 +1,12 @@
+﻿ReducerTransform
+================================================================
+
+.. currentmodule:: sktime.transformations.series.lag
+
+.. autoclass:: ReducerTransform
+
+.. include:: sktime.transformations.series.lag.ReducerTransform.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

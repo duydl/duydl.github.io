@@ -1,0 +1,12 @@
+﻿TBATS
+============================================
+
+.. currentmodule:: sktime.forecasting.tbats
+
+.. autoclass:: TBATS
+
+.. include:: sktime.forecasting.tbats.TBATS.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

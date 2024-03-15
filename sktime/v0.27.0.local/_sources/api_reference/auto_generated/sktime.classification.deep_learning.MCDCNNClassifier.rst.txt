@@ -1,0 +1,12 @@
+﻿MCDCNNClassifier
+==================================================================
+
+.. currentmodule:: sktime.classification.deep_learning
+
+.. autoclass:: MCDCNNClassifier
+
+.. include:: sktime.classification.deep_learning.MCDCNNClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

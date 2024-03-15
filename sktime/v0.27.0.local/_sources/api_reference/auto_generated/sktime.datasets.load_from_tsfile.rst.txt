@@ -1,0 +1,12 @@
+﻿load_from_tsfile
+====================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_from_tsfile
+
+.. include:: sktime.datasets.load_from_tsfile.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

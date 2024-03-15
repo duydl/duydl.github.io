@@ -1,0 +1,7 @@
+sktime.utils.validation.panel module
+====================================
+
+.. automodule:: sktime.utils.validation.panel
+   :members:
+   :undoc-members:
+   :show-inheritance:

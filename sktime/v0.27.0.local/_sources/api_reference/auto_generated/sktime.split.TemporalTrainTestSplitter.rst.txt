@@ -1,0 +1,12 @@
+﻿TemporalTrainTestSplitter
+====================================================
+
+.. currentmodule:: sktime.split
+
+.. autoclass:: TemporalTrainTestSplitter
+
+.. include:: sktime.split.TemporalTrainTestSplitter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

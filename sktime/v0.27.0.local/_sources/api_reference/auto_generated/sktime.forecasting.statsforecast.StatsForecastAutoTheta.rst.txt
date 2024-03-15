@@ -1,0 +1,12 @@
+﻿StatsForecastAutoTheta
+=====================================================================
+
+.. currentmodule:: sktime.forecasting.statsforecast
+
+.. autoclass:: StatsForecastAutoTheta
+
+.. include:: sktime.forecasting.statsforecast.StatsForecastAutoTheta.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

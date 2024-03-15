@@ -1,0 +1,7 @@
+sktime.transformations.series.outlier\_detection module
+=======================================================
+
+.. automodule:: sktime.transformations.series.outlier_detection
+   :members:
+   :undoc-members:
+   :show-inheritance:

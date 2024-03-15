@@ -1,0 +1,7 @@
+sktime.transformations.series.kinematic module
+==============================================
+
+.. automodule:: sktime.transformations.series.kinematic
+   :members:
+   :undoc-members:
+   :show-inheritance:

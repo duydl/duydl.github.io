@@ -1,0 +1,7 @@
+sktime.regression.deep\_learning.lstmfcn module
+===============================================
+
+.. automodule:: sktime.regression.deep_learning.lstmfcn
+   :members:
+   :undoc-members:
+   :show-inheritance:

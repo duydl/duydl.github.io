@@ -1,0 +1,12 @@
+﻿KalmanFilterTransformerFP
+===================================================================================
+
+.. currentmodule:: sktime.transformations.series.kalman_filter
+
+.. autoclass:: KalmanFilterTransformerFP
+
+.. include:: sktime.transformations.series.kalman_filter.KalmanFilterTransformerFP.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

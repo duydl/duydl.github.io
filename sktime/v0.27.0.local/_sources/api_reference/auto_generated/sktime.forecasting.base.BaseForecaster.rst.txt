@@ -1,0 +1,12 @@
+﻿BaseForecaster
+====================================================
+
+.. currentmodule:: sktime.forecasting.base
+
+.. autoclass:: BaseForecaster
+
+.. include:: sktime.forecasting.base.BaseForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

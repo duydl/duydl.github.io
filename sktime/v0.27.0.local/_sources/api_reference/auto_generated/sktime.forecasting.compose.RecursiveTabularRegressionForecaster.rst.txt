@@ -1,0 +1,12 @@
+﻿RecursiveTabularRegressionForecaster
+=============================================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: RecursiveTabularRegressionForecaster
+
+.. include:: sktime.forecasting.compose.RecursiveTabularRegressionForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

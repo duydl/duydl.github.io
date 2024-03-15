@@ -1,0 +1,12 @@
+﻿PAA2
+====================================================
+
+.. currentmodule:: sktime.transformations.series.paa
+
+.. autoclass:: PAA2
+
+.. include:: sktime.transformations.series.paa.PAA2.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

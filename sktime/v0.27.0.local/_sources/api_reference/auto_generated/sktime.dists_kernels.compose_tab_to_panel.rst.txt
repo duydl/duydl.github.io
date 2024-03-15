@@ -1,0 +1,7 @@
+sktime.dists\_kernels.compose\_tab\_to\_panel module
+====================================================
+
+.. automodule:: sktime.dists_kernels.compose_tab_to_panel
+   :members:
+   :undoc-members:
+   :show-inheritance:

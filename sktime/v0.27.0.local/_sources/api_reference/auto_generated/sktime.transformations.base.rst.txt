@@ -1,0 +1,7 @@
+sktime.transformations.base module
+==================================
+
+.. automodule:: sktime.transformations.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

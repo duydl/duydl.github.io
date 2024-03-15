@@ -1,0 +1,7 @@
+sktime.transformations.panel.compose module
+===========================================
+
+.. automodule:: sktime.transformations.panel.compose
+   :members:
+   :undoc-members:
+   :show-inheritance:

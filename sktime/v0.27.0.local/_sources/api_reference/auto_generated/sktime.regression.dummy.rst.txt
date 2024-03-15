@@ -1,0 +1,7 @@
+sktime.regression.dummy package
+===============================
+
+.. automodule:: sktime.regression.dummy
+   :members:
+   :undoc-members:
+   :show-inheritance:

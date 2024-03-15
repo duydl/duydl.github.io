@@ -1,0 +1,12 @@
+﻿DWTTransformer
+=============================================================
+
+.. currentmodule:: sktime.transformations.panel.dwt
+
+.. autoclass:: DWTTransformer
+
+.. include:: sktime.transformations.panel.dwt.DWTTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

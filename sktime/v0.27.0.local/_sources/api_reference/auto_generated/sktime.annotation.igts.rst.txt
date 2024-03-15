@@ -1,0 +1,7 @@
+sktime.annotation.igts module
+=============================
+
+.. automodule:: sktime.annotation.igts
+   :members:
+   :undoc-members:
+   :show-inheritance:

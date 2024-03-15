@@ -1,0 +1,7 @@
+sktime.dists\_kernels.indep module
+==================================
+
+.. automodule:: sktime.dists_kernels.indep
+   :members:
+   :undoc-members:
+   :show-inheritance:

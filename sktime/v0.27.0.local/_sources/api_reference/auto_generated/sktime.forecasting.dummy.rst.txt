@@ -1,0 +1,7 @@
+sktime.forecasting.dummy module
+===============================
+
+.. automodule:: sktime.forecasting.dummy
+   :members:
+   :undoc-members:
+   :show-inheritance:

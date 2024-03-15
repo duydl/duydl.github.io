@@ -1,0 +1,12 @@
+﻿WhiteNoiseAugmenter
+=========================================================================
+
+.. currentmodule:: sktime.transformations.series.augmenter
+
+.. autoclass:: WhiteNoiseAugmenter
+
+.. include:: sktime.transformations.series.augmenter.WhiteNoiseAugmenter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

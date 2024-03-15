@@ -1,0 +1,12 @@
+﻿dtw_distance
+=================================================
+
+.. currentmodule:: sktime.distances
+
+.. autofunction:: dtw_distance
+
+.. include:: sktime.distances.dtw_distance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

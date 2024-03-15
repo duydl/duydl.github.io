@@ -1,0 +1,12 @@
+﻿SklearnClassifierPipeline
+=====================================================================
+
+.. currentmodule:: sktime.classification.compose
+
+.. autoclass:: SklearnClassifierPipeline
+
+.. include:: sktime.classification.compose.SklearnClassifierPipeline.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

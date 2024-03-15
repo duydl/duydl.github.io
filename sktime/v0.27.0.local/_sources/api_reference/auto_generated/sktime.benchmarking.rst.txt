@@ -1,0 +1,26 @@
+sktime.benchmarking package
+===========================
+
+.. automodule:: sktime.benchmarking
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.benchmarking.base
+   sktime.benchmarking.benchmarks
+   sktime.benchmarking.critical_difference
+   sktime.benchmarking.data
+   sktime.benchmarking.evaluation
+   sktime.benchmarking.experiments
+   sktime.benchmarking.forecasting
+   sktime.benchmarking.metrics
+   sktime.benchmarking.orchestration
+   sktime.benchmarking.results
+   sktime.benchmarking.strategies
+   sktime.benchmarking.tasks

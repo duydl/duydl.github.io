@@ -1,0 +1,7 @@
+sktime.networks.base module
+===========================
+
+.. automodule:: sktime.networks.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

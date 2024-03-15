@@ -1,0 +1,12 @@
+﻿VARMAX
+==============================================
+
+.. currentmodule:: sktime.forecasting.varmax
+
+.. autoclass:: VARMAX
+
+.. include:: sktime.forecasting.varmax.VARMAX.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

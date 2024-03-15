@@ -1,0 +1,12 @@
+﻿load_italy_power_demand
+===========================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_italy_power_demand
+
+.. include:: sktime.datasets.load_italy_power_demand.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

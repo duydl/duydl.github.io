@@ -1,0 +1,12 @@
+﻿euclidean_distance
+=======================================================
+
+.. currentmodule:: sktime.distances
+
+.. autofunction:: euclidean_distance
+
+.. include:: sktime.distances.euclidean_distance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

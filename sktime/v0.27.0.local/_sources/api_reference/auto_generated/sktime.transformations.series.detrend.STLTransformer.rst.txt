@@ -1,0 +1,12 @@
+﻿STLTransformer
+==================================================================
+
+.. currentmodule:: sktime.transformations.series.detrend
+
+.. autoclass:: STLTransformer
+
+.. include:: sktime.transformations.series.detrend.STLTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

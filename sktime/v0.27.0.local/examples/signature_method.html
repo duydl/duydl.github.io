@@ -1,0 +1,1027 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Signature Method with Sktime &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/signature_method';</script>
+    <script src="../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Theta Lines transformer" href="theta_transform.html" />
+    <link rel="prev" title="Time Series Segmentation with sktime and ClaSP" href="segmentation_with_clasp.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../user_guide.html">User Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_sktime_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_forecasting.html">Forecasting with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01a_forecasting_sklearn.html">Forecasting with sktime - appendix: forecasting, supervised regression, and pitfalls in confusing the two</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01b_forecasting_proba.html">Probabilistic Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01c_forecasting_hierarchical_global.html">Hierarchical, Global, and Panel Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_classification.html">Time Series Classification, Regression, Clustering &amp; More</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02a_classification_multivariate_cnn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="02b_classification_multivariate_lstmfcn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="02c_classification_multivariate_inceptiontime.html">Multi-variate time series classification using InceptionTime</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03_transformers.html">Overview of this notebook</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03a_transformers_cheat_sheet.html">Transformers cheat sheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03b_forecasting_transformers_pipelines_tuning.html">4 Forecasting Pipelines, Tuning, and AutoML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking.html">Benchmarking with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking_v2.html">Benchmarking - comparing estimator performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AA_datatypes_and_datasets.html">In-memory data representations and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="catch22.html">The Canonical Time-series Characteristics (catch22) transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="channel_selection.html">Channel Selection in Multivariate Time Series Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="dictionary_based_classification.html">Dictionary based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="early_classification.html">Early time series classification with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction_with_tsfresh.html">Feature extraction with tsfresh transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Time series interpolating with sktime</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="interval_based_classification.html">Interval based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading_data.html">Loading data into sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minirocket.html">MiniRocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partition_based_clustering.html">Partition based time series clustering in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plateau_finder.html">Demo of the PlateauFinder transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocket.html">Demo of ROCKET transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segmentation_with_clasp.html">Time Series Segmentation with sktime and ClaSP</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Signature Method with Sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theta_transform.html">Theta Lines transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window_splitters.html">Window Splitters in Sktime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator_overview.html">Estimator Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../related_software.html">Related Software</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../users.html" class="nav-link">Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">The...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://mybinder.org/v2/gh/sktime/sktime/v0.27.0?filepath=examples/signature_method.ipynb"><img alt="binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<section id="The-Signature-Method-with-Sktime">
+<h1>The Signature Method with Sktime<a class="headerlink" href="#The-Signature-Method-with-Sktime" title="Link to this heading">#</a></h1>
+<p>The ‘signature method’ refers to a collection of feature extraction techniques for multimodal sequential data, derived from the theory of controlled differential equations. In recent years, a large number of modifications have been suggested to the signature method so as to improve some aspect of it.</p>
+<p>In the paper <a class="reference external" href="https://arxiv.org/abs/2006.00873">“A Generalised Signature Method for Time-Series”</a> [1] the authors collated the vast majority of these modifications into a single document and ran a large hyper-parameter study over the multivariate UEA datasets to build a generic signature algorithm that is expected to work well on a wide range of datasets. We implement the best practice results from this study as the default starting values for our hyperparameters in the
+<code class="docutils literal notranslate"><span class="pre">SignatureClassifier</span></code> module.</p>
+<section id="The-Path-Signature">
+<h2>The Path Signature<a class="headerlink" href="#The-Path-Signature" title="Link to this heading">#</a></h2>
+<p>At the heart of the signature method is the so-called “signature transform”.</p>
+<p>A path <span class="math notranslate nohighlight">\(X\)</span> of finite length in <span class="math notranslate nohighlight">\(\textit{d}\)</span> dimensions can be described by the mapping <span class="math notranslate nohighlight">\(X:[a, b]\rightarrow\mathbb{R}\)</span> <span class="math notranslate nohighlight">\(\!\!^d\)</span>, or in terms of coordinates <span class="math notranslate nohighlight">\(X=(X^1_t, X^2_t, ...,X^d_t)\)</span>, where each coordinate <span class="math notranslate nohighlight">\(X^i_t\)</span> is real-valued and parameterised by <span class="math notranslate nohighlight">\(t\in[a,b]\)</span>.</p>
+<dl class="simple">
+<dt>The <strong>signature transform</strong> <span class="math notranslate nohighlight">\(S\)</span> of a path <span class="math notranslate nohighlight">\(X\)</span> is defined as an infinite sequence of values: :nbsphinx-math:<a href="#id1"><span class="problematic" id="id2">`</span></a>begin{equation}</dt><dd><p>S(X)_{a, b} = (1, S(X)_{a, b}^1, S(X)_{a, b}^2, …, S(X)_{a, b}^d, S(X)_{a,b}^{1, 1}, S(X)_{a,b}^{1, 2}, …),
+label{eq:path_signature}</p>
+</dd>
+<dt>end{equation}` where each term is a <span class="math notranslate nohighlight">\(k\)</span>-fold iterated integral of <span class="math notranslate nohighlight">\(X\)</span> with multi-index <span class="math notranslate nohighlight">\(i_1,...,i_k\)</span>: :nbsphinx-math:<a href="#id3"><span class="problematic" id="id4">`</span></a>begin{equation}</dt><dd><p>S(X)_{a, b}^{i_1,…,i_k} = int_{a&lt;t_k&lt;b}…int_{a&lt;t_1&lt;t_2} mathrm{d}X_{t_1}^{i_1}…mathrm{d}X_{t_k}^{i_k}.
+label{eq:sig_moments}</p>
+</dd>
+</dl>
+<p>end{equation}` This defines a graded sequence of numbers associated with a path which is known to characterise it up to a generalised form of reparameterisation [2]. One can think of the signature as a collection of summary statistics that determine a path (almost) uniquely. Furthermore, any continuous function on the path <span class="math notranslate nohighlight">\(X\)</span> can be approximated arbitrarily well as a linear function on its signature [3]; the signature unravels the non-linearities on functions on the space of
+unparameterised paths.</p>
+<section id="A-Visualisation">
+<h3>A Visualisation<a class="headerlink" href="#A-Visualisation" title="Link to this heading">#</a></h3>
+<p>To give an idea of what the signature terms represent physically, we consider a patient in an ICU where we are tracking their systolic blood pressure (SBP) and heart rate (HR) changing in time. This can be represented as a path in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> (assuming time is included as a channel).</p>
+<p><img alt="signature_visualisation" src="examples/img/signatures_term_visualisation.png" /></p>
+<p>The plot above sketches two scenarios of how such a path might look. We are assuming here an implicit time dimension for each plot such that the path is traversed from left to right along the blue line.</p>
+<section id="Depth-1:">
+<h4>Depth 1:<a class="headerlink" href="#Depth-1:" title="Link to this heading">#</a></h4>
+<p>The signature terms to depth 1 are simply the changes of each of the variables over the interval, in the image this is the <span class="math notranslate nohighlight">\(\Delta \text{HR}\)</span> and <span class="math notranslate nohighlight">\(\Delta \text{SBP}\)</span> terms. Note that these values are the same in each case.</p>
+</section>
+<section id="Depth-2:">
+<h4>Depth 2:<a class="headerlink" href="#Depth-2:" title="Link to this heading">#</a></h4>
+<p>The second level gives us the signed areas (the shaded orange regions), where the orientation of the left most plot is such that the negatively signed area is produced whereas the second gives the positive value, and thus, at order 2 in the signature we now have sufficient information to discriminate between these two situations where in the first rise in heart rate occurs before (or at least, initially faster than) the rise in blood pressure, and vice versa.</p>
+</section>
+<section id="Depth-&gt;-2:">
+<span id="depth-2-1"></span><h4>Depth &gt; 2:<a class="headerlink" href="#Depth->-2:" title="Link to this heading">#</a></h4>
+<p>Depths larger than 2 become more difficult to visualise graphically, however the idea is similar to that of the depth 2 case where we saw that the signature produced information on whether the increase in HR or SBP appeared to be happening first, along with some numerical quantification of how much this was happening. At higher orders the signature is doing something similar, but now with three events, rather than two. The signature picks out structural information regarding the order in which
+events occur.</p>
+</section>
+</section>
+<section id="The-Signature-in-Time-Series-Analysis">
+<h3>The Signature in Time-Series Analysis<a class="headerlink" href="#The-Signature-in-Time-Series-Analysis" title="Link to this heading">#</a></h3>
+<p>The signature is a natural tool to apply in problems related to time-series analysis. As described above it can convert multi-dimensional time-series data into static features that represent information about the sequential nature of the time-series, that can be fed through a standard machine learning model.</p>
+<dl class="simple">
+<dt>A simplistic view of how this works is as follows: :nbsphinx-math:<a href="#id6"><span class="problematic" id="id7">`</span></a>begin{equation}</dt><dd><p>text{Model}(text{Signature}(text{Sequential data}))) = text{Predictions}</p>
+</dd>
+</dl>
+<p>end{equation}`</p>
+</section>
+</section>
+<section id="Considered-Signature-Variations">
+<h2>Considered Signature Variations<a class="headerlink" href="#Considered-Signature-Variations" title="Link to this heading">#</a></h2>
+<p>Again, following the work in [1] we group the variations on the signature method conceptually into:</p>
+<ul class="simple">
+<li><p><strong>Augmentations</strong> - Transformation of an input sequence or time series into one or more new sequences, so that the signature will return different information about the path.</p></li>
+<li><p><strong>Windows</strong> - Windowing operations, so that the signature can act with some locality.</p></li>
+<li><p><strong>Transforms</strong> - The choice between the signature or the logsignature transformation.</p></li>
+<li><p><strong>Rescalings</strong> - Method of signature rescaling.</p></li>
+</ul>
+<p>This is neatly represented in the following graphic, where <span class="math notranslate nohighlight">\(\phi\)</span> represents the augmentation, <span class="math notranslate nohighlight">\(W^{i, j}\)</span> the windowing operation, <span class="math notranslate nohighlight">\(S^N\)</span> the signature, and <span class="math notranslate nohighlight">\(\rho_{\text{pre}/\text{post}}\)</span> the rescalig method.</p>
+<p><img alt="c1a1859efd5c49faa72ef684aedab06b" class="center no-scaled-link" src="examples/img/signatures_generalised_method.png" style="width: 500px;" /></p>
+<p>Please refer to the full paper for a more comprehensive exploration into what each of these groupings means.</p>
+</section>
+<section id="The-Sktime-Modules">
+<h2>The Sktime Modules<a class="headerlink" href="#The-Sktime-Modules" title="Link to this heading">#</a></h2>
+<p>We now give an introduction to the classification and transformation modules included in th sktime interface, along with an example to show how to perform efficient hyperparameter optimisation that was found to give good results in [1].</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some additional imports we will use</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_gunpoint</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load an example dataset</span>
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">load_gunpoint</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">load_gunpoint</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+D:\CMP Machine Learning\sktime-workshop-boss\sktime\utils\data_io.py:63: FutureWarning: This function has moved to datasets/_data_io, this version will be removed in V0.10
+  warn(
+</pre></div></div>
+</div>
+<section id="Overview">
+<h3>Overview<a class="headerlink" href="#Overview" title="Link to this heading">#</a></h3>
+<p>We provide the following: - <strong>sktime.transformers.panel.signature_based.SignatureTransformer</strong> - An sklearn transformer that provides the functionality to apply the signature method with some choice of variations as noted above. - <strong>sktime.classification.feature_based.SignatureClassifier</strong> - This provides a simple interface to append a classifier to the SignatureTransformer class.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.classification.feature_based</span> <span class="kn">import</span> <span class="n">SignatureClassifier</span>
+<span class="kn">from</span> <span class="nn">sktime.transformations.panel.signature_based</span> <span class="kn">import</span> <span class="n">SignatureTransformer</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Example-1:-Sequential-Data--&gt;-Signature-Features.">
+<h3>Example 1: Sequential Data -&gt; Signature Features.<a class="headerlink" href="#Example-1:-Sequential-Data-->-Signature-Features." title="Link to this heading">#</a></h3>
+<p>Here we will give a very simple example of converting the sequential 3D GunPoint data of shape [num_batch, series_length, num_features] -&gt; [num_batch, signature_features].</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First build a very simple signature transform module</span>
+<span class="n">signature_transform</span> <span class="o">=</span> <span class="n">SignatureTransformer</span><span class="p">(</span>
+    <span class="n">augmentation_list</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;addtime&quot;</span><span class="p">,),</span>
+    <span class="n">window_name</span><span class="o">=</span><span class="s2">&quot;global&quot;</span><span class="p">,</span>
+    <span class="n">window_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">window_length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">window_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">rescaling</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">sig_tfm</span><span class="o">=</span><span class="s2">&quot;signature&quot;</span><span class="p">,</span>
+    <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># The simply transform the stream data</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Raw data shape is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="n">train_signature_x</span> <span class="o">=</span> <span class="n">signature_transform</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Signature shape is: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_signature_x</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Raw data shape is: (50, 1)
+Signature shape is: (50, 14)
+</pre></div></div>
+</div>
+<p>It then becomes extremely easy to build a time-series classification model. For example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_signature_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+<span class="c1"># Evaluate</span>
+<span class="n">test_signature_x</span> <span class="o">=</span> <span class="n">signature_transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+<span class="n">test_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_signature_x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: </span><span class="si">{:.3f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">test_pred</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Accuracy: 0.740%
+</pre></div></div>
+</div>
+</section>
+<section id="Example-2:-Fine-Tuning-the-Generalised-Model">
+<h3>Example 2: Fine Tuning the Generalised Model<a class="headerlink" href="#Example-2:-Fine-Tuning-the-Generalised-Model" title="Link to this heading">#</a></h3>
+<p>As previously mentioned, in [1] the authors performed a large hyperparameter search over the signature variations on the full UEA archive to develop a ‘Best Practices’ approach to building a model. This required some fine tuning over the following parameters, as they were found to be very dataset specific: - <code class="docutils literal notranslate"><span class="pre">depth</span></code> over [1, 2, 3, 4, 5, 6] - <code class="docutils literal notranslate"><span class="pre">window_depth</span></code> over [2, 3, 4] - <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> hyperparamters.</p>
+<p>Here we show how this is easily done using the sktime framework.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+
+<span class="c1"># Some params</span>
+<span class="n">n_cv_splits</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">n_gs_iter</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># Random forests found to perform very well in general</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+
+<span class="c1"># The grid to be passed to an sklearn gridsearch</span>
+<span class="n">signature_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Signature params</span>
+    <span class="s2">&quot;depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s2">&quot;window_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dyadic&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;augmentation_list&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;basepoint&quot;</span><span class="p">,</span> <span class="s2">&quot;addtime&quot;</span><span class="p">]],</span>
+    <span class="s2">&quot;window_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s2">&quot;rescaling&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;post&quot;</span><span class="p">],</span>
+    <span class="c1"># Classifier and classifier params</span>
+    <span class="s2">&quot;estimator&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">estimator</span><span class="p">],</span>
+    <span class="s2">&quot;estimator__n_estimators&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="s2">&quot;estimator__max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="c1"># Initialise the estimator</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">SignatureClassifier</span><span class="p">()</span>
+
+<span class="c1"># Run a random grid search and return the gs object</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">n_cv_splits</span><span class="p">)</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">signature_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">n_cv_splits</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="n">n_gs_iter</span><span class="p">)</span>
+<span class="n">gs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+<span class="c1"># Get the best classifier</span>
+<span class="n">best_classifier</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Evaluate</span>
+<span class="n">train_preds</span> <span class="o">=</span> <span class="n">best_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_x</span><span class="p">)</span>
+<span class="n">test_preds</span> <span class="o">=</span> <span class="n">best_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+<span class="n">train_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">train_y</span><span class="p">,</span> <span class="n">train_preds</span><span class="p">)</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">test_preds</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Train acc: </span><span class="si">{:.3f}</span><span class="s2">%  |  Test acc: </span><span class="si">{:.3f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">train_score</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">test_score</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Train acc: 100.000%  |  Test acc: 96.000%
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="A-Full-Description-of-the-Parameters">
+<h2>A Full Description of the Parameters<a class="headerlink" href="#A-Full-Description-of-the-Parameters" title="Link to this heading">#</a></h2>
+<p>We conclude by giving further explanation of each of the parameters in the <code class="docutils literal notranslate"><span class="pre">SignatureClassifier</span></code> module and what values they can take.</p>
+</section>
+<section id="Parameters">
+<h2>Parameters<a class="headerlink" href="#Parameters" title="Link to this heading">#</a></h2>
+<p>Below we list each parameter and the values that they can take. For further details about what the options mean refer to [1].</p>
+<p><strong>classifier</strong> Needs to be any sklearn estimator. Defaults to <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier()</span></code>.</p>
+<p><strong>augmentation_list</strong>: list of tuple of strings, List of augmentations to be applied before the signature transform is applied. These can be any from: - ‘addtime’ - Add an equally spaced time channel. - ‘leadlag’ - The leadlag transform. - ‘ir’ - Perform the invisibility reset transform. - ‘cumsum’ - Perform a cumulative sum transform. - ‘basepoint’ - Append zero to the start of the path to remove translational invariance.</p>
+<p><strong>window_name</strong> str, The name of the window transform to apply. Can be any of: - ‘global’ - A single window over all the data. - ‘expanding’ - Multiple windows starting at the first datapoint that extend over the data (increasing width). - ‘sliding’ - Multiple windows that slide along the data (fixed width). - ‘dyadic’ - Partition the data into dyadic windows.</p>
+<p><strong>window_depth</strong>: int, The depth of the dyadic window. (Active only if <code class="docutils literal notranslate"><span class="pre">window_name</span> <span class="pre">==</span> <span class="pre">'dyadic']</span></code>).</p>
+<p><strong>window_length</strong>: int, The length of the sliding/expanding window. (Active only if <code class="docutils literal notranslate"><span class="pre">window_name</span> <span class="pre">in</span> <span class="pre">['sliding,</span> <span class="pre">'expanding'].</span></code>)</p>
+<p><strong>window_step</strong>: int, The step of the sliding/expanding window. (Active only if <code class="docutils literal notranslate"><span class="pre">window_name</span> <span class="pre">in</span> <span class="pre">['sliding,</span> <span class="pre">'expanding'].</span></code>)</p>
+<p><strong>rescaling</strong>: str, The method of signature rescaling. Any of: - ‘pre’ - Rescale the path before the signature transform. - ‘post’ - Rescale the path after the signature transform. - None - No rescaling.</p>
+<p><strong>sig_tfm</strong>: str, String to specify the type of signature transform. Either of: [‘signature’, ‘logsignature’].</p>
+<p><strong>depth</strong>: int, Signature truncation depth.</p>
+<p><strong>random_state</strong>: int, Random state initialisation.</p>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Link to this heading">#</a></h2>
+<p>[1] Morrill, James, Adeline Fermanian, Patrick Kidger, and Terry Lyons. “A Generalised Signature Method for Time Series.” arXiv preprint arXiv:2006.00873 (2020).</p>
+<p>[2] Hambly, B., Lyons, T.: Uniqueness for the signature of a path of bounded variation and the reduced pathgroup. Annals of Mathematics171(1), 109–167 (2010). doi:10.4007/annals.2010.171.10913.</p>
+<p>[3] Lyons, T.J.: Differential equations driven by rough signals. Revista Matem ́atica Iberoamericana14(2), 215–310(1998)</p>
+</section>
+</section>
+<hr class="docutils" />
+<p>Generated using <a class="reference external" href="https://nbsphinx.readthedocs.io/">nbsphinx</a>. The Jupyter notebook can be found <a class="reference external" href="https://github.com/sktime/sktime/tree/v0.27.0/examples/signature_method.ipynb">here</a>.</p>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Path-Signature">The Path Signature</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#A-Visualisation">A Visualisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Depth-1:">Depth 1:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Depth-2:">Depth 2:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Depth-&gt;-2:">Depth &gt; 2:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Signature-in-Time-Series-Analysis">The Signature in Time-Series Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Considered-Signature-Variations">Considered Signature Variations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Sktime-Modules">The Sktime Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Example-1:-Sequential-Data--&gt;-Signature-Features.">Example 1: Sequential Data -&gt; Signature Features.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Example-2:-Fine-Tuning-the-Generalised-Model">Example 2: Fine Tuning the Generalised Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#A-Full-Description-of-the-Parameters">A Full Description of the Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Parameters">Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#References">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

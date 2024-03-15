@@ -1,0 +1,61 @@
+sktime.transformations.series package
+=====================================
+
+.. automodule:: sktime.transformations.series
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.transformations.series.detrend
+   sktime.transformations.series.holiday
+   sktime.transformations.series.vmd
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.transformations.series.acf
+   sktime.transformations.series.adapt
+   sktime.transformations.series.augmenter
+   sktime.transformations.series.binning
+   sktime.transformations.series.bkfilter
+   sktime.transformations.series.boxcox
+   sktime.transformations.series.cffilter
+   sktime.transformations.series.clasp
+   sktime.transformations.series.clear_sky
+   sktime.transformations.series.cos
+   sktime.transformations.series.date
+   sktime.transformations.series.difference
+   sktime.transformations.series.dilation_mapping
+   sktime.transformations.series.dobin
+   sktime.transformations.series.dropna
+   sktime.transformations.series.exponent
+   sktime.transformations.series.feature_selection
+   sktime.transformations.series.filter
+   sktime.transformations.series.fourier
+   sktime.transformations.series.func_transform
+   sktime.transformations.series.hidalgo
+   sktime.transformations.series.hpfilter
+   sktime.transformations.series.impute
+   sktime.transformations.series.kalman_filter
+   sktime.transformations.series.kinematic
+   sktime.transformations.series.lag
+   sktime.transformations.series.matrix_profile
+   sktime.transformations.series.outlier_detection
+   sktime.transformations.series.paa
+   sktime.transformations.series.peak
+   sktime.transformations.series.sax
+   sktime.transformations.series.scaledasinh
+   sktime.transformations.series.scaledlogit
+   sktime.transformations.series.subset
+   sktime.transformations.series.summarize
+   sktime.transformations.series.theta
+   sktime.transformations.series.time_since

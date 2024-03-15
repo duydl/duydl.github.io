@@ -1,0 +1,12 @@
+﻿FixedParams
+================================================
+
+.. currentmodule:: sktime.param_est.fixed
+
+.. autoclass:: FixedParams
+
+.. include:: sktime.param_est.fixed.FixedParams.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿ShapeletTransformClassifier
+==============================================================================
+
+.. currentmodule:: sktime.classification.shapelet_based
+
+.. autoclass:: ShapeletTransformClassifier
+
+.. include:: sktime.classification.shapelet_based.ShapeletTransformClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

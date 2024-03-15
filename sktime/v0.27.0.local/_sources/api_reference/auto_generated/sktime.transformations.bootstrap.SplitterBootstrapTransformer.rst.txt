@@ -1,0 +1,12 @@
+﻿SplitterBootstrapTransformer
+===========================================================================
+
+.. currentmodule:: sktime.transformations.bootstrap
+
+.. autoclass:: SplitterBootstrapTransformer
+
+.. include:: sktime.transformations.bootstrap.SplitterBootstrapTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,15 @@
+sktime.classification.early\_classification package
+===================================================
+
+.. automodule:: sktime.classification.early_classification
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.classification.early_classification.base

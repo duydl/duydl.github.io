@@ -1,0 +1,12 @@
+﻿LSTMFCNClassifier
+===================================================================
+
+.. currentmodule:: sktime.classification.deep_learning
+
+.. autoclass:: LSTMFCNClassifier
+
+.. include:: sktime.classification.deep_learning.LSTMFCNClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

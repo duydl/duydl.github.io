@@ -1,0 +1,12 @@
+﻿DrCIF
+========================================================
+
+.. currentmodule:: sktime.classification.interval_based
+
+.. autoclass:: DrCIF
+
+.. include:: sktime.classification.interval_based.DrCIF.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

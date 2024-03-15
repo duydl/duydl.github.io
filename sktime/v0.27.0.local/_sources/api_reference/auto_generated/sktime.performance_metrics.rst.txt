@@ -1,0 +1,17 @@
+sktime.performance\_metrics package
+===================================
+
+.. automodule:: sktime.performance_metrics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.performance_metrics.annotation
+   sktime.performance_metrics.base
+   sktime.performance_metrics.forecasting

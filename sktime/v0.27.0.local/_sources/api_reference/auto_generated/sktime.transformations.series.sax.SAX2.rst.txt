@@ -1,0 +1,12 @@
+﻿SAX2
+====================================================
+
+.. currentmodule:: sktime.transformations.series.sax
+
+.. autoclass:: SAX2
+
+.. include:: sktime.transformations.series.sax.SAX2.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

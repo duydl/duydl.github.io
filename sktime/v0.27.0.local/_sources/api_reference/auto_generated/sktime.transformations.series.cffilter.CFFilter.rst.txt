@@ -1,0 +1,12 @@
+﻿CFFilter
+=============================================================
+
+.. currentmodule:: sktime.transformations.series.cffilter
+
+.. autoclass:: CFFilter
+
+.. include:: sktime.transformations.series.cffilter.CFFilter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

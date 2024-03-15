@@ -1,0 +1,12 @@
+﻿DirRecTabularRegressionForecaster
+==========================================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: DirRecTabularRegressionForecaster
+
+.. include:: sktime.forecasting.compose.DirRecTabularRegressionForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

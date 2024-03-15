@@ -1,0 +1,7 @@
+sktime.utils.random\_state module
+=================================
+
+.. automodule:: sktime.utils.random_state
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿make_forecasting_scorer
+==================================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autofunction:: make_forecasting_scorer
+
+.. include:: sktime.performance_metrics.forecasting.make_forecasting_scorer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

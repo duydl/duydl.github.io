@@ -1,0 +1,7 @@
+sktime.utils.multiindex module
+==============================
+
+.. automodule:: sktime.utils.multiindex
+   :members:
+   :undoc-members:
+   :show-inheritance:

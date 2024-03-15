@@ -1,0 +1,7 @@
+sktime.split.slidingwindow module
+=================================
+
+.. automodule:: sktime.split.slidingwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:

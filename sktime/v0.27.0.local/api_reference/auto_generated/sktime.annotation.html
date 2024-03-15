@@ -1,0 +1,1197 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.annotation package &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.annotation';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.adapters.html">sktime.annotation.adapters package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.base.html">sktime.annotation.base package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sktime.annotation.hmm_learn.html">sktime.annotation.hmm_learn package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.base.html">sktime.annotation.hmm_learn.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.gaussian.html">sktime.annotation.hmm_learn.gaussian module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.gmm.html">sktime.annotation.hmm_learn.gmm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.poisson.html">sktime.annotation.hmm_learn.poisson module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sktime.annotation.plotting.html">sktime.annotation.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.plotting.utils.html">sktime.annotation.plotting.utils module</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.clasp.html">sktime.annotation.clasp module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.datagen.html">sktime.annotation.datagen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.eagglo.html">sktime.annotation.eagglo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.ggs.html">sktime.annotation.ggs module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.hmm.html">sktime.annotation.hmm module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.igts.html">sktime.annotation.igts module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.stray.html">sktime.annotation.stray module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.annot...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.annotation">
+<span id="sktime-annotation-package"></span><h1>sktime.annotation package<a class="headerlink" href="#module-sktime.annotation" title="Link to this heading">#</a></h1>
+<p>Implements time series annotation.</p>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.adapters.html">sktime.annotation.adapters package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_test_params"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.clone"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.clone_tags"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.create_test_instance"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.fit"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.fit_predict"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_class_tag"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_class_tags"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_config"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_param_names"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_params"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_tag"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.get_tags"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.is_composite"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.is_fitted"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.load_from_path"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.load_from_serial"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.predict"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.predict_scores"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.reset"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.save"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.set_config"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.set_params"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.set_random_state"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.set_tags"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.update"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.adapters.html#sktime.annotation.adapters.PyODAnnotator.update_predict"><code class="docutils literal notranslate"><span class="pre">PyODAnnotator.update_predict</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.base.html">sktime.annotation.base package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.fit"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.predict"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.predict_scores"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.update"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.update_predict"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.update_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.fit_predict"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.clone"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.clone_tags"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.create_test_instance"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_class_tag"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_class_tags"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_config"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_param_names"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_params"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_tag"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_tags"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.get_test_params"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.is_composite"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.load_from_path"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.load_from_serial"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.reset"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.save"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.set_config"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.set_params"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.set_random_state"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.base.html#sktime.annotation.base.BaseSeriesAnnotator.set_tags"><code class="docutils literal notranslate"><span class="pre">BaseSeriesAnnotator.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.hmm_learn.html">sktime.annotation.hmm_learn package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.sample"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.sample</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.clone"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.clone_tags"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.create_test_instance"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.fit"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.fit_predict"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_class_tag"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_class_tags"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_config"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_param_names"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_params"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_tag"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_tags"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.get_test_params"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.is_composite"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.load_from_path"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.load_from_serial"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.predict"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.predict_scores"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.reset"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.save"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.set_config"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.set_params"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.set_random_state"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.set_tags"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.update"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.BaseHMMLearn.update_predict"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn.update_predict</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM"><code class="docutils literal notranslate"><span class="pre">GaussianHMM</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_test_params"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.clone"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.clone_tags"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.create_test_instance"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.fit"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.fit_predict"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_class_tag"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_class_tags"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_config"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_param_names"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_params"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_tag"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.get_tags"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.is_composite"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.is_fitted"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.load_from_path"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.load_from_serial"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.predict"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.predict_scores"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.reset"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.sample"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.sample</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.save"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.set_config"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.set_params"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.set_random_state"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.set_tags"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.update"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GaussianHMM.update_predict"><code class="docutils literal notranslate"><span class="pre">GaussianHMM.update_predict</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM"><code class="docutils literal notranslate"><span class="pre">GMMHMM</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_test_params"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">GMMHMM.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.clone"><code class="docutils literal notranslate"><span class="pre">GMMHMM.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.clone_tags"><code class="docutils literal notranslate"><span class="pre">GMMHMM.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.create_test_instance"><code class="docutils literal notranslate"><span class="pre">GMMHMM.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">GMMHMM.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.fit"><code class="docutils literal notranslate"><span class="pre">GMMHMM.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.fit_predict"><code class="docutils literal notranslate"><span class="pre">GMMHMM.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_class_tag"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_class_tags"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_config"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_param_names"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_params"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_tag"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.get_tags"><code class="docutils literal notranslate"><span class="pre">GMMHMM.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.is_composite"><code class="docutils literal notranslate"><span class="pre">GMMHMM.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.is_fitted"><code class="docutils literal notranslate"><span class="pre">GMMHMM.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.load_from_path"><code class="docutils literal notranslate"><span class="pre">GMMHMM.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.load_from_serial"><code class="docutils literal notranslate"><span class="pre">GMMHMM.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.predict"><code class="docutils literal notranslate"><span class="pre">GMMHMM.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.predict_scores"><code class="docutils literal notranslate"><span class="pre">GMMHMM.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.reset"><code class="docutils literal notranslate"><span class="pre">GMMHMM.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.sample"><code class="docutils literal notranslate"><span class="pre">GMMHMM.sample</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.save"><code class="docutils literal notranslate"><span class="pre">GMMHMM.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.set_config"><code class="docutils literal notranslate"><span class="pre">GMMHMM.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.set_params"><code class="docutils literal notranslate"><span class="pre">GMMHMM.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.set_random_state"><code class="docutils literal notranslate"><span class="pre">GMMHMM.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.set_tags"><code class="docutils literal notranslate"><span class="pre">GMMHMM.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.update"><code class="docutils literal notranslate"><span class="pre">GMMHMM.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.GMMHMM.update_predict"><code class="docutils literal notranslate"><span class="pre">GMMHMM.update_predict</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM"><code class="docutils literal notranslate"><span class="pre">PoissonHMM</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_test_params"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.clone"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.clone_tags"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.create_test_instance"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.fit"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.fit_predict"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_class_tag"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_class_tags"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_config"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_param_names"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_params"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_tag"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.get_tags"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.is_composite"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.is_fitted"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.load_from_path"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.load_from_serial"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.predict"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.predict_scores"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.reset"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.sample"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.sample</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.save"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.set_config"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.set_params"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.set_random_state"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.set_tags"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.update"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.html#sktime.annotation.hmm_learn.PoissonHMM.update_predict"><code class="docutils literal notranslate"><span class="pre">PoissonHMM.update_predict</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm_learn.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.base.html">sktime.annotation.hmm_learn.base module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sktime.annotation.hmm_learn.base.html#sktime.annotation.hmm_learn.base.BaseHMMLearn"><code class="docutils literal notranslate"><span class="pre">BaseHMMLearn</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.gaussian.html">sktime.annotation.hmm_learn.gaussian module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sktime.annotation.hmm_learn.gaussian.html#sktime.annotation.hmm_learn.gaussian.GaussianHMM"><code class="docutils literal notranslate"><span class="pre">GaussianHMM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.gmm.html">sktime.annotation.hmm_learn.gmm module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sktime.annotation.hmm_learn.gmm.html#sktime.annotation.hmm_learn.gmm.GMMHMM"><code class="docutils literal notranslate"><span class="pre">GMMHMM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm_learn.poisson.html">sktime.annotation.hmm_learn.poisson module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sktime.annotation.hmm_learn.poisson.html#sktime.annotation.hmm_learn.poisson.PoissonHMM"><code class="docutils literal notranslate"><span class="pre">PoissonHMM</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.plotting.html">sktime.annotation.plotting package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.plotting.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.plotting.utils.html">sktime.annotation.plotting.utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sktime.annotation.plotting.utils.html#sktime.annotation.plotting.utils.plot_time_series_with_change_points"><code class="docutils literal notranslate"><span class="pre">plot_time_series_with_change_points</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.annotation.plotting.utils.html#sktime.annotation.plotting.utils.plot_time_series_with_profiles"><code class="docutils literal notranslate"><span class="pre">plot_time_series_with_profiles</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.clasp.html">sktime.annotation.clasp module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.clasp.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_test_params"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.clone"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.clone_tags"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.create_test_instance"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.fit"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.fit_predict"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_class_tag"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_class_tags"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_config"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_param_names"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_params"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_tag"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.get_tags"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.is_composite"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.is_fitted"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.load_from_path"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.load_from_serial"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.predict"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.predict_scores"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.reset"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.save"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.set_config"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.set_params"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.set_random_state"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.set_tags"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.update"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.ClaSPSegmentation.update_predict"><code class="docutils literal notranslate"><span class="pre">ClaSPSegmentation.update_predict</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.clasp.html#sktime.annotation.clasp.find_dominant_window_sizes"><code class="docutils literal notranslate"><span class="pre">find_dominant_window_sizes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.datagen.html">sktime.annotation.datagen module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.datagen.html#sktime.annotation.datagen.piecewise_normal_multivariate"><code class="docutils literal notranslate"><span class="pre">piecewise_normal_multivariate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.datagen.html#sktime.annotation.datagen.piecewise_normal"><code class="docutils literal notranslate"><span class="pre">piecewise_normal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.datagen.html#sktime.annotation.datagen.piecewise_multinomial"><code class="docutils literal notranslate"><span class="pre">piecewise_multinomial</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.datagen.html#sktime.annotation.datagen.piecewise_poisson"><code class="docutils literal notranslate"><span class="pre">piecewise_poisson</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.datagen.html#sktime.annotation.datagen.labels_with_repeats"><code class="docutils literal notranslate"><span class="pre">labels_with_repeats</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.datagen.html#sktime.annotation.datagen.label_piecewise_normal"><code class="docutils literal notranslate"><span class="pre">label_piecewise_normal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.datagen.html#sktime.annotation.datagen.GenBasicGauss"><code class="docutils literal notranslate"><span class="pre">GenBasicGauss</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.datagen.html#sktime.annotation.datagen.GenBasicGauss.sample"><code class="docutils literal notranslate"><span class="pre">GenBasicGauss.sample</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.eagglo.html">sktime.annotation.eagglo module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo"><code class="docutils literal notranslate"><span class="pre">EAgglo</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_test_params"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.ALLOWED_INPUT_MTYPES"><code class="docutils literal notranslate"><span class="pre">EAgglo.ALLOWED_INPUT_MTYPES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">EAgglo.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.clone"><code class="docutils literal notranslate"><span class="pre">EAgglo.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.clone_tags"><code class="docutils literal notranslate"><span class="pre">EAgglo.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.create_test_instance"><code class="docutils literal notranslate"><span class="pre">EAgglo.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">EAgglo.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.fit"><code class="docutils literal notranslate"><span class="pre">EAgglo.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.fit_transform"><code class="docutils literal notranslate"><span class="pre">EAgglo.fit_transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_class_tag"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_class_tags"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_config"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_param_names"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_params"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_tag"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.get_tags"><code class="docutils literal notranslate"><span class="pre">EAgglo.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.inverse_transform"><code class="docutils literal notranslate"><span class="pre">EAgglo.inverse_transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.is_composite"><code class="docutils literal notranslate"><span class="pre">EAgglo.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.is_fitted"><code class="docutils literal notranslate"><span class="pre">EAgglo.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.load_from_path"><code class="docutils literal notranslate"><span class="pre">EAgglo.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.load_from_serial"><code class="docutils literal notranslate"><span class="pre">EAgglo.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.reset"><code class="docutils literal notranslate"><span class="pre">EAgglo.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.save"><code class="docutils literal notranslate"><span class="pre">EAgglo.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.set_config"><code class="docutils literal notranslate"><span class="pre">EAgglo.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.set_params"><code class="docutils literal notranslate"><span class="pre">EAgglo.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.set_random_state"><code class="docutils literal notranslate"><span class="pre">EAgglo.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.set_tags"><code class="docutils literal notranslate"><span class="pre">EAgglo.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.transform"><code class="docutils literal notranslate"><span class="pre">EAgglo.transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.eagglo.html#sktime.annotation.eagglo.EAgglo.update"><code class="docutils literal notranslate"><span class="pre">EAgglo.update</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.ggs.html">sktime.annotation.ggs module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.ggs.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.ggs.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS"><code class="docutils literal notranslate"><span class="pre">GGS</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.k_max"><code class="docutils literal notranslate"><span class="pre">GGS.k_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.lamb"><code class="docutils literal notranslate"><span class="pre">GGS.lamb</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.max_shuffles"><code class="docutils literal notranslate"><span class="pre">GGS.max_shuffles</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.verbose"><code class="docutils literal notranslate"><span class="pre">GGS.verbose</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.random_state"><code class="docutils literal notranslate"><span class="pre">GGS.random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.change_points_"><code class="docutils literal notranslate"><span class="pre">GGS.change_points_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.initialize_intermediates"><code class="docutils literal notranslate"><span class="pre">GGS.initialize_intermediates</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.log_likelihood"><code class="docutils literal notranslate"><span class="pre">GGS.log_likelihood</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.cumulative_log_likelihood"><code class="docutils literal notranslate"><span class="pre">GGS.cumulative_log_likelihood</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.add_new_change_point"><code class="docutils literal notranslate"><span class="pre">GGS.add_new_change_point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.adjust_change_points"><code class="docutils literal notranslate"><span class="pre">GGS.adjust_change_points</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.identity_segmentation"><code class="docutils literal notranslate"><span class="pre">GGS.identity_segmentation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GGS.find_change_points"><code class="docutils literal notranslate"><span class="pre">GGS.find_change_points</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.fit_predict"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_test_params"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.clone"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.clone_tags"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.create_test_instance"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.fit"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_class_tag"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_class_tags"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_config"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_param_names"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_params"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_tag"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.get_tags"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.is_composite"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.is_fitted"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.load_from_path"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.load_from_serial"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.predict"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.predict_scores"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.reset"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.save"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.set_config"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.set_params"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.set_random_state"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.set_tags"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.update"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.ggs.html#sktime.annotation.ggs.GreedyGaussianSegmentation.update_predict"><code class="docutils literal notranslate"><span class="pre">GreedyGaussianSegmentation.update_predict</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.hmm.html">sktime.annotation.hmm module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM"><code class="docutils literal notranslate"><span class="pre">HMM</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_test_params"><code class="docutils literal notranslate"><span class="pre">HMM.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">HMM.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.clone"><code class="docutils literal notranslate"><span class="pre">HMM.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.clone_tags"><code class="docutils literal notranslate"><span class="pre">HMM.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.create_test_instance"><code class="docutils literal notranslate"><span class="pre">HMM.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">HMM.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.fit"><code class="docutils literal notranslate"><span class="pre">HMM.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.fit_predict"><code class="docutils literal notranslate"><span class="pre">HMM.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_class_tag"><code class="docutils literal notranslate"><span class="pre">HMM.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_class_tags"><code class="docutils literal notranslate"><span class="pre">HMM.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_config"><code class="docutils literal notranslate"><span class="pre">HMM.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">HMM.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">HMM.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_param_names"><code class="docutils literal notranslate"><span class="pre">HMM.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_params"><code class="docutils literal notranslate"><span class="pre">HMM.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_tag"><code class="docutils literal notranslate"><span class="pre">HMM.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.get_tags"><code class="docutils literal notranslate"><span class="pre">HMM.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.is_composite"><code class="docutils literal notranslate"><span class="pre">HMM.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.is_fitted"><code class="docutils literal notranslate"><span class="pre">HMM.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.load_from_path"><code class="docutils literal notranslate"><span class="pre">HMM.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.load_from_serial"><code class="docutils literal notranslate"><span class="pre">HMM.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.predict"><code class="docutils literal notranslate"><span class="pre">HMM.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.predict_scores"><code class="docutils literal notranslate"><span class="pre">HMM.predict_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.reset"><code class="docutils literal notranslate"><span class="pre">HMM.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.save"><code class="docutils literal notranslate"><span class="pre">HMM.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.set_config"><code class="docutils literal notranslate"><span class="pre">HMM.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.set_params"><code class="docutils literal notranslate"><span class="pre">HMM.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.set_random_state"><code class="docutils literal notranslate"><span class="pre">HMM.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.set_tags"><code class="docutils literal notranslate"><span class="pre">HMM.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.update"><code class="docutils literal notranslate"><span class="pre">HMM.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.hmm.html#sktime.annotation.hmm.HMM.update_predict"><code class="docutils literal notranslate"><span class="pre">HMM.update_predict</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.igts.html">sktime.annotation.igts module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.igts.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.fit"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.predict"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.fit_predict"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_params"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.set_params"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_test_params"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.clone"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.clone_tags"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.create_test_instance"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_class_tag"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_class_tags"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_config"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_param_names"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_tag"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.get_tags"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.is_composite"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.is_fitted"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.load_from_path"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.load_from_serial"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.reset"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.save"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.set_config"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.set_random_state"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.set_tags"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.to_classification"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.to_classification</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.igts.html#sktime.annotation.igts.InformationGainSegmentation.to_clusters"><code class="docutils literal notranslate"><span class="pre">InformationGainSegmentation.to_clusters</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.annotation.stray.html">sktime.annotation.stray module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY"><code class="docutils literal notranslate"><span class="pre">STRAY</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.ALLOWED_INPUT_MTYPES"><code class="docutils literal notranslate"><span class="pre">STRAY.ALLOWED_INPUT_MTYPES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">STRAY.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.clone"><code class="docutils literal notranslate"><span class="pre">STRAY.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.clone_tags"><code class="docutils literal notranslate"><span class="pre">STRAY.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.create_test_instance"><code class="docutils literal notranslate"><span class="pre">STRAY.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">STRAY.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.fit"><code class="docutils literal notranslate"><span class="pre">STRAY.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.fit_transform"><code class="docutils literal notranslate"><span class="pre">STRAY.fit_transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_class_tag"><code class="docutils literal notranslate"><span class="pre">STRAY.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_class_tags"><code class="docutils literal notranslate"><span class="pre">STRAY.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_config"><code class="docutils literal notranslate"><span class="pre">STRAY.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">STRAY.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">STRAY.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_param_names"><code class="docutils literal notranslate"><span class="pre">STRAY.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_params"><code class="docutils literal notranslate"><span class="pre">STRAY.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_tag"><code class="docutils literal notranslate"><span class="pre">STRAY.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_tags"><code class="docutils literal notranslate"><span class="pre">STRAY.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.get_test_params"><code class="docutils literal notranslate"><span class="pre">STRAY.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.inverse_transform"><code class="docutils literal notranslate"><span class="pre">STRAY.inverse_transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.is_composite"><code class="docutils literal notranslate"><span class="pre">STRAY.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.is_fitted"><code class="docutils literal notranslate"><span class="pre">STRAY.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.load_from_path"><code class="docutils literal notranslate"><span class="pre">STRAY.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.load_from_serial"><code class="docutils literal notranslate"><span class="pre">STRAY.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.reset"><code class="docutils literal notranslate"><span class="pre">STRAY.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.save"><code class="docutils literal notranslate"><span class="pre">STRAY.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.set_config"><code class="docutils literal notranslate"><span class="pre">STRAY.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.set_params"><code class="docutils literal notranslate"><span class="pre">STRAY.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.set_random_state"><code class="docutils literal notranslate"><span class="pre">STRAY.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.set_tags"><code class="docutils literal notranslate"><span class="pre">STRAY.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.transform"><code class="docutils literal notranslate"><span class="pre">STRAY.transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.annotation.stray.html#sktime.annotation.stray.STRAY.update"><code class="docutils literal notranslate"><span class="pre">STRAY.update</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

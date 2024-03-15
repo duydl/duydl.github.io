@@ -1,0 +1,12 @@
+﻿check_raise
+================================================
+
+.. currentmodule:: sktime.datatypes
+
+.. autofunction:: check_raise
+
+.. include:: sktime.datatypes.check_raise.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

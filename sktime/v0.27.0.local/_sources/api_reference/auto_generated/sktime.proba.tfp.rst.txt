@@ -1,0 +1,7 @@
+sktime.proba.tfp module
+=======================
+
+.. automodule:: sktime.proba.tfp
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.networks.fcn module
+==========================
+
+.. automodule:: sktime.networks.fcn
+   :members:
+   :undoc-members:
+   :show-inheritance:

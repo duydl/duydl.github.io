@@ -1,0 +1,12 @@
+﻿TimeBinner
+============================================================
+
+.. currentmodule:: sktime.transformations.panel.reduce
+
+.. autoclass:: TimeBinner
+
+.. include:: sktime.transformations.panel.reduce.TimeBinner.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

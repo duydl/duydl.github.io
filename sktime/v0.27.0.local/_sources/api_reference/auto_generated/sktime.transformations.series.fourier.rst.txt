@@ -1,0 +1,7 @@
+sktime.transformations.series.fourier module
+============================================
+
+.. automodule:: sktime.transformations.series.fourier
+   :members:
+   :undoc-members:
+   :show-inheritance:

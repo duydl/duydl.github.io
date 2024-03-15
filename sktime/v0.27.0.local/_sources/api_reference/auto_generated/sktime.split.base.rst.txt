@@ -1,0 +1,7 @@
+sktime.split.base package
+=========================
+
+.. automodule:: sktime.split.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

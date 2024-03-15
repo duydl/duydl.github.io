@@ -1,0 +1,55 @@
+sktime.forecasting package
+==========================
+
+.. automodule:: sktime.forecasting
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.forecasting.adapters
+   sktime.forecasting.arch
+   sktime.forecasting.arima
+   sktime.forecasting.base
+   sktime.forecasting.compose
+   sktime.forecasting.model_evaluation
+   sktime.forecasting.model_selection
+   sktime.forecasting.online_learning
+   sktime.forecasting.stream
+   sktime.forecasting.trend
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.forecasting.ardl
+   sktime.forecasting.auto_reg
+   sktime.forecasting.bats
+   sktime.forecasting.conditional_invertible_neural_network
+   sktime.forecasting.conformal
+   sktime.forecasting.croston
+   sktime.forecasting.dummy
+   sktime.forecasting.dynamic_factor
+   sktime.forecasting.ets
+   sktime.forecasting.exp_smoothing
+   sktime.forecasting.fbprophet
+   sktime.forecasting.ltsf
+   sktime.forecasting.naive
+   sktime.forecasting.neuralforecast
+   sktime.forecasting.reconcile
+   sktime.forecasting.sarimax
+   sktime.forecasting.squaring_residuals
+   sktime.forecasting.statsforecast
+   sktime.forecasting.structural
+   sktime.forecasting.tbats
+   sktime.forecasting.theta
+   sktime.forecasting.var
+   sktime.forecasting.varmax
+   sktime.forecasting.vecm

@@ -1,0 +1,12 @@
+﻿DontUpdate
+==================================================
+
+.. currentmodule:: sktime.forecasting.stream
+
+.. autoclass:: DontUpdate
+
+.. include:: sktime.forecasting.stream.DontUpdate.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

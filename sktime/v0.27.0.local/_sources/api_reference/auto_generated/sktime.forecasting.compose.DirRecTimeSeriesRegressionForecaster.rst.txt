@@ -1,0 +1,12 @@
+﻿DirRecTimeSeriesRegressionForecaster
+=============================================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: DirRecTimeSeriesRegressionForecaster
+
+.. include:: sktime.forecasting.compose.DirRecTimeSeriesRegressionForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

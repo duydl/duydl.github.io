@@ -1,0 +1,12 @@
+﻿FinancialHolidaysTransformer
+================================================================================
+
+.. currentmodule:: sktime.transformations.series.holiday
+
+.. autoclass:: FinancialHolidaysTransformer
+
+.. include:: sktime.transformations.series.holiday.FinancialHolidaysTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

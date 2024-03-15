@@ -1,0 +1,12 @@
+﻿SeasonalityACF
+=========================================================
+
+.. currentmodule:: sktime.param_est.seasonality
+
+.. autoclass:: SeasonalityACF
+
+.. include:: sktime.param_est.seasonality.SeasonalityACF.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

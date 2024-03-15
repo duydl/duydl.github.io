@@ -1,0 +1,7 @@
+sktime.dists\_kernels.dtw package
+=================================
+
+.. automodule:: sktime.dists_kernels.dtw
+   :members:
+   :undoc-members:
+   :show-inheritance:

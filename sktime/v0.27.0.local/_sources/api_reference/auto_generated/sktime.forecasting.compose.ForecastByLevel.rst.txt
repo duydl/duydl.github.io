@@ -1,0 +1,12 @@
+﻿ForecastByLevel
+========================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: ForecastByLevel
+
+.. include:: sktime.forecasting.compose.ForecastByLevel.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

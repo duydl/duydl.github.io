@@ -1,0 +1,15 @@
+sktime.annotation.plotting package
+==================================
+
+.. automodule:: sktime.annotation.plotting
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.annotation.plotting.utils

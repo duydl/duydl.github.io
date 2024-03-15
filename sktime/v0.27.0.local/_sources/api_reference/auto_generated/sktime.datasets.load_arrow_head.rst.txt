@@ -1,0 +1,12 @@
+﻿load_arrow_head
+===================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_arrow_head
+
+.. include:: sktime.datasets.load_arrow_head.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

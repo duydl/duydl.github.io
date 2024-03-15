@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.utils.mlflow_sktime module &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.utils.mlflow_sktime';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.deep_equals.html">sktime.utils.deep_equals package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sktime.utils.estimators.html">sktime.utils.estimators package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.utils.estimators.dispatch.html">sktime.utils.estimators.dispatch module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sktime.utils.numba.html">sktime.utils.numba package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.utils.numba.general.html">sktime.utils.numba.general module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.utils.numba.njit.html">sktime.utils.numba.njit module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.utils.numba.stats.html">sktime.utils.numba.stats module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.sklearn.html">sktime.utils.sklearn package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sktime.utils.validation.html">sktime.utils.validation package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.utils.validation.annotation.html">sktime.utils.validation.annotation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.utils.validation.forecasting.html">sktime.utils.validation.forecasting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.utils.validation.panel.html">sktime.utils.validation.panel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.utils.validation.series.html">sktime.utils.validation.series module</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.datetime.html">sktime.utils.datetime module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.estimator_checks.html">sktime.utils.estimator_checks module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.git_diff.html">sktime.utils.git_diff module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.index.html">sktime.utils.index module</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">sktime.utils.mlflow_sktime module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.multiindex.html">sktime.utils.multiindex module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.pandas.html">sktime.utils.pandas module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.plotting.html">sktime.utils.plotting module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.profiling.html">sktime.utils.profiling module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.random_state.html">sktime.utils.random_state module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.sampling.html">sktime.utils.sampling module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.seasonality.html">sktime.utils.seasonality module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.slope_and_trend.html">sktime.utils.slope_and_trend module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.stats.html">sktime.utils.stats module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.strtobool.html">sktime.utils.strtobool module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.utils.warnings.html">sktime.utils.warnings module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.utils...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.utils.mlflow_sktime">
+<span id="sktime-utils-mlflow-sktime-module"></span><h1>sktime.utils.mlflow_sktime module<a class="headerlink" href="#module-sktime.utils.mlflow_sktime" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">mlflow_sktime</span></code> module provides an MLflow API for <code class="docutils literal notranslate"><span class="pre">sktime</span></code> forecasters.</p>
+<p>This module exports <code class="docutils literal notranslate"><span class="pre">sktime</span></code> models in the following formats:</p>
+<dl>
+<dt>sktime (native) format</dt><dd><p>This is the main flavor that can be loaded back into sktime, which relies on pickle
+internally to serialize a model.</p>
+</dd>
+<dt>mlflow.pyfunc</dt><dd><p>Produced for use by generic pyfunc-based deployment tools and batch inference.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor of the model supports sktime predict methods <code class="docutils literal notranslate"><span class="pre">predict</span></code>,
+<code class="docutils literal notranslate"><span class="pre">predict_interval</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_quantiles</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_var</span></code>.</p>
+<p>The interface for utilizing a sktime model loaded as a <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> type for
+generating forecasts requires passing an exogenous regressor as Pandas
+DataFrame to the <code class="docutils literal notranslate"><span class="pre">pyfunc.predict()</span></code> method (an empty DataFrame must be
+passed if no exogenous regressor is used). The configuration of predict
+methods and parameter values passed to the predict methods is defined by
+a dictionary to be saved as an attribute of the fitted sktime model
+instance. If no prediction configuration is defined <code class="docutils literal notranslate"><span class="pre">pyfunc.predict()</span></code>
+will return output from sktime <code class="docutils literal notranslate"><span class="pre">predict</span></code> method. Note that for <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code>
+flavor the forecasting horizon <code class="docutils literal notranslate"><span class="pre">fh</span></code> must be passed to the fit method.</p>
+<p>Predict methods and parameter values for <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor can be defined
+in two ways: <code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">dict]</span></code> if parameter values are passed to
+<code class="docutils literal notranslate"><span class="pre">pyfunc.predict()</span></code>, for example
+<code class="docutils literal notranslate"><span class="pre">{&quot;predict_method&quot;:</span> <span class="pre">{&quot;predict&quot;:</span> <span class="pre">{},</span> <span class="pre">&quot;predict_interval&quot;:</span> <span class="pre">{&quot;coverage&quot;:</span> <span class="pre">[0.1,</span>
+<span class="pre">0.9]}}</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">list]</span></code>, with default parameters in predict method, for example
+<code class="docutils literal notranslate"><span class="pre">{&quot;predict_method&quot;:</span> <span class="pre">[&quot;predict&quot;,</span> <span class="pre">&quot;predict_interval&quot;}</span></code> (Note: when including
+<code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method the former approach must be followed as <code class="docutils literal notranslate"><span class="pre">quantiles</span></code>
+parameter has to be provided by the user). If no prediction config is defined
+<code class="docutils literal notranslate"><span class="pre">pyfunc.predict()</span></code> will return output from sktime <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.utils.mlflow_sktime.get_default_pip_requirements">
+<span class="sig-name descname"><span class="pre">get_default_pip_requirements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_cloudpickle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/utils/mlflow_sktime.py#L88-L104"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.utils.mlflow_sktime.get_default_pip_requirements" title="Link to this definition">#</a></dt>
+<dd><p>Create list of default pip requirements for MLflow Models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list of default pip requirements for MLflow Models produced by this flavor.</dt><dd></dd>
+<dt>Calls to <a class="reference internal" href="sktime.utils.mlflow_sktime.save_model.html#sktime.utils.mlflow_sktime.save_model" title="sktime.utils.mlflow_sktime.save_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">save_model</span></code></a> and <a class="reference internal" href="sktime.utils.mlflow_sktime.log_model.html#sktime.utils.mlflow_sktime.log_model" title="sktime.utils.mlflow_sktime.log_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">log_model</span></code></a> produce a pip environment</dt><dd></dd>
+<dt>that, at a minimum, contains these requirements.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.utils.mlflow_sktime.get_default_conda_env">
+<span class="sig-name descname"><span class="pre">get_default_conda_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_cloudpickle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/utils/mlflow_sktime.py#L107-L120"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.utils.mlflow_sktime.get_default_conda_env" title="Link to this definition">#</a></dt>
+<dd><p>Return default Conda environment for MLflow Models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The default Conda environment for MLflow Models produced by calls to</dt><dd></dd>
+<dt><a class="reference internal" href="sktime.utils.mlflow_sktime.save_model.html#sktime.utils.mlflow_sktime.save_model" title="sktime.utils.mlflow_sktime.save_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">save_model</span></code></a> and <a class="reference internal" href="sktime.utils.mlflow_sktime.log_model.html#sktime.utils.mlflow_sktime.log_model" title="sktime.utils.mlflow_sktime.log_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">log_model</span></code></a></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.utils.mlflow_sktime.save_model">
+<span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sktime_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conda_env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlflow_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_example</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pip_requirements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_pip_requirements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serialization_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pickle'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/utils/mlflow_sktime.py#L123-L311"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.utils.mlflow_sktime.save_model" title="Link to this definition">#</a></dt>
+<dd><p>Save a sktime model to a path on the local file system.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>sktime_model</strong></dt><dd><p>Fitted sktime model object.</p>
+</dd>
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Local path where the model is to be saved.</p>
+</dd>
+<dt><strong>conda_env</strong><span class="classifier">Union[dict, str], optional (default=None)</span></dt><dd><p>Either a dictionary representation of a Conda environment or the path to a
+conda environment yaml file.</p>
+</dd>
+<dt><strong>code_paths</strong><span class="classifier">array-like, optional (default=None)</span></dt><dd><p>A list of local filesystem paths to Python file dependencies (or directories
+containing file dependencies). These files are <em>prepended</em> to the system path
+when the model is loaded.</p>
+</dd>
+<dt><strong>mlflow_model: mlflow.models.Model, optional (default=None)</strong></dt><dd><p>mlflow.models.Model configuration to which to add the python_function flavor.</p>
+</dd>
+<dt><strong>signature</strong><span class="classifier">mlflow.models.signature.ModelSignature, optional (default=None)</span></dt><dd><p>Model Signature mlflow.models.ModelSignature describes
+model input and output <code class="xref py py-class docutils literal notranslate"><span class="pre">Schema</span></code>. The model
+signature can be <code class="xref py py-func docutils literal notranslate"><span class="pre">inferred</span></code> from
+datasets with valid model input (e.g. the training dataset with target column
+omitted) and valid model output (e.g. model predictions generated on the
+training dataset), for example:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlflow.models.signature</span> <span class="kn">import</span> <span class="n">infer_signature</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_column</span><span class="p">(</span><span class="s2">&quot;target_label&quot;</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># compute model predictions</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">infer_signature</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>if performing probabilistic forecasts (<code class="docutils literal notranslate"><span class="pre">predict_interval</span></code>,
+<code class="docutils literal notranslate"><span class="pre">predict_quantiles</span></code>) with a sktime model, the signature
+on the returned prediction object will not be correctly inferred due
+to the Pandas MultiIndex column type when using the these methods.
+<code class="docutils literal notranslate"><span class="pre">infer_schema</span></code> will function correctly if using the <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor
+of the model, though.</p>
+</div>
+</dd>
+<dt><strong>input_example</strong><span class="classifier">Union[pandas.core.frame.DataFrame, numpy.ndarray, dict, list, csr_matrix, csc_matrix], optional</span></dt><dd></dd>
+<dt><strong>(default=None)</strong></dt><dd><p>Input example provides one or several instances of valid model input.
+The example can be used as a hint of what data to feed the model. The given
+example will be converted to a <code class="docutils literal notranslate"><span class="pre">Pandas</span> <span class="pre">DataFrame</span></code> and then serialized to json
+using the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> split-oriented format. Bytes are base64-encoded.</p>
+</dd>
+<dt><strong>pip_requirements</strong><span class="classifier">Union[Iterable, str], optional (default=None)</span></dt><dd><p>Either an iterable of pip requirement strings
+(e.g. [“sktime”, “-r requirements.txt”, “-c constraints.txt”]) or the string
+path to a pip requirements file on the local filesystem
+(e.g. “requirements.txt”)</p>
+</dd>
+<dt><strong>extra_pip_requirements</strong><span class="classifier">Union[Iterable, str], optional (default=None)</span></dt><dd><p>Either an iterable of pip requirement strings
+(e.g. [“pandas”, “-r requirements.txt”, “-c constraints.txt”]) or the string
+path to a pip requirements file on the local filesystem
+(e.g. “requirements.txt”)</p>
+</dd>
+<dt><strong>serialization_format</strong><span class="classifier">str, optional (default=”pickle”)</span></dt><dd><p>The format in which to serialize the model. This should be one of the formats
+“pickle” or “cloudpickle”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r4ff0eecd426e-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+</div>
+</div>
+<p><a class="reference external" href="https://www.mlflow.org/docs/latest/python_api/mlflow.models.html#mlflow.models.Model.save">https://www.mlflow.org/docs/latest/python_api/mlflow.models.html#mlflow.models.Model.save</a></p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_airline</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.forecasting.arima</span> <span class="kn">import</span> <span class="n">ARIMA</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.utils</span> <span class="kn">import</span> <span class="n">mlflow_sktime</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_airline</span><span class="p">()</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forecaster</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span>  
+<span class="gp">... </span>    <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">suppress_warnings</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forecaster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  
+<span class="go">ARIMA(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span>  
+<span class="gp">... </span>    <span class="n">sktime_model</span><span class="o">=</span><span class="n">forecaster</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">path</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loaded_model</span> <span class="o">=</span> <span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_uri</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loaded_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">fh</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.utils.mlflow_sktime.log_model">
+<span class="sig-name descname"><span class="pre">log_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sktime_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">artifact_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conda_env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registered_model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_example</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">await_registration_for</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pip_requirements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_pip_requirements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serialization_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pickle'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/utils/mlflow_sktime.py#L314-L450"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.utils.mlflow_sktime.log_model" title="Link to this definition">#</a></dt>
+<dd><p>Log a sktime model as an MLflow artifact for the current run.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>sktime_model</strong><span class="classifier">fitted sktime model</span></dt><dd><p>Fitted sktime model object.</p>
+</dd>
+<dt><strong>artifact_path</strong><span class="classifier">str</span></dt><dd><p>Run-relative artifact path to save the model to.</p>
+</dd>
+<dt><strong>conda_env</strong><span class="classifier">Union[dict, str], optional (default=None)</span></dt><dd><p>Either a dictionary representation of a Conda environment or the path to a
+conda environment yaml file.</p>
+</dd>
+<dt><strong>code_paths</strong><span class="classifier">array-like, optional (default=None)</span></dt><dd><p>A list of local filesystem paths to Python file dependencies (or directories
+containing file dependencies). These files are <em>prepended</em> to the system path
+when the model is loaded.</p>
+</dd>
+<dt><strong>registered_model_name</strong><span class="classifier">str, optional (default=None)</span></dt><dd><p>If given, create a model version under <code class="docutils literal notranslate"><span class="pre">registered_model_name</span></code>, also creating
+a registered model if one with the given name does not exist.</p>
+</dd>
+<dt><strong>signature</strong><span class="classifier">mlflow.models.signature.ModelSignature, optional (default=None)</span></dt><dd><p>Model Signature mlflow.models.ModelSignature describes
+model input and output <code class="xref py py-class docutils literal notranslate"><span class="pre">Schema</span></code>. The model
+signature can be <code class="xref py py-func docutils literal notranslate"><span class="pre">inferred</span></code> from
+datasets with valid model input (e.g. the training dataset with target column
+omitted) and valid model output (e.g. model predictions generated on the
+training dataset), for example:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlflow.models.signature</span> <span class="kn">import</span> <span class="n">infer_signature</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_column</span><span class="p">(</span><span class="s2">&quot;target_label&quot;</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># compute model predictions</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">infer_signature</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>if performing probabilistic forecasts (<code class="docutils literal notranslate"><span class="pre">predict_interval</span></code>,
+<code class="docutils literal notranslate"><span class="pre">predict_quantiles</span></code>) with a sktime model, the signature
+on the returned prediction object will not be correctly inferred due
+to the Pandas MultiIndex column type when using the these methods.
+<code class="docutils literal notranslate"><span class="pre">infer_schema</span></code> will function correctly if using the <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor
+of the model, though. The <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> flavor of the model supports sktime
+predict methods <code class="docutils literal notranslate"><span class="pre">predict</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_interval</span></code>, <code class="docutils literal notranslate"><span class="pre">predict_quantiles</span></code>
+and <code class="docutils literal notranslate"><span class="pre">predict_var</span></code> while <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> and <code class="docutils literal notranslate"><span class="pre">predict_residuals</span></code> are
+currently not supported.</p>
+</div>
+</dd>
+<dt><strong>input_example</strong><span class="classifier">Union[pandas.core.frame.DataFrame, numpy.ndarray, dict, list, csr_matrix, csc_matrix], optional</span></dt><dd></dd>
+<dt><strong>(default=None)</strong></dt><dd><p>Input example provides one or several instances of valid model input.
+The example can be used as a hint of what data to feed the model. The given
+example will be converted to a <code class="docutils literal notranslate"><span class="pre">Pandas</span> <span class="pre">DataFrame</span></code> and then serialized to json
+using the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> split-oriented format. Bytes are base64-encoded.</p>
+</dd>
+<dt><strong>await_registration_for</strong><span class="classifier">int, optional (default=None)</span></dt><dd><p>Number of seconds to wait for the model version to finish being created and is
+in <code class="docutils literal notranslate"><span class="pre">READY</span></code> status. By default, the function waits for five minutes. Specify 0
+or None to skip waiting.</p>
+</dd>
+<dt><strong>pip_requirements</strong><span class="classifier">Union[Iterable, str], optional (default=None)</span></dt><dd><p>Either an iterable of pip requirement strings
+(e.g. [“sktime”, “-r requirements.txt”, “-c constraints.txt”]) or the string
+path to a pip requirements file on the local filesystem
+(e.g. “requirements.txt”)</p>
+</dd>
+<dt><strong>extra_pip_requirements</strong><span class="classifier">Union[Iterable, str], optional (default=None)</span></dt><dd><p>Either an iterable of pip requirement strings
+(e.g. [“pandas”, “-r requirements.txt”, “-c constraints.txt”]) or the string
+path to a pip requirements file on the local filesystem
+(e.g. “requirements.txt”)</p>
+</dd>
+<dt><strong>serialization_format</strong><span class="classifier">str, optional (default=”pickle”)</span></dt><dd><p>The format in which to serialize the model. This should be one of the formats
+“pickle” or “cloudpickle”</p>
+</dd>
+<dt><strong>kwargs:</strong></dt><dd><p>Additional arguments for <code class="xref py py-class docutils literal notranslate"><span class="pre">mlflow.models.model.Model</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>A <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelInfo</span></code> instance that contains the</dt><dd></dd>
+<dt>metadata of the logged model.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLflow</span></code></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rc517616fbe34-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+</div>
+</div>
+<p><a class="reference external" href="https://www.mlflow.org/docs/latest/python_api/mlflow.models.html#mlflow.models.Model.log">https://www.mlflow.org/docs/latest/python_api/mlflow.models.html#mlflow.models.Model.log</a></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">mlflow</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlflow.utils.environment</span> <span class="kn">import</span> <span class="n">_mlflow_conda_env</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_airline</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.forecasting.arima</span> <span class="kn">import</span> <span class="n">ARIMA</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.utils</span> <span class="kn">import</span> <span class="n">mlflow_sktime</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_airline</span><span class="p">()</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forecaster</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span>  
+<span class="gp">... </span>    <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">suppress_warnings</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forecaster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  
+<span class="go">ARIMA(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">()</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">artifact_path</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_info</span> <span class="o">=</span> <span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sktime_model</span><span class="o">=</span><span class="n">forecaster</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">artifact_path</span><span class="o">=</span><span class="n">artifact_path</span><span class="p">)</span>  
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.utils.mlflow_sktime.load_model">
+<span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/utils/mlflow_sktime.py#L453-L524"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.utils.mlflow_sktime.load_model" title="Link to this definition">#</a></dt>
+<dd><p>Load a sktime model from a local file or a run.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>model_uri</strong><span class="classifier">str</span></dt><dd><p>The location, in URI format, of the MLflow model. For example:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/Users/me/path/to/local/model</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">relative/path/to/local/model</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s3://my_bucket/path/to/model</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runs:/&lt;mlflow_run_id&gt;/run-relative/path/to/model</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mlflow-artifacts:/path/to/model</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>For more information about supported URI schemes, see
+<a class="reference external" href="https://www.mlflow.org/docs/latest/tracking.html#artifact-locations">Referencing Artifacts</a>.</p>
+</dd>
+<dt><strong>dst_path</strong><span class="classifier">str, optional (default=None)</span></dt><dd><p>The local filesystem path to which to download the model artifact.This
+directory must already exist. If unspecified, a local output path will
+be created.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>A sktime model instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r48e374a530c8-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+</div>
+</div>
+<p><a class="reference external" href="https://www.mlflow.org/docs/latest/python_api/mlflow.models.html#mlflow.models.Model.load">https://www.mlflow.org/docs/latest/python_api/mlflow.models.html#mlflow.models.Model.load</a></p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_airline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.forecasting.arima</span> <span class="kn">import</span> <span class="n">ARIMA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.utils</span> <span class="kn">import</span> <span class="n">mlflow_sktime</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_airline</span><span class="p">()</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forecaster</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span>  
+<span class="gp">... </span>    <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">suppress_warnings</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forecaster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  
+<span class="go">ARIMA(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span>  
+<span class="gp">... </span>    <span class="n">sktime_model</span><span class="o">=</span><span class="n">forecaster</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">path</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loaded_model</span> <span class="o">=</span> <span class="n">mlflow_sktime</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_uri</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>  
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.utils.mlflow_sktime.get_default_pip_requirements"><code class="docutils literal notranslate"><span class="pre">get_default_pip_requirements</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.utils.mlflow_sktime.get_default_conda_env"><code class="docutils literal notranslate"><span class="pre">get_default_conda_env</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.utils.mlflow_sktime.save_model"><code class="docutils literal notranslate"><span class="pre">save_model</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.utils.mlflow_sktime.log_model"><code class="docutils literal notranslate"><span class="pre">log_model</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.utils.mlflow_sktime.load_model"><code class="docutils literal notranslate"><span class="pre">load_model</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

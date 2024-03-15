@@ -1,0 +1,12 @@
+﻿ThetaLinesTransformer
+=======================================================================
+
+.. currentmodule:: sktime.transformations.series.theta
+
+.. autoclass:: ThetaLinesTransformer
+
+.. include:: sktime.transformations.series.theta.ThetaLinesTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

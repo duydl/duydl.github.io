@@ -1,0 +1,12 @@
+﻿SummaryClassifier
+===================================================================
+
+.. currentmodule:: sktime.classification.feature_based
+
+.. autoclass:: SummaryClassifier
+
+.. include:: sktime.classification.feature_based.SummaryClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

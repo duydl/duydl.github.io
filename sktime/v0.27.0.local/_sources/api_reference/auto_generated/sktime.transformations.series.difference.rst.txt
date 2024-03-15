@@ -1,0 +1,7 @@
+sktime.transformations.series.difference module
+===============================================
+
+.. automodule:: sktime.transformations.series.difference
+   :members:
+   :undoc-members:
+   :show-inheritance:

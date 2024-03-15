@@ -1,0 +1,12 @@
+﻿InceptionTimeRegressor
+====================================================================
+
+.. currentmodule:: sktime.regression.deep_learning
+
+.. autoclass:: InceptionTimeRegressor
+
+.. include:: sktime.regression.deep_learning.InceptionTimeRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

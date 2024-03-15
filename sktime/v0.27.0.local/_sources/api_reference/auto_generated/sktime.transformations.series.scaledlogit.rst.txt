@@ -1,0 +1,7 @@
+sktime.transformations.series.scaledlogit module
+================================================
+
+.. automodule:: sktime.transformations.series.scaledlogit
+   :members:
+   :undoc-members:
+   :show-inheritance:

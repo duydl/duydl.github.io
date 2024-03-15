@@ -1,0 +1,7 @@
+sktime.networks.resnet module
+=============================
+
+.. automodule:: sktime.networks.resnet
+   :members:
+   :undoc-members:
+   :show-inheritance:

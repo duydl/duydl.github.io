@@ -1,0 +1,7 @@
+sktime.split.cutoff module
+==========================
+
+.. automodule:: sktime.split.cutoff
+   :members:
+   :undoc-members:
+   :show-inheritance:

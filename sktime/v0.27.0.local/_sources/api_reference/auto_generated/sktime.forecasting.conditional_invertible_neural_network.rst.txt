@@ -1,0 +1,7 @@
+sktime.forecasting.conditional\_invertible\_neural\_network module
+==================================================================
+
+.. automodule:: sktime.forecasting.conditional_invertible_neural_network
+   :members:
+   :undoc-members:
+   :show-inheritance:

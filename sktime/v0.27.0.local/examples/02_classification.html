@@ -1,0 +1,3104 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Time Series Classification, Regression, Clustering &amp; More &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/02_classification';</script>
+    <script src="../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multi-variate time series classification using a simple CNN" href="02a_classification_multivariate_cnn.html" />
+    <link rel="prev" title="Hierarchical, Global, and Panel Forecasting with sktime" href="01c_forecasting_hierarchical_global.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../user_guide.html">User Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_sktime_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_forecasting.html">Forecasting with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01a_forecasting_sklearn.html">Forecasting with sktime - appendix: forecasting, supervised regression, and pitfalls in confusing the two</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01b_forecasting_proba.html">Probabilistic Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01c_forecasting_hierarchical_global.html">Hierarchical, Global, and Panel Forecasting with <code class="docutils literal notranslate"><span class="pre">sktime</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Time Series Classification, Regression, Clustering &amp; More</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02a_classification_multivariate_cnn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="02b_classification_multivariate_lstmfcn.html">Multi-variate time series classification using a simple CNN</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="02c_classification_multivariate_inceptiontime.html">Multi-variate time series classification using InceptionTime</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03_transformers.html">Overview of this notebook</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03a_transformers_cheat_sheet.html">Transformers cheat sheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03b_forecasting_transformers_pipelines_tuning.html">4 Forecasting Pipelines, Tuning, and AutoML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking.html">Benchmarking with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_benchmarking_v2.html">Benchmarking - comparing estimator performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AA_datatypes_and_datasets.html">In-memory data representations and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="catch22.html">The Canonical Time-series Characteristics (catch22) transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="channel_selection.html">Channel Selection in Multivariate Time Series Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="dictionary_based_classification.html">Dictionary based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="early_classification.html">Early time series classification with sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction_with_tsfresh.html">Feature extraction with tsfresh transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Time series interpolating with sktime</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="interval_based_classification.html">Interval based time series classification in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading_data.html">Loading data into sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minirocket.html">MiniRocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partition_based_clustering.html">Partition based time series clustering in sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plateau_finder.html">Demo of the PlateauFinder transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocket.html">Demo of ROCKET transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segmentation_with_clasp.html">Time Series Segmentation with sktime and ClaSP</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="signature_method.html">The Signature Method with Sktime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theta_transform.html">Theta Lines transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="window_splitters.html">Window Splitters in Sktime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator_overview.html">Estimator Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary of Common Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../related_software.html">Related Software</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../users.html" class="nav-link">Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Time Series...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://mybinder.org/v2/gh/sktime/sktime/v0.27.0?filepath=examples/02_classification.ipynb"><img alt="binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<section id="Time-Series-Classification,-Regression,-Clustering-&amp;-More">
+<h1>Time Series Classification, Regression, Clustering &amp; More<a class="headerlink" href="#Time-Series-Classification,-Regression,-Clustering-&-More" title="Link to this heading">#</a></h1>
+<section id="Overview-of-this-notebook">
+<h2>Overview of this notebook<a class="headerlink" href="#Overview-of-this-notebook" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Introduction to time series classification, regression, clustering</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sktime</span></code> data format fo “time series panels” = collections of time series</p></li>
+<li><p>Basic vignettes for TSC, TSR, TSCl</p></li>
+<li><p>Advanced vignettes - pipelines, ensembles, tuning</p></li>
+</ul>
+<p>Deal with <em>collections of time series</em> = “panel data”</p>
+<p>Classification = try to assign one <em>category</em> per time series, after training on time series/category examples</p>
+<ul class="simple">
+<li><p>Example: Daily energy consumption profile over time - Predict season, e.g., winter/summer, or type of consumer</p></li>
+</ul>
+<p>Regression = try to assign one <em>category</em> per time series, after training on time series/category examples</p>
+<ul class="simple">
+<li><p>Example: Temperature/pressure/time profile of chemical reactor - Predict total purity (fraction of 1)</p></li>
+</ul>
+<p>Clustering = put different time series in a small number of similarity buckets</p>
+<ul class="simple">
+<li><p>Example: Service Level Agreement (SLA) Breaches - Group the collected Panel data to identify common reasons for SLA failures</p></li>
+</ul>
+<p>Time Series Classification:</p>
+<p><img alt="time series classification" class="no-scaled-link" src="../_images/tsc.png" style="width: 600px;" /> <a class="reference external" href="./img/tsc.png">​</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Increase display width</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.width&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="2.1-Panel-data---sktime-data-formats">
+<h3>2.1 Panel data - <code class="docutils literal notranslate"><span class="pre">sktime</span></code> data formats<a class="headerlink" href="#2.1-Panel-data---sktime-data-formats" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Panel</span></code> is an abstract data type where the values are observed for:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">instance</span></code>, e.g., patient</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">variable</span></code>, e.g., blood pressure, body temperature of the patient</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>/<code class="docutils literal notranslate"><span class="pre">index</span></code>, e.g., January 12, 2023 (usually but not necessarily a time index!)</p></li>
+</ul>
+<p>One value X is: “patient ‘A’ had blood pressure ‘X’ on January 12, 2023”</p>
+<p>Time series classification, regression, clustering: slices <code class="docutils literal notranslate"><span class="pre">Panel</span></code> data by instance</p>
+<p>Preferred format 1: <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> with 2-level <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code>, (instance, time) and columns: variables</p>
+<p>Preferred format 2: 3D <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code> with index (instance, variable, time)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sktime</span></code> supports and recognizes multiple data formats for convenience and internal use, e.g., <code class="docutils literal notranslate"><span class="pre">dask</span></code>, <code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></li>
+<li><p>abstract data type = “scitype”; in-memory specification = “mtype”</p></li>
+<li><p>More information in tutorial on <a class="reference external" href="https://www.sktime.net/en/latest/examples/AA_datatypes_and_datasets.html#In-memory-data-representations-and-data-loading">in-memory data representations and data loading</a></p></li>
+</ul>
+</section>
+</section>
+<section id="2.1.1-Preferred-format-1---pd-multiindex-specification">
+<h2>2.1.1 Preferred format 1 - <code class="docutils literal notranslate"><span class="pre">pd-multiindex</span></code> specification<a class="headerlink" href="#2.1.1-Preferred-format-1---pd-multiindex-specification" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pd-multiindex</span></code> = <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> with 2-level <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code>, (instance, time) and columns: variables</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_italy_power_demand</span>
+
+<span class="c1"># load an example time series panel in pd-multiindex mtype</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;pd-multiindex&quot;</span><span class="p">)</span>
+
+<span class="c1"># renaming columns for illustrative purposes</span>
+<span class="n">X</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;total_power_demand&quot;</span><span class="p">]</span>
+<span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;day_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;hour_of_day&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>The Italy power demand dataset has:</p>
+<ul class="simple">
+<li><p>1096 individual time series instances = single days of total power demand (mean subtracted)</p></li>
+<li><p>one single variable per time series instances, <code class="docutils literal notranslate"><span class="pre">total_power_demand</span></code></p>
+<ul>
+<li><p>total power demand on that day, in that hourly period</p></li>
+<li><p>Since there’s only one column, it is a univariate dataset</p></li>
+</ul>
+</li>
+<li><p>individual time series are observed at 24 time (period) points (the same number for all instances)</p></li>
+</ul>
+<p>In the dataset, days are jumbled and of different scope (independent sampling). * considered independent - because <code class="docutils literal notranslate"><span class="pre">hour_of_day</span></code> in one sample doesn’t affect <code class="docutils literal notranslate"><span class="pre">hour_of_day</span></code> in another * for task, e.g., “identify season or weekday/weekend from pattern”</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>total_power_demand</th>
+    </tr>
+    <tr>
+      <th>day_ID</th>
+      <th>hour_of_day</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">0</th>
+      <th>0</th>
+      <td>-0.710518</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.183320</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.372442</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1.593083</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-1.467002</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">1095</th>
+      <th>19</th>
+      <td>0.180490</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>-0.094058</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.729587</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.210995</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>-0.002542</td>
+    </tr>
+  </tbody>
+</table>
+<p>26304 rows × 1 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_basic_motions</span>
+
+<span class="c1"># load an example time series panel in pd-multiindex mtype</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_basic_motions</span><span class="p">(</span><span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;pd-multiindex&quot;</span><span class="p">)</span>
+
+<span class="c1"># renaming columns for illustrative purposes</span>
+<span class="n">X</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;accel_1&quot;</span><span class="p">,</span> <span class="s2">&quot;accel_2&quot;</span><span class="p">,</span> <span class="s2">&quot;accel_3&quot;</span><span class="p">,</span> <span class="s2">&quot;gyro_1&quot;</span><span class="p">,</span> <span class="s2">&quot;gyro_2&quot;</span><span class="p">,</span> <span class="s2">&quot;gyro_3&quot;</span><span class="p">]</span>
+<span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;trial_no&quot;</span><span class="p">,</span> <span class="s2">&quot;timepoint&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>The basic motions dataset has:</p>
+<ul class="simple">
+<li><p>80 individual time series instances = trials = person engaging in an activity like running, badminton, etc.</p></li>
+<li><p>six variables per time series instance, <code class="docutils literal notranslate"><span class="pre">dim_0</span></code> to <code class="docutils literal notranslate"><span class="pre">dim_5</span></code> (renamed according to the values they represent)</p>
+<ul>
+<li><p>3 accelerometer and 3 gyrometer measurements</p></li>
+<li><p>hence a multivariate dataset</p></li>
+</ul>
+</li>
+<li><p>individual time series are observed at 100 time points (the same number for all instances)</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The outermost index represents the instance number</span>
+<span class="c1"># whereas the inner index represents the index of the particular index</span>
+<span class="c1"># within that instance.</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>accel_1</th>
+      <th>accel_2</th>
+      <th>accel_3</th>
+      <th>gyro_1</th>
+      <th>gyro_2</th>
+      <th>gyro_3</th>
+    </tr>
+    <tr>
+      <th>trial_no</th>
+      <th>timepoint</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">0</th>
+      <th>0</th>
+      <td>0.079106</td>
+      <td>0.394032</td>
+      <td>0.551444</td>
+      <td>0.351565</td>
+      <td>0.023970</td>
+      <td>0.633883</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.079106</td>
+      <td>0.394032</td>
+      <td>0.551444</td>
+      <td>0.351565</td>
+      <td>0.023970</td>
+      <td>0.633883</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.903497</td>
+      <td>-3.666397</td>
+      <td>-0.282844</td>
+      <td>-0.095881</td>
+      <td>-0.319605</td>
+      <td>0.972131</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.116125</td>
+      <td>-0.656101</td>
+      <td>0.333118</td>
+      <td>1.624657</td>
+      <td>-0.569962</td>
+      <td>1.209171</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.638200</td>
+      <td>1.405135</td>
+      <td>0.393875</td>
+      <td>1.187864</td>
+      <td>-0.271664</td>
+      <td>1.739182</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">79</th>
+      <th>95</th>
+      <td>28.459024</td>
+      <td>-16.633770</td>
+      <td>3.631869</td>
+      <td>8.978229</td>
+      <td>-3.611533</td>
+      <td>-1.491489</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>10.260094</td>
+      <td>0.102775</td>
+      <td>1.269261</td>
+      <td>-1.645964</td>
+      <td>-3.377157</td>
+      <td>1.283746</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>4.316471</td>
+      <td>-3.574319</td>
+      <td>2.063831</td>
+      <td>-1.717875</td>
+      <td>-1.843054</td>
+      <td>0.484734</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>0.704446</td>
+      <td>-4.920444</td>
+      <td>2.851857</td>
+      <td>-2.982977</td>
+      <td>-0.809665</td>
+      <td>-0.721774</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>-2.074749</td>
+      <td>-6.892377</td>
+      <td>4.848379</td>
+      <td>-1.350330</td>
+      <td>-1.203844</td>
+      <td>-1.776470</td>
+    </tr>
+  </tbody>
+</table>
+<p>8000 rows × 6 columns</p>
+</div></div>
+</div>
+<p>pandas provides a simple way to access a range of value in the multi-indexed dataframe:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select:</span>
+<span class="c1"># * the fourth variable (gyroscope 1)</span>
+<span class="c1"># * of the first instance (trial 1 = 0 in python)</span>
+<span class="c1"># * values at all 100 timestamps</span>
+<span class="c1">#</span>
+<span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;gyro_1&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+timepoint
+0     0.351565
+1     0.351565
+2    -0.095881
+3     1.624657
+4     1.187864
+        ...
+95    0.039951
+96   -0.029297
+97    0.000000
+98    0.000000
+99   -0.007990
+Name: gyro_1, Length: 100, dtype: float64
+</pre></div></div>
+</div>
+<p>Or if you want to access the individual values:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select:</span>
+<span class="c1"># * the fifth time time point (5 = 4 in python, because of 0-indexing)</span>
+<span class="c1"># * the third variable (accelerometer 3)</span>
+<span class="c1"># * of the forty-third instance (trial 43 = 42 in python)</span>
+
+<span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">&quot;accel_3&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-1.27952
+</pre></div></div>
+</div>
+</section>
+<section id="2.1.2-preferred-format-2---numpy3D-specification">
+<h2>2.1.2 preferred format 2 - <code class="docutils literal notranslate"><span class="pre">numpy3D</span></code> specification<a class="headerlink" href="#2.1.2-preferred-format-2---numpy3D-specification" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">numpy3D</span></code> = 3D <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code> with index (instance, variable, time)</p>
+<p>instance/time index is interpreted as integer</p>
+<p>IMPORTANT: unlike <code class="docutils literal notranslate"><span class="pre">pd-multiindex</span></code>, this assumes:</p>
+<ul class="simple">
+<li><p>all individual series have the same length</p></li>
+<li><p>all individual series have the same index</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_italy_power_demand</span>
+
+<span class="c1"># load an example time series panel in numpy mtype</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The Italy power demand dataset has:</p>
+<ul class="simple">
+<li><p>1096 individual time series instances = single days of total power demand (mean subtracted)</p></li>
+<li><p>one single variable per time series instances, unnamed in numpy</p></li>
+<li><p>individual time series are observed at 24 time (period) points (the same number for all instances)</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (num_instances, num_variables, length)</span>
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1096, 1, 24)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_basic_motions</span>
+
+<span class="c1"># load an example time series panel in numpy mtype</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_basic_motions</span><span class="p">(</span><span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The basic motions dataset has:</p>
+<ul class="simple">
+<li><p>80 individual time series instances = trials = person engaging in activity (running, badminton, etc)</p></li>
+<li><p>six variables per time series instance, unnamed in numpy</p></li>
+<li><p>individual time series are observed at 100 time points (the same number for all instances)</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(80, 6, 100)
+</pre></div></div>
+</div>
+<section id="2.2-Time-Series-Classification,-Regression,-Clustering---Basic-Vignettes">
+<h3>2.2 Time Series Classification, Regression, Clustering - Basic Vignettes<a class="headerlink" href="#2.2-Time-Series-Classification,-Regression,-Clustering---Basic-Vignettes" title="Link to this heading">#</a></h3>
+<p>Above tasks are very similar to “tabular” classification, regression, clustering, as in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code></p>
+<p>Main distinction: * in “tabular” classification etc, one (feature) instance row vector of features * in TSC, one (feature) instance is a full time series, possibly unequal length, distinct index set</p>
+<p><img alt="image0" src="../_images/tsc.png" /></p>
+<p>More formally:</p>
+<ul class="simple">
+<li><p>“tabular” classification:</p>
+<ul>
+<li><p>training pairs <span class="math notranslate nohighlight">\((x_1, y_1), \dots, (x_n, y_n)\)</span></p>
+<ul>
+<li><p>where <span class="math notranslate nohighlight">\(x_i\)</span> are rows of a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> (same col types)</p></li>
+<li><p>and <span class="math notranslate nohighlight">\(y_i \in \mathcal{C}\)</span> for a finite set <span class="math notranslate nohighlight">\(\mathcal{C}\)</span></p></li>
+</ul>
+</li>
+<li><p>is used to train a classifier that</p>
+<ul>
+<li><p>for a new <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> row <span class="math notranslate nohighlight">\(x_*\)</span></p></li>
+<li><p>predicts <span class="math notranslate nohighlight">\(y_* \in \mathcal{C}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>time series classification:</p>
+<ul>
+<li><p>training pairs <span class="math notranslate nohighlight">\((x_1, y_1), \dots, (x_n, y_n)\)</span></p>
+<ul>
+<li><p>where <span class="math notranslate nohighlight">\(x_i\)</span> are time series instances, from a certain domain</p></li>
+<li><p>and <span class="math notranslate nohighlight">\(y_i \in \mathcal{C}\)</span> for a finite set <span class="math notranslate nohighlight">\(\mathcal{C}\)</span></p></li>
+</ul>
+</li>
+<li><p>is used to train a classifier that</p>
+<ul>
+<li><p>for a new time series instance <span class="math notranslate nohighlight">\(x_*\)</span></p></li>
+<li><p>predicts <span class="math notranslate nohighlight">\(y_* \in \mathcal{C}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>very similar for time series regression, clustering - exercise left to reader :-)</p>
+<p><code class="docutils literal notranslate"><span class="pre">sktime</span></code> design implications:</p>
+<ul class="simple">
+<li><p>need representation of collections of time series (panels), see tutorial <a class="reference internal" href="AA_datatypes_and_datasets.html"><span class="doc">In-memory data representations and data loading</span></a> for more details on representation of Panel data.</p>
+<ul>
+<li><p>same as in “adjacent” learning tasks, e.g., panel forecasting</p></li>
+<li><p>same as for transformation estimators</p></li>
+</ul>
+</li>
+<li><p>algorithms that use sequentiality, can deal with unequal length, missing values etc</p></li>
+<li><p>algorithms usually based on distances or kernels between time series - need to cover that in framework</p></li>
+<li><p>but we can use familiar <code class="docutils literal notranslate"><span class="pre">fit</span></code> / <code class="docutils literal notranslate"><span class="pre">predict</span></code> and <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> / <code class="docutils literal notranslate"><span class="pre">scikit-base</span></code> interface!</p></li>
+</ul>
+</section>
+</section>
+<section id="2.2.3-Time-Series-Classification---deployment-vignette">
+<h2>2.2.3 Time Series Classification - deployment vignette<a class="headerlink" href="#2.2.3-Time-Series-Classification---deployment-vignette" title="Link to this heading">#</a></h2>
+<p>Basic deployment vignette for TSC:</p>
+<ol class="arabic simple">
+<li><p>load/setup training data, <code class="docutils literal notranslate"><span class="pre">X</span></code> in a <code class="docutils literal notranslate"><span class="pre">Panel</span></code> (more specifically <code class="docutils literal notranslate"><span class="pre">numpy3D</span></code>) format, <code class="docutils literal notranslate"><span class="pre">y</span></code> as 1D <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code></p></li>
+<li><p>load/setup new data for prediction (can be done after 3 too)</p></li>
+<li><p>specify the classifier using <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>-like syntax</p></li>
+<li><p>fit classifier to training data, <code class="docutils literal notranslate"><span class="pre">fit(X,</span> <span class="pre">y)</span></code></p></li>
+<li><p>predict labels on new data, <code class="docutils literal notranslate"><span class="pre">predict(X_new)</span></code></p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># steps 1, 2 - prepare osuleaf dataset (train and new)</span>
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_italy_power_demand</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+<span class="n">X_new</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is in numpy3D format, but could also be pd-multiindex or other</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(67, 1, 24)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y is a 1D np.ndarray of labels - same length as number of instances in X_train</span>
+<span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(67,)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># step 3 - specify the classifier</span>
+<span class="kn">from</span> <span class="nn">sktime.classification.distance_based</span> <span class="kn">import</span> <span class="n">KNeighborsTimeSeriesClassifier</span>
+
+<span class="c1"># example 1 - 3-NN with simple dynamic time warping distance (requires numba)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsTimeSeriesClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># example 2 - custom distance:</span>
+<span class="c1"># 3-nearest neighbour classifier with Euclidean distance (on flattened time series)</span>
+<span class="c1"># (requires scipy)</span>
+<span class="kn">from</span> <span class="nn">sktime.classification.distance_based</span> <span class="kn">import</span> <span class="n">KNeighborsTimeSeriesClassifier</span>
+<span class="kn">from</span> <span class="nn">sktime.dists_kernels</span> <span class="kn">import</span> <span class="n">FlatDist</span><span class="p">,</span> <span class="n">ScipyDist</span>
+
+<span class="n">eucl_dist</span> <span class="o">=</span> <span class="n">FlatDist</span><span class="p">(</span><span class="n">ScipyDist</span><span class="p">())</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsTimeSeriesClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">eucl_dist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>we could specify any <code class="docutils literal notranslate"><span class="pre">sktime</span></code> classifier here - the rest remains the same!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># all classifiers is scikit-learn / scikit-base compatible!</span>
+<span class="c1"># nested parameter interface via get_params, set_params</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;algorithm&#39;: &#39;brute&#39;,
+ &#39;distance&#39;: FlatDist(transformer=ScipyDist()),
+ &#39;distance_mtype&#39;: None,
+ &#39;distance_params&#39;: None,
+ &#39;leaf_size&#39;: 30,
+ &#39;n_jobs&#39;: None,
+ &#39;n_neighbors&#39;: 3,
+ &#39;pass_train_distances&#39;: False,
+ &#39;weights&#39;: &#39;uniform&#39;,
+ &#39;distance__transformer&#39;: ScipyDist(),
+ &#39;distance__transformer__colalign&#39;: &#39;intersect&#39;,
+ &#39;distance__transformer__metric&#39;: &#39;euclidean&#39;,
+ &#39;distance__transformer__metric_kwargs&#39;: None,
+ &#39;distance__transformer__p&#39;: 2,
+ &#39;distance__transformer__var_weights&#39;: None}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># step 4 - fit/train the classifier</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<style>#sk-8caf728f-3734-406a-a91b-bd8571f39855 {color: black;background-color: white;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 pre{padding: 0;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-toggleable {background-color: white;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-estimator:hover {background-color: #d4ebff;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-item {z-index: 1;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-parallel-item:only-child::after {width: 0;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-8caf728f-3734-406a-a91b-bd8571f39855 div.sk-text-repr-fallback {display: none;}</style><div id='sk-8caf728f-3734-406a-a91b-bd8571f39855' class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsTimeSeriesClassifier(distance=FlatDist(transformer=ScipyDist()),
+                               n_neighbors=3)</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class='sk-label-container'><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('e353be50-5527-43ed-8038-8d37418da170') type="checkbox" ><label for=UUID('e353be50-5527-43ed-8038-8d37418da170') class='sk-toggleable__label sk-toggleable__label-arrow'>KNeighborsTimeSeriesClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsTimeSeriesClassifier(distance=FlatDist(transformer=ScipyDist()),
+                               n_neighbors=3)</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('8c4f22b4-9a4b-44e4-a6bb-152cc66b9766') type="checkbox" ><label for=UUID('8c4f22b4-9a4b-44e4-a6bb-152cc66b9766') class='sk-toggleable__label sk-toggleable__label-arrow'>ScipyDist</label><div class="sk-toggleable__content"><pre>ScipyDist()</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the classifier is now fitted</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">is_fitted</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># and we can inspect fitted parameters if we like</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">get_fitted_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;classes&#39;: array([&#39;1&#39;, &#39;2&#39;], dtype=&#39;&lt;U1&#39;),
+ &#39;fit_time&#39;: 3,
+ &#39;knn_estimator&#39;: KNeighborsClassifier(algorithm=&#39;brute&#39;, metric=&#39;precomputed&#39;, n_neighbors=3),
+ &#39;n_classes&#39;: 2,
+ &#39;knn_estimator__classes&#39;: array([&#39;1&#39;, &#39;2&#39;], dtype=&#39;&lt;U1&#39;),
+ &#39;knn_estimator__effective_metric&#39;: &#39;precomputed&#39;,
+ &#39;knn_estimator__effective_metric_params&#39;: {},
+ &#39;knn_estimator__n_features_in&#39;: 67,
+ &#39;knn_estimator__n_samples_fit&#39;: 67,
+ &#39;knn_estimator__outputs_2d&#39;: False}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># step 5 - predict labels on new data</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y_pred is an 1D np.ndarray, similar to sklearn classification output</span>
+<span class="n">y_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;2&#39;, &#39;2&#39;, &#39;2&#39;, ..., &#39;2&#39;, &#39;2&#39;, &#39;2&#39;], dtype=&#39;&lt;U1&#39;)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># predictions and unique counts, for illustration</span>
+<span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">unique</span><span class="p">,</span> <span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([&#39;1&#39;, &#39;2&#39;], dtype=&#39;&lt;U1&#39;), array([510, 519], dtype=int64))
+</pre></div></div>
+</div>
+<p>all together in one cell:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># steps 1, 2 - prepare osuleaf dataset (train and new)</span>
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_italy_power_demand</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+<span class="n">X_new</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+
+<span class="c1"># step 3 - specify the classifier</span>
+<span class="kn">from</span> <span class="nn">sktime.classification.distance_based</span> <span class="kn">import</span> <span class="n">KNeighborsTimeSeriesClassifier</span>
+<span class="kn">from</span> <span class="nn">sktime.dists_kernels</span> <span class="kn">import</span> <span class="n">FlatDist</span><span class="p">,</span> <span class="n">ScipyDist</span>
+
+<span class="n">eucl_dist</span> <span class="o">=</span> <span class="n">FlatDist</span><span class="p">(</span><span class="n">ScipyDist</span><span class="p">())</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsTimeSeriesClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">eucl_dist</span><span class="p">)</span>
+
+<span class="c1"># step 4 - fit/train the classifier</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># step 5 - predict labels on new data</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2.2.4-Time-Series-Classification---simple-evaluation-vignette">
+<h2>2.2.4 Time Series Classification - simple evaluation vignette<a class="headerlink" href="#2.2.4-Time-Series-Classification---simple-evaluation-vignette" title="Link to this heading">#</a></h2>
+<p>Evaluation is similar to <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> classifiers - we split a dataset and evaluate performance on the test set.</p>
+<p>This includes as additional steps:</p>
+<ul class="simple">
+<li><p>splitting the initial, historical data, e.g., using <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code></p></li>
+<li><p>comparing predictions with a held out data set</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.classification.distance_based</span> <span class="kn">import</span> <span class="n">KNeighborsTimeSeriesClassifier</span>
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_italy_power_demand</span>
+
+<span class="c1"># data should be split into train/test</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+
+<span class="c1"># step 3-5 are the same</span>
+<span class="kn">from</span> <span class="nn">sktime.classification.distance_based</span> <span class="kn">import</span> <span class="n">KNeighborsTimeSeriesClassifier</span>
+<span class="kn">from</span> <span class="nn">sktime.dists_kernels</span> <span class="kn">import</span> <span class="n">FlatDist</span><span class="p">,</span> <span class="n">ScipyDist</span>
+
+<span class="n">eucl_dist</span> <span class="o">=</span> <span class="n">FlatDist</span><span class="p">(</span><span class="n">ScipyDist</span><span class="p">())</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsTimeSeriesClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">eucl_dist</span><span class="p">)</span>
+
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># for simplest evaluation, compare ground truth to predictions</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.956268221574344
+</pre></div></div>
+</div>
+</section>
+<section id="2.2.5-Time-Series-Regression---basic-vignettes">
+<h2>2.2.5 Time Series Regression - basic vignettes<a class="headerlink" href="#2.2.5-Time-Series-Regression---basic-vignettes" title="Link to this heading">#</a></h2>
+<p>TSR vignettes are exactly the same as TSC, except that:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> in <code class="docutils literal notranslate"><span class="pre">fit</span></code> input and <code class="docutils literal notranslate"><span class="pre">predict</span></code> output should be float 1D <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>, not categorical</p></li>
+<li><p>other algorithms are commonly used and/or performant</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># steps 1, 2 - prepare dataset (train and new)</span>
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_covid_3month</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_covid_3month</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+<span class="n">X_new</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_covid_3month</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">X_new</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># smaller dataset for faster notebook runtime</span>
+
+<span class="c1"># step 3 - specify the regressor</span>
+<span class="kn">from</span> <span class="nn">sktime.regression.distance_based</span> <span class="kn">import</span> <span class="n">KNeighborsTimeSeriesRegressor</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsTimeSeriesRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">eucl_dist</span><span class="p">)</span>
+
+<span class="c1"># step 4 - fit/train the regressor</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># step 5 - predict labels on new data</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span>  <span class="c1"># predictions are array of float</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([0.02957762, 0.0065062 , 0.00183655])
+</pre></div></div>
+</div>
+</section>
+<section id="5.2.6-Time-Series-Clustering---basic-vignettes">
+<h2>5.2.6 Time Series Clustering - basic vignettes<a class="headerlink" href="#5.2.6-Time-Series-Clustering---basic-vignettes" title="Link to this heading">#</a></h2>
+<p>TS clustering is similar - 1st step is also <code class="docutils literal notranslate"><span class="pre">fit</span></code>, but unsupervised</p>
+<p>i.e., no labels <code class="docutils literal notranslate"><span class="pre">y</span></code>, and next step is inspecting clusters</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># step 1 - prepare dataset (train and new)</span>
+<span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_italy_power_demand</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy3D&quot;</span><span class="p">)</span>
+
+<span class="c1"># step 2 - specify the clusterer</span>
+<span class="kn">from</span> <span class="nn">sktime.clustering.dbscan</span> <span class="kn">import</span> <span class="n">TimeSeriesDBSCAN</span>
+<span class="kn">from</span> <span class="nn">sktime.dists_kernels</span> <span class="kn">import</span> <span class="n">FlatDist</span><span class="p">,</span> <span class="n">ScipyDist</span>
+
+<span class="n">eucl_dist</span> <span class="o">=</span> <span class="n">FlatDist</span><span class="p">(</span><span class="n">ScipyDist</span><span class="p">())</span>
+<span class="n">clst</span> <span class="o">=</span> <span class="n">TimeSeriesDBSCAN</span><span class="p">(</span><span class="n">distance</span><span class="o">=</span><span class="n">eucl_dist</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># step 3 - fit the clusterer to the data</span>
+<span class="n">clst</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># step 4 - inspect the clustering</span>
+<span class="n">clst</span><span class="o">.</span><span class="n">get_fitted_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;core_sample_indices&#39;: array([ 0,  1,  3,  4,  6,  7,  8,  9, 10, 11, 12, 13, 14, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 50, 52, 53, 54, 55, 56, 57,
+        58, 60, 61, 62, 63, 64, 65], dtype=int64),
+ &#39;dbscan&#39;: DBSCAN(eps=2, metric=&#39;precomputed&#39;),
+ &#39;fit_time&#39;: 4,
+ &#39;labels&#39;: array([ 0,  0, -1,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  1,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0, -1],
+       dtype=int64),
+ &#39;dbscan__components&#39;: array([[0.        , 2.21059984, 7.22653506, ..., 2.43397663, 3.42512865,
+         5.77701453],
+        [2.21059984, 0.        , 7.31863575, ..., 0.8952782 , 2.01224344,
+         5.73199202],
+        [2.98199582, 1.8413087 , 7.5785501 , ..., 1.5676963 , 1.41086552,
+         5.96418696],
+        ...,
+        [3.78429193, 2.68599227, 6.32367754, ..., 2.71202763, 1.36130647,
+         4.47124464],
+        [2.43397663, 0.8952782 , 7.59888847, ..., 0.        , 1.98453315,
+         5.99830821],
+        [3.42512865, 2.01224344, 7.02761342, ..., 1.98453315, 0.        ,
+         5.27610504]]),
+ &#39;dbscan__core_sample_indices&#39;: array([ 0,  1,  3,  4,  6,  7,  8,  9, 10, 11, 12, 13, 14, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 50, 52, 53, 54, 55, 56, 57,
+        58, 60, 61, 62, 63, 64, 65], dtype=int64),
+ &#39;dbscan__labels&#39;: array([ 0,  0, -1,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  1,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0, -1],
+       dtype=int64),
+ &#39;dbscan__n_features_in&#39;: 67}
+</pre></div></div>
+</div>
+<section id="2.3-Searching-for-estimators,-estimator-tags">
+<h3>2.3 Searching for estimators, estimator tags<a class="headerlink" href="#2.3-Searching-for-estimators,-estimator-tags" title="Link to this heading">#</a></h3>
+<p>Estimators in <code class="docutils literal notranslate"><span class="pre">sktime</span></code> are tagged.</p>
+<p>Tags starting with “capability” indicate things the estimator can or cannot do, e.g.,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;capability:missing_values&quot;</span></code> - dealing with missing values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;capability:multivariate&quot;</span></code> - dealing with multivariate input</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;capability:unequal_length&quot;</span></code> - deaing with time series panels where the individual time series have unequal length and/or unequal index</p></li>
+</ul>
+<p>all tags for an estimator scitype (e.g., classifier, regressor) can be inspected by <code class="docutils literal notranslate"><span class="pre">sktime.registry.all_tags</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.registry</span> <span class="kn">import</span> <span class="n">all_tags</span>
+
+<span class="n">all_tags</span><span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span> <span class="n">as_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>scitype</th>
+      <th>type</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>capability:contractable</td>
+      <td>classifier</td>
+      <td>bool</td>
+      <td>contract time setting, does the estimator supp...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>capability:missing_values</td>
+      <td>[classifier, early_classifier, param_est, regr...</td>
+      <td>bool</td>
+      <td>can the classifier handle missing data (NA, np...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>capability:multithreading</td>
+      <td>[classifier, early_classifier]</td>
+      <td>bool</td>
+      <td>can the classifier set n_jobs to use multiple ...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>capability:multivariate</td>
+      <td>[classifier, early_classifier, param_est, regr...</td>
+      <td>bool</td>
+      <td>can the classifier classify time series with 2...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>capability:predict_proba</td>
+      <td>classifier</td>
+      <td>bool</td>
+      <td>does the classifier implement a non-default pr...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>capability:train_estimate</td>
+      <td>classifier</td>
+      <td>bool</td>
+      <td>can the classifier estimate its performance on...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>capability:unequal_length</td>
+      <td>[classifier, early_classifier, regressor, tran...</td>
+      <td>bool</td>
+      <td>can the estimator handle unequal length time s...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>classifier_type</td>
+      <td>classifier</td>
+      <td>(list, [dictionary, distance, feature, hybrid,...</td>
+      <td>which type the classifier falls under in the t...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>valid estimator types are listed in the <code class="docutils literal notranslate"><span class="pre">all_tags</span></code> docstring, or <code class="docutils literal notranslate"><span class="pre">sktime.registry.BASE_CLASS_REGISTER</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.registry</span> <span class="kn">import</span> <span class="n">BASE_CLASS_REGISTER</span>
+
+<span class="c1"># get only fist table column, the list of types</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">BASE_CLASS_REGISTER</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&#39;object&#39;,
+ &#39;estimator&#39;,
+ &#39;aligner&#39;,
+ &#39;classifier&#39;,
+ &#39;clusterer&#39;,
+ &#39;early_classifier&#39;,
+ &#39;forecaster&#39;,
+ &#39;metric&#39;,
+ &#39;network&#39;,
+ &#39;param_est&#39;,
+ &#39;regressor&#39;,
+ &#39;series-annotator&#39;,
+ &#39;splitter&#39;,
+ &#39;transformer&#39;,
+ &#39;transformer-pairwise&#39;,
+ &#39;transformer-pairwise-panel&#39;,
+ &#39;distribution&#39;)
+</pre></div></div>
+</div>
+<p>to find all estimators of a certain type, use <code class="docutils literal notranslate"><span class="pre">sktime.registry.all_estimators</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list all classifiers in sktime</span>
+<span class="kn">from</span> <span class="nn">sktime.registry</span> <span class="kn">import</span> <span class="n">all_estimators</span>
+
+<span class="n">all_estimators</span><span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span> <span class="n">as_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Arsenal</td>
+      <td>&lt;class 'sktime.classification.kernel_based._ar...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BOSSEnsemble</td>
+      <td>&lt;class 'sktime.classification.dictionary_based...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BaggingClassifier</td>
+      <td>&lt;class 'sktime.classification.ensemble._baggin...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CNNClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.cn...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CanonicalIntervalForest</td>
+      <td>&lt;class 'sktime.classification.interval_based._...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Catch22Classifier</td>
+      <td>&lt;class 'sktime.classification.feature_based._c...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ClassifierPipeline</td>
+      <td>&lt;class 'sktime.classification.compose._pipelin...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ColumnEnsembleClassifier</td>
+      <td>&lt;class 'sktime.classification.compose._column_...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ComposableTimeSeriesForestClassifier</td>
+      <td>&lt;class 'sktime.classification.ensemble._ctsf.C...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ContractableBOSS</td>
+      <td>&lt;class 'sktime.classification.dictionary_based...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>DrCIF</td>
+      <td>&lt;class 'sktime.classification.interval_based._...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>DummyClassifier</td>
+      <td>&lt;class 'sktime.classification.dummy._dummy.Dum...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ElasticEnsemble</td>
+      <td>&lt;class 'sktime.classification.distance_based._...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>FCNClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.fc...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>FreshPRINCE</td>
+      <td>&lt;class 'sktime.classification.feature_based._f...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>HIVECOTEV1</td>
+      <td>&lt;class 'sktime.classification.hybrid._hivecote...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>HIVECOTEV2</td>
+      <td>&lt;class 'sktime.classification.hybrid._hivecote...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>InceptionTimeClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.in...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>IndividualBOSS</td>
+      <td>&lt;class 'sktime.classification.dictionary_based...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>IndividualTDE</td>
+      <td>&lt;class 'sktime.classification.dictionary_based...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>KNeighborsTimeSeriesClassifier</td>
+      <td>&lt;class 'sktime.classification.distance_based._...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>LSTMFCNClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.ls...</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>MACNNClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.ma...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>MCDCNNClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.mc...</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MLPClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.ml...</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>MUSE</td>
+      <td>&lt;class 'sktime.classification.dictionary_based...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>MatrixProfileClassifier</td>
+      <td>&lt;class 'sktime.classification.feature_based._m...</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>MrSEQL</td>
+      <td>&lt;class 'sktime.classification.shapelet_based._...</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>MrSQM</td>
+      <td>&lt;class 'sktime.classification.shapelet_based._...</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>ProbabilityThresholdEarlyClassifier</td>
+      <td>&lt;class 'sktime.classification.early_classifica...</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>ProximityForest</td>
+      <td>&lt;class 'sktime.classification.distance_based._...</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>ProximityStump</td>
+      <td>&lt;class 'sktime.classification.distance_based._...</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>ProximityTree</td>
+      <td>&lt;class 'sktime.classification.distance_based._...</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>RandomIntervalClassifier</td>
+      <td>&lt;class 'sktime.classification.feature_based._r...</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>RandomIntervalSpectralEnsemble</td>
+      <td>&lt;class 'sktime.classification.interval_based._...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>ResNetClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.re...</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>RocketClassifier</td>
+      <td>&lt;class 'sktime.classification.kernel_based._ro...</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>ShapeDTW</td>
+      <td>&lt;class 'sktime.classification.distance_based._...</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>ShapeletTransformClassifier</td>
+      <td>&lt;class 'sktime.classification.shapelet_based._...</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>SignatureClassifier</td>
+      <td>&lt;class 'sktime.classification.feature_based._s...</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>SimpleRNNClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.rn...</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>SklearnClassifierPipeline</td>
+      <td>&lt;class 'sktime.classification.compose._pipelin...</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>SummaryClassifier</td>
+      <td>&lt;class 'sktime.classification.feature_based._s...</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>SupervisedTimeSeriesForest</td>
+      <td>&lt;class 'sktime.classification.interval_based._...</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>TSFreshClassifier</td>
+      <td>&lt;class 'sktime.classification.feature_based._t...</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>TapNetClassifier</td>
+      <td>&lt;class 'sktime.classification.deep_learning.ta...</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>TemporalDictionaryEnsemble</td>
+      <td>&lt;class 'sktime.classification.dictionary_based...</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>TimeSeriesForestClassifier</td>
+      <td>&lt;class 'sktime.classification.interval_based._...</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>TimeSeriesSVC</td>
+      <td>&lt;class 'sktime.classification.kernel_based._sv...</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>WEASEL</td>
+      <td>&lt;class 'sktime.classification.dictionary_based...</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>WeightedEnsembleClassifier</td>
+      <td>&lt;class 'sktime.classification.ensemble._weight...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>for listing all estimators of a certain type with a certain capability, use the <code class="docutils literal notranslate"><span class="pre">filter_tags</span></code> argument of <code class="docutils literal notranslate"><span class="pre">all_estimators</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list all classifiers in sktime</span>
+<span class="c1"># that can classify panels of time series containing missing data</span>
+<span class="kn">from</span> <span class="nn">sktime.registry</span> <span class="kn">import</span> <span class="n">all_estimators</span>
+
+<span class="n">all_estimators</span><span class="p">(</span>
+    <span class="s2">&quot;classifier&quot;</span><span class="p">,</span>
+    <span class="n">as_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">filter_tags</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;capability:missing_values&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BaggingClassifier</td>
+      <td>&lt;class 'sktime.classification.ensemble._baggin...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>DummyClassifier</td>
+      <td>&lt;class 'sktime.classification.dummy._dummy.Dum...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>KNeighborsTimeSeriesClassifier</td>
+      <td>&lt;class 'sktime.classification.distance_based._...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SklearnClassifierPipeline</td>
+      <td>&lt;class 'sktime.classification.compose._pipelin...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>TimeSeriesSVC</td>
+      <td>&lt;class 'sktime.classification.kernel_based._sv...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>WeightedEnsembleClassifier</td>
+      <td>&lt;class 'sktime.classification.ensemble._weight...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>side note:</p>
+<p>don’t worry about how short the list is - when in doubt, it is always possible to pipeline with <code class="docutils literal notranslate"><span class="pre">Imputer</span></code></p>
+<p>as in the next section :-)</p>
+</section>
+<section id="2.4-Pipelines,-Feature-Extraction,-Tuning,-Composition">
+<h3>2.4 Pipelines, Feature Extraction, Tuning, Composition<a class="headerlink" href="#2.4-Pipelines,-Feature-Extraction,-Tuning,-Composition" title="Link to this heading">#</a></h3>
+<p>similar to <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> for “tabular” classification, regression, etc,</p>
+<p><code class="docutils literal notranslate"><span class="pre">sktime</span></code> has a rich set of tools for:</p>
+<ul class="simple">
+<li><p>feature extraction via transformers</p></li>
+<li><p>pipeline transformers with any estimator</p></li>
+<li><p>tuning individual estimators or pipelines via grid search and similar</p></li>
+<li><p>building ensembles out of individual estimators, or other composites</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">sktime</span></code> is also fully interoperable with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> interface if <code class="docutils literal notranslate"><span class="pre">numpy</span></code> based data mtypes are used</p>
+<p>(although this loses support for unequal length time series)</p>
+</section>
+</section>
+<section id="2.4.1-Primer-on-sktime-transformers-for-feature-extraction">
+<h2>2.4.1 Primer on <code class="docutils literal notranslate"><span class="pre">sktime</span></code> transformers for feature extraction<a class="headerlink" href="#2.4.1-Primer-on-sktime-transformers-for-feature-extraction" title="Link to this heading">#</a></h2>
+<p>all <code class="docutils literal notranslate"><span class="pre">sktime</span></code> transformers work natively with panel data:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_italy_power_demand</span>
+<span class="kn">from</span> <span class="nn">sktime.transformations.series.detrend</span> <span class="kn">import</span> <span class="n">Detrender</span>
+
+<span class="c1"># load some panel data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">(</span><span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;pd-multiindex&quot;</span><span class="p">)</span>
+
+<span class="c1"># specify a linear detrender</span>
+<span class="n">detrender</span> <span class="o">=</span> <span class="n">Detrender</span><span class="p">()</span>
+
+<span class="c1"># detrend X by removing linear trend from each instance</span>
+<span class="n">X_detrended</span> <span class="o">=</span> <span class="n">detrender</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">X_detrended</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>dim_0</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>timepoints</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">0</th>
+      <th>0</th>
+      <td>0.267711</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.290155</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.564339</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.870044</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.829027</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">1095</th>
+      <th>19</th>
+      <td>-0.425904</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>-0.781304</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>-0.038512</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>-0.637956</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>-0.932346</td>
+    </tr>
+  </tbody>
+</table>
+<p>26304 rows × 1 columns</p>
+</div></div>
+</div>
+<p>for panel tasks such as TSC, TSR, clustering, there are two distinctions to be aware of:</p>
+<ul class="simple">
+<li><p>series-to-series transformers transform individual series to series, panels to panels. E.g., instance-wise detrender above</p></li>
+<li><p>series-to-primitive transformers transform individual series to a set of tabular features. E&gt;g., summary feature extractor</p></li>
+</ul>
+<p>either type of transform can be instance-wise:</p>
+<ul class="simple">
+<li><p>instance-wise transforms use only the i-th series to transform the i-th series. E.g., instance-wise detrender</p></li>
+<li><p>non-instance-wise transforms train on all series to transform the i-th series. E.g., PCA, overall mean detrender</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example of a series-to-primitive transformer</span>
+<span class="kn">from</span> <span class="nn">sktime.transformations.series.summarize</span> <span class="kn">import</span> <span class="n">SummaryTransformer</span>
+
+<span class="c1"># specify summary transformer</span>
+<span class="n">summary_trafo</span> <span class="o">=</span> <span class="n">SummaryTransformer</span><span class="p">()</span>
+
+<span class="c1"># extract summary features - one per instance in the panel</span>
+<span class="n">X_summaries</span> <span class="o">=</span> <span class="n">summary_trafo</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">X_summaries</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+      <th>0.1</th>
+      <th>0.25</th>
+      <th>0.5</th>
+      <th>0.75</th>
+      <th>0.9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.041667e-09</td>
+      <td>1.0</td>
+      <td>-1.593083</td>
+      <td>1.464375</td>
+      <td>-1.372442</td>
+      <td>-0.805078</td>
+      <td>0.030207</td>
+      <td>0.936412</td>
+      <td>1.218518</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.958333e-09</td>
+      <td>1.0</td>
+      <td>-1.630917</td>
+      <td>1.201393</td>
+      <td>-1.533955</td>
+      <td>-0.999388</td>
+      <td>0.384871</td>
+      <td>0.735720</td>
+      <td>1.084018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.775000e-09</td>
+      <td>1.0</td>
+      <td>-1.397118</td>
+      <td>2.349344</td>
+      <td>-1.003740</td>
+      <td>-0.741487</td>
+      <td>-0.132687</td>
+      <td>0.265374</td>
+      <td>1.515756</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-8.541667e-10</td>
+      <td>1.0</td>
+      <td>-1.646458</td>
+      <td>1.344487</td>
+      <td>-1.476779</td>
+      <td>-0.898722</td>
+      <td>0.266022</td>
+      <td>0.776495</td>
+      <td>1.039641</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-3.416667e-09</td>
+      <td>1.0</td>
+      <td>-1.620240</td>
+      <td>1.303502</td>
+      <td>-1.511644</td>
+      <td>-0.978061</td>
+      <td>0.405495</td>
+      <td>0.692648</td>
+      <td>1.061249</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1091</th>
+      <td>-1.041667e-09</td>
+      <td>1.0</td>
+      <td>-1.817799</td>
+      <td>1.630397</td>
+      <td>-1.323058</td>
+      <td>-0.643414</td>
+      <td>0.081208</td>
+      <td>0.568453</td>
+      <td>1.390523</td>
+    </tr>
+    <tr>
+      <th>1092</th>
+      <td>-4.166666e-10</td>
+      <td>1.0</td>
+      <td>-1.550077</td>
+      <td>1.513605</td>
+      <td>-1.343747</td>
+      <td>-0.768526</td>
+      <td>0.075550</td>
+      <td>0.857101</td>
+      <td>1.276013</td>
+    </tr>
+    <tr>
+      <th>1093</th>
+      <td>4.166667e-09</td>
+      <td>1.0</td>
+      <td>-1.706992</td>
+      <td>1.052255</td>
+      <td>-1.498879</td>
+      <td>-1.139943</td>
+      <td>0.467669</td>
+      <td>0.713195</td>
+      <td>0.993797</td>
+    </tr>
+    <tr>
+      <th>1094</th>
+      <td>1.583333e-09</td>
+      <td>1.0</td>
+      <td>-1.673857</td>
+      <td>2.420163</td>
+      <td>-0.744173</td>
+      <td>-0.479768</td>
+      <td>-0.266538</td>
+      <td>0.159923</td>
+      <td>1.550184</td>
+    </tr>
+    <tr>
+      <th>1095</th>
+      <td>3.495833e-09</td>
+      <td>1.0</td>
+      <td>-1.680337</td>
+      <td>1.461716</td>
+      <td>-1.488154</td>
+      <td>-0.810934</td>
+      <td>0.241501</td>
+      <td>0.645697</td>
+      <td>1.184117</td>
+    </tr>
+  </tbody>
+</table>
+<p>1096 rows × 9 columns</p>
+</div></div>
+</div>
+<p>just like classifiers, we can search for transformers of either type via the right tag:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;scitype:transform-input&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;scitype:transform-output&quot;</span></code> define input and output, e.g., “series-to-series” (both are scitype strings)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;scitype:instancewise&quot;</span></code> is boolean and tells us whether the transform is instance-wise</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example: looking for all series-to-primitive transformers that are instance-wise</span>
+<span class="kn">from</span> <span class="nn">sktime.registry</span> <span class="kn">import</span> <span class="n">all_estimators</span>
+
+<span class="n">all_estimators</span><span class="p">(</span>
+    <span class="s2">&quot;transformer&quot;</span><span class="p">,</span>
+    <span class="n">as_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">filter_tags</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;scitype:transform-input&quot;</span><span class="p">:</span> <span class="s2">&quot;Series&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;scitype:transform-output&quot;</span><span class="p">:</span> <span class="s2">&quot;Primitives&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;scitype:instancewise&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Catch22</td>
+      <td>&lt;class 'sktime.transformations.panel.catch22.C...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Catch22Wrapper</td>
+      <td>&lt;class 'sktime.transformations.panel.catch22wr...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>FittedParamExtractor</td>
+      <td>&lt;class 'sktime.transformations.panel.summarize...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>RandomIntervalFeatureExtractor</td>
+      <td>&lt;class 'sktime.transformations.panel.summarize...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>RandomIntervals</td>
+      <td>&lt;class 'sktime.transformations.panel.random_in...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>RandomShapeletTransform</td>
+      <td>&lt;class 'sktime.transformations.panel.shapelet_...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>SignatureTransformer</td>
+      <td>&lt;class 'sktime.transformations.panel.signature...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>SummaryTransformer</td>
+      <td>&lt;class 'sktime.transformations.series.summariz...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>TSFreshFeatureExtractor</td>
+      <td>&lt;class 'sktime.transformations.panel.tsfresh.T...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Tabularizer</td>
+      <td>&lt;class 'sktime.transformations.panel.reduce.Ta...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>TimeBinner</td>
+      <td>&lt;class 'sktime.transformations.panel.reduce.Ti...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Further details on transformations and feature extraction can be found in the tutorial 3, transformers.</p>
+<p>All composition steps therein (e.g., chaining, column subsetting) work together with all estimator types in <code class="docutils literal notranslate"><span class="pre">sktime</span></code>, including classifiers, regressors, clusterers.</p>
+</section>
+<section id="2.4.2-Pipelines-for-time-series-panel-tasks">
+<h2>2.4.2 Pipelines for time series panel tasks<a class="headerlink" href="#2.4.2-Pipelines-for-time-series-panel-tasks" title="Link to this heading">#</a></h2>
+<p>all panel estimators pipeline with <code class="docutils literal notranslate"><span class="pre">sktime</span></code> transformers, via the <code class="docutils literal notranslate"><span class="pre">*</span></code> dunder or <code class="docutils literal notranslate"><span class="pre">make_pipeline</span></code>.</p>
+<p>The pipeline does the following:</p>
+<ul class="simple">
+<li><p>in <code class="docutils literal notranslate"><span class="pre">fit</span></code>: runs the transformers’ <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> in sequence, then <code class="docutils literal notranslate"><span class="pre">fit</span></code> of the panel estimator</p></li>
+<li><p>in <code class="docutils literal notranslate"><span class="pre">predict</span></code>, runs the fitted transformers’ <code class="docutils literal notranslate"><span class="pre">transform</span></code> in sequence, then <code class="docutils literal notranslate"><span class="pre">predict</span></code> of the panel estimator</p></li>
+</ul>
+<p>(the logic is same as for <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> pipelines)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.classification.distance_based</span> <span class="kn">import</span> <span class="n">KNeighborsTimeSeriesClassifier</span>
+<span class="kn">from</span> <span class="nn">sktime.transformations.series.exponent</span> <span class="kn">import</span> <span class="n">ExponentTransformer</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">ExponentTransformer</span><span class="p">()</span> <span class="o">*</span> <span class="n">KNeighborsTimeSeriesClassifier</span><span class="p">()</span>
+
+<span class="c1"># this constructs a ClassifierPipeline, which is also a classifier</span>
+<span class="n">pipe</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<style>#sk-29eec29f-df63-4167-bb11-f9d06cda3863 {color: black;background-color: white;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 pre{padding: 0;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-toggleable {background-color: white;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-estimator:hover {background-color: #d4ebff;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-item {z-index: 1;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-parallel-item:only-child::after {width: 0;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-29eec29f-df63-4167-bb11-f9d06cda3863 div.sk-text-repr-fallback {display: none;}</style><div id='sk-29eec29f-df63-4167-bb11-f9d06cda3863' class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ClassifierPipeline(classifier=KNeighborsTimeSeriesClassifier(),
+                   transformers=[ExponentTransformer()])</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class='sk-label-container'><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('d0605c8a-e18f-48d8-b912-babd54d6f813') type="checkbox" ><label for=UUID('d0605c8a-e18f-48d8-b912-babd54d6f813') class='sk-toggleable__label sk-toggleable__label-arrow'>ClassifierPipeline</label><div class="sk-toggleable__content"><pre>ClassifierPipeline(classifier=KNeighborsTimeSeriesClassifier(),
+                   transformers=[ExponentTransformer()])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('e4448a0d-a32f-46d0-b6a4-4f98d89f581e') type="checkbox" ><label for=UUID('e4448a0d-a32f-46d0-b6a4-4f98d89f581e') class='sk-toggleable__label sk-toggleable__label-arrow'>KNeighborsTimeSeriesClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsTimeSeriesClassifier()</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('790128b5-0534-4368-9856-4c2ab56ba8dc') type="checkbox" ><label for=UUID('790128b5-0534-4368-9856-4c2ab56ba8dc') class='sk-toggleable__label sk-toggleable__label-arrow'>ExponentTransformer</label><div class="sk-toggleable__content"><pre>ExponentTransformer()</pre></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># alternative to construct:</span>
+<span class="kn">from</span> <span class="nn">sktime.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">ExponentTransformer</span><span class="p">(),</span> <span class="n">KNeighborsTimeSeriesClassifier</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_unit_test</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_unit_test</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;TRAIN&quot;</span><span class="p">)</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_unit_test</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;TEST&quot;</span><span class="p">)</span>
+
+<span class="c1"># this is a ClassifierPipeline with the same interface as knn-classifier</span>
+<span class="c1"># first applies exponent transform, then knn-classifier</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<style>#sk-da1bb5d1-1769-499a-9496-b22c36466a21 {color: black;background-color: white;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 pre{padding: 0;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-toggleable {background-color: white;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-estimator:hover {background-color: #d4ebff;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-item {z-index: 1;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-parallel-item:only-child::after {width: 0;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-da1bb5d1-1769-499a-9496-b22c36466a21 div.sk-text-repr-fallback {display: none;}</style><div id='sk-da1bb5d1-1769-499a-9496-b22c36466a21' class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ClassifierPipeline(classifier=KNeighborsTimeSeriesClassifier(),
+                   transformers=[ExponentTransformer()])</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class='sk-label-container'><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('9074e27b-30dc-426c-92fa-6be22c0b9f48') type="checkbox" ><label for=UUID('9074e27b-30dc-426c-92fa-6be22c0b9f48') class='sk-toggleable__label sk-toggleable__label-arrow'>ClassifierPipeline</label><div class="sk-toggleable__content"><pre>ClassifierPipeline(classifier=KNeighborsTimeSeriesClassifier(),
+                   transformers=[ExponentTransformer()])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('dc0f59b0-e1ff-44f8-be9d-24053443d1ad') type="checkbox" ><label for=UUID('dc0f59b0-e1ff-44f8-be9d-24053443d1ad') class='sk-toggleable__label sk-toggleable__label-arrow'>KNeighborsTimeSeriesClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsTimeSeriesClassifier()</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('188eb25d-8007-4ebc-b83c-e14327f8a6f6') type="checkbox" ><label for=UUID('188eb25d-8007-4ebc-b83c-e14327f8a6f6') class='sk-toggleable__label sk-toggleable__label-arrow'>ExponentTransformer</label><div class="sk-toggleable__content"><pre>ExponentTransformer()</pre></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sktime</span></code> transformers pipeline with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> classifiers!</p>
+<p>This allows to build “time series feature extraction then <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> classify`” pipelines:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="kn">from</span> <span class="nn">sktime.transformations.series.summarize</span> <span class="kn">import</span> <span class="n">SummaryTransformer</span>
+
+<span class="c1"># specify summary transformer</span>
+<span class="n">summary_rf</span> <span class="o">=</span> <span class="n">SummaryTransformer</span><span class="p">()</span> <span class="o">*</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+
+<span class="n">summary_rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<style>#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf {color: black;background-color: white;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf pre{padding: 0;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-toggleable {background-color: white;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-estimator:hover {background-color: #d4ebff;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-item {z-index: 1;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-parallel-item:only-child::after {width: 0;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf div.sk-text-repr-fallback {display: none;}</style><div id='sk-659ee9c8-1fa2-459a-b0e2-7f6f920b3bcf' class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SklearnClassifierPipeline(classifier=RandomForestClassifier(),
+                          transformers=[SummaryTransformer()])</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class='sk-label-container'><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('5f54c30e-1d6e-4aa7-b842-e6d09e00dd81') type="checkbox" ><label for=UUID('5f54c30e-1d6e-4aa7-b842-e6d09e00dd81') class='sk-toggleable__label sk-toggleable__label-arrow'>SklearnClassifierPipeline</label><div class="sk-toggleable__content"><pre>SklearnClassifierPipeline(classifier=RandomForestClassifier(),
+                          transformers=[SummaryTransformer()])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('39938995-f8f9-4f3f-9154-2372be6b3371') type="checkbox" ><label for=UUID('39938995-f8f9-4f3f-9154-2372be6b3371') class='sk-toggleable__label sk-toggleable__label-arrow'>RandomForestClassifier</label><div class="sk-toggleable__content"><pre>RandomForestClassifier()</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class='sk-item'><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id=UUID('9d5ccdde-703c-4b88-a488-847cc273b949') type="checkbox" ><label for=UUID('9d5ccdde-703c-4b88-a488-847cc273b949') class='sk-toggleable__label sk-toggleable__label-arrow'>SummaryTransformer</label><div class="sk-toggleable__content"><pre>SummaryTransformer()</pre></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+</section>
+<section id="2.4.3-Using-transformers-to-deal-with-unequal-length-or-missing-values">
+<h2>2.4.3 Using transformers to deal with unequal length or missing values<a class="headerlink" href="#2.4.3-Using-transformers-to-deal-with-unequal-length-or-missing-values" title="Link to this heading">#</a></h2>
+<p>pro tip: useful transformers to pipeline are those that “improve” capabilities!</p>
+<p>Search for these transformer tags:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;capability:unequal_length:removes&quot;</span></code> - ensures all instances in the panel have equal length afterwards. Examples: padding, cutting, resampling.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;capability:missing_values:removes&quot;</span></code> - removes all missing values from the data (e.g., series, panel) passed to it. Example: mean imputation</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># all transformers that guarantee that the output is equal length and equal index</span>
+<span class="kn">from</span> <span class="nn">sktime.registry</span> <span class="kn">import</span> <span class="n">all_estimators</span>
+
+<span class="n">all_estimators</span><span class="p">(</span>
+    <span class="s2">&quot;transformer&quot;</span><span class="p">,</span>
+    <span class="n">as_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">filter_tags</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;capability:unequal_length:removes&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ClearSky</td>
+      <td>&lt;class 'sktime.transformations.series.clear_sk...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>IntervalSegmenter</td>
+      <td>&lt;class 'sktime.transformations.panel.segment.I...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PaddingTransformer</td>
+      <td>&lt;class 'sktime.transformations.panel.padder.Pa...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>RandomIntervalSegmenter</td>
+      <td>&lt;class 'sktime.transformations.panel.segment.R...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SlopeTransformer</td>
+      <td>&lt;class 'sktime.transformations.panel.slope.Slo...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>TimeBinAggregate</td>
+      <td>&lt;class 'sktime.transformations.series.binning....</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>TruncationTransformer</td>
+      <td>&lt;class 'sktime.transformations.panel.truncatio...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># all transformers that guarantee the output has no missing values</span>
+<span class="kn">from</span> <span class="nn">sktime.registry</span> <span class="kn">import</span> <span class="n">all_estimators</span>
+
+<span class="n">all_estimators</span><span class="p">(</span>
+    <span class="s2">&quot;transformer&quot;</span><span class="p">,</span>
+    <span class="n">as_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">filter_tags</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;capability:missing_values:removes&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ClearSky</td>
+      <td>&lt;class 'sktime.transformations.series.clear_sk...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Imputer</td>
+      <td>&lt;class 'sktime.transformations.series.impute.I...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>minor note:</p>
+<p>some transformers guarantee “no missing values” under some conditions but not always, e.g., <code class="docutils literal notranslate"><span class="pre">TimeBinAggregate</span></code></p>
+<p>let’s check the tags in one example</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list all classifiers in sktime</span>
+<span class="kn">from</span> <span class="nn">sktime.classification.feature_based</span> <span class="kn">import</span> <span class="n">SummaryClassifier</span>
+
+<span class="n">no_missing_clf</span> <span class="o">=</span> <span class="n">SummaryClassifier</span><span class="p">()</span>
+
+<span class="n">no_missing_clf</span><span class="o">.</span><span class="n">get_tags</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;python_dependencies_alias&#39;: {&#39;scikit-learn&#39;: &#39;sklearn&#39;},
+ &#39;X_inner_mtype&#39;: &#39;numpy3D&#39;,
+ &#39;capability:multivariate&#39;: True,
+ &#39;capability:unequal_length&#39;: False,
+ &#39;capability:missing_values&#39;: False,
+ &#39;capability:train_estimate&#39;: False,
+ &#39;capability:contractable&#39;: False,
+ &#39;capability:multithreading&#39;: True,
+ &#39;capability:predict_proba&#39;: True,
+ &#39;python_version&#39;: None,
+ &#39;requires_cython&#39;: False,
+ &#39;classifier_type&#39;: &#39;feature&#39;}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.transformations.series.impute</span> <span class="kn">import</span> <span class="n">Imputer</span>
+
+<span class="n">clf_can_do_missing</span> <span class="o">=</span> <span class="n">Imputer</span><span class="p">()</span> <span class="o">*</span> <span class="n">SummaryClassifier</span><span class="p">()</span>
+
+<span class="n">clf_can_do_missing</span><span class="o">.</span><span class="n">get_tags</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;python_dependencies_alias&#39;: {&#39;scikit-learn&#39;: &#39;sklearn&#39;},
+ &#39;X_inner_mtype&#39;: &#39;pd-multiindex&#39;,
+ &#39;capability:multivariate&#39;: True,
+ &#39;capability:unequal_length&#39;: False,
+ &#39;capability:missing_values&#39;: True,
+ &#39;capability:train_estimate&#39;: False,
+ &#39;capability:contractable&#39;: False,
+ &#39;capability:multithreading&#39;: False,
+ &#39;capability:predict_proba&#39;: True,
+ &#39;python_version&#39;: None,
+ &#39;requires_cython&#39;: False}
+</pre></div></div>
+</div>
+</section>
+<section id="2.4.4-Tuning-and-model-selection">
+<h2>2.4.4 Tuning and model selection<a class="headerlink" href="#2.4.4-Tuning-and-model-selection" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sktime</span></code> classifiers are compatible with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> model selection and composition tools using <code class="docutils literal notranslate"><span class="pre">sktime</span></code> data formats.</p>
+<p>This extends to grid tuning and cross-validation, as long as <code class="docutils literal notranslate"><span class="pre">numpy</span></code> based formats or length/instance indexed formats are used.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_unit_test</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_unit_test</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;TRAIN&quot;</span><span class="p">)</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_unit_test</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;TEST&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Cross-validation using the <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> and <code class="docutils literal notranslate"><span class="pre">KFold</span></code> functionality:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">cross_val_score</span>
+
+<span class="kn">from</span> <span class="nn">sktime.classification.feature_based</span> <span class="kn">import</span> <span class="n">SummaryClassifier</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SummaryClassifier</span><span class="p">()</span>
+
+<span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([0.6, 0.8, 0.6, 0.8])
+</pre></div></div>
+</div>
+<p>Parameter tuning using <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>, we tune the <em>k</em> and distance measure for a K-NN classifier:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+<span class="kn">from</span> <span class="nn">sktime.classification.distance_based</span> <span class="kn">import</span> <span class="n">KNeighborsTimeSeriesClassifier</span>
+
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsTimeSeriesClassifier</span><span class="p">()</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;n_neighbors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;distance&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="s2">&quot;dtw&quot;</span><span class="p">]}</span>
+<span class="n">parameter_tuning_method</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">parameter_tuning_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">parameter_tuning_method</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2.4.5-Advanced-Composition-cheat-sheet---AutoML,-bagging,-ensembles">
+<h2>2.4.5 Advanced Composition cheat sheet - AutoML, bagging, ensembles<a class="headerlink" href="#2.4.5-Advanced-Composition-cheat-sheet---AutoML,-bagging,-ensembles" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>common ensembling patterns: <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>, <code class="docutils literal notranslate"><span class="pre">WeightedEnsembleClassifier</span></code></p></li>
+<li><p>composability with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> classifier, regressor building blocks still applies</p></li>
+<li><p>AutoML can be achieved by combining tuning with <code class="docutils literal notranslate"><span class="pre">MultiplexClassifier</span></code> or <code class="docutils literal notranslate"><span class="pre">MultiplexTransformer</span></code></p></li>
+</ul>
+<p>pro tip: bagging with a fixed single column subset can be used to turn an univariate classifier into a multivariate classifier!</p>
+<section id="2.5-Appendix---Extension-guide">
+<h3>2.5 Appendix - Extension guide<a class="headerlink" href="#2.5-Appendix---Extension-guide" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">sktime</span></code> is meant to be easily extensible, for direct contribution to <code class="docutils literal notranslate"><span class="pre">sktime</span></code> as well as for local/private extension with custom methods.</p>
+<p>To extend <code class="docutils literal notranslate"><span class="pre">sktime</span></code> with a new local or contributed estimator, a good workflow to follow is:</p>
+<ol class="arabic simple" start="0">
+<li><p>find the right extension template for the type of estimator you want to add - e.g., classifier, regressor, clusterer, etc. The extension templates are located in the <a class="reference external" href="https://github.com/sktime/sktime/blob/main/extension_templates">`extension_templates</a> directory</p></li>
+<li><p>read through the extension template - this is a <code class="docutils literal notranslate"><span class="pre">python</span></code> file with <code class="docutils literal notranslate"><span class="pre">todo</span></code> blocks that mark the places in which changes need to be added.</p></li>
+<li><p>optionally, if you are planning any major surgeries to the interface: look at the base class - note that “ordinary” extension (e.g., new algorithm) should be easily doable without this.</p></li>
+<li><p>copy the extension template to a local folder in your own repository (local/private extension), or to a suitable location in your clone of the <code class="docutils literal notranslate"><span class="pre">sktime</span></code> or affiliated repository (if contributed extension), inside <code class="docutils literal notranslate"><span class="pre">sktime.[name_of_task]</span></code>; rename the file and update the file docstring appropriately.</p></li>
+<li><p>address the “todo” parts. Usually, this means: changing the name of the class, setting the tag values, specifying hyper-parameters, filling in <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">_fit</span></code>, <code class="docutils literal notranslate"><span class="pre">_predict</span></code> and/or other methods (for details see the extension template). You can add private methods as long as they do not override the default public interface. For more details, see the extension template.</p></li>
+<li><p>to test your estimator manually: import your estimator and run it in the basic vignettes above.</p></li>
+<li><p>to test your estimator automatically: call <code class="docutils literal notranslate"><span class="pre">sktime.tests.test_all_estimators.check_estimator</span></code> on your estimator. You can call this on a class or object instance. Ensure you have specified test parameters in the <code class="docutils literal notranslate"><span class="pre">get_test_params</span></code> method, according to the extension template.</p></li>
+</ol>
+<p>In case of direct contribution to <code class="docutils literal notranslate"><span class="pre">sktime</span></code> or one of its affiliated packages, additionally: * add yourself as an author to the code, and to the <code class="docutils literal notranslate"><span class="pre">CODEOWNERS</span></code> for the new estimator file(s). * create a pull request that contains only the new estimators (and their inheritance tree, if it’s not just one class), as well as the automated tests as described above. * in the pull request, describe the estimator and optimally provide a publication or other technical reference for the strategy it
+implements. * before making the pull request, ensure that you have all necessary permissions to contribute the code to a permissive license (BSD-3) open source project.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<p>Generated using <a class="reference external" href="https://nbsphinx.readthedocs.io/">nbsphinx</a>. The Jupyter notebook can be found <a class="reference external" href="https://github.com/sktime/sktime/tree/v0.27.0/examples/02_classification.ipynb">here</a>.</p>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Overview-of-this-notebook">Overview of this notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.1-Panel-data---sktime-data-formats">2.1 Panel data - <code class="docutils literal notranslate"><span class="pre">sktime</span></code> data formats</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.1.1-Preferred-format-1---pd-multiindex-specification">2.1.1 Preferred format 1 - <code class="docutils literal notranslate"><span class="pre">pd-multiindex</span></code> specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.1.2-preferred-format-2---numpy3D-specification">2.1.2 preferred format 2 - <code class="docutils literal notranslate"><span class="pre">numpy3D</span></code> specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.2-Time-Series-Classification,-Regression,-Clustering---Basic-Vignettes">2.2 Time Series Classification, Regression, Clustering - Basic Vignettes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.2.3-Time-Series-Classification---deployment-vignette">2.2.3 Time Series Classification - deployment vignette</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.2.4-Time-Series-Classification---simple-evaluation-vignette">2.2.4 Time Series Classification - simple evaluation vignette</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.2.5-Time-Series-Regression---basic-vignettes">2.2.5 Time Series Regression - basic vignettes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#5.2.6-Time-Series-Clustering---basic-vignettes">5.2.6 Time Series Clustering - basic vignettes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.3-Searching-for-estimators,-estimator-tags">2.3 Searching for estimators, estimator tags</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4-Pipelines,-Feature-Extraction,-Tuning,-Composition">2.4 Pipelines, Feature Extraction, Tuning, Composition</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4.1-Primer-on-sktime-transformers-for-feature-extraction">2.4.1 Primer on <code class="docutils literal notranslate"><span class="pre">sktime</span></code> transformers for feature extraction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4.2-Pipelines-for-time-series-panel-tasks">2.4.2 Pipelines for time series panel tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4.3-Using-transformers-to-deal-with-unequal-length-or-missing-values">2.4.3 Using transformers to deal with unequal length or missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4.4-Tuning-and-model-selection">2.4.4 Tuning and model selection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#2.4.5-Advanced-Composition-cheat-sheet---AutoML,-bagging,-ensembles">2.4.5 Advanced Composition cheat sheet - AutoML, bagging, ensembles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#2.5-Appendix---Extension-guide">2.5 Appendix - Extension guide</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

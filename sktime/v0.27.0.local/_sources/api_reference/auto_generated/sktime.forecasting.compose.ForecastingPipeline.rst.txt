@@ -1,0 +1,12 @@
+﻿ForecastingPipeline
+============================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: ForecastingPipeline
+
+.. include:: sktime.forecasting.compose.ForecastingPipeline.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

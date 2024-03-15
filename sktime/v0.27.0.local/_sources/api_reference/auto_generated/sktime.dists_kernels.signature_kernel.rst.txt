@@ -1,0 +1,7 @@
+sktime.dists\_kernels.signature\_kernel module
+==============================================
+
+.. automodule:: sktime.dists_kernels.signature_kernel
+   :members:
+   :undoc-members:
+   :show-inheritance:

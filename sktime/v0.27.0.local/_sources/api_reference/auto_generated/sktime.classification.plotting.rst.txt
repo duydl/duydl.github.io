@@ -1,0 +1,15 @@
+sktime.classification.plotting package
+======================================
+
+.. automodule:: sktime.classification.plotting
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.classification.plotting.temporal_importance_diagram

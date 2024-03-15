@@ -1,0 +1,7 @@
+sktime.base.adapters package
+============================
+
+.. automodule:: sktime.base.adapters
+   :members:
+   :undoc-members:
+   :show-inheritance:

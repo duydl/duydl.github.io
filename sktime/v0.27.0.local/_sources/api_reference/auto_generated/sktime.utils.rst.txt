@@ -1,0 +1,42 @@
+sktime.utils package
+====================
+
+.. automodule:: sktime.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.utils.deep_equals
+   sktime.utils.estimators
+   sktime.utils.numba
+   sktime.utils.sklearn
+   sktime.utils.validation
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.utils.datetime
+   sktime.utils.estimator_checks
+   sktime.utils.git_diff
+   sktime.utils.index
+   sktime.utils.mlflow_sktime
+   sktime.utils.multiindex
+   sktime.utils.pandas
+   sktime.utils.plotting
+   sktime.utils.profiling
+   sktime.utils.random_state
+   sktime.utils.sampling
+   sktime.utils.seasonality
+   sktime.utils.slope_and_trend
+   sktime.utils.stats
+   sktime.utils.strtobool
+   sktime.utils.warnings

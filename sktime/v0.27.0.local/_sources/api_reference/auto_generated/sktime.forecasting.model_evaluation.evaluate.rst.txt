@@ -1,0 +1,12 @@
+﻿evaluate
+================================================================
+
+.. currentmodule:: sktime.forecasting.model_evaluation
+
+.. autofunction:: evaluate
+
+.. include:: sktime.forecasting.model_evaluation.evaluate.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

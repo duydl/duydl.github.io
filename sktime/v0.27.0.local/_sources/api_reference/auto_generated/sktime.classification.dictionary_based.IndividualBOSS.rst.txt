@@ -1,0 +1,12 @@
+﻿IndividualBOSS
+===================================================================
+
+.. currentmodule:: sktime.classification.dictionary_based
+
+.. autoclass:: IndividualBOSS
+
+.. include:: sktime.classification.dictionary_based.IndividualBOSS.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

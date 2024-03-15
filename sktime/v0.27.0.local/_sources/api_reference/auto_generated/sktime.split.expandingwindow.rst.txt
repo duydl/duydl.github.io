@@ -1,0 +1,7 @@
+sktime.split.expandingwindow module
+===================================
+
+.. automodule:: sktime.split.expandingwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿Catch22
+==========================================================
+
+.. currentmodule:: sktime.transformations.panel.catch22
+
+.. autoclass:: Catch22
+
+.. include:: sktime.transformations.panel.catch22.Catch22.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

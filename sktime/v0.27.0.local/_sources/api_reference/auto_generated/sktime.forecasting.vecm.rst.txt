@@ -1,0 +1,7 @@
+sktime.forecasting.vecm module
+==============================
+
+.. automodule:: sktime.forecasting.vecm
+   :members:
+   :undoc-members:
+   :show-inheritance:

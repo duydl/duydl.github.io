@@ -1,0 +1,7 @@
+sktime.annotation.hmm module
+============================
+
+.. automodule:: sktime.annotation.hmm
+   :members:
+   :undoc-members:
+   :show-inheritance:

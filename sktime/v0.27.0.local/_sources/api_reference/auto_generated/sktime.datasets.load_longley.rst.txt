@@ -1,0 +1,12 @@
+﻿load_longley
+================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_longley
+
+.. include:: sktime.datasets.load_longley.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

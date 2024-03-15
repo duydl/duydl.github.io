@@ -1,0 +1,12 @@
+﻿TapNetClassifier
+==================================================================
+
+.. currentmodule:: sktime.classification.deep_learning
+
+.. autoclass:: TapNetClassifier
+
+.. include:: sktime.classification.deep_learning.TapNetClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

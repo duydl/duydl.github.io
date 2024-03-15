@@ -1,0 +1,7 @@
+sktime.regression.deep\_learning.macnn module
+=============================================
+
+.. automodule:: sktime.regression.deep_learning.macnn
+   :members:
+   :undoc-members:
+   :show-inheritance:

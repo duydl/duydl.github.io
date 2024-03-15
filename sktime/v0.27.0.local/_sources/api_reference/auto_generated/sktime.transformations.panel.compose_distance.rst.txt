@@ -1,0 +1,7 @@
+sktime.transformations.panel.compose\_distance module
+=====================================================
+
+.. automodule:: sktime.transformations.panel.compose_distance
+   :members:
+   :undoc-members:
+   :show-inheritance:

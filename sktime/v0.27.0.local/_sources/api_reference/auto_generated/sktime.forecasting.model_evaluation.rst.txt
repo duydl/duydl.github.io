@@ -1,0 +1,7 @@
+sktime.forecasting.model\_evaluation package
+============================================
+
+.. automodule:: sktime.forecasting.model_evaluation
+   :members:
+   :undoc-members:
+   :show-inheritance:

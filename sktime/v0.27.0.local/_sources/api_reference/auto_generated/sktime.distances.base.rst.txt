@@ -1,0 +1,7 @@
+sktime.distances.base package
+=============================
+
+.. automodule:: sktime.distances.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿SupervisedTimeSeriesForest
+=============================================================================
+
+.. currentmodule:: sktime.classification.interval_based
+
+.. autoclass:: SupervisedTimeSeriesForest
+
+.. include:: sktime.classification.interval_based.SupervisedTimeSeriesForest.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.transformations.merger module
+====================================
+
+.. automodule:: sktime.transformations.merger
+   :members:
+   :undoc-members:
+   :show-inheritance:

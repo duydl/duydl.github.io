@@ -1,0 +1,12 @@
+﻿SimpleRNNRegressor
+================================================================
+
+.. currentmodule:: sktime.regression.deep_learning
+
+.. autoclass:: SimpleRNNRegressor
+
+.. include:: sktime.regression.deep_learning.SimpleRNNRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

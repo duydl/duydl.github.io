@@ -1,0 +1,26 @@
+sktime.regression.deep\_learning package
+========================================
+
+.. automodule:: sktime.regression.deep_learning
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.regression.deep_learning.base
+   sktime.regression.deep_learning.cnn
+   sktime.regression.deep_learning.cntc
+   sktime.regression.deep_learning.fcn
+   sktime.regression.deep_learning.inceptiontime
+   sktime.regression.deep_learning.lstmfcn
+   sktime.regression.deep_learning.macnn
+   sktime.regression.deep_learning.mcdcnn
+   sktime.regression.deep_learning.mlp
+   sktime.regression.deep_learning.resnet
+   sktime.regression.deep_learning.rnn
+   sktime.regression.deep_learning.tapnet

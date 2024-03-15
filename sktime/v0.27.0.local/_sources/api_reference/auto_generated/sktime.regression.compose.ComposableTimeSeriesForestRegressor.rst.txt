@@ -1,0 +1,12 @@
+﻿ComposableTimeSeriesForestRegressor
+===========================================================================
+
+.. currentmodule:: sktime.regression.compose
+
+.. autoclass:: ComposableTimeSeriesForestRegressor
+
+.. include:: sktime.regression.compose.ComposableTimeSeriesForestRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

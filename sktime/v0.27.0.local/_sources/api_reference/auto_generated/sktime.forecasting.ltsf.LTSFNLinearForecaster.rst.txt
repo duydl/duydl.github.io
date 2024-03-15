@@ -1,0 +1,12 @@
+﻿LTSFNLinearForecaster
+===========================================================
+
+.. currentmodule:: sktime.forecasting.ltsf
+
+.. autoclass:: LTSFNLinearForecaster
+
+.. include:: sktime.forecasting.ltsf.LTSFNLinearForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

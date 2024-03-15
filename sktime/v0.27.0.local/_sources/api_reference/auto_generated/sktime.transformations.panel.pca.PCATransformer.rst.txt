@@ -1,0 +1,12 @@
+﻿PCATransformer
+=============================================================
+
+.. currentmodule:: sktime.transformations.panel.pca
+
+.. autoclass:: PCATransformer
+
+.. include:: sktime.transformations.panel.pca.PCATransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

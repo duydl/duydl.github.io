@@ -1,0 +1,7 @@
+sktime.clustering.dbscan module
+===============================
+
+.. automodule:: sktime.clustering.dbscan
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.utils.warnings module
+============================
+
+.. automodule:: sktime.utils.warnings
+   :members:
+   :undoc-members:
+   :show-inheritance:

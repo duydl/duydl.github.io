@@ -1,0 +1,12 @@
+﻿HPFilter
+=============================================================
+
+.. currentmodule:: sktime.transformations.series.hpfilter
+
+.. autoclass:: HPFilter
+
+.. include:: sktime.transformations.series.hpfilter.HPFilter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

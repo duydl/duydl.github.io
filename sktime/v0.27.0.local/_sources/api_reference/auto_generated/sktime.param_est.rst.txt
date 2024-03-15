@@ -1,0 +1,27 @@
+sktime.param\_est package
+=========================
+
+.. automodule:: sktime.param_est
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.param_est.compose
+   sktime.param_est.plugin
+   sktime.param_est.stationarity
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.param_est.base
+   sktime.param_est.fixed
+   sktime.param_est.seasonality

@@ -1,0 +1,7 @@
+sktime.transformations.series.subset module
+===========================================
+
+.. automodule:: sktime.transformations.series.subset
+   :members:
+   :undoc-members:
+   :show-inheritance:

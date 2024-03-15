@@ -1,0 +1,12 @@
+﻿CutoffSplitter
+=========================================
+
+.. currentmodule:: sktime.split
+
+.. autoclass:: CutoffSplitter
+
+.. include:: sktime.split.CutoffSplitter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

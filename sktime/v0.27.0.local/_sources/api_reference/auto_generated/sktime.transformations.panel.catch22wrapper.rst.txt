@@ -1,0 +1,7 @@
+sktime.transformations.panel.catch22wrapper module
+==================================================
+
+.. automodule:: sktime.transformations.panel.catch22wrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:

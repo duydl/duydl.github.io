@@ -1,0 +1,12 @@
+﻿BoxCoxTransformer
+====================================================================
+
+.. currentmodule:: sktime.transformations.series.boxcox
+
+.. autoclass:: BoxCoxTransformer
+
+.. include:: sktime.transformations.series.boxcox.BoxCoxTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

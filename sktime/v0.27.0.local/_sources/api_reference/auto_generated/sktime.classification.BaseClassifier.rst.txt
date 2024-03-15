@@ -1,0 +1,12 @@
+﻿BaseClassifier
+==================================================
+
+.. currentmodule:: sktime.classification
+
+.. autoclass:: BaseClassifier
+
+.. include:: sktime.classification.BaseClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

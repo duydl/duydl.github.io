@@ -1,0 +1,7 @@
+sktime.networks.mlp module
+==========================
+
+.. automodule:: sktime.networks.mlp
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿get_default_pip_requirements
+===========================================================================
+
+.. currentmodule:: sktime.utils.mlflow_sktime
+
+.. autofunction:: get_default_pip_requirements
+
+.. include:: sktime.utils.mlflow_sktime.get_default_pip_requirements.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

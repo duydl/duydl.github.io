@@ -1,0 +1,982 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.registry package &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.registry';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.regis...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.registry">
+<span id="sktime-registry-package"></span><h1>sktime.registry package<a class="headerlink" href="#module-sktime.registry" title="Link to this heading">#</a></h1>
+<p>Registry for sktime estimator base classes, tags, global aliases.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.registry.all_estimators">
+<span class="sig-name descname"><span class="pre">all_estimators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_import_stdout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/registry/_lookup.py#L42-L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.registry.all_estimators" title="Link to this definition">#</a></dt>
+<dd><p>Get a list of all estimators from sktime.</p>
+<p>This function crawls the module and gets all classes that inherit
+from sktime’s and sklearn’s base classes.</p>
+<p>Not included are: the base classes themselves, classes defined in test
+modules.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>estimator_types: str, list of str, optional (default=None)</strong></dt><dd><p>Which kind of estimators should be returned.
+if None, no filter is applied and all estimators are returned.
+if str or list of str, strings define scitypes specified in search
+only estimators that are of (at least) one of the scitypes are returned
+possible str values are entries of registry.BASE_CLASS_REGISTER (first col)
+for instance ‘classifier’, ‘regressor’, ‘transformer’, ‘forecaster’</p>
+</dd>
+<dt><strong>return_names: bool, optional (default=True)</strong></dt><dd><p>if True, estimator class name is included in the <code class="docutils literal notranslate"><span class="pre">all_estimators</span></code>
+return in the order: name, estimator class, optional tags, either as
+a tuple or as pandas.DataFrame columns</p>
+<p>if False, estimator class name is removed from the <code class="docutils literal notranslate"><span class="pre">all_estimators</span></code> return.</p>
+</dd>
+<dt><strong>filter_tags: dict of (str or list of str), optional (default=None)</strong></dt><dd><p>For a list of valid tag strings, use the registry.all_tags utility.</p>
+<p><code class="docutils literal notranslate"><span class="pre">filter_tags</span></code> subsets the returned estimators as follows:</p>
+<ul class="simple">
+<li><p>each key/value pair is statement in “and”/conjunction</p></li>
+<li><p>key is tag name to sub-set on</p></li>
+<li><p>value str or list of string are tag values</p></li>
+<li><p>condition is “key must be equal to value, or in set(value)”</p></li>
+</ul>
+</dd>
+<dt><strong>exclude_estimators: str, list of str, optional (default=None)</strong></dt><dd><p>Names of estimators to exclude.</p>
+</dd>
+<dt><strong>as_dataframe: bool, optional (default=False)</strong></dt><dd><p>True: <code class="docutils literal notranslate"><span class="pre">all_estimators</span></code> will return a pandas.DataFrame with named
+columns for all of the attributes being returned.</p>
+<p>False: <code class="docutils literal notranslate"><span class="pre">all_estimators</span></code> will return a list (either a list of
+estimators or a list of tuples, see Returns)</p>
+</dd>
+<dt><strong>return_tags: str or list of str, optional (default=None)</strong></dt><dd><p>Names of tags to fetch and return each estimator’s value of.
+For a list of valid tag strings, use the registry.all_tags utility.
+if str or list of str,
+the tag values named in return_tags will be fetched for each
+estimator and will be appended as either columns or tuple entries.</p>
+</dd>
+<dt><strong>suppress_import_stdout</strong><span class="classifier">bool, optional. Default=True</span></dt><dd><p>whether to suppress stdout printout upon import.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt>all_estimators will return one of the following:</dt><dd><ol class="arabic simple">
+<li><p>list of estimators, if return_names=False, and return_tags is None</p></li>
+<li><p>list of tuples (optional estimator name, class, ~optional estimator</p></li>
+</ol>
+<blockquote>
+<div><p>tags), if return_names=True or return_tags is not None.</p>
+</div></blockquote>
+<p>3. pandas.DataFrame if as_dataframe = True
+if list of estimators:</p>
+<blockquote>
+<div><p>entries are estimators matching the query,
+in alphabetical order of estimator name</p>
+</div></blockquote>
+<dl class="simple">
+<dt>if list of tuples:</dt><dd><p>list of (optional estimator name, estimator, optional estimator
+tags) matching the query, in alphabetical order of estimator name,
+where
+<code class="docutils literal notranslate"><span class="pre">name</span></code> is the estimator name as string, and is an
+optional return
+<code class="docutils literal notranslate"><span class="pre">estimator</span></code> is the actual estimator
+<code class="docutils literal notranslate"><span class="pre">tags</span></code> are the estimator’s values for each tag in return_tags
+and is an optional return.</p>
+</dd>
+<dt>if dataframe:</dt><dd><p>all_estimators will return a pandas.DataFrame.
+column names represent the attributes contained in each column.
+“estimators” will be the name of the column of estimators, “names”
+will be the name of the column of estimator class names and the string(s)
+passed in return_tags will serve as column names for all columns of
+tags that were optionally requested.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Modified version from scikit-learn’s <code class="docutils literal notranslate"><span class="pre">all_estimators()</span></code>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.registry</span> <span class="kn">import</span> <span class="n">all_estimators</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># return a complete list of estimators as pd.Dataframe</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_estimators</span><span class="p">(</span><span class="n">as_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># return all forecasters by filtering for estimator type</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_estimators</span><span class="p">(</span><span class="s2">&quot;forecaster&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># return all forecasters which handle missing data in the input by tag filtering</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_estimators</span><span class="p">(</span><span class="s2">&quot;forecaster&quot;</span><span class="p">,</span> <span class="n">filter_tags</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;handles-missing-data&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.registry.all_tags">
+<span class="sig-name descname"><span class="pre">all_tags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/registry/_lookup.py#L274-L352"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.registry.all_tags" title="Link to this definition">#</a></dt>
+<dd><p>Get a list of all tags from sktime.</p>
+<p>All objects in <code class="docutils literal notranslate"><span class="pre">sktime</span></code> are tagged with a set of :term``tag``s.
+This function allows to list all tags, optionally filtered by
+the object <a class="reference internal" href="../../glossary.html#term-scitype"><span class="xref std std-term">scitype</span></a> they apply to.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimator_types: string, list of string, optional (default=None)</strong></dt><dd><p>The object type (<a class="reference internal" href="../../glossary.html#term-scitype"><span class="xref std std-term">scitype</span></a>) for which applicable tags should be listed.</p>
+<ul class="simple">
+<li><p>If None, no filter is applied and tags for all estimators are returned.</p></li>
+<li><p>Possible values are identifier strings for object scitypes, such as
+<code class="docutils literal notranslate"><span class="pre">&quot;forecaster&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;classifier&quot;,</span> <span class="pre">``&quot;transformer&quot;</span></code>, or lists thereof.
+If list, finds tags applicable to at least one of the listed types.
+Valid scitype strings are in <code class="docutils literal notranslate"><span class="pre">sktime.registry.BASE_CLASS_SCITYPE_LIST</span></code>.</p></li>
+</ul>
+</dd>
+<dt><strong>as_dataframe: bool, optional (default=False)</strong></dt><dd><p>if False, return is as described below;
+if True, return is converted into a pandas.DataFrame for pretty display</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt>tags: list of tuples (a, b, c, d),</dt><dd><p>in alphabetical order by a</p>
+<p>a : string - name of the tag as used in the _tags dictionary</p>
+<p>b : string - name of the scitype this tag applies to,
+as in .BASE_CLASS_SCITYPE.LIST</p>
+<p>c : string - expected type of the tag value, one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;bool&quot;</span></code> - valid values are True/False</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;int&quot;</span></code> - valid values are all integers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;str&quot;</span></code> - valid values are all strings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(&quot;str&quot;,</span> <span class="pre">&quot;list_of_string&quot;)</span></code> - any string in <code class="docutils literal notranslate"><span class="pre">list_of_string</span></code> is valid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(&quot;list&quot;,</span> <span class="pre">&quot;list_of_string&quot;)</span></code> - any string element or sub-list is valid</p></li>
+</ul>
+</div></blockquote>
+<p>d : string - plain English description of the tag</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.registry.check_tag_is_valid">
+<span class="sig-name descname"><span class="pre">check_tag_is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/registry/_tags.py#L537-L583"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.registry.check_tag_is_valid" title="Link to this definition">#</a></dt>
+<dd><p>Check validity of a tag value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tag_name</strong><span class="classifier">string, name of the tag</span></dt><dd></dd>
+<dt><strong>tag_value</strong><span class="classifier">object, value of the tag</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>KeyError - if tag_name is not a valid tag in ESTIMATOR_TAG_LIST</dt><dd></dd>
+<dt>ValueError - if the tag_valid is not a valid for the tag with name tag_name</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.registry.craft">
+<span class="sig-name descname"><span class="pre">craft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/registry/_craft.py#L53-L91"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.registry.craft" title="Link to this definition">#</a></dt>
+<dd><p>Instantiate an object from the specification string.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>spec</strong><span class="classifier">str, sktime/skbase compatible object specification</span></dt><dd><p>i.e., a string that executes to construct an object if all imports were present
+imports inferred are of any classes in the scope of <code class="docutils literal notranslate"><span class="pre">all_estimators</span></code>
+option 1: a string that evaluates to an estimator
+option 2: a sequence of assignments in valid python code,</p>
+<blockquote>
+<div><p>with the object to be defined preceded by a “return”
+assignments can use names of classes as if all imports were present</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>obj</strong><span class="classifier">skbase BaseObject descendant, constructed from <code class="docutils literal notranslate"><span class="pre">spec</span></code></span></dt><dd><p>this will have the property that <code class="docutils literal notranslate"><span class="pre">spec</span> <span class="pre">==</span> <span class="pre">str(obj)</span></code> (up to formatting)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.registry.deps">
+<span class="sig-name descname"><span class="pre">deps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/registry/_craft.py#L94-L134"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.registry.deps" title="Link to this definition">#</a></dt>
+<dd><p>Get PEP 440 dependency requirements for a craft spec.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>spec</strong><span class="classifier">str, sktime/skbase compatible object specification</span></dt><dd><p>i.e., a string that executes to construct an object if all imports were present
+imports inferred are of any classes in the scope of <code class="docutils literal notranslate"><span class="pre">all_estimators</span></code>
+option 1: a string that evaluates to an estimator
+option 2: a sequence of assignments in valid python code,</p>
+<blockquote>
+<div><p>with the object to be defined preceded by a “return”
+assignments can use names of classes as if all imports were present</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>reqs</strong><span class="classifier">list of str</span></dt><dd><p>each str is PEP 440 compatible requirement string for craft(spec)
+if spec has no requirements, return is [], the length 0 list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.registry.imports">
+<span class="sig-name descname"><span class="pre">imports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/registry/_craft.py#L137-L176"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.registry.imports" title="Link to this definition">#</a></dt>
+<dd><p>Get import code block for a craft spec.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>spec</strong><span class="classifier">str, sktime/skbase compatible object specification</span></dt><dd><p>i.e., a string that executes to construct an object if all imports were present
+imports inferred are of any classes in the scope of <code class="docutils literal notranslate"><span class="pre">all_estimators</span></code>
+option 1: a string that evaluates to an estimator
+option 2: a sequence of assignments in valid python code,</p>
+<blockquote>
+<div><p>with the object to be defined preceded by a “return”
+assignments can use names of classes as if all imports were present</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>import_str</strong><span class="classifier">str</span></dt><dd><p>python code consisting of all import statements required for spec
+imports cover object/estimator classes found as sub-strings of spec</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.registry.resolve_alias">
+<span class="sig-name descname"><span class="pre">resolve_alias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/registry/_alias.py#L26-L72"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.registry.resolve_alias" title="Link to this definition">#</a></dt>
+<dd><p>Resolve an alias string to an sktime object.</p>
+<p>Does the following in order:</p>
+<ol class="arabic simple">
+<li><p>check if <code class="docutils literal notranslate"><span class="pre">alias</span></code> is a valid key in <code class="docutils literal notranslate"><span class="pre">registry.ALIAS_DICT</span></code>.
+If yes, returns the aliased object from <code class="docutils literal notranslate"><span class="pre">ALIAS_DICT</span></code>, terminate.</p></li>
+<li><p>try to resolve <code class="docutils literal notranslate"><span class="pre">alias</span></code> via <code class="docutils literal notranslate"><span class="pre">registry.craft</span></code>.
+If successful, return <code class="docutils literal notranslate"><span class="pre">craft(alias)</span></code>, terminate.</p></li>
+<li><p>Raise an exception that <code class="docutils literal notranslate"><span class="pre">alias</span></code> is invalid.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>alias</strong><span class="classifier">str</span></dt><dd><p>a valid alias string, either:</p>
+<ul class="simple">
+<li><p>a valid input to registry.craft</p></li>
+<li><p>an alias string present in registry.ALIAS_DICT</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>aliased object</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.registry.scitype">
+<span class="sig-name descname"><span class="pre">scitype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_single_scitype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coerce_to_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_on_unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/registry/_scitype.py#L10-L82"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.registry.scitype" title="Link to this definition">#</a></dt>
+<dd><p>Determine scitype string of obj.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">class or object inheriting from sktime BaseObject</span></dt><dd></dd>
+<dt><strong>force_single_scitype</strong><span class="classifier">bool, optional, default = True</span></dt><dd><p>whether only a single scitype is returned
+if True, only the <em>first</em> scitype found will be returned
+order is determined by the order in BASE_CLASS_REGISTER</p>
+</dd>
+<dt><strong>coerce_to_list</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>determines the return type: if True, returns a single str,
+if False, returns a list of str</p>
+</dd>
+<dt><strong>raise_on_unknown</strong><span class="classifier">bool, optional, default = True</span></dt><dd><p>if True, raises an error if no scitype can be determined for obj
+if False, returns “object” scitype</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>scitype</strong><span class="classifier">str, or list of str of sktime scitype strings from BASE_CLASS_REGISTER</span></dt><dd><p>str, sktime scitype string, if exactly one scitype can be determined for obj
+or force_single_scitype is True, and if coerce_to_list is False
+list of str, of scitype strings, if more than one scitype are determined,
+or if coerce_to_list is True
+obj has scitype if it inherits from class in same row of BASE_CLASS_REGISTER</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TypeError if no scitype can be determined for obj</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.registry.all_estimators"><code class="docutils literal notranslate"><span class="pre">all_estimators</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.registry.all_tags"><code class="docutils literal notranslate"><span class="pre">all_tags</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.registry.check_tag_is_valid"><code class="docutils literal notranslate"><span class="pre">check_tag_is_valid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.registry.craft"><code class="docutils literal notranslate"><span class="pre">craft</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.registry.deps"><code class="docutils literal notranslate"><span class="pre">deps</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.registry.imports"><code class="docutils literal notranslate"><span class="pre">imports</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.registry.resolve_alias"><code class="docutils literal notranslate"><span class="pre">resolve_alias</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.registry.scitype"><code class="docutils literal notranslate"><span class="pre">scitype</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

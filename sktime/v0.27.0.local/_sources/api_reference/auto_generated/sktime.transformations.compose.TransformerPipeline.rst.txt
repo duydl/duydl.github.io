@@ -1,0 +1,12 @@
+﻿TransformerPipeline
+================================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: TransformerPipeline
+
+.. include:: sktime.transformations.compose.TransformerPipeline.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

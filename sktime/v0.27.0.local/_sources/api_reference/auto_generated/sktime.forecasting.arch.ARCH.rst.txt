@@ -1,0 +1,12 @@
+﻿ARCH
+==========================================
+
+.. currentmodule:: sktime.forecasting.arch
+
+.. autoclass:: ARCH
+
+.. include:: sktime.forecasting.arch.ARCH.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

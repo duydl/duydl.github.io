@@ -1,0 +1,7 @@
+sktime.dists\_kernels.lucky module
+==================================
+
+.. automodule:: sktime.dists_kernels.lucky
+   :members:
+   :undoc-members:
+   :show-inheritance:

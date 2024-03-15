@@ -1,0 +1,7 @@
+sktime.transformations.panel.padder module
+==========================================
+
+.. automodule:: sktime.transformations.panel.padder
+   :members:
+   :undoc-members:
+   :show-inheritance:

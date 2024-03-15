@@ -1,0 +1,12 @@
+﻿ProximityForest
+==================================================================
+
+.. currentmodule:: sktime.classification.distance_based
+
+.. autoclass:: ProximityForest
+
+.. include:: sktime.classification.distance_based.ProximityForest.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

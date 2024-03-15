@@ -1,0 +1,7 @@
+sktime.regression.distance\_based package
+=========================================
+
+.. automodule:: sktime.regression.distance_based
+   :members:
+   :undoc-members:
+   :show-inheritance:

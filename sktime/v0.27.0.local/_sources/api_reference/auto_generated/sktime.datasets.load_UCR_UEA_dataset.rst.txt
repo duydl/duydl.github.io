@@ -1,0 +1,12 @@
+﻿load_UCR_UEA_dataset
+========================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_UCR_UEA_dataset
+
+.. include:: sktime.datasets.load_UCR_UEA_dataset.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿make_pipeline
+=================================================
+
+.. currentmodule:: sktime.pipeline
+
+.. autofunction:: make_pipeline
+
+.. include:: sktime.pipeline.make_pipeline.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

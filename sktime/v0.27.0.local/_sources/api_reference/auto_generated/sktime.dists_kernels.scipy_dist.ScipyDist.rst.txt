@@ -1,0 +1,12 @@
+﻿ScipyDist
+=======================================================
+
+.. currentmodule:: sktime.dists_kernels.scipy_dist
+
+.. autoclass:: ScipyDist
+
+.. include:: sktime.dists_kernels.scipy_dist.ScipyDist.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

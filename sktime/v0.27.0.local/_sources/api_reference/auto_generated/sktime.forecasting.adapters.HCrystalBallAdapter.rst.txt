@@ -1,0 +1,12 @@
+﻿HCrystalBallAdapter
+=============================================================
+
+.. currentmodule:: sktime.forecasting.adapters
+
+.. autoclass:: HCrystalBallAdapter
+
+.. include:: sktime.forecasting.adapters.HCrystalBallAdapter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

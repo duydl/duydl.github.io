@@ -1,0 +1,12 @@
+﻿ForecastingRandomizedSearchCV
+==============================================================================
+
+.. currentmodule:: sktime.forecasting.model_selection
+
+.. autoclass:: ForecastingRandomizedSearchCV
+
+.. include:: sktime.forecasting.model_selection.ForecastingRandomizedSearchCV.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

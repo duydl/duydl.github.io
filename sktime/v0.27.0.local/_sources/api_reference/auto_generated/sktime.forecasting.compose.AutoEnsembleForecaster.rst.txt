@@ -1,0 +1,12 @@
+﻿AutoEnsembleForecaster
+===============================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: AutoEnsembleForecaster
+
+.. include:: sktime.forecasting.compose.AutoEnsembleForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿ScaledAsinhTransformer
+==============================================================================
+
+.. currentmodule:: sktime.transformations.series.scaledasinh
+
+.. autoclass:: ScaledAsinhTransformer
+
+.. include:: sktime.transformations.series.scaledasinh.ScaledAsinhTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

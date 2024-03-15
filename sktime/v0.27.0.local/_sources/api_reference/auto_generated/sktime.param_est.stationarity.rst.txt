@@ -1,0 +1,7 @@
+sktime.param\_est.stationarity package
+======================================
+
+.. automodule:: sktime.param_est.stationarity
+   :members:
+   :undoc-members:
+   :show-inheritance:

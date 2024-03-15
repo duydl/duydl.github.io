@@ -1,0 +1,12 @@
+﻿load_uschange
+=================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_uschange
+
+.. include:: sktime.datasets.load_uschange.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

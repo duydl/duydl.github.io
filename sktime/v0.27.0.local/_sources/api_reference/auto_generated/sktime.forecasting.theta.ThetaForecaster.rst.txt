@@ -1,0 +1,12 @@
+﻿ThetaForecaster
+======================================================
+
+.. currentmodule:: sktime.forecasting.theta
+
+.. autoclass:: ThetaForecaster
+
+.. include:: sktime.forecasting.theta.ThetaForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

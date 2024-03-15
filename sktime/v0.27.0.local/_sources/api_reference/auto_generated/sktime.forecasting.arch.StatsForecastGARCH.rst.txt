@@ -1,0 +1,12 @@
+﻿StatsForecastGARCH
+========================================================
+
+.. currentmodule:: sktime.forecasting.arch
+
+.. autoclass:: StatsForecastGARCH
+
+.. include:: sktime.forecasting.arch.StatsForecastGARCH.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

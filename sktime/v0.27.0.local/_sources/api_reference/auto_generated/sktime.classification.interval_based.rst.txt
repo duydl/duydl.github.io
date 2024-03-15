@@ -1,0 +1,7 @@
+sktime.classification.interval\_based package
+=============================================
+
+.. automodule:: sktime.classification.interval_based
+   :members:
+   :undoc-members:
+   :show-inheritance:

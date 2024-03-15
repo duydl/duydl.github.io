@@ -1,0 +1,12 @@
+﻿FallbackForecaster
+===========================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: FallbackForecaster
+
+.. include:: sktime.forecasting.compose.FallbackForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

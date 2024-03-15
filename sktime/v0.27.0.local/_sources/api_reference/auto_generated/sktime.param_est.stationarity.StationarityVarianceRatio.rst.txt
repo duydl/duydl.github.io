@@ -1,0 +1,12 @@
+﻿StationarityVarianceRatio
+=====================================================================
+
+.. currentmodule:: sktime.param_est.stationarity
+
+.. autoclass:: StationarityVarianceRatio
+
+.. include:: sktime.param_est.stationarity.StationarityVarianceRatio.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿Pipeline
+===============================================
+
+.. currentmodule:: sktime.pipeline.pipeline
+
+.. autoclass:: Pipeline
+
+.. include:: sktime.pipeline.pipeline.Pipeline.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

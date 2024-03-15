@@ -1,0 +1,24 @@
+sktime.distances package
+========================
+
+.. automodule:: sktime.distances
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.distances.base
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.distances.lower_bounding
+   sktime.distances.mpdist

@@ -1,0 +1,7 @@
+sktime.transformations.series.holiday.financial\_holidays module
+================================================================
+
+.. automodule:: sktime.transformations.series.holiday.financial_holidays
+   :members:
+   :undoc-members:
+   :show-inheritance:

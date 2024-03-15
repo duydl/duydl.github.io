@@ -1,0 +1,12 @@
+﻿ProphetPiecewiseLinearTrendForecaster
+============================================================================
+
+.. currentmodule:: sktime.forecasting.trend
+
+.. autoclass:: ProphetPiecewiseLinearTrendForecaster
+
+.. include:: sktime.forecasting.trend.ProphetPiecewiseLinearTrendForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

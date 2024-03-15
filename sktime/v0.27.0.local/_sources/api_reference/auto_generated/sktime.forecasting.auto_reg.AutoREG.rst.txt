@@ -1,0 +1,12 @@
+﻿AutoREG
+=================================================
+
+.. currentmodule:: sktime.forecasting.auto_reg
+
+.. autoclass:: AutoREG
+
+.. include:: sktime.forecasting.auto_reg.AutoREG.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿StationarityADF
+===========================================================
+
+.. currentmodule:: sktime.param_est.stationarity
+
+.. autoclass:: StationarityADF
+
+.. include:: sktime.param_est.stationarity.StationarityADF.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

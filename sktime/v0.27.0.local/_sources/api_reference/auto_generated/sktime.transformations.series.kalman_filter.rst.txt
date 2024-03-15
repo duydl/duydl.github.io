@@ -1,0 +1,7 @@
+sktime.transformations.series.kalman\_filter module
+===================================================
+
+.. automodule:: sktime.transformations.series.kalman_filter
+   :members:
+   :undoc-members:
+   :show-inheritance:

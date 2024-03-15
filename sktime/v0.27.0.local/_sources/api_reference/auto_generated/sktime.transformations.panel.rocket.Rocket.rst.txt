@@ -1,0 +1,12 @@
+﻿Rocket
+========================================================
+
+.. currentmodule:: sktime.transformations.panel.rocket
+
+.. autoclass:: Rocket
+
+.. include:: sktime.transformations.panel.rocket.Rocket.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

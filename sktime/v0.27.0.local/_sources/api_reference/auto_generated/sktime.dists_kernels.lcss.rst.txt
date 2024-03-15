@@ -1,0 +1,7 @@
+sktime.dists\_kernels.lcss module
+=================================
+
+.. automodule:: sktime.dists_kernels.lcss
+   :members:
+   :undoc-members:
+   :show-inheritance:

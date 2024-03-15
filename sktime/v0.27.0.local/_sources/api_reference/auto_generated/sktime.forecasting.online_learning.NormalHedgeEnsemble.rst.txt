@@ -1,0 +1,12 @@
+﻿NormalHedgeEnsemble
+====================================================================
+
+.. currentmodule:: sktime.forecasting.online_learning
+
+.. autoclass:: NormalHedgeEnsemble
+
+.. include:: sktime.forecasting.online_learning.NormalHedgeEnsemble.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

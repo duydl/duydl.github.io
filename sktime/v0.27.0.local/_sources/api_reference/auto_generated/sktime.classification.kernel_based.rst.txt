@@ -1,0 +1,7 @@
+sktime.classification.kernel\_based package
+===========================================
+
+.. automodule:: sktime.classification.kernel_based
+   :members:
+   :undoc-members:
+   :show-inheritance:

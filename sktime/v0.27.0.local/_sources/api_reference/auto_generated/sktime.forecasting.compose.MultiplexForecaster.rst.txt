@@ -1,0 +1,12 @@
+﻿MultiplexForecaster
+============================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: MultiplexForecaster
+
+.. include:: sktime.forecasting.compose.MultiplexForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

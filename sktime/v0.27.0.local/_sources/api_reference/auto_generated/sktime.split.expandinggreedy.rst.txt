@@ -1,0 +1,7 @@
+sktime.split.expandinggreedy module
+===================================
+
+.. automodule:: sktime.split.expandinggreedy
+   :members:
+   :undoc-members:
+   :show-inheritance:

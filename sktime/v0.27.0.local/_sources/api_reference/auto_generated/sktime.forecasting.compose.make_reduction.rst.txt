@@ -1,0 +1,12 @@
+﻿make_reduction
+=============================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autofunction:: make_reduction
+
+.. include:: sktime.forecasting.compose.make_reduction.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

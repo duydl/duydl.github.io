@@ -1,0 +1,12 @@
+﻿IndepDist
+==================================================
+
+.. currentmodule:: sktime.dists_kernels.indep
+
+.. autoclass:: IndepDist
+
+.. include:: sktime.dists_kernels.indep.IndepDist.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

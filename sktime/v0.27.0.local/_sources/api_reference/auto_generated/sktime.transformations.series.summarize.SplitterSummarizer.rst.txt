@@ -1,0 +1,12 @@
+﻿SplitterSummarizer
+========================================================================
+
+.. currentmodule:: sktime.transformations.series.summarize
+
+.. autoclass:: SplitterSummarizer
+
+.. include:: sktime.transformations.series.summarize.SplitterSummarizer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

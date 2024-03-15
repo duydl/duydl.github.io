@@ -1,0 +1,12 @@
+﻿SeasonalityACFqstat
+==============================================================
+
+.. currentmodule:: sktime.param_est.seasonality
+
+.. autoclass:: SeasonalityACFqstat
+
+.. include:: sktime.param_est.seasonality.SeasonalityACFqstat.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

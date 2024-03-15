@@ -1,0 +1,12 @@
+﻿ForecastingHorizon
+========================================================
+
+.. currentmodule:: sktime.forecasting.base
+
+.. autoclass:: ForecastingHorizon
+
+.. include:: sktime.forecasting.base.ForecastingHorizon.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

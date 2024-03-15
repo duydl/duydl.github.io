@@ -1,0 +1,12 @@
+﻿SameLocSplitter
+==========================================
+
+.. currentmodule:: sktime.split
+
+.. autoclass:: SameLocSplitter
+
+.. include:: sktime.split.SameLocSplitter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

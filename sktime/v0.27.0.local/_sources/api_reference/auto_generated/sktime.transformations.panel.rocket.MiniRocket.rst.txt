@@ -1,0 +1,12 @@
+﻿MiniRocket
+============================================================
+
+.. currentmodule:: sktime.transformations.panel.rocket
+
+.. autoclass:: MiniRocket
+
+.. include:: sktime.transformations.panel.rocket.MiniRocket.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

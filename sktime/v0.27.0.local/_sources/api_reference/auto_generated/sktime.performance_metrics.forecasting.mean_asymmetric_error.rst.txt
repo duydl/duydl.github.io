@@ -1,0 +1,12 @@
+﻿mean_asymmetric_error
+================================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autofunction:: mean_asymmetric_error
+
+.. include:: sktime.performance_metrics.forecasting.mean_asymmetric_error.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

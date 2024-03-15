@@ -1,0 +1,12 @@
+﻿VmdTransformer
+==============================================================
+
+.. currentmodule:: sktime.transformations.series.vmd
+
+.. autoclass:: VmdTransformer
+
+.. include:: sktime.transformations.series.vmd.VmdTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

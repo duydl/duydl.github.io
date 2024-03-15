@@ -1,0 +1,12 @@
+﻿ExponentTransformer
+========================================================================
+
+.. currentmodule:: sktime.transformations.series.exponent
+
+.. autoclass:: ExponentTransformer
+
+.. include:: sktime.transformations.series.exponent.ExponentTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

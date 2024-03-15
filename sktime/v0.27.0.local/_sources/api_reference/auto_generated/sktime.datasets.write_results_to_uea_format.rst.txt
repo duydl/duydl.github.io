@@ -1,0 +1,12 @@
+﻿write_results_to_uea_format
+===============================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: write_results_to_uea_format
+
+.. include:: sktime.datasets.write_results_to_uea_format.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.transformations.panel.channel\_selection module
+======================================================
+
+.. automodule:: sktime.transformations.panel.channel_selection
+   :members:
+   :undoc-members:
+   :show-inheritance:

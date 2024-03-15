@@ -1,0 +1,12 @@
+﻿FunctionParamFitter
+==========================================================
+
+.. currentmodule:: sktime.param_est.compose
+
+.. autoclass:: FunctionParamFitter
+
+.. include:: sktime.param_est.compose.FunctionParamFitter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

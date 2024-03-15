@@ -1,0 +1,7 @@
+sktime.classification.dummy package
+===================================
+
+.. automodule:: sktime.classification.dummy
+   :members:
+   :undoc-members:
+   :show-inheritance:

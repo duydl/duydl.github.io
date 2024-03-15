@@ -1,0 +1,12 @@
+﻿SlopeTransformer
+=================================================================
+
+.. currentmodule:: sktime.transformations.panel.slope
+
+.. autoclass:: SlopeTransformer
+
+.. include:: sktime.transformations.panel.slope.SlopeTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

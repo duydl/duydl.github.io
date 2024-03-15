@@ -1,0 +1,12 @@
+﻿CanonicalIntervalForest
+==========================================================================
+
+.. currentmodule:: sktime.classification.interval_based
+
+.. autoclass:: CanonicalIntervalForest
+
+.. include:: sktime.classification.interval_based.CanonicalIntervalForest.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

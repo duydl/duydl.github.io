@@ -1,0 +1,12 @@
+﻿BaseRegressor
+==================================================
+
+.. currentmodule:: sktime.regression.base
+
+.. autoclass:: BaseRegressor
+
+.. include:: sktime.regression.base.BaseRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

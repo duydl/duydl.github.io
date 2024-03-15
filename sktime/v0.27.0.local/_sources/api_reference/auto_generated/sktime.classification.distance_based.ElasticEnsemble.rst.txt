@@ -1,0 +1,12 @@
+﻿ElasticEnsemble
+==================================================================
+
+.. currentmodule:: sktime.classification.distance_based
+
+.. autoclass:: ElasticEnsemble
+
+.. include:: sktime.classification.distance_based.ElasticEnsemble.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

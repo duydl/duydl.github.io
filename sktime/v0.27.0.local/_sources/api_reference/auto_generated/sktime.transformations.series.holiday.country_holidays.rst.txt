@@ -1,0 +1,7 @@
+sktime.transformations.series.holiday.country\_holidays module
+==============================================================
+
+.. automodule:: sktime.transformations.series.holiday.country_holidays
+   :members:
+   :undoc-members:
+   :show-inheritance:

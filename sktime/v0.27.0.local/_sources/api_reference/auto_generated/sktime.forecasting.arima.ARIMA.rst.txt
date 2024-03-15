@@ -1,0 +1,12 @@
+﻿ARIMA
+============================================
+
+.. currentmodule:: sktime.forecasting.arima
+
+.. autoclass:: ARIMA
+
+.. include:: sktime.forecasting.arima.ARIMA.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

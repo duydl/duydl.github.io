@@ -1,0 +1,37 @@
+sktime.dists\_kernels package
+=============================
+
+.. automodule:: sktime.dists_kernels
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.dists_kernels.base
+   sktime.dists_kernels.dtw
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.dists_kernels.algebra
+   sktime.dists_kernels.compose
+   sktime.dists_kernels.compose_from_align
+   sktime.dists_kernels.compose_tab_to_panel
+   sktime.dists_kernels.ctw
+   sktime.dists_kernels.dist_to_kern
+   sktime.dists_kernels.dummy
+   sktime.dists_kernels.edit_dist
+   sktime.dists_kernels.gak
+   sktime.dists_kernels.indep
+   sktime.dists_kernels.lcss
+   sktime.dists_kernels.lucky
+   sktime.dists_kernels.scipy_dist
+   sktime.dists_kernels.signature_kernel

@@ -1,0 +1,7 @@
+sktime.param\_est.seasonality module
+====================================
+
+.. automodule:: sktime.param_est.seasonality
+   :members:
+   :undoc-members:
+   :show-inheritance:

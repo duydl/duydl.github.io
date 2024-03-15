@@ -1,0 +1,12 @@
+﻿pairwise_distance
+======================================================
+
+.. currentmodule:: sktime.distances
+
+.. autofunction:: pairwise_distance
+
+.. include:: sktime.distances.pairwise_distance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

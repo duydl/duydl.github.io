@@ -1,0 +1,7 @@
+sktime.classification.deep\_learning.lstmfcn module
+===================================================
+
+.. automodule:: sktime.classification.deep_learning.lstmfcn
+   :members:
+   :undoc-members:
+   :show-inheritance:

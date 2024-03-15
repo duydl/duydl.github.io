@@ -1,0 +1,12 @@
+﻿RocketRegressor
+============================================================
+
+.. currentmodule:: sktime.regression.kernel_based
+
+.. autoclass:: RocketRegressor
+
+.. include:: sktime.regression.kernel_based.RocketRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

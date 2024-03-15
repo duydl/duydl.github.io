@@ -1,0 +1,12 @@
+﻿Differencer
+==================================================================
+
+.. currentmodule:: sktime.transformations.series.difference
+
+.. autoclass:: Differencer
+
+.. include:: sktime.transformations.series.difference.Differencer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

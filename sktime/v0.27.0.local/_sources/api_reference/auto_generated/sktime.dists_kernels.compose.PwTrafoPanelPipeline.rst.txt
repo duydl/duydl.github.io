@@ -1,0 +1,12 @@
+﻿PwTrafoPanelPipeline
+===============================================================
+
+.. currentmodule:: sktime.dists_kernels.compose
+
+.. autoclass:: PwTrafoPanelPipeline
+
+.. include:: sktime.dists_kernels.compose.PwTrafoPanelPipeline.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

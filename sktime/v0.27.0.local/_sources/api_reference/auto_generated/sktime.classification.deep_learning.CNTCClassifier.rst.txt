@@ -1,0 +1,12 @@
+﻿CNTCClassifier
+================================================================
+
+.. currentmodule:: sktime.classification.deep_learning
+
+.. autoclass:: CNTCClassifier
+
+.. include:: sktime.classification.deep_learning.CNTCClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

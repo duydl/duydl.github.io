@@ -1,0 +1,12 @@
+﻿PartialAutoCorrelationTransformer
+=================================================================================
+
+.. currentmodule:: sktime.transformations.series.acf
+
+.. autoclass:: PartialAutoCorrelationTransformer
+
+.. include:: sktime.transformations.series.acf.PartialAutoCorrelationTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

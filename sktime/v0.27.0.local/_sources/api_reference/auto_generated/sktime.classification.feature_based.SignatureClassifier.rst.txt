@@ -1,0 +1,12 @@
+﻿SignatureClassifier
+=====================================================================
+
+.. currentmodule:: sktime.classification.feature_based
+
+.. autoclass:: SignatureClassifier
+
+.. include:: sktime.classification.feature_based.SignatureClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿relative_loss
+========================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autofunction:: relative_loss
+
+.. include:: sktime.performance_metrics.forecasting.relative_loss.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

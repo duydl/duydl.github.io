@@ -1,0 +1,7 @@
+sktime.dists\_kernels.algebra module
+====================================
+
+.. automodule:: sktime.dists_kernels.algebra
+   :members:
+   :undoc-members:
+   :show-inheritance:

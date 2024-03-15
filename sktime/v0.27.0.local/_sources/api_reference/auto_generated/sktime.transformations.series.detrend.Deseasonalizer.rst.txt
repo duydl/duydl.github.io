@@ -1,0 +1,12 @@
+﻿Deseasonalizer
+==================================================================
+
+.. currentmodule:: sktime.transformations.series.detrend
+
+.. autoclass:: Deseasonalizer
+
+.. include:: sktime.transformations.series.detrend.Deseasonalizer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

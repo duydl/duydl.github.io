@@ -1,0 +1,7 @@
+sktime.transformations.panel.tsfresh module
+===========================================
+
+.. automodule:: sktime.transformations.panel.tsfresh
+   :members:
+   :undoc-members:
+   :show-inheritance:

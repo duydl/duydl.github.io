@@ -1,0 +1,7 @@
+sktime.classification.plotting.temporal\_importance\_diagram module
+===================================================================
+
+.. automodule:: sktime.classification.plotting.temporal_importance_diagram
+   :members:
+   :undoc-members:
+   :show-inheritance:

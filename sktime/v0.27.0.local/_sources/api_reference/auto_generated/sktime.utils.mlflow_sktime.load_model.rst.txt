@@ -1,0 +1,12 @@
+﻿load_model
+=========================================================
+
+.. currentmodule:: sktime.utils.mlflow_sktime
+
+.. autofunction:: load_model
+
+.. include:: sktime.utils.mlflow_sktime.load_model.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

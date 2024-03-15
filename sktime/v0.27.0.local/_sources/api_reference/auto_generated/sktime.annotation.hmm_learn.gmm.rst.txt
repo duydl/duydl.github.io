@@ -1,0 +1,7 @@
+sktime.annotation.hmm\_learn.gmm module
+=======================================
+
+.. automodule:: sktime.annotation.hmm_learn.gmm
+   :members:
+   :undoc-members:
+   :show-inheritance:

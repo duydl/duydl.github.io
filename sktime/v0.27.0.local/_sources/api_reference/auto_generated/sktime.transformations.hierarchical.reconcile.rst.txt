@@ -1,0 +1,7 @@
+sktime.transformations.hierarchical.reconcile module
+====================================================
+
+.. automodule:: sktime.transformations.hierarchical.reconcile
+   :members:
+   :undoc-members:
+   :show-inheritance:

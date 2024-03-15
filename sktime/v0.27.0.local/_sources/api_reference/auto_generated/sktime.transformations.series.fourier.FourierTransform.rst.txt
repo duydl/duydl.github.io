@@ -1,0 +1,12 @@
+﻿FourierTransform
+====================================================================
+
+.. currentmodule:: sktime.transformations.series.fourier
+
+.. autoclass:: FourierTransform
+
+.. include:: sktime.transformations.series.fourier.FourierTransform.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

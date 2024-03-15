@@ -1,0 +1,12 @@
+﻿check_tag_is_valid
+======================================================
+
+.. currentmodule:: sktime.registry
+
+.. autofunction:: check_tag_is_valid
+
+.. include:: sktime.registry.check_tag_is_valid.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

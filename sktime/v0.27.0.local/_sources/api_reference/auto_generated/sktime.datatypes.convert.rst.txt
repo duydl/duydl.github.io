@@ -1,0 +1,12 @@
+﻿convert
+============================================
+
+.. currentmodule:: sktime.datatypes
+
+.. autofunction:: convert
+
+.. include:: sktime.datatypes.convert.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

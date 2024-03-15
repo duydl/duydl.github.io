@@ -1,0 +1,12 @@
+﻿load_airline
+================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_airline
+
+.. include:: sktime.datasets.load_airline.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

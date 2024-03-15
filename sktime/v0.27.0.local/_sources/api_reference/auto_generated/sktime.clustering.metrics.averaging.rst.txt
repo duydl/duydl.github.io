@@ -1,0 +1,7 @@
+sktime.clustering.metrics.averaging package
+===========================================
+
+.. automodule:: sktime.clustering.metrics.averaging
+   :members:
+   :undoc-members:
+   :show-inheritance:

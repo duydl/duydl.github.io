@@ -1,0 +1,12 @@
+﻿TestPlusTrainSplitter
+================================================
+
+.. currentmodule:: sktime.split
+
+.. autoclass:: TestPlusTrainSplitter
+
+.. include:: sktime.split.TestPlusTrainSplitter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

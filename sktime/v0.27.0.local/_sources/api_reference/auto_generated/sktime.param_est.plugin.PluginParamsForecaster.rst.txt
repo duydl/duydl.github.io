@@ -1,0 +1,12 @@
+﻿PluginParamsForecaster
+============================================================
+
+.. currentmodule:: sktime.param_est.plugin
+
+.. autoclass:: PluginParamsForecaster
+
+.. include:: sktime.param_est.plugin.PluginParamsForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

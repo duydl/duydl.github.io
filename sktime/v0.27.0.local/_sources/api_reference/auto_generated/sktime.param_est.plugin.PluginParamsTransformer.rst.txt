@@ -1,0 +1,12 @@
+﻿PluginParamsTransformer
+=============================================================
+
+.. currentmodule:: sktime.param_est.plugin
+
+.. autoclass:: PluginParamsTransformer
+
+.. include:: sktime.param_est.plugin.PluginParamsTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

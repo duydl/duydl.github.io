@@ -1,0 +1,12 @@
+﻿plot_series
+=====================================================
+
+.. currentmodule:: sktime.utils.plotting
+
+.. autofunction:: plot_series
+
+.. include:: sktime.utils.plotting.plot_series.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

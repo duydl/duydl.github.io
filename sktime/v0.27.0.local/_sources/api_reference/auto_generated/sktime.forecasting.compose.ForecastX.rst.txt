@@ -1,0 +1,12 @@
+﻿ForecastX
+==================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: ForecastX
+
+.. include:: sktime.forecasting.compose.ForecastX.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

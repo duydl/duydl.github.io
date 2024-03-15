@@ -1,0 +1,12 @@
+﻿MultiplexClassifier
+===============================================================
+
+.. currentmodule:: sktime.classification.compose
+
+.. autoclass:: MultiplexClassifier
+
+.. include:: sktime.classification.compose.MultiplexClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

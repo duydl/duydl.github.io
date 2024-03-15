@@ -1,0 +1,12 @@
+﻿NaiveVariance
+====================================================
+
+.. currentmodule:: sktime.forecasting.naive
+
+.. autoclass:: NaiveVariance
+
+.. include:: sktime.forecasting.naive.NaiveVariance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿PoissonHMM
+============================================================
+
+.. currentmodule:: sktime.annotation.hmm_learn.poisson
+
+.. autoclass:: PoissonHMM
+
+.. include:: sktime.annotation.hmm_learn.poisson.PoissonHMM.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

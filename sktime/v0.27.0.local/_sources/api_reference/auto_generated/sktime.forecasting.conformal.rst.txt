@@ -1,0 +1,7 @@
+sktime.forecasting.conformal module
+===================================
+
+.. automodule:: sktime.forecasting.conformal
+   :members:
+   :undoc-members:
+   :show-inheritance:

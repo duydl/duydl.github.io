@@ -1,0 +1,12 @@
+﻿SingleSplit
+===================================================================
+
+.. currentmodule:: sktime.series_as_features.model_selection
+
+.. autoclass:: SingleSplit
+
+.. include:: sktime.series_as_features.model_selection.SingleSplit.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

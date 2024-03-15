@@ -1,0 +1,12 @@
+﻿mean_squared_percentage_error
+========================================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autofunction:: mean_squared_percentage_error
+
+.. include:: sktime.performance_metrics.forecasting.mean_squared_percentage_error.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

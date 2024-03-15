@@ -1,0 +1,12 @@
+﻿IndexSubset
+==============================================================
+
+.. currentmodule:: sktime.transformations.series.subset
+
+.. autoclass:: IndexSubset
+
+.. include:: sktime.transformations.series.subset.IndexSubset.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

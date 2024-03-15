@@ -1,0 +1,15 @@
+sktime.series\_as\_features package
+===================================
+
+.. automodule:: sktime.series_as_features
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.series_as_features.model_selection

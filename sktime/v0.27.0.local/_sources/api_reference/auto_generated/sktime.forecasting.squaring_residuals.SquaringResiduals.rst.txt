@@ -1,0 +1,12 @@
+﻿SquaringResiduals
+=====================================================================
+
+.. currentmodule:: sktime.forecasting.squaring_residuals
+
+.. autoclass:: SquaringResiduals
+
+.. include:: sktime.forecasting.squaring_residuals.SquaringResiduals.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿BaggingForecaster
+==========================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: BaggingForecaster
+
+.. include:: sktime.forecasting.compose.BaggingForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

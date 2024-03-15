@@ -1,0 +1,12 @@
+﻿ScaledLogitTransformer
+==============================================================================
+
+.. currentmodule:: sktime.transformations.series.scaledlogit
+
+.. autoclass:: ScaledLogitTransformer
+
+.. include:: sktime.transformations.series.scaledlogit.ScaledLogitTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

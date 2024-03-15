@@ -1,0 +1,12 @@
+﻿StationarityDFGLS
+=============================================================
+
+.. currentmodule:: sktime.param_est.stationarity
+
+.. autoclass:: StationarityDFGLS
+
+.. include:: sktime.param_est.stationarity.StationarityDFGLS.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

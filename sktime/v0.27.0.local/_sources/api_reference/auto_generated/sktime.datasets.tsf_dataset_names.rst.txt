@@ -1,0 +1,7 @@
+sktime.datasets.tsf\_dataset\_names module
+==========================================
+
+.. automodule:: sktime.datasets.tsf_dataset_names
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿BaseClusterer
+==================================================
+
+.. currentmodule:: sktime.clustering.base
+
+.. autoclass:: BaseClusterer
+
+.. include:: sktime.clustering.base.BaseClusterer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

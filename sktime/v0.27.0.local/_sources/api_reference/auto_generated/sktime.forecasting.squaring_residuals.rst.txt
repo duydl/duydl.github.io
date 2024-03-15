@@ -1,0 +1,7 @@
+sktime.forecasting.squaring\_residuals module
+=============================================
+
+.. automodule:: sktime.forecasting.squaring_residuals
+   :members:
+   :undoc-members:
+   :show-inheritance:

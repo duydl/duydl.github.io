@@ -1,0 +1,7 @@
+sktime.transformations.compose package
+======================================
+
+.. automodule:: sktime.transformations.compose
+   :members:
+   :undoc-members:
+   :show-inheritance:

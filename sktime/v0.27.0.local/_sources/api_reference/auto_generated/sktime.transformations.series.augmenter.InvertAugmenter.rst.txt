@@ -1,0 +1,12 @@
+﻿InvertAugmenter
+=====================================================================
+
+.. currentmodule:: sktime.transformations.series.augmenter
+
+.. autoclass:: InvertAugmenter
+
+.. include:: sktime.transformations.series.augmenter.InvertAugmenter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.clustering.k\_means package
+==================================
+
+.. automodule:: sktime.clustering.k_means
+   :members:
+   :undoc-members:
+   :show-inheritance:

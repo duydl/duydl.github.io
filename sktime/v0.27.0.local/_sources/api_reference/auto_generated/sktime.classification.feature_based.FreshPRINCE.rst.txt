@@ -1,0 +1,12 @@
+﻿FreshPRINCE
+=============================================================
+
+.. currentmodule:: sktime.classification.feature_based
+
+.. autoclass:: FreshPRINCE
+
+.. include:: sktime.classification.feature_based.FreshPRINCE.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

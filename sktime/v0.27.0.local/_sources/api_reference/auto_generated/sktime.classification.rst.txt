@@ -1,0 +1,37 @@
+sktime.classification package
+=============================
+
+.. automodule:: sktime.classification
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.classification.compose
+   sktime.classification.deep_learning
+   sktime.classification.dictionary_based
+   sktime.classification.distance_based
+   sktime.classification.dummy
+   sktime.classification.early_classification
+   sktime.classification.ensemble
+   sktime.classification.feature_based
+   sktime.classification.hybrid
+   sktime.classification.interval_based
+   sktime.classification.kernel_based
+   sktime.classification.model_selection
+   sktime.classification.plotting
+   sktime.classification.shapelet_based
+   sktime.classification.sklearn
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.classification.base

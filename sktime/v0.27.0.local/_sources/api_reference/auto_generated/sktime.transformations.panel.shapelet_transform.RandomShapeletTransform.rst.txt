@@ -1,0 +1,12 @@
+﻿RandomShapeletTransform
+=====================================================================================
+
+.. currentmodule:: sktime.transformations.panel.shapelet_transform
+
+.. autoclass:: RandomShapeletTransform
+
+.. include:: sktime.transformations.panel.shapelet_transform.RandomShapeletTransform.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

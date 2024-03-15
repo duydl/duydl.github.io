@@ -1,0 +1,12 @@
+﻿twe_distance
+=================================================
+
+.. currentmodule:: sktime.distances
+
+.. autofunction:: twe_distance
+
+.. include:: sktime.distances.twe_distance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

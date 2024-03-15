@@ -1,0 +1,12 @@
+﻿BATS
+==========================================
+
+.. currentmodule:: sktime.forecasting.bats
+
+.. autoclass:: BATS
+
+.. include:: sktime.forecasting.bats.BATS.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

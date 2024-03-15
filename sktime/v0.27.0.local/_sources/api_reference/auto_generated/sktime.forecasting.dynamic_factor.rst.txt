@@ -1,0 +1,7 @@
+sktime.forecasting.dynamic\_factor module
+=========================================
+
+.. automodule:: sktime.forecasting.dynamic_factor
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.transformations.panel.interpolate module
+===============================================
+
+.. automodule:: sktime.transformations.panel.interpolate
+   :members:
+   :undoc-members:
+   :show-inheritance:

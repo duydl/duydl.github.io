@@ -1,0 +1,7 @@
+sktime.utils.validation.annotation module
+=========================================
+
+.. automodule:: sktime.utils.validation.annotation
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.transformations.series.binning module
+============================================
+
+.. automodule:: sktime.transformations.series.binning
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿median_absolute_scaled_error
+=======================================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autofunction:: median_absolute_scaled_error
+
+.. include:: sktime.performance_metrics.forecasting.median_absolute_scaled_error.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

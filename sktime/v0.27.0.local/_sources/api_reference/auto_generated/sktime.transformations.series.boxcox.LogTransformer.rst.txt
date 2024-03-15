@@ -1,0 +1,12 @@
+﻿LogTransformer
+=================================================================
+
+.. currentmodule:: sktime.transformations.series.boxcox
+
+.. autoclass:: LogTransformer
+
+.. include:: sktime.transformations.series.boxcox.LogTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

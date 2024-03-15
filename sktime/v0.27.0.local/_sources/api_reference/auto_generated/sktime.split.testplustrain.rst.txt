@@ -1,0 +1,7 @@
+sktime.split.testplustrain module
+=================================
+
+.. automodule:: sktime.split.testplustrain
+   :members:
+   :undoc-members:
+   :show-inheritance:

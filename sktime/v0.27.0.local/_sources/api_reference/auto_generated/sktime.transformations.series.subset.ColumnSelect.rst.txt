@@ -1,0 +1,12 @@
+﻿ColumnSelect
+===============================================================
+
+.. currentmodule:: sktime.transformations.series.subset
+
+.. autoclass:: ColumnSelect
+
+.. include:: sktime.transformations.series.subset.ColumnSelect.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

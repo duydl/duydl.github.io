@@ -1,0 +1,12 @@
+﻿NeuralForecastLSTM
+==================================================================
+
+.. currentmodule:: sktime.forecasting.neuralforecast
+
+.. autoclass:: NeuralForecastLSTM
+
+.. include:: sktime.forecasting.neuralforecast.NeuralForecastLSTM.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

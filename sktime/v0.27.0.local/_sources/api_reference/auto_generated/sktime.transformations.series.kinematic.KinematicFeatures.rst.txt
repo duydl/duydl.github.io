@@ -1,0 +1,12 @@
+﻿KinematicFeatures
+=======================================================================
+
+.. currentmodule:: sktime.transformations.series.kinematic
+
+.. autoclass:: KinematicFeatures
+
+.. include:: sktime.transformations.series.kinematic.KinematicFeatures.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

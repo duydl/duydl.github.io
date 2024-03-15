@@ -1,0 +1,7 @@
+sktime.clustering.partitioning package
+======================================
+
+.. automodule:: sktime.clustering.partitioning
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.pipeline.pipeline module
+===============================
+
+.. automodule:: sktime.pipeline.pipeline
+   :members:
+   :undoc-members:
+   :show-inheritance:

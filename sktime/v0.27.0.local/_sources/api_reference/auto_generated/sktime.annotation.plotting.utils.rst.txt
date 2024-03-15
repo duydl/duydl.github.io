@@ -1,0 +1,7 @@
+sktime.annotation.plotting.utils module
+=======================================
+
+.. automodule:: sktime.annotation.plotting.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

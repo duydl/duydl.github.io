@@ -1,0 +1,7 @@
+sktime.annotation.datagen module
+================================
+
+.. automodule:: sktime.annotation.datagen
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿MACNNRegressor
+============================================================
+
+.. currentmodule:: sktime.regression.deep_learning
+
+.. autoclass:: MACNNRegressor
+
+.. include:: sktime.regression.deep_learning.MACNNRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

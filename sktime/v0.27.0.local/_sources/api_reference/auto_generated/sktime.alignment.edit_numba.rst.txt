@@ -1,0 +1,7 @@
+sktime.alignment.edit\_numba module
+===================================
+
+.. automodule:: sktime.alignment.edit_numba
+   :members:
+   :undoc-members:
+   :show-inheritance:

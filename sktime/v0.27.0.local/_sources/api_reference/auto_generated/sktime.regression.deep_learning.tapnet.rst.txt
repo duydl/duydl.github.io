@@ -1,0 +1,7 @@
+sktime.regression.deep\_learning.tapnet module
+==============================================
+
+.. automodule:: sktime.regression.deep_learning.tapnet
+   :members:
+   :undoc-members:
+   :show-inheritance:

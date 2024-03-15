@@ -1,0 +1,12 @@
+﻿ShapeletTransform
+===============================================================================
+
+.. currentmodule:: sktime.transformations.panel.shapelet_transform
+
+.. autoclass:: ShapeletTransform
+
+.. include:: sktime.transformations.panel.shapelet_transform.ShapeletTransform.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

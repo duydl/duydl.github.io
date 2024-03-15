@@ -1,0 +1,7 @@
+sktime.dists\_kernels.ctw module
+================================
+
+.. automodule:: sktime.dists_kernels.ctw
+   :members:
+   :undoc-members:
+   :show-inheritance:

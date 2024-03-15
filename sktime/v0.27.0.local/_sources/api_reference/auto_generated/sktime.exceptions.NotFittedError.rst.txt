@@ -1,0 +1,12 @@
+﻿NotFittedError
+==============================================
+
+.. currentmodule:: sktime.exceptions
+
+.. autoclass:: NotFittedError
+
+.. include:: sktime.exceptions.NotFittedError.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

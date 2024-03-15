@@ -1,0 +1,12 @@
+﻿Reconciler
+======================================================================
+
+.. currentmodule:: sktime.transformations.hierarchical.reconcile
+
+.. autoclass:: Reconciler
+
+.. include:: sktime.transformations.hierarchical.reconcile.Reconciler.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

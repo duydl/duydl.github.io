@@ -1,0 +1,12 @@
+﻿load_osuleaf
+================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_osuleaf
+
+.. include:: sktime.datasets.load_osuleaf.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

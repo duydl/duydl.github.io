@@ -1,0 +1,12 @@
+﻿CountryHolidaysTransformer
+==============================================================================
+
+.. currentmodule:: sktime.transformations.series.holiday
+
+.. autoclass:: CountryHolidaysTransformer
+
+.. include:: sktime.transformations.series.holiday.CountryHolidaysTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

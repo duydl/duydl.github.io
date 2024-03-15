@@ -1,0 +1,12 @@
+﻿SlidingWindowSplitter
+================================================
+
+.. currentmodule:: sktime.split
+
+.. autoclass:: SlidingWindowSplitter
+
+.. include:: sktime.split.SlidingWindowSplitter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

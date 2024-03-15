@@ -1,0 +1,7 @@
+sktime.benchmarking.tasks module
+================================
+
+.. automodule:: sktime.benchmarking.tasks
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.classification.model\_selection package
+==============================================
+
+.. automodule:: sktime.classification.model_selection
+   :members:
+   :undoc-members:
+   :show-inheritance:

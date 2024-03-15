@@ -1,0 +1,12 @@
+﻿load_macroeconomic
+======================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_macroeconomic
+
+.. include:: sktime.datasets.load_macroeconomic.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

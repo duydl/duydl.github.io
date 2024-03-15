@@ -1,0 +1,12 @@
+﻿AlignerDtwNumba
+========================================================
+
+.. currentmodule:: sktime.alignment.dtw_numba
+
+.. autoclass:: AlignerDtwNumba
+
+.. include:: sktime.alignment.dtw_numba.AlignerDtwNumba.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

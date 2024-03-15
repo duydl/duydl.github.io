@@ -1,0 +1,12 @@
+﻿RandomIntervalClassifier
+==========================================================================
+
+.. currentmodule:: sktime.classification.feature_based
+
+.. autoclass:: RandomIntervalClassifier
+
+.. include:: sktime.classification.feature_based.RandomIntervalClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

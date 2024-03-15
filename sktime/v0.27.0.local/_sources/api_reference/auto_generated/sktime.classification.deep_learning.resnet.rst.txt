@@ -1,0 +1,7 @@
+sktime.classification.deep\_learning.resnet module
+==================================================
+
+.. automodule:: sktime.classification.deep_learning.resnet
+   :members:
+   :undoc-members:
+   :show-inheritance:

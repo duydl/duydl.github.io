@@ -1,0 +1,7 @@
+sktime.transformations.panel.catch22 module
+===========================================
+
+.. automodule:: sktime.transformations.panel.catch22
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿PaddingTransformer
+====================================================================
+
+.. currentmodule:: sktime.transformations.panel.padder
+
+.. autoclass:: PaddingTransformer
+
+.. include:: sktime.transformations.panel.padder.PaddingTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿BaseEarlyClassifier
+=================================================================================
+
+.. currentmodule:: sktime.classification.early_classification.base
+
+.. autoclass:: BaseEarlyClassifier
+
+.. include:: sktime.classification.early_classification.base.BaseEarlyClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

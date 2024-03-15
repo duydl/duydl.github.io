@@ -1,0 +1,12 @@
+﻿DistFromAligner
+=====================================================================
+
+.. currentmodule:: sktime.dists_kernels.compose_from_align
+
+.. autoclass:: DistFromAligner
+
+.. include:: sktime.dists_kernels.compose_from_align.DistFromAligner.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

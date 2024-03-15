@@ -1,0 +1,12 @@
+﻿TimeSeriesKMedoids
+============================================================
+
+.. currentmodule:: sktime.clustering.k_medoids
+
+.. autoclass:: TimeSeriesKMedoids
+
+.. include:: sktime.clustering.k_medoids.TimeSeriesKMedoids.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

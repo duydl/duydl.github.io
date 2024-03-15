@@ -1,0 +1,1195 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.param_est package &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.param_est';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.compose.html">sktime.param_est.compose package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.plugin.html">sktime.param_est.plugin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.stationarity.html">sktime.param_est.stationarity package</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.base.html">sktime.param_est.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.fixed.html">sktime.param_est.fixed module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.seasonality.html">sktime.param_est.seasonality module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.param...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.param_est">
+<span id="sktime-param-est-package"></span><h1>sktime.param_est package<a class="headerlink" href="#module-sktime.param_est" title="Link to this heading">#</a></h1>
+<p>Module for parameter estimators and parameter estimator plugin composition.</p>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.compose.html">sktime.param_est.compose package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_params"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.set_params"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.clone"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.clone_tags"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.create_test_instance"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.fit"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_class_tag"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_class_tags"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_config"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_param_names"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_tag"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_tags"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.get_test_params"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.is_composite"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.is_fitted"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.load_from_path"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.load_from_serial"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.reset"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.save"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.set_config"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.set_random_state"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.set_tags"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.ParamFitterPipeline.update"><code class="docutils literal notranslate"><span class="pre">ParamFitterPipeline.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_test_params"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.clone"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.clone_tags"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.create_test_instance"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.fit"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_class_tag"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_class_tags"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_config"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_param_names"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_params"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_tag"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.get_tags"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.is_composite"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.is_fitted"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.load_from_path"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.load_from_serial"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.reset"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.save"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.set_config"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.set_params"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.set_random_state"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.set_tags"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.compose.html#sktime.param_est.compose.FunctionParamFitter.update"><code class="docutils literal notranslate"><span class="pre">FunctionParamFitter.update</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.plugin.html">sktime.param_est.plugin package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_test_params"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.clone"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.clone_tags"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.create_test_instance"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.cutoff"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.cutoff</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.fh"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.fh</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.fit"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.fit_predict"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.fit_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_class_tag"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_class_tags"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_config"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_param_names"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_params"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_tag"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.get_tags"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.is_composite"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.is_fitted"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.load_from_path"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.load_from_serial"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.predict"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.predict_interval"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.predict_interval</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.predict_proba"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.predict_proba</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.predict_quantiles"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.predict_quantiles</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.predict_residuals"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.predict_residuals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.predict_var"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.predict_var</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.reset"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.save"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.score"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.score</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.set_config"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.set_params"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.set_random_state"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.set_tags"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.update"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.update_predict"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.update_predict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsForecaster.update_predict_single"><code class="docutils literal notranslate"><span class="pre">PluginParamsForecaster.update_predict_single</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_test_params"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.ALLOWED_INPUT_MTYPES"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.ALLOWED_INPUT_MTYPES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.clone"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.clone_tags"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.create_test_instance"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.fit"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.fit_transform"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.fit_transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_class_tag"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_class_tags"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_config"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_param_names"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_params"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_tag"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.get_tags"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.inverse_transform"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.inverse_transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.is_composite"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.is_fitted"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.load_from_path"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.load_from_serial"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.reset"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.save"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.set_config"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.set_params"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.set_random_state"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.set_tags"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.transform"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.plugin.html#sktime.param_est.plugin.PluginParamsTransformer.update"><code class="docutils literal notranslate"><span class="pre">PluginParamsTransformer.update</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.stationarity.html">sktime.param_est.stationarity package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF"><code class="docutils literal notranslate"><span class="pre">StationarityADF</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_test_params"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityADF.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.clone"><code class="docutils literal notranslate"><span class="pre">StationarityADF.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.clone_tags"><code class="docutils literal notranslate"><span class="pre">StationarityADF.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.create_test_instance"><code class="docutils literal notranslate"><span class="pre">StationarityADF.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">StationarityADF.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.fit"><code class="docutils literal notranslate"><span class="pre">StationarityADF.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_class_tag"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_class_tags"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_config"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_param_names"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_params"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_tag"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.get_tags"><code class="docutils literal notranslate"><span class="pre">StationarityADF.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.is_composite"><code class="docutils literal notranslate"><span class="pre">StationarityADF.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityADF.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.load_from_path"><code class="docutils literal notranslate"><span class="pre">StationarityADF.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.load_from_serial"><code class="docutils literal notranslate"><span class="pre">StationarityADF.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.reset"><code class="docutils literal notranslate"><span class="pre">StationarityADF.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.save"><code class="docutils literal notranslate"><span class="pre">StationarityADF.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.set_config"><code class="docutils literal notranslate"><span class="pre">StationarityADF.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.set_params"><code class="docutils literal notranslate"><span class="pre">StationarityADF.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.set_random_state"><code class="docutils literal notranslate"><span class="pre">StationarityADF.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.set_tags"><code class="docutils literal notranslate"><span class="pre">StationarityADF.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADF.update"><code class="docutils literal notranslate"><span class="pre">StationarityADF.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_test_params"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.clone"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.clone_tags"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.create_test_instance"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.fit"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_class_tag"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_class_tags"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_config"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_param_names"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_params"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_tag"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.get_tags"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.is_composite"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.load_from_path"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.load_from_serial"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.reset"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.save"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.set_config"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.set_params"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.set_random_state"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.set_tags"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSS.update"><code class="docutils literal notranslate"><span class="pre">StationarityKPSS.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_test_params"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.clone"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.clone_tags"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.create_test_instance"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.fit"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_class_tag"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_class_tags"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_config"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_param_names"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_params"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_tag"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.get_tags"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.is_composite"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.load_from_path"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.load_from_serial"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.reset"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.save"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.set_config"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.set_params"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.set_random_state"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.set_tags"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityADFArch.update"><code class="docutils literal notranslate"><span class="pre">StationarityADFArch.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_test_params"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.clone"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.clone_tags"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.create_test_instance"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.fit"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_class_tag"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_class_tags"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_config"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_param_names"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_params"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_tag"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.get_tags"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.is_composite"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.load_from_path"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.load_from_serial"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.reset"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.save"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.set_config"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.set_params"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.set_random_state"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.set_tags"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityDFGLS.update"><code class="docutils literal notranslate"><span class="pre">StationarityDFGLS.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_test_params"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.clone"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.clone_tags"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.create_test_instance"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.fit"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_class_tag"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_class_tags"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_config"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_param_names"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_params"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_tag"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.get_tags"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.is_composite"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.load_from_path"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.load_from_serial"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.reset"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.save"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.set_config"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.set_params"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.set_random_state"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.set_tags"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityPhillipsPerron.update"><code class="docutils literal notranslate"><span class="pre">StationarityPhillipsPerron.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_test_params"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.clone"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.clone_tags"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.create_test_instance"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.fit"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_class_tag"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_class_tags"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_config"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_param_names"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_params"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_tag"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.get_tags"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.is_composite"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.load_from_path"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.load_from_serial"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.reset"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.save"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.set_config"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.set_params"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.set_random_state"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.set_tags"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityKPSSArch.update"><code class="docutils literal notranslate"><span class="pre">StationarityKPSSArch.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_test_params"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.clone"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.clone_tags"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.create_test_instance"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.fit"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_class_tag"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_class_tags"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_config"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_param_names"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_params"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_tag"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.get_tags"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.is_composite"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.load_from_path"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.load_from_serial"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.reset"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.save"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.set_config"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.set_params"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.set_random_state"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.set_tags"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityZivotAndrews.update"><code class="docutils literal notranslate"><span class="pre">StationarityZivotAndrews.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_test_params"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.clone"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.clone_tags"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.create_test_instance"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.fit"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_class_tag"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_class_tags"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_config"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_param_names"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_params"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_tag"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.get_tags"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.is_composite"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.is_fitted"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.load_from_path"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.load_from_serial"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.reset"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.save"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.set_config"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.set_params"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.set_random_state"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.set_tags"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.stationarity.html#sktime.param_est.stationarity.StationarityVarianceRatio.update"><code class="docutils literal notranslate"><span class="pre">StationarityVarianceRatio.update</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.base.html">sktime.param_est.base module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.fit"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.update"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.update</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.clone"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.clone_tags"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.create_test_instance"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_class_tag"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_class_tags"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_config"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_param_names"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_params"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_tag"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_tags"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.get_test_params"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.is_composite"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.load_from_path"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.load_from_serial"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.reset"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.save"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.set_config"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.set_params"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.set_random_state"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.base.html#sktime.param_est.base.BaseParamFitter.set_tags"><code class="docutils literal notranslate"><span class="pre">BaseParamFitter.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.fixed.html">sktime.param_est.fixed module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams"><code class="docutils literal notranslate"><span class="pre">FixedParams</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_test_params"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">FixedParams.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.clone"><code class="docutils literal notranslate"><span class="pre">FixedParams.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.clone_tags"><code class="docutils literal notranslate"><span class="pre">FixedParams.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.create_test_instance"><code class="docutils literal notranslate"><span class="pre">FixedParams.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">FixedParams.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.fit"><code class="docutils literal notranslate"><span class="pre">FixedParams.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_class_tag"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_class_tags"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_config"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_param_names"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_params"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_tag"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.get_tags"><code class="docutils literal notranslate"><span class="pre">FixedParams.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.is_composite"><code class="docutils literal notranslate"><span class="pre">FixedParams.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.is_fitted"><code class="docutils literal notranslate"><span class="pre">FixedParams.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.load_from_path"><code class="docutils literal notranslate"><span class="pre">FixedParams.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.load_from_serial"><code class="docutils literal notranslate"><span class="pre">FixedParams.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.reset"><code class="docutils literal notranslate"><span class="pre">FixedParams.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.save"><code class="docutils literal notranslate"><span class="pre">FixedParams.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.set_config"><code class="docutils literal notranslate"><span class="pre">FixedParams.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.set_params"><code class="docutils literal notranslate"><span class="pre">FixedParams.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.set_random_state"><code class="docutils literal notranslate"><span class="pre">FixedParams.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.set_tags"><code class="docutils literal notranslate"><span class="pre">FixedParams.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.fixed.html#sktime.param_est.fixed.FixedParams.update"><code class="docutils literal notranslate"><span class="pre">FixedParams.update</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.param_est.seasonality.html">sktime.param_est.seasonality module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_test_params"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.clone"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.clone_tags"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.create_test_instance"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.fit"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_class_tag"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_class_tags"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_config"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_param_names"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_params"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_tag"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.get_tags"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.is_composite"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.is_fitted"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.load_from_path"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.load_from_serial"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.reset"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.save"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.set_config"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.set_params"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.set_random_state"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.set_tags"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityACF.update"><code class="docutils literal notranslate"><span class="pre">SeasonalityACF.update</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_test_params"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.clone"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.clone_tags"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.create_test_instance"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.fit"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_class_tag"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_class_tags"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_config"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_param_names"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_params"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_tag"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.get_tags"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.is_composite"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.is_fitted"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.load_from_path"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.load_from_serial"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.reset"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.save"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.set_config"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.set_params"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.set_random_state"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.set_tags"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.set_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.param_est.seasonality.html#sktime.param_est.seasonality.SeasonalityPeriodogram.update"><code class="docutils literal notranslate"><span class="pre">SeasonalityPeriodogram.update</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

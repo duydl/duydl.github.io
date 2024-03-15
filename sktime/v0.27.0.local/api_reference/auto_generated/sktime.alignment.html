@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.alignment package &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.alignment';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sktime.alignment.utils.html">sktime.alignment.utils package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.utils.utils_align.html">sktime.alignment.utils.utils_align module</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.base.html">sktime.alignment.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.dtw_numba.html">sktime.alignment.dtw_numba module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.dtw_python.html">sktime.alignment.dtw_python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.edit_numba.html">sktime.alignment.edit_numba module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.lucky.html">sktime.alignment.lucky module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.naive.html">sktime.alignment.naive module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.align...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.alignment">
+<span id="sktime-alignment-package"></span><h1>sktime.alignment package<a class="headerlink" href="#module-sktime.alignment" title="Link to this heading">#</a></h1>
+<p>Implements pairwise and multiple aligners.</p>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.utils.html">sktime.alignment.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.utils.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.utils.utils_align.html">sktime.alignment.utils.utils_align module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sktime.alignment.utils.utils_align.html#sktime.alignment.utils.utils_align.reindex_iloc"><code class="docutils literal notranslate"><span class="pre">reindex_iloc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sktime.alignment.utils.utils_align.html#sktime.alignment.utils.utils_align.convert_align_to_align_loc"><code class="docutils literal notranslate"><span class="pre">convert_align_to_align_loc</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.base.html">sktime.alignment.base module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner"><code class="docutils literal notranslate"><span class="pre">BaseAligner</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.fit"><code class="docutils literal notranslate"><span class="pre">BaseAligner.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_alignment"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_alignment_loc"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_alignment_loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_aligned"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_aligned</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_distance"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_distance_matrix"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_distance_matrix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseAligner.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.clone"><code class="docutils literal notranslate"><span class="pre">BaseAligner.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.clone_tags"><code class="docutils literal notranslate"><span class="pre">BaseAligner.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.create_test_instance"><code class="docutils literal notranslate"><span class="pre">BaseAligner.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">BaseAligner.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_class_tag"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_class_tags"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_config"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_param_names"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_params"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_tag"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_tags"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.get_test_params"><code class="docutils literal notranslate"><span class="pre">BaseAligner.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.is_composite"><code class="docutils literal notranslate"><span class="pre">BaseAligner.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.is_fitted"><code class="docutils literal notranslate"><span class="pre">BaseAligner.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.load_from_path"><code class="docutils literal notranslate"><span class="pre">BaseAligner.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.load_from_serial"><code class="docutils literal notranslate"><span class="pre">BaseAligner.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.reset"><code class="docutils literal notranslate"><span class="pre">BaseAligner.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.save"><code class="docutils literal notranslate"><span class="pre">BaseAligner.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.set_config"><code class="docutils literal notranslate"><span class="pre">BaseAligner.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.set_params"><code class="docutils literal notranslate"><span class="pre">BaseAligner.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.set_random_state"><code class="docutils literal notranslate"><span class="pre">BaseAligner.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.base.html#sktime.alignment.base.BaseAligner.set_tags"><code class="docutils literal notranslate"><span class="pre">BaseAligner.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.dtw_numba.html">sktime.alignment.dtw_numba module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_test_params"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.clone"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.clone_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.create_test_instance"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.fit"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_aligned"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_aligned</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_alignment"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_alignment_loc"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_alignment_loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_class_tag"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_class_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_config"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_distance"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_distance_matrix"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_distance_matrix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_param_names"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_params"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_tag"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.get_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.is_composite"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.load_from_path"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.load_from_serial"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.reset"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.save"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.set_config"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.set_params"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.set_random_state"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_numba.html#sktime.alignment.dtw_numba.AlignerDtwNumba.set_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDtwNumba.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.dtw_python.html">sktime.alignment.dtw_python module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW"><code class="docutils literal notranslate"><span class="pre">AlignerDTW</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_test_params"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.clone"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.clone_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.create_test_instance"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.fit"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_aligned"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_aligned</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_alignment"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_alignment_loc"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_alignment_loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_class_tag"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_class_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_config"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_distance"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_distance_matrix"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_distance_matrix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_param_names"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_params"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_tag"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.get_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.is_composite"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.load_from_path"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.load_from_serial"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.reset"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.save"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.set_config"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.set_params"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.set_random_state"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTW.set_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDTW.set_tags</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_test_params"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.clone"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.clone_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.create_test_instance"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.fit"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_aligned"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_aligned</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_alignment"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_alignment_loc"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_alignment_loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_class_tag"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_class_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_config"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_distance"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_distance_matrix"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_distance_matrix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_param_names"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_params"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_tag"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.get_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.is_composite"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.load_from_path"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.load_from_serial"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.reset"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.save"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.set_config"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.set_params"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.set_random_state"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.dtw_python.html#sktime.alignment.dtw_python.AlignerDTWfromDist.set_tags"><code class="docutils literal notranslate"><span class="pre">AlignerDTWfromDist.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.edit_numba.html">sktime.alignment.edit_numba module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.ALLOWED_DISTANCE_STR"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.ALLOWED_DISTANCE_STR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_test_params"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.clone"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.clone_tags"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.create_test_instance"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.fit"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_aligned"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_aligned</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_alignment"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_alignment_loc"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_alignment_loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_class_tag"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_class_tags"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_config"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_distance"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_distance_matrix"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_distance_matrix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_param_names"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_params"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_tag"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.get_tags"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.is_composite"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.load_from_path"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.load_from_serial"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.reset"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.save"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.set_config"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.set_params"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.set_random_state"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.edit_numba.html#sktime.alignment.edit_numba.AlignerEditNumba.set_tags"><code class="docutils literal notranslate"><span class="pre">AlignerEditNumba.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.lucky.html">sktime.alignment.lucky module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_test_params"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.clone"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.clone_tags"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.create_test_instance"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.fit"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_aligned"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_aligned</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_alignment"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_alignment_loc"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_alignment_loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_class_tag"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_class_tags"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_config"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_distance"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_distance_matrix"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_distance_matrix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_param_names"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_params"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_tag"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.get_tags"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.is_composite"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.load_from_path"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.load_from_serial"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.reset"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.save"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.set_config"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.set_params"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.set_random_state"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.lucky.html#sktime.alignment.lucky.AlignerLuckyDtw.set_tags"><code class="docutils literal notranslate"><span class="pre">AlignerLuckyDtw.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.alignment.naive.html">sktime.alignment.naive module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive"><code class="docutils literal notranslate"><span class="pre">AlignerNaive</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_test_params"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_test_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.check_is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.clone"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.clone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.clone_tags"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.clone_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.create_test_instance"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.create_test_instance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.create_test_instances_and_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.fit"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.fit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_aligned"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_aligned</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_alignment"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_alignment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_alignment_loc"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_alignment_loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_class_tag"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_class_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_class_tags"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_class_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_config"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_distance"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_distance_matrix"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_distance_matrix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_fitted_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_param_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_param_names"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_param_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_params"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_tag"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.get_tags"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.get_tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.is_composite"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.is_composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.is_fitted"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.is_fitted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.load_from_path"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.load_from_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.load_from_serial"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.load_from_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.reset"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.reset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.save"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.set_config"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.set_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.set_params"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.set_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.set_random_state"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.set_random_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sktime.alignment.naive.html#sktime.alignment.naive.AlignerNaive.set_tags"><code class="docutils literal notranslate"><span class="pre">AlignerNaive.set_tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

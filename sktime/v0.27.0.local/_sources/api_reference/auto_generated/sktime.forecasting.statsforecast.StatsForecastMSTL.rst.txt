@@ -1,0 +1,12 @@
+﻿StatsForecastMSTL
+================================================================
+
+.. currentmodule:: sktime.forecasting.statsforecast
+
+.. autoclass:: StatsForecastMSTL
+
+.. include:: sktime.forecasting.statsforecast.StatsForecastMSTL.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

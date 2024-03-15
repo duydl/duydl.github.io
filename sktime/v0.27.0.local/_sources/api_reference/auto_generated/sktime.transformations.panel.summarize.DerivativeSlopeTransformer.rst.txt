@@ -1,0 +1,12 @@
+﻿DerivativeSlopeTransformer
+===============================================================================
+
+.. currentmodule:: sktime.transformations.panel.summarize
+
+.. autoclass:: DerivativeSlopeTransformer
+
+.. include:: sktime.transformations.panel.summarize.DerivativeSlopeTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

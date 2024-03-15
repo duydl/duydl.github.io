@@ -1,0 +1,7 @@
+sktime.classification.deep\_learning.fcn module
+===============================================
+
+.. automodule:: sktime.classification.deep_learning.fcn
+   :members:
+   :undoc-members:
+   :show-inheritance:

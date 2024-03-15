@@ -1,0 +1,12 @@
+﻿get_default_conda_env
+====================================================================
+
+.. currentmodule:: sktime.utils.mlflow_sktime
+
+.. autofunction:: get_default_conda_env
+
+.. include:: sktime.utils.mlflow_sktime.get_default_conda_env.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

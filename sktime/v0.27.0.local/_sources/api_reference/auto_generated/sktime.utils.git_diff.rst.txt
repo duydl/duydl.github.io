@@ -1,0 +1,7 @@
+sktime.utils.git\_diff module
+=============================
+
+.. automodule:: sktime.utils.git_diff
+   :members:
+   :undoc-members:
+   :show-inheritance:

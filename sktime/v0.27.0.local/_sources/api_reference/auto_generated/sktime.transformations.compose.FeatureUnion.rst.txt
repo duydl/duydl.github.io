@@ -1,0 +1,12 @@
+﻿FeatureUnion
+=========================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: FeatureUnion
+
+.. include:: sktime.transformations.compose.FeatureUnion.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

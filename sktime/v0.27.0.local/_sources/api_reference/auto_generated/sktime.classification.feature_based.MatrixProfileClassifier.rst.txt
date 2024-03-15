@@ -1,0 +1,12 @@
+﻿MatrixProfileClassifier
+=========================================================================
+
+.. currentmodule:: sktime.classification.feature_based
+
+.. autoclass:: MatrixProfileClassifier
+
+.. include:: sktime.classification.feature_based.MatrixProfileClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

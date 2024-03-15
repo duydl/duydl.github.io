@@ -1,0 +1,12 @@
+﻿FitInTransform
+===========================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: FitInTransform
+
+.. include:: sktime.transformations.compose.FitInTransform.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

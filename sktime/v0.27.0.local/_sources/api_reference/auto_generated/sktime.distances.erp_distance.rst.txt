@@ -1,0 +1,12 @@
+﻿erp_distance
+=================================================
+
+.. currentmodule:: sktime.distances
+
+.. autofunction:: erp_distance
+
+.. include:: sktime.distances.erp_distance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

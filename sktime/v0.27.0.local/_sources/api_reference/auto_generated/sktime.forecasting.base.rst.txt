@@ -1,0 +1,15 @@
+sktime.forecasting.base package
+===============================
+
+.. automodule:: sktime.forecasting.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.forecasting.base.adapters

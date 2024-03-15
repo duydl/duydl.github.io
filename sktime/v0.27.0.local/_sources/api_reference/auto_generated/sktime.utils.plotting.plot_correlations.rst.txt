@@ -1,0 +1,12 @@
+﻿plot_correlations
+===========================================================
+
+.. currentmodule:: sktime.utils.plotting
+
+.. autofunction:: plot_correlations
+
+.. include:: sktime.utils.plotting.plot_correlations.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

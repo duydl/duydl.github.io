@@ -1,0 +1,12 @@
+﻿ResNetClassifier
+==================================================================
+
+.. currentmodule:: sktime.classification.deep_learning
+
+.. autoclass:: ResNetClassifier
+
+.. include:: sktime.classification.deep_learning.ResNetClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

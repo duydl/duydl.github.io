@@ -1,0 +1,7 @@
+sktime.classification.deep\_learning.mlp module
+===============================================
+
+.. automodule:: sktime.classification.deep_learning.mlp
+   :members:
+   :undoc-members:
+   :show-inheritance:

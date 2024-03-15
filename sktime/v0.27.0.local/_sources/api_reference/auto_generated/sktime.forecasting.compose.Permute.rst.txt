@@ -1,0 +1,12 @@
+﻿Permute
+================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: Permute
+
+.. include:: sktime.forecasting.compose.Permute.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

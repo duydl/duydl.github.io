@@ -1,0 +1,7 @@
+sktime.forecasting.sarimax module
+=================================
+
+.. automodule:: sktime.forecasting.sarimax
+   :members:
+   :undoc-members:
+   :show-inheritance:

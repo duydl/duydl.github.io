@@ -1,0 +1,7 @@
+sktime.transformations.panel.random\_intervals module
+=====================================================
+
+.. automodule:: sktime.transformations.panel.random_intervals
+   :members:
+   :undoc-members:
+   :show-inheritance:

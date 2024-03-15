@@ -1,0 +1,12 @@
+﻿StatsForecastAutoCES
+===================================================================
+
+.. currentmodule:: sktime.forecasting.statsforecast
+
+.. autoclass:: StatsForecastAutoCES
+
+.. include:: sktime.forecasting.statsforecast.StatsForecastAutoCES.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

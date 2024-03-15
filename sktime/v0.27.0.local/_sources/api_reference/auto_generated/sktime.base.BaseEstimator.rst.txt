@@ -1,0 +1,12 @@
+﻿BaseEstimator
+=======================================
+
+.. currentmodule:: sktime.base
+
+.. autoclass:: BaseEstimator
+
+.. include:: sktime.base.BaseEstimator.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿BaseDeepRegressor
+====================================================================
+
+.. currentmodule:: sktime.regression.deep_learning.base
+
+.. autoclass:: BaseDeepRegressor
+
+.. include:: sktime.regression.deep_learning.base.BaseDeepRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿SAX
+===============================================================
+
+.. currentmodule:: sktime.transformations.panel.dictionary_based
+
+.. autoclass:: SAX
+
+.. include:: sktime.transformations.panel.dictionary_based.SAX.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,16 @@
+sktime.transformations.hierarchical package
+===========================================
+
+.. automodule:: sktime.transformations.hierarchical
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.transformations.hierarchical.aggregate
+   sktime.transformations.hierarchical.reconcile

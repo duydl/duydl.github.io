@@ -1,0 +1,12 @@
+﻿FCNRegressor
+==========================================================
+
+.. currentmodule:: sktime.regression.deep_learning
+
+.. autoclass:: FCNRegressor
+
+.. include:: sktime.regression.deep_learning.FCNRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

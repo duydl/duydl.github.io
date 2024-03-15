@@ -1,0 +1,12 @@
+﻿scitype
+============================================
+
+.. currentmodule:: sktime.datatypes
+
+.. autofunction:: scitype
+
+.. include:: sktime.datatypes.scitype.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

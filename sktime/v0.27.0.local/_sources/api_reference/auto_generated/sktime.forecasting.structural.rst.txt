@@ -1,0 +1,7 @@
+sktime.forecasting.structural module
+====================================
+
+.. automodule:: sktime.forecasting.structural
+   :members:
+   :undoc-members:
+   :show-inheritance:

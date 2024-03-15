@@ -1,0 +1,7 @@
+sktime.utils.pandas module
+==========================
+
+.. automodule:: sktime.utils.pandas
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿ResNetRegressor
+=============================================================
+
+.. currentmodule:: sktime.regression.deep_learning
+
+.. autoclass:: ResNetRegressor
+
+.. include:: sktime.regression.deep_learning.ResNetRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

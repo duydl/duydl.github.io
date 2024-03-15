@@ -1,0 +1,12 @@
+﻿IgnoreX
+================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: IgnoreX
+
+.. include:: sktime.forecasting.compose.IgnoreX.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

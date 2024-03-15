@@ -1,0 +1,12 @@
+﻿Repeat
+=========================================
+
+.. currentmodule:: sktime.split.compose
+
+.. autoclass:: Repeat
+
+.. include:: sktime.split.compose.Repeat.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,20 @@
+sktime.proba package
+====================
+
+.. automodule:: sktime.proba
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.proba.base
+   sktime.proba.empirical
+   sktime.proba.laplace
+   sktime.proba.normal
+   sktime.proba.t
+   sktime.proba.tfp

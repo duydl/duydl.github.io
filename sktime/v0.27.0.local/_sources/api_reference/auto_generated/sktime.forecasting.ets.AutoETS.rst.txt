@@ -1,0 +1,12 @@
+﻿AutoETS
+============================================
+
+.. currentmodule:: sktime.forecasting.ets
+
+.. autoclass:: AutoETS
+
+.. include:: sktime.forecasting.ets.AutoETS.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

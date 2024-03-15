@@ -1,0 +1,12 @@
+﻿Tabularizer
+=============================================================
+
+.. currentmodule:: sktime.transformations.panel.reduce
+
+.. autoclass:: Tabularizer
+
+.. include:: sktime.transformations.panel.reduce.Tabularizer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.classification.deep\_learning.macnn module
+=================================================
+
+.. automodule:: sktime.classification.deep_learning.macnn
+   :members:
+   :undoc-members:
+   :show-inheritance:

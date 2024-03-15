@@ -1,0 +1,7 @@
+sktime.forecasting.croston module
+=================================
+
+.. automodule:: sktime.forecasting.croston
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,725 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.datasets.tsc_dataset_names module &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.datasets.tsc_dataset_names';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.datasets.setup.html">sktime.datasets.setup module</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">sktime.datasets.tsc_dataset_names module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.datasets.tsf_dataset_names.html">sktime.datasets.tsf_dataset_names module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.datas...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.datasets.tsc_dataset_names">
+<span id="sktime-datasets-tsc-dataset-names-module"></span><h1>sktime.datasets.tsc_dataset_names module<a class="headerlink" href="#module-sktime.datasets.tsc_dataset_names" title="Link to this heading">#</a></h1>
+<p>List of datasets available from the timeseriesclassification.com archive.</p>
+<p>There are four main distinctions: univariate/multivariate equal/unequal length.
+Array univariate lists the 128 UCR problems, as described in [1].
+Array multivariate lists the 30 UEA problems, as described in [2], plus 3 new additions.
+Array univariate_equal_length lists the 112 UCR archive problems used in [3].
+Array multivariate_equal_length lists the 26 UEA archive problems used in [4].</p>
+<p>[1] H.Dau, A. Bagnall, K. Kamgar, C. Yeh, Y. Zhu, S. Gharghabi, C. Ratanamahatana and
+E. Keogh.
+The  UCR  time  series  archive. IEEE/CAA J. Autom. Sinica, 6(6):1293–1305, 2019
+[2] A. Bagnall, H. Dau, J. Lines, M. Flynn, J. Large, A. Bostrom, P. Southam,and
+E.  Keogh.
+The UEA  multivariate  time  series  classification  archive, 2018. ArXiv e-prints,
+arXiv:1811.00075, 2018
+[3] A. Bagnall, M. Flynn, J. Large, J. Lines and M. Middlehurst.
+On the Usage and Performance of the Hierarchical Vote Collective of Transformation-Based
+Ensembles Version 1.0
+(HIVE-COTE v1.0). Lecture Notes in Computer Science. in proc. 5th Advanced Analytics and
+Learning on Temporal Data
+[4] A. Pasos Ruiz, M. Flynn, J. Large, M. Middlehurst and A. Bagnall.</p>
+<blockquote>
+<div><p>The great multivariate time series classification bake off: a review and
+experimental evaluation of recent algorithmic advances,
+Data Mining and Knowledge Discovery, 2020.</p>
+</div></blockquote>
+<dl class="py data">
+<dt class="sig sig-object py" id="sktime.datasets.tsc_dataset_names.univariate">
+<span class="sig-name descname"><span class="pre">univariate</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['ACSF1',</span> <span class="pre">'Adiac',</span> <span class="pre">'AllGestureWiimoteX',</span> <span class="pre">'AllGestureWiimoteY',</span> <span class="pre">'AllGestureWiimoteZ',</span> <span class="pre">'ArrowHead',</span> <span class="pre">'AsphaltObstacles',</span> <span class="pre">'Beef',</span> <span class="pre">'BeetleFly',</span> <span class="pre">'BirdChicken',</span> <span class="pre">'BME',</span> <span class="pre">'Car',</span> <span class="pre">'CBF',</span> <span class="pre">'Chinatown',</span> <span class="pre">'ChlorineConcentration',</span> <span class="pre">'CinCECGTorso',</span> <span class="pre">'Coffee',</span> <span class="pre">'Computers',</span> <span class="pre">'CricketX',</span> <span class="pre">'CricketY',</span> <span class="pre">'CricketZ',</span> <span class="pre">'Crop',</span> <span class="pre">'DiatomSizeReduction',</span> <span class="pre">'DistalPhalanxOutlineCorrect',</span> <span class="pre">'DistalPhalanxOutlineAgeGroup',</span> <span class="pre">'DistalPhalanxTW',</span> <span class="pre">'DodgerLoopDay',</span> <span class="pre">'DodgerLoopGame',</span> <span class="pre">'DodgerLoopWeekend',</span> <span class="pre">'Earthquakes',</span> <span class="pre">'ECG200',</span> <span class="pre">'ECG5000',</span> <span class="pre">'ECGFiveDays',</span> <span class="pre">'ElectricDevices',</span> <span class="pre">'EOGHorizontalSignal',</span> <span class="pre">'EOGVerticalSignal',</span> <span class="pre">'EthanolLevel',</span> <span class="pre">'FaceAll',</span> <span class="pre">'FaceFour',</span> <span class="pre">'FacesUCR',</span> <span class="pre">'FiftyWords',</span> <span class="pre">'Fish',</span> <span class="pre">'FordA',</span> <span class="pre">'FordB',</span> <span class="pre">'FreezerRegularTrain',</span> <span class="pre">'FreezerSmallTrain',</span> <span class="pre">'Fungi',</span> <span class="pre">'GestureMidAirD1',</span> <span class="pre">'GestureMidAirD2',</span> <span class="pre">'GestureMidAirD3',</span> <span class="pre">'GesturePebbleZ1',</span> <span class="pre">'GesturePebbleZ2',</span> <span class="pre">'GunPoint',</span> <span class="pre">'GunPointAgeSpan',</span> <span class="pre">'GunPointMaleVersusFemale',</span> <span class="pre">'GunPointOldVersusYoung',</span> <span class="pre">'Ham',</span> <span class="pre">'HandOutlines',</span> <span class="pre">'Haptics',</span> <span class="pre">'Herring',</span> <span class="pre">'HouseTwenty',</span> <span class="pre">'InlineSkate',</span> <span class="pre">'InsectEPGRegularTrain',</span> <span class="pre">'InsectEPGSmallTrain',</span> <span class="pre">'InsectWingbeatSound',</span> <span class="pre">'ItalyPowerDemand',</span> <span class="pre">'LargeKitchenAppliances',</span> <span class="pre">'Lightning2',</span> <span class="pre">'Lightning7',</span> <span class="pre">'Mallat',</span> <span class="pre">'Meat',</span> <span class="pre">'MedicalImages',</span> <span class="pre">'MelbournePedestrian',</span> <span class="pre">'MiddlePhalanxOutlineCorrect',</span> <span class="pre">'MiddlePhalanxOutlineAgeGroup',</span> <span class="pre">'MiddlePhalanxTW',</span> <span class="pre">'MixedShapesRegularTrain',</span> <span class="pre">'MixedShapesSmallTrain',</span> <span class="pre">'MoteStrain',</span> <span class="pre">'NonInvasiveFetalECGThorax1',</span> <span class="pre">'NonInvasiveFetalECGThorax2',</span> <span class="pre">'OliveOil',</span> <span class="pre">'OSULeaf',</span> <span class="pre">'PhalangesOutlinesCorrect',</span> <span class="pre">'Phoneme',</span> <span class="pre">'PickupGestureWiimoteZ',</span> <span class="pre">'PigAirwayPressure',</span> <span class="pre">'PigArtPressure',</span> <span class="pre">'PigCVP',</span> <span class="pre">'PLAID',</span> <span class="pre">'Plane',</span> <span class="pre">'PowerCons',</span> <span class="pre">'ProximalPhalanxOutlineCorrect',</span> <span class="pre">'ProximalPhalanxOutlineAgeGroup',</span> <span class="pre">'ProximalPhalanxTW',</span> <span class="pre">'RefrigerationDevices',</span> <span class="pre">'Rock',</span> <span class="pre">'ScreenType',</span> <span class="pre">'SemgHandGenderCh2',</span> <span class="pre">'SemgHandMovementCh2',</span> <span class="pre">'SemgHandSubjectCh2',</span> <span class="pre">'ShakeGestureWiimoteZ',</span> <span class="pre">'ShapeletSim',</span> <span class="pre">'ShapesAll',</span> <span class="pre">'SmallKitchenAppliances',</span> <span class="pre">'SmoothSubspace',</span> <span class="pre">'SonyAIBORobotSurface1',</span> <span class="pre">'SonyAIBORobotSurface2',</span> <span class="pre">'StarLightCurves',</span> <span class="pre">'Strawberry',</span> <span class="pre">'SwedishLeaf',</span> <span class="pre">'Symbols',</span> <span class="pre">'SyntheticControl',</span> <span class="pre">'ToeSegmentation1',</span> <span class="pre">'ToeSegmentation2',</span> <span class="pre">'Trace',</span> <span class="pre">'TwoLeadECG',</span> <span class="pre">'TwoPatterns',</span> <span class="pre">'UMD',</span> <span class="pre">'UWaveGestureLibraryAll',</span> <span class="pre">'UWaveGestureLibraryX',</span> <span class="pre">'UWaveGestureLibraryY',</span> <span class="pre">'UWaveGestureLibraryZ',</span> <span class="pre">'Wafer',</span> <span class="pre">'Wine',</span> <span class="pre">'WordSynonyms',</span> <span class="pre">'Worms',</span> <span class="pre">'WormsTwoClass']</span></em><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/tsc_dataset_names.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.tsc_dataset_names.univariate" title="Link to this definition">#</a></dt>
+<dd><p>33 UEA multivariate time series classification problems [2]</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sktime.datasets.tsc_dataset_names.multivariate">
+<span class="sig-name descname"><span class="pre">multivariate</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['ArticularyWordRecognition',</span> <span class="pre">'AsphaltObstaclesCoordinates',</span> <span class="pre">'AsphaltPavementTypeCoordinates',</span> <span class="pre">'AsphaltRegularityCoordinates',</span> <span class="pre">'AtrialFibrillation',</span> <span class="pre">'BasicMotions',</span> <span class="pre">'CharacterTrajectories',</span> <span class="pre">'Cricket',</span> <span class="pre">'DuckDuckGeese',</span> <span class="pre">'EigenWorms',</span> <span class="pre">'Epilepsy',</span> <span class="pre">'EthanolConcentration',</span> <span class="pre">'ERing',</span> <span class="pre">'FaceDetection',</span> <span class="pre">'FingerMovements',</span> <span class="pre">'HandMovementDirection',</span> <span class="pre">'Handwriting',</span> <span class="pre">'Heartbeat',</span> <span class="pre">'InsectWingbeat',</span> <span class="pre">'JapaneseVowels',</span> <span class="pre">'Libras',</span> <span class="pre">'LSST',</span> <span class="pre">'MotorImagery',</span> <span class="pre">'NATOPS',</span> <span class="pre">'PenDigits',</span> <span class="pre">'PEMS-SF',</span> <span class="pre">'PhonemeSpectra',</span> <span class="pre">'RacketSports',</span> <span class="pre">'SelfRegulationSCP1',</span> <span class="pre">'SelfRegulationSCP2',</span> <span class="pre">'SpokenArabicDigits',</span> <span class="pre">'StandWalkJump',</span> <span class="pre">'UWaveGestureLibrary']</span></em><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/tsc_dataset_names.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.tsc_dataset_names.multivariate" title="Link to this definition">#</a></dt>
+<dd><p>113 equal length/no missing univariate time series classification problems [3]</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sktime.datasets.tsc_dataset_names.univariate_equal_length">
+<span class="sig-name descname"><span class="pre">univariate_equal_length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['ACSF1',</span> <span class="pre">'Adiac',</span> <span class="pre">'ArrowHead',</span> <span class="pre">'Beef',</span> <span class="pre">'BeetleFly',</span> <span class="pre">'BirdChicken',</span> <span class="pre">'BME',</span> <span class="pre">'Car',</span> <span class="pre">'CBF',</span> <span class="pre">'Chinatown',</span> <span class="pre">'ChlorineConcentration',</span> <span class="pre">'CinCECGTorso',</span> <span class="pre">'Coffee',</span> <span class="pre">'Computers',</span> <span class="pre">'CricketX',</span> <span class="pre">'CricketY',</span> <span class="pre">'CricketZ',</span> <span class="pre">'Crop',</span> <span class="pre">'DiatomSizeReduction',</span> <span class="pre">'DistalPhalanxOutlineCorrect',</span> <span class="pre">'DistalPhalanxOutlineAgeGroup',</span> <span class="pre">'DistalPhalanxTW',</span> <span class="pre">'Earthquakes',</span> <span class="pre">'ECG200',</span> <span class="pre">'ECG5000',</span> <span class="pre">'ECGFiveDays',</span> <span class="pre">'ElectricDevices',</span> <span class="pre">'EOGHorizontalSignal',</span> <span class="pre">'EOGVerticalSignal',</span> <span class="pre">'EthanolLevel',</span> <span class="pre">'FaceAll',</span> <span class="pre">'FaceFour',</span> <span class="pre">'FacesUCR',</span> <span class="pre">'FiftyWords',</span> <span class="pre">'Fish',</span> <span class="pre">'FordA',</span> <span class="pre">'FordB',</span> <span class="pre">'FreezerRegularTrain',</span> <span class="pre">'FreezerSmallTrain',</span> <span class="pre">'Fungi',</span> <span class="pre">'GunPoint',</span> <span class="pre">'GunPointAgeSpan',</span> <span class="pre">'GunPointMaleVersusFemale',</span> <span class="pre">'GunPointOldVersusYoung',</span> <span class="pre">'Ham',</span> <span class="pre">'HandOutlines',</span> <span class="pre">'Haptics',</span> <span class="pre">'Herring',</span> <span class="pre">'HouseTwenty',</span> <span class="pre">'InlineSkate',</span> <span class="pre">'InsectEPGRegularTrain',</span> <span class="pre">'InsectEPGSmallTrain',</span> <span class="pre">'InsectWingbeatSound',</span> <span class="pre">'ItalyPowerDemand',</span> <span class="pre">'LargeKitchenAppliances',</span> <span class="pre">'Lightning2',</span> <span class="pre">'Lightning7',</span> <span class="pre">'Mallat',</span> <span class="pre">'Meat',</span> <span class="pre">'MedicalImages',</span> <span class="pre">'MiddlePhalanxOutlineCorrect',</span> <span class="pre">'MiddlePhalanxOutlineAgeGroup',</span> <span class="pre">'MiddlePhalanxTW',</span> <span class="pre">'MixedShapesRegularTrain',</span> <span class="pre">'MixedShapesSmallTrain',</span> <span class="pre">'MoteStrain',</span> <span class="pre">'NonInvasiveFetalECGThorax1',</span> <span class="pre">'NonInvasiveFetalECGThorax2',</span> <span class="pre">'OliveOil',</span> <span class="pre">'OSULeaf',</span> <span class="pre">'PhalangesOutlinesCorrect',</span> <span class="pre">'Phoneme',</span> <span class="pre">'PigAirwayPressure',</span> <span class="pre">'PigArtPressure',</span> <span class="pre">'PigCVP',</span> <span class="pre">'Plane',</span> <span class="pre">'PowerCons',</span> <span class="pre">'ProximalPhalanxOutlineCorrect',</span> <span class="pre">'ProximalPhalanxOutlineAgeGroup',</span> <span class="pre">'ProximalPhalanxTW',</span> <span class="pre">'RefrigerationDevices',</span> <span class="pre">'Rock',</span> <span class="pre">'ScreenType',</span> <span class="pre">'SemgHandGenderCh2',</span> <span class="pre">'SemgHandMovementCh2',</span> <span class="pre">'SemgHandSubjectCh2',</span> <span class="pre">'ShapeletSim',</span> <span class="pre">'ShapesAll',</span> <span class="pre">'SmallKitchenAppliances',</span> <span class="pre">'SmoothSubspace',</span> <span class="pre">'SonyAIBORobotSurface1',</span> <span class="pre">'SonyAIBORobotSurface2',</span> <span class="pre">'StarlightCurves',</span> <span class="pre">'Strawberry',</span> <span class="pre">'SwedishLeaf',</span> <span class="pre">'Symbols',</span> <span class="pre">'SyntheticControl',</span> <span class="pre">'ToeSegmentation1',</span> <span class="pre">'ToeSegmentation2',</span> <span class="pre">'Trace',</span> <span class="pre">'TwoLeadECG',</span> <span class="pre">'TwoPatterns',</span> <span class="pre">'UMD',</span> <span class="pre">'UWaveGestureLibraryAll',</span> <span class="pre">'UWaveGestureLibraryX',</span> <span class="pre">'UWaveGestureLibraryY',</span> <span class="pre">'UWaveGestureLibraryZ',</span> <span class="pre">'Wafer',</span> <span class="pre">'Wine',</span> <span class="pre">'WordSynonyms',</span> <span class="pre">'Worms',</span> <span class="pre">'WormsTwoClass',</span> <span class="pre">'Yoga']</span></em><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/tsc_dataset_names.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.tsc_dataset_names.univariate_equal_length" title="Link to this definition">#</a></dt>
+<dd><p>11 variable length univariate time series classification problems [3]</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sktime.datasets.tsc_dataset_names.univariate_variable_length">
+<span class="sig-name descname"><span class="pre">univariate_variable_length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['AllGestureWiimoteX',</span> <span class="pre">'AllGestureWiimoteY',</span> <span class="pre">'AllGestureWiimoteZ',</span> <span class="pre">'GestureMidAirD1',</span> <span class="pre">'GestureMidAirD2',</span> <span class="pre">'GestureMidAirD3',</span> <span class="pre">'GesturePebbleZ1',</span> <span class="pre">'GesturePebbleZ2',</span> <span class="pre">'PickupGestureWiimoteZ',</span> <span class="pre">'PLAID',</span> <span class="pre">'ShakeGestureWiimoteZ']</span></em><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/tsc_dataset_names.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.tsc_dataset_names.univariate_variable_length" title="Link to this definition">#</a></dt>
+<dd><p>4 fixed length univariate time series classification problems with missing values.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sktime.datasets.tsc_dataset_names.univariate_missing_values">
+<span class="sig-name descname"><span class="pre">univariate_missing_values</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['DodgerLoopDay',</span> <span class="pre">'DodgerLoopGame',</span> <span class="pre">'DodgerLoopWeekend',</span> <span class="pre">'MelbournePedestrian']</span></em><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/tsc_dataset_names.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.tsc_dataset_names.univariate_missing_values" title="Link to this definition">#</a></dt>
+<dd><p>26 equal length multivariate time series classification problems [4]</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sktime.datasets.tsc_dataset_names.multivariate_equal_length">
+<span class="sig-name descname"><span class="pre">multivariate_equal_length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['ArticularyWordRecognition',</span> <span class="pre">'AtrialFibrillation',</span> <span class="pre">'BasicMotions',</span> <span class="pre">'Cricket',</span> <span class="pre">'DuckDuckGeese',</span> <span class="pre">'EigenWorms',</span> <span class="pre">'Epilepsy',</span> <span class="pre">'EthanolConcentration',</span> <span class="pre">'ERing',</span> <span class="pre">'FaceDetection',</span> <span class="pre">'FingerMovements',</span> <span class="pre">'HandMovementDirection',</span> <span class="pre">'Handwriting',</span> <span class="pre">'Heartbeat',</span> <span class="pre">'Libras',</span> <span class="pre">'LSST',</span> <span class="pre">'MotorImagery',</span> <span class="pre">'NATOPS',</span> <span class="pre">'PenDigits',</span> <span class="pre">'PEMS-SF',</span> <span class="pre">'PhonemeSpectra',</span> <span class="pre">'RacketSports',</span> <span class="pre">'SelfRegulationSCP1',</span> <span class="pre">'SelfRegulationSCP2',</span> <span class="pre">'StandWalkJump',</span> <span class="pre">'UWaveGestureLibrary']</span></em><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/tsc_dataset_names.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.tsc_dataset_names.multivariate_equal_length" title="Link to this definition">#</a></dt>
+<dd><p>7 variable length multivariate time series classification problems [4]</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.tsc_dataset_names.univariate"><code class="docutils literal notranslate"><span class="pre">univariate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.tsc_dataset_names.multivariate"><code class="docutils literal notranslate"><span class="pre">multivariate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.tsc_dataset_names.univariate_equal_length"><code class="docutils literal notranslate"><span class="pre">univariate_equal_length</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.tsc_dataset_names.univariate_variable_length"><code class="docutils literal notranslate"><span class="pre">univariate_variable_length</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.tsc_dataset_names.univariate_missing_values"><code class="docutils literal notranslate"><span class="pre">univariate_missing_values</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.tsc_dataset_names.multivariate_equal_length"><code class="docutils literal notranslate"><span class="pre">multivariate_equal_length</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

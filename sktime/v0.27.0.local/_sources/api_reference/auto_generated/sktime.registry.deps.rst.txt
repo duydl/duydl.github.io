@@ -1,0 +1,12 @@
+﻿deps
+========================================
+
+.. currentmodule:: sktime.registry
+
+.. autofunction:: deps
+
+.. include:: sktime.registry.deps.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

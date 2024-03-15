@@ -1,0 +1,7 @@
+sktime.distances.lower\_bounding module
+=======================================
+
+.. automodule:: sktime.distances.lower_bounding
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿FlatDist
+================================================================
+
+.. currentmodule:: sktime.dists_kernels.compose_tab_to_panel
+
+.. autoclass:: FlatDist
+
+.. include:: sktime.dists_kernels.compose_tab_to_panel.FlatDist.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

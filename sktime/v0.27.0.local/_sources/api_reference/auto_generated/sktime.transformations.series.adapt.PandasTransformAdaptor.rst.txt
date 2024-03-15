@@ -1,0 +1,12 @@
+﻿PandasTransformAdaptor
+========================================================================
+
+.. currentmodule:: sktime.transformations.series.adapt
+
+.. autoclass:: PandasTransformAdaptor
+
+.. include:: sktime.transformations.series.adapt.PandasTransformAdaptor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

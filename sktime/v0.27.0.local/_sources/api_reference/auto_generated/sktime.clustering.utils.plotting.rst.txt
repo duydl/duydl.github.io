@@ -1,0 +1,7 @@
+sktime.clustering.utils.plotting package
+========================================
+
+.. automodule:: sktime.clustering.utils.plotting
+   :members:
+   :undoc-members:
+   :show-inheritance:

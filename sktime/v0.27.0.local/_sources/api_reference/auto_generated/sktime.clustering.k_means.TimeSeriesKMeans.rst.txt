@@ -1,0 +1,12 @@
+﻿TimeSeriesKMeans
+========================================================
+
+.. currentmodule:: sktime.clustering.k_means
+
+.. autoclass:: TimeSeriesKMeans
+
+.. include:: sktime.clustering.k_means.TimeSeriesKMeans.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

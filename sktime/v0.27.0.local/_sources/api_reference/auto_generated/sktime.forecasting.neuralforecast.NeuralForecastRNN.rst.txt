@@ -1,0 +1,12 @@
+﻿NeuralForecastRNN
+=================================================================
+
+.. currentmodule:: sktime.forecasting.neuralforecast
+
+.. autoclass:: NeuralForecastRNN
+
+.. include:: sktime.forecasting.neuralforecast.NeuralForecastRNN.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

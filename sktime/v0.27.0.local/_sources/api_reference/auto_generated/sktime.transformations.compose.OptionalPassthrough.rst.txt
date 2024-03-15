@@ -1,0 +1,12 @@
+﻿OptionalPassthrough
+================================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: OptionalPassthrough
+
+.. include:: sktime.transformations.compose.OptionalPassthrough.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

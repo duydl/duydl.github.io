@@ -1,0 +1,12 @@
+﻿WEASEL
+===========================================================
+
+.. currentmodule:: sktime.classification.dictionary_based
+
+.. autoclass:: WEASEL
+
+.. include:: sktime.classification.dictionary_based.WEASEL.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

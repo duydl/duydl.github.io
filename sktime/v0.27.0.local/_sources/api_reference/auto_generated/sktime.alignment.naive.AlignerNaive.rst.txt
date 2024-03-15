@@ -1,0 +1,12 @@
+﻿AlignerNaive
+=================================================
+
+.. currentmodule:: sktime.alignment.naive
+
+.. autoclass:: AlignerNaive
+
+.. include:: sktime.alignment.naive.AlignerNaive.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

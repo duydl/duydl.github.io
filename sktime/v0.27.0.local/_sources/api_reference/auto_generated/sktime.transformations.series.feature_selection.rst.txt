@@ -1,0 +1,7 @@
+sktime.transformations.series.feature\_selection module
+=======================================================
+
+.. automodule:: sktime.transformations.series.feature_selection
+   :members:
+   :undoc-members:
+   :show-inheritance:

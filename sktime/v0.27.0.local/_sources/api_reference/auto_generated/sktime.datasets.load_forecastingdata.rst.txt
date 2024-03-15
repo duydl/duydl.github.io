@@ -1,0 +1,12 @@
+﻿load_forecastingdata
+========================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_forecastingdata
+
+.. include:: sktime.datasets.load_forecastingdata.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

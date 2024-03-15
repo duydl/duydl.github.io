@@ -1,0 +1,7 @@
+sktime.transformations.bootstrap package
+========================================
+
+.. automodule:: sktime.transformations.bootstrap
+   :members:
+   :undoc-members:
+   :show-inheritance:

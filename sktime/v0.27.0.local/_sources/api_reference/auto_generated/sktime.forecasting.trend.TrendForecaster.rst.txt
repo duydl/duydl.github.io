@@ -1,0 +1,12 @@
+﻿TrendForecaster
+======================================================
+
+.. currentmodule:: sktime.forecasting.trend
+
+.. autoclass:: TrendForecaster
+
+.. include:: sktime.forecasting.trend.TrendForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

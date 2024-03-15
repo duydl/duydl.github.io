@@ -1,0 +1,12 @@
+﻿StackingForecaster
+===========================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: StackingForecaster
+
+.. include:: sktime.forecasting.compose.StackingForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

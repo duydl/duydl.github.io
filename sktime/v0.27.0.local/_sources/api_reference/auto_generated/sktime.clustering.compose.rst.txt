@@ -1,0 +1,7 @@
+sktime.clustering.compose package
+=================================
+
+.. automodule:: sktime.clustering.compose
+   :members:
+   :undoc-members:
+   :show-inheritance:

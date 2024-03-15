@@ -1,0 +1,12 @@
+﻿MiniRocketMultivariateVariable
+================================================================================
+
+.. currentmodule:: sktime.transformations.panel.rocket
+
+.. autoclass:: MiniRocketMultivariateVariable
+
+.. include:: sktime.transformations.panel.rocket.MiniRocketMultivariateVariable.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

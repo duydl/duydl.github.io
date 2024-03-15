@@ -1,0 +1,7 @@
+sktime.utils.numba.stats module
+===============================
+
+.. automodule:: sktime.utils.numba.stats
+   :members:
+   :undoc-members:
+   :show-inheritance:

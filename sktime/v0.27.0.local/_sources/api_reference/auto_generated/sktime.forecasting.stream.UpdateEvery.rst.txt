@@ -1,0 +1,12 @@
+﻿UpdateEvery
+===================================================
+
+.. currentmodule:: sktime.forecasting.stream
+
+.. autoclass:: UpdateEvery
+
+.. include:: sktime.forecasting.stream.UpdateEvery.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

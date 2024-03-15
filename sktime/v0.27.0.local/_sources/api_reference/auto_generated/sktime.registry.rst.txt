@@ -1,0 +1,7 @@
+sktime.registry package
+=======================
+
+.. automodule:: sktime.registry
+   :members:
+   :undoc-members:
+   :show-inheritance:

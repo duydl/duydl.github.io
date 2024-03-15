@@ -1,0 +1,12 @@
+﻿FittedParamExtractor
+=========================================================================
+
+.. currentmodule:: sktime.transformations.panel.summarize
+
+.. autoclass:: FittedParamExtractor
+
+.. include:: sktime.transformations.panel.summarize.FittedParamExtractor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

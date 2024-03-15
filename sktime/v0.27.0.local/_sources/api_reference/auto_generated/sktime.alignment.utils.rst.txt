@@ -1,0 +1,15 @@
+sktime.alignment.utils package
+==============================
+
+.. automodule:: sktime.alignment.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.alignment.utils.utils_align

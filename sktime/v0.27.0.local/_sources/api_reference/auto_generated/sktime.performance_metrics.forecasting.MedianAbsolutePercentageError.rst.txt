@@ -1,0 +1,13 @@
+﻿MedianAbsolutePercentageError
+===================================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autoclass:: MedianAbsolutePercentageError
+   :special-members: __call__
+
+.. include:: sktime.performance_metrics.forecasting.MedianAbsolutePercentageError.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

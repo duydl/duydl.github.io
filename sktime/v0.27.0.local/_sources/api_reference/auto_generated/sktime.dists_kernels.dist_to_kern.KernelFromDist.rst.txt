@@ -1,0 +1,12 @@
+﻿KernelFromDist
+==============================================================
+
+.. currentmodule:: sktime.dists_kernels.dist_to_kern
+
+.. autoclass:: KernelFromDist
+
+.. include:: sktime.dists_kernels.dist_to_kern.KernelFromDist.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

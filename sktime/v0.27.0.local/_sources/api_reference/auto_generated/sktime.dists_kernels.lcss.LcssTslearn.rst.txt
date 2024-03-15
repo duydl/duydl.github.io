@@ -1,0 +1,12 @@
+﻿LcssTslearn
+===================================================
+
+.. currentmodule:: sktime.dists_kernels.lcss
+
+.. autoclass:: LcssTslearn
+
+.. include:: sktime.dists_kernels.lcss.LcssTslearn.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

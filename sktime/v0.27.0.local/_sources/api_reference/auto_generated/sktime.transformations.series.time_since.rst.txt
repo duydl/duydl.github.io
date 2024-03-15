@@ -1,0 +1,7 @@
+sktime.transformations.series.time\_since module
+================================================
+
+.. automodule:: sktime.transformations.series.time_since
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿ProximityTree
+================================================================
+
+.. currentmodule:: sktime.classification.distance_based
+
+.. autoclass:: ProximityTree
+
+.. include:: sktime.classification.distance_based.ProximityTree.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

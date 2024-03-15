@@ -1,0 +1,12 @@
+﻿load_from_ucr_tsv_to_dataframe
+==================================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_from_ucr_tsv_to_dataframe
+
+.. include:: sktime.datasets.load_from_ucr_tsv_to_dataframe.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

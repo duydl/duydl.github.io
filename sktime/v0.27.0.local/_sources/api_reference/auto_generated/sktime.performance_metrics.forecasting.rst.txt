@@ -1,0 +1,15 @@
+sktime.performance\_metrics.forecasting package
+===============================================
+
+.. automodule:: sktime.performance_metrics.forecasting
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.performance_metrics.forecasting.probabilistic

@@ -1,0 +1,12 @@
+﻿InformationGainSegmentation
+================================================================
+
+.. currentmodule:: sktime.annotation.igts
+
+.. autoclass:: InformationGainSegmentation
+
+.. include:: sktime.annotation.igts.InformationGainSegmentation.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

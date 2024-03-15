@@ -1,0 +1,7 @@
+sktime.transformations.series.clear\_sky module
+===============================================
+
+.. automodule:: sktime.transformations.series.clear_sky
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿ElbowClassPairwise
+===============================================================================
+
+.. currentmodule:: sktime.transformations.panel.channel_selection
+
+.. autoclass:: ElbowClassPairwise
+
+.. include:: sktime.transformations.panel.channel_selection.ElbowClassPairwise.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

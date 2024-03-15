@@ -1,0 +1,7 @@
+sktime.utils.numba.general module
+=================================
+
+.. automodule:: sktime.utils.numba.general
+   :members:
+   :undoc-members:
+   :show-inheritance:

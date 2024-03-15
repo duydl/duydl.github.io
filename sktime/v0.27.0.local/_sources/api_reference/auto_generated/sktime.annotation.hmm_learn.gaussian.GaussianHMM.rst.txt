@@ -1,0 +1,12 @@
+﻿GaussianHMM
+==============================================================
+
+.. currentmodule:: sktime.annotation.hmm_learn.gaussian
+
+.. autoclass:: GaussianHMM
+
+.. include:: sktime.annotation.hmm_learn.gaussian.GaussianHMM.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

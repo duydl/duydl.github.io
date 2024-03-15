@@ -1,0 +1,12 @@
+﻿CombinedDistance
+===========================================================
+
+.. currentmodule:: sktime.dists_kernels.algebra
+
+.. autoclass:: CombinedDistance
+
+.. include:: sktime.dists_kernels.algebra.CombinedDistance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.forecasting.auto\_reg module
+===================================
+
+.. automodule:: sktime.forecasting.auto_reg
+   :members:
+   :undoc-members:
+   :show-inheritance:

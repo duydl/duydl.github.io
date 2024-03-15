@@ -1,0 +1,12 @@
+﻿Filter
+=========================================================
+
+.. currentmodule:: sktime.transformations.series.filter
+
+.. autoclass:: Filter
+
+.. include:: sktime.transformations.series.filter.Filter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

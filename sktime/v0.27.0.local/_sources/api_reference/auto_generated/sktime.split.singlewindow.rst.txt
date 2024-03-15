@@ -1,0 +1,7 @@
+sktime.split.singlewindow module
+================================
+
+.. automodule:: sktime.split.singlewindow
+   :members:
+   :undoc-members:
+   :show-inheritance:

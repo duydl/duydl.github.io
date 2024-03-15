@@ -1,0 +1,7 @@
+sktime.regression.deep\_learning.fcn module
+===========================================
+
+.. automodule:: sktime.regression.deep_learning.fcn
+   :members:
+   :undoc-members:
+   :show-inheritance:

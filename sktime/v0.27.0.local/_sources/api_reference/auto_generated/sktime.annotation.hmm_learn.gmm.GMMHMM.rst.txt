@@ -1,0 +1,12 @@
+﻿GMMHMM
+====================================================
+
+.. currentmodule:: sktime.annotation.hmm_learn.gmm
+
+.. autoclass:: GMMHMM
+
+.. include:: sktime.annotation.hmm_learn.gmm.GMMHMM.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

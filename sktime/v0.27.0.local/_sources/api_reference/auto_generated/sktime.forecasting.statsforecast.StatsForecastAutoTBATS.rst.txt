@@ -1,0 +1,12 @@
+﻿StatsForecastAutoTBATS
+=====================================================================
+
+.. currentmodule:: sktime.forecasting.statsforecast
+
+.. autoclass:: StatsForecastAutoTBATS
+
+.. include:: sktime.forecasting.statsforecast.StatsForecastAutoTBATS.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

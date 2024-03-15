@@ -1,0 +1,12 @@
+﻿TSFreshFeatureExtractor
+==========================================================================
+
+.. currentmodule:: sktime.transformations.panel.tsfresh
+
+.. autoclass:: TSFreshFeatureExtractor
+
+.. include:: sktime.transformations.panel.tsfresh.TSFreshFeatureExtractor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

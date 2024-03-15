@@ -1,0 +1,12 @@
+﻿ClearSky
+==============================================================
+
+.. currentmodule:: sktime.transformations.series.clear_sky
+
+.. autoclass:: ClearSky
+
+.. include:: sktime.transformations.series.clear_sky.ClearSky.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

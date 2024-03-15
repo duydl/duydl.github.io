@@ -1,0 +1,12 @@
+﻿RandomSamplesAugmenter
+============================================================================
+
+.. currentmodule:: sktime.transformations.series.augmenter
+
+.. autoclass:: RandomSamplesAugmenter
+
+.. include:: sktime.transformations.series.augmenter.RandomSamplesAugmenter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

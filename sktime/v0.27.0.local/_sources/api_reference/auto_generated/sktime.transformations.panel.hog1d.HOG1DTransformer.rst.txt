@@ -1,0 +1,12 @@
+﻿HOG1DTransformer
+=================================================================
+
+.. currentmodule:: sktime.transformations.panel.hog1d
+
+.. autoclass:: HOG1DTransformer
+
+.. include:: sktime.transformations.panel.hog1d.HOG1DTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

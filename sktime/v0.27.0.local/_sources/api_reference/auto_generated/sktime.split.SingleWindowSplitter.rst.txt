@@ -1,0 +1,12 @@
+﻿SingleWindowSplitter
+===============================================
+
+.. currentmodule:: sktime.split
+
+.. autoclass:: SingleWindowSplitter
+
+.. include:: sktime.split.SingleWindowSplitter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

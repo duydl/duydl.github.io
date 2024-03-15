@@ -1,0 +1,12 @@
+﻿ShapeDTW
+===========================================================
+
+.. currentmodule:: sktime.classification.distance_based
+
+.. autoclass:: ShapeDTW
+
+.. include:: sktime.classification.distance_based.ShapeDTW.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿load_solar
+==============================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_solar
+
+.. include:: sktime.datasets.load_solar.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

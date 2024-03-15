@@ -1,0 +1,12 @@
+﻿load_shampoo_sales
+======================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_shampoo_sales
+
+.. include:: sktime.datasets.load_shampoo_sales.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿TimeSeriesSVC
+==============================================================
+
+.. currentmodule:: sktime.classification.kernel_based
+
+.. autoclass:: TimeSeriesSVC
+
+.. include:: sktime.classification.kernel_based.TimeSeriesSVC.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

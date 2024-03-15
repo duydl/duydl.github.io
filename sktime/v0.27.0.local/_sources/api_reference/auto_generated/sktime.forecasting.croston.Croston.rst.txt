@@ -1,0 +1,12 @@
+﻿Croston
+================================================
+
+.. currentmodule:: sktime.forecasting.croston
+
+.. autoclass:: Croston
+
+.. include:: sktime.forecasting.croston.Croston.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿TimeBinAggregate
+====================================================================
+
+.. currentmodule:: sktime.transformations.series.binning
+
+.. autoclass:: TimeBinAggregate
+
+.. include:: sktime.transformations.series.binning.TimeBinAggregate.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.transformations.series.detrend.mstl module
+=================================================
+
+.. automodule:: sktime.transformations.series.detrend.mstl
+   :members:
+   :undoc-members:
+   :show-inheritance:

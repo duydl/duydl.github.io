@@ -1,0 +1,12 @@
+﻿ClaSPSegmentation
+=======================================================
+
+.. currentmodule:: sktime.annotation.clasp
+
+.. autoclass:: ClaSPSegmentation
+
+.. include:: sktime.annotation.clasp.ClaSPSegmentation.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

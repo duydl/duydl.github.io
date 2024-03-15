@@ -1,0 +1,12 @@
+﻿TransformIf
+========================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: TransformIf
+
+.. include:: sktime.transformations.compose.TransformIf.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

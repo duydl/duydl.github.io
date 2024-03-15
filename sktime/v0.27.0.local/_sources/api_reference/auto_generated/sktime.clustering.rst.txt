@@ -1,0 +1,31 @@
+sktime.clustering package
+=========================
+
+.. automodule:: sktime.clustering
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.clustering.compose
+   sktime.clustering.k_means
+   sktime.clustering.metrics
+   sktime.clustering.partitioning
+   sktime.clustering.utils
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.clustering.base
+   sktime.clustering.dbscan
+   sktime.clustering.k_medoids
+   sktime.clustering.k_shapes
+   sktime.clustering.kernel_k_means

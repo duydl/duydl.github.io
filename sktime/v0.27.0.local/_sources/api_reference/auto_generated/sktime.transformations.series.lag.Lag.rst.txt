@@ -1,0 +1,12 @@
+﻿Lag
+===================================================
+
+.. currentmodule:: sktime.transformations.series.lag
+
+.. autoclass:: Lag
+
+.. include:: sktime.transformations.series.lag.Lag.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

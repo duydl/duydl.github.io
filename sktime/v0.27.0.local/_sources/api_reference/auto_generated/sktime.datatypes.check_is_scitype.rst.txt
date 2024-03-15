@@ -1,0 +1,12 @@
+﻿check_is_scitype
+=====================================================
+
+.. currentmodule:: sktime.datatypes
+
+.. autofunction:: check_is_scitype
+
+.. include:: sktime.datatypes.check_is_scitype.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

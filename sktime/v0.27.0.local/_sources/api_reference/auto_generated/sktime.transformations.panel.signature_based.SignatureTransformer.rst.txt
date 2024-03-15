@@ -1,0 +1,12 @@
+﻿SignatureTransformer
+===============================================================================
+
+.. currentmodule:: sktime.transformations.panel.signature_based
+
+.. autoclass:: SignatureTransformer
+
+.. include:: sktime.transformations.panel.signature_based.SignatureTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

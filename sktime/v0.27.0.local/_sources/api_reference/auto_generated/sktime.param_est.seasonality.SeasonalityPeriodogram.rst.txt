@@ -1,0 +1,12 @@
+﻿SeasonalityPeriodogram
+=================================================================
+
+.. currentmodule:: sktime.param_est.seasonality
+
+.. autoclass:: SeasonalityPeriodogram
+
+.. include:: sktime.param_est.seasonality.SeasonalityPeriodogram.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

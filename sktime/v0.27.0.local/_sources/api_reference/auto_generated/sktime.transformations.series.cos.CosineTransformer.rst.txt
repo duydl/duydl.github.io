@@ -1,0 +1,12 @@
+﻿CosineTransformer
+=================================================================
+
+.. currentmodule:: sktime.transformations.series.cos
+
+.. autoclass:: CosineTransformer
+
+.. include:: sktime.transformations.series.cos.CosineTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

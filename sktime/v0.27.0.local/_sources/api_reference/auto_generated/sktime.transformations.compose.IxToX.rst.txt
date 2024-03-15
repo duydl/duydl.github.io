@@ -1,0 +1,12 @@
+﻿IxToX
+==================================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: IxToX
+
+.. include:: sktime.transformations.compose.IxToX.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

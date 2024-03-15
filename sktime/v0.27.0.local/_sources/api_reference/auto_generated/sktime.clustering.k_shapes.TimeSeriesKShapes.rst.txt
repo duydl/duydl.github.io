@@ -1,0 +1,12 @@
+﻿TimeSeriesKShapes
+==========================================================
+
+.. currentmodule:: sktime.clustering.k_shapes
+
+.. autoclass:: TimeSeriesKShapes
+
+.. include:: sktime.clustering.k_shapes.TimeSeriesKShapes.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

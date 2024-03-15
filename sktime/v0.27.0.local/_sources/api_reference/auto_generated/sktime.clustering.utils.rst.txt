@@ -1,0 +1,15 @@
+sktime.clustering.utils package
+===============================
+
+.. automodule:: sktime.clustering.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.clustering.utils.plotting

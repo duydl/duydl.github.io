@@ -1,0 +1,12 @@
+﻿InceptionTimeClassifier
+=========================================================================
+
+.. currentmodule:: sktime.classification.deep_learning
+
+.. autoclass:: InceptionTimeClassifier
+
+.. include:: sktime.classification.deep_learning.InceptionTimeClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

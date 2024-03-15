@@ -1,0 +1,12 @@
+﻿ColumnEnsembleForecaster
+=================================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: ColumnEnsembleForecaster
+
+.. include:: sktime.forecasting.compose.ColumnEnsembleForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

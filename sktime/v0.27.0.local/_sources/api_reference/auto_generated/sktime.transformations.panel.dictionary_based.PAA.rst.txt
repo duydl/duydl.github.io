@@ -1,0 +1,12 @@
+﻿PAA
+===============================================================
+
+.. currentmodule:: sktime.transformations.panel.dictionary_based
+
+.. autoclass:: PAA
+
+.. include:: sktime.transformations.panel.dictionary_based.PAA.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

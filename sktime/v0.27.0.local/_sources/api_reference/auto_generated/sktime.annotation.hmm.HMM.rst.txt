@@ -1,0 +1,12 @@
+﻿HMM
+=======================================
+
+.. currentmodule:: sktime.annotation.hmm
+
+.. autoclass:: HMM
+
+.. include:: sktime.annotation.hmm.HMM.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

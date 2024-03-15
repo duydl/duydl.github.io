@@ -1,0 +1,28 @@
+sktime.alignment package
+========================
+
+.. automodule:: sktime.alignment
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.alignment.utils
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.alignment.base
+   sktime.alignment.dtw_numba
+   sktime.alignment.dtw_python
+   sktime.alignment.edit_numba
+   sktime.alignment.lucky
+   sktime.alignment.naive

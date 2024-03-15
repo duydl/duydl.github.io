@@ -1,0 +1,7 @@
+sktime.utils.sampling module
+============================
+
+.. automodule:: sktime.utils.sampling
+   :members:
+   :undoc-members:
+   :show-inheritance:

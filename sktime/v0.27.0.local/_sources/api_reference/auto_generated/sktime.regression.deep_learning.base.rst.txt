@@ -1,0 +1,7 @@
+sktime.regression.deep\_learning.base module
+============================================
+
+.. automodule:: sktime.regression.deep_learning.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.utils.stats module
+=========================
+
+.. automodule:: sktime.utils.stats
+   :members:
+   :undoc-members:
+   :show-inheritance:

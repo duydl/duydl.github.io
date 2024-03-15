@@ -1,0 +1,7 @@
+sktime.classification.deep\_learning.mcdcnn module
+==================================================
+
+.. automodule:: sktime.classification.deep_learning.mcdcnn
+   :members:
+   :undoc-members:
+   :show-inheritance:

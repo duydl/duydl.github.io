@@ -1,0 +1,12 @@
+﻿AlignerEditNumba
+==========================================================
+
+.. currentmodule:: sktime.alignment.edit_numba
+
+.. autoclass:: AlignerEditNumba
+
+.. include:: sktime.alignment.edit_numba.AlignerEditNumba.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

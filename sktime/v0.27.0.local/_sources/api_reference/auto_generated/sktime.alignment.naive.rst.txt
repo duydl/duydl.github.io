@@ -1,0 +1,7 @@
+sktime.alignment.naive module
+=============================
+
+.. automodule:: sktime.alignment.naive
+   :members:
+   :undoc-members:
+   :show-inheritance:

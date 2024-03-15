@@ -1,0 +1,7 @@
+sktime.regression.kernel\_based package
+=======================================
+
+.. automodule:: sktime.regression.kernel_based
+   :members:
+   :undoc-members:
+   :show-inheritance:

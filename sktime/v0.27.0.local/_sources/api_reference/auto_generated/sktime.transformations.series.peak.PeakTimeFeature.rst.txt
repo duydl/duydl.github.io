@@ -1,0 +1,12 @@
+﻿PeakTimeFeature
+================================================================
+
+.. currentmodule:: sktime.transformations.series.peak
+
+.. autoclass:: PeakTimeFeature
+
+.. include:: sktime.transformations.series.peak.PeakTimeFeature.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

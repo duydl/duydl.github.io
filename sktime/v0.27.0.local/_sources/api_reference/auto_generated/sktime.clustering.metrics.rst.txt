@@ -1,0 +1,23 @@
+sktime.clustering.metrics package
+=================================
+
+.. automodule:: sktime.clustering.metrics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.clustering.metrics.averaging
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.clustering.metrics.medoids

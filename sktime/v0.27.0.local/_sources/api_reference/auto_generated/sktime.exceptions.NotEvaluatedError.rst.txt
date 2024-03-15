@@ -1,0 +1,12 @@
+﻿NotEvaluatedError
+=================================================
+
+.. currentmodule:: sktime.exceptions
+
+.. autoclass:: NotEvaluatedError
+
+.. include:: sktime.exceptions.NotEvaluatedError.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

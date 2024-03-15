@@ -1,0 +1,7 @@
+sktime.alignment.dtw\_python module
+===================================
+
+.. automodule:: sktime.alignment.dtw_python
+   :members:
+   :undoc-members:
+   :show-inheritance:

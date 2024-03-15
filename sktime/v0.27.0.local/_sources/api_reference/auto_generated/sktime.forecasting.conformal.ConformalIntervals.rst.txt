@@ -1,0 +1,12 @@
+﻿ConformalIntervals
+=============================================================
+
+.. currentmodule:: sktime.forecasting.conformal
+
+.. autoclass:: ConformalIntervals
+
+.. include:: sktime.forecasting.conformal.ConformalIntervals.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

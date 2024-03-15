@@ -1,0 +1,12 @@
+﻿ContractableBOSS
+=====================================================================
+
+.. currentmodule:: sktime.classification.dictionary_based
+
+.. autoclass:: ContractableBOSS
+
+.. include:: sktime.classification.dictionary_based.ContractableBOSS.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿msm_distance
+=================================================
+
+.. currentmodule:: sktime.distances
+
+.. autofunction:: msm_distance
+
+.. include:: sktime.distances.msm_distance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

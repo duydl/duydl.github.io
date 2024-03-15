@@ -1,0 +1,7 @@
+sktime.transformations.panel.signature\_based package
+=====================================================
+
+.. automodule:: sktime.transformations.panel.signature_based
+   :members:
+   :undoc-members:
+   :show-inheritance:

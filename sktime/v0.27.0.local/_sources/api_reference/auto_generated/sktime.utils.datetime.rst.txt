@@ -1,0 +1,7 @@
+sktime.utils.datetime module
+============================
+
+.. automodule:: sktime.utils.datetime
+   :members:
+   :undoc-members:
+   :show-inheritance:

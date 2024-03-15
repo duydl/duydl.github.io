@@ -1,0 +1,28 @@
+sktime.transformations package
+==============================
+
+.. automodule:: sktime.transformations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.transformations.bootstrap
+   sktime.transformations.compose
+   sktime.transformations.hierarchical
+   sktime.transformations.panel
+   sktime.transformations.series
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.transformations.base
+   sktime.transformations.merger

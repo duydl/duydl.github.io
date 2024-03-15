@@ -1,0 +1,12 @@
+﻿MatrixProfile
+=======================================================================
+
+.. currentmodule:: sktime.transformations.panel.matrix_profile
+
+.. autoclass:: MatrixProfile
+
+.. include:: sktime.transformations.panel.matrix_profile.MatrixProfile.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.classification.shapelet\_based package
+=============================================
+
+.. automodule:: sktime.classification.shapelet_based
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿StationarityKPSSArch
+================================================================
+
+.. currentmodule:: sktime.param_est.stationarity
+
+.. autoclass:: StationarityKPSSArch
+
+.. include:: sktime.param_est.stationarity.StationarityKPSSArch.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

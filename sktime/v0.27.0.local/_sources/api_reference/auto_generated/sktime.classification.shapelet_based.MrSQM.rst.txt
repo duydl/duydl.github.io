@@ -1,0 +1,12 @@
+﻿MrSQM
+========================================================
+
+.. currentmodule:: sktime.classification.shapelet_based
+
+.. autoclass:: MrSQM
+
+.. include:: sktime.classification.shapelet_based.MrSQM.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

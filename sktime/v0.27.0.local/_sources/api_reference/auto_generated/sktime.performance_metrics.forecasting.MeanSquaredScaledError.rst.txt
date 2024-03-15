@@ -1,0 +1,13 @@
+﻿MeanSquaredScaledError
+============================================================================
+
+.. currentmodule:: sktime.performance_metrics.forecasting
+
+.. autoclass:: MeanSquaredScaledError
+   :special-members: __call__
+
+.. include:: sktime.performance_metrics.forecasting.MeanSquaredScaledError.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

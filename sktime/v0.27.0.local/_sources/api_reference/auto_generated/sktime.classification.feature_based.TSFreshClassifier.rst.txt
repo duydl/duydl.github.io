@@ -1,0 +1,12 @@
+﻿TSFreshClassifier
+===================================================================
+
+.. currentmodule:: sktime.classification.feature_based
+
+.. autoclass:: TSFreshClassifier
+
+.. include:: sktime.classification.feature_based.TSFreshClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

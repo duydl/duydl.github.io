@@ -1,0 +1,7 @@
+sktime.clustering.k\_shapes module
+==================================
+
+.. automodule:: sktime.clustering.k_shapes
+   :members:
+   :undoc-members:
+   :show-inheritance:

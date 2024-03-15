@@ -1,0 +1,7 @@
+sktime.annotation.hmm\_learn.poisson module
+===========================================
+
+.. automodule:: sktime.annotation.hmm_learn.poisson
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.datatypes package
+========================
+
+.. automodule:: sktime.datatypes
+   :members:
+   :undoc-members:
+   :show-inheritance:

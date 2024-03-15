@@ -1,0 +1,12 @@
+﻿TransformedTargetForecaster
+====================================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: TransformedTargetForecaster
+
+.. include:: sktime.forecasting.compose.TransformedTargetForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

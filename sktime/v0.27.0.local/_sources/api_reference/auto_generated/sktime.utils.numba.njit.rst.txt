@@ -1,0 +1,7 @@
+sktime.utils.numba.njit module
+==============================
+
+.. automodule:: sktime.utils.numba.njit
+   :members:
+   :undoc-members:
+   :show-inheritance:

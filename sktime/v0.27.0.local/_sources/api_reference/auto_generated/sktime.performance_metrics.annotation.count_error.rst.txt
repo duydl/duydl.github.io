@@ -1,0 +1,12 @@
+﻿count_error
+=====================================================================
+
+.. currentmodule:: sktime.performance_metrics.annotation
+
+.. autofunction:: count_error
+
+.. include:: sktime.performance_metrics.annotation.count_error.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

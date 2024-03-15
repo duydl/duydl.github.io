@@ -1,0 +1,7 @@
+sktime.transformations.series.dilation\_mapping module
+======================================================
+
+.. automodule:: sktime.transformations.series.dilation_mapping
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,12 @@
+﻿AutoCorrelationTransformer
+==========================================================================
+
+.. currentmodule:: sktime.transformations.series.acf
+
+.. autoclass:: AutoCorrelationTransformer
+
+.. include:: sktime.transformations.series.acf.AutoCorrelationTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

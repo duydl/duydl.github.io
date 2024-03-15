@@ -1,0 +1,12 @@
+﻿NaiveForecaster
+======================================================
+
+.. currentmodule:: sktime.forecasting.naive
+
+.. autoclass:: NaiveForecaster
+
+.. include:: sktime.forecasting.naive.NaiveForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

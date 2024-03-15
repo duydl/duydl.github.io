@@ -1,0 +1,12 @@
+﻿ForecastKnownValues
+==========================================================
+
+.. currentmodule:: sktime.forecasting.dummy
+
+.. autoclass:: ForecastKnownValues
+
+.. include:: sktime.forecasting.dummy.ForecastKnownValues.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,7 @@
+sktime.networks.cnn module
+==========================
+
+.. automodule:: sktime.networks.cnn
+   :members:
+   :undoc-members:
+   :show-inheritance:

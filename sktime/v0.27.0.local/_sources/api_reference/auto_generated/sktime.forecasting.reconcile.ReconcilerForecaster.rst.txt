@@ -1,0 +1,12 @@
+﻿ReconcilerForecaster
+===============================================================
+
+.. currentmodule:: sktime.forecasting.reconcile
+
+.. autoclass:: ReconcilerForecaster
+
+.. include:: sktime.forecasting.reconcile.ReconcilerForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

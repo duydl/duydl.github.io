@@ -1,0 +1,7 @@
+sktime.forecasting.arima package
+================================
+
+.. automodule:: sktime.forecasting.arima
+   :members:
+   :undoc-members:
+   :show-inheritance:

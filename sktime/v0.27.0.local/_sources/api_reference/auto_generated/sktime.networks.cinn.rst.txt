@@ -1,0 +1,7 @@
+sktime.networks.cinn module
+===========================
+
+.. automodule:: sktime.networks.cinn
+   :members:
+   :undoc-members:
+   :show-inheritance:

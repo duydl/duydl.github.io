@@ -1,0 +1,12 @@
+﻿TSCGridSearchCV
+===================================================================
+
+.. currentmodule:: sktime.classification.model_selection
+
+.. autoclass:: TSCGridSearchCV
+
+.. include:: sktime.classification.model_selection.TSCGridSearchCV.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

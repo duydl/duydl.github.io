@@ -1,0 +1,7 @@
+sktime.classification.hybrid package
+====================================
+
+.. automodule:: sktime.classification.hybrid
+   :members:
+   :undoc-members:
+   :show-inheritance:

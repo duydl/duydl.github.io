@@ -1,0 +1,12 @@
+﻿hausdorff_error
+=========================================================================
+
+.. currentmodule:: sktime.performance_metrics.annotation
+
+.. autofunction:: hausdorff_error
+
+.. include:: sktime.performance_metrics.annotation.hausdorff_error.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿Prophet
+==================================================
+
+.. currentmodule:: sktime.forecasting.fbprophet
+
+.. autoclass:: Prophet
+
+.. include:: sktime.forecasting.fbprophet.Prophet.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

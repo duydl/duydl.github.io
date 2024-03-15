@@ -1,0 +1,7 @@
+sktime.param\_est.fixed module
+==============================
+
+.. automodule:: sktime.param_est.fixed
+   :members:
+   :undoc-members:
+   :show-inheritance:

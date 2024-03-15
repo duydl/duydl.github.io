@@ -1,0 +1,12 @@
+﻿MSTL
+=============================================================
+
+.. currentmodule:: sktime.transformations.series.detrend.mstl
+
+.. autoclass:: MSTL
+
+.. include:: sktime.transformations.series.detrend.mstl.MSTL.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

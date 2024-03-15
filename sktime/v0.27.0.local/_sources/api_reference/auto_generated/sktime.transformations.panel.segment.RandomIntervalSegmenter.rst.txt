@@ -1,0 +1,12 @@
+﻿RandomIntervalSegmenter
+==========================================================================
+
+.. currentmodule:: sktime.transformations.panel.segment
+
+.. autoclass:: RandomIntervalSegmenter
+
+.. include:: sktime.transformations.panel.segment.RandomIntervalSegmenter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿TapNetRegressor
+=============================================================
+
+.. currentmodule:: sktime.regression.deep_learning
+
+.. autoclass:: TapNetRegressor
+
+.. include:: sktime.regression.deep_learning.TapNetRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

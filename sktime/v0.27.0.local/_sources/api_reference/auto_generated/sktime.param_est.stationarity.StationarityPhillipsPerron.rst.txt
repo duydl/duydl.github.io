@@ -1,0 +1,12 @@
+﻿StationarityPhillipsPerron
+======================================================================
+
+.. currentmodule:: sktime.param_est.stationarity
+
+.. autoclass:: StationarityPhillipsPerron
+
+.. include:: sktime.param_est.stationarity.StationarityPhillipsPerron.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

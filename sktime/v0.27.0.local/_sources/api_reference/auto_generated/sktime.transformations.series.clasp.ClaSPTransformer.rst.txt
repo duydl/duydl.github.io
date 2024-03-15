@@ -1,0 +1,12 @@
+﻿ClaSPTransformer
+==================================================================
+
+.. currentmodule:: sktime.transformations.series.clasp
+
+.. autoclass:: ClaSPTransformer
+
+.. include:: sktime.transformations.series.clasp.ClaSPTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿HampelFilter
+==========================================================================
+
+.. currentmodule:: sktime.transformations.series.outlier_detection
+
+.. autoclass:: HampelFilter
+
+.. include:: sktime.transformations.series.outlier_detection.HampelFilter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

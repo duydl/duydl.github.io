@@ -1,0 +1,12 @@
+﻿RandomIntervalSpectralEnsemble
+=================================================================================
+
+.. currentmodule:: sktime.classification.interval_based
+
+.. autoclass:: RandomIntervalSpectralEnsemble
+
+.. include:: sktime.classification.interval_based.RandomIntervalSpectralEnsemble.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

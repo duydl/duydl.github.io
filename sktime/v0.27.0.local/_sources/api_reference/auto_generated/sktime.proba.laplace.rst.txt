@@ -1,0 +1,7 @@
+sktime.proba.laplace module
+===========================
+
+.. automodule:: sktime.proba.laplace
+   :members:
+   :undoc-members:
+   :show-inheritance:

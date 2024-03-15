@@ -1,0 +1,12 @@
+﻿HolidayFeatures
+===================================================================
+
+.. currentmodule:: sktime.transformations.series.holiday
+
+.. autoclass:: HolidayFeatures
+
+.. include:: sktime.transformations.series.holiday.HolidayFeatures.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿imports
+===========================================
+
+.. currentmodule:: sktime.registry
+
+.. autofunction:: imports
+
+.. include:: sktime.registry.imports.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

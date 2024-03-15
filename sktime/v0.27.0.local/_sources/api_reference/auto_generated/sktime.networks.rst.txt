@@ -1,0 +1,36 @@
+sktime.networks package
+=======================
+
+.. automodule:: sktime.networks
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.networks.ltsf
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.networks.base
+   sktime.networks.cinn
+   sktime.networks.cnn
+   sktime.networks.cntc
+   sktime.networks.fcn
+   sktime.networks.inceptiontime
+   sktime.networks.lstmfcn
+   sktime.networks.lstmfcn_layers
+   sktime.networks.macnn
+   sktime.networks.mcdcnn
+   sktime.networks.mlp
+   sktime.networks.resnet
+   sktime.networks.rnn
+   sktime.networks.tapnet

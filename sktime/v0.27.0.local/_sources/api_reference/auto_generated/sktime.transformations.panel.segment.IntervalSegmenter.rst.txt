@@ -1,0 +1,12 @@
+﻿IntervalSegmenter
+====================================================================
+
+.. currentmodule:: sktime.transformations.panel.segment
+
+.. autoclass:: IntervalSegmenter
+
+.. include:: sktime.transformations.panel.segment.IntervalSegmenter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

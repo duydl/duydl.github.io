@@ -1,0 +1,12 @@
+﻿NNLSEnsemble
+=============================================================
+
+.. currentmodule:: sktime.forecasting.online_learning
+
+.. autoclass:: NNLSEnsemble
+
+.. include:: sktime.forecasting.online_learning.NNLSEnsemble.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

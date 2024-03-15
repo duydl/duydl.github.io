@@ -1,0 +1,12 @@
+﻿TimeSeriesForestRegressor
+========================================================================
+
+.. currentmodule:: sktime.regression.interval_based
+
+.. autoclass:: TimeSeriesForestRegressor
+
+.. include:: sktime.regression.interval_based.TimeSeriesForestRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

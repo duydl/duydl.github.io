@@ -1,0 +1,12 @@
+﻿DateTimeFeatures
+=================================================================
+
+.. currentmodule:: sktime.transformations.series.date
+
+.. autoclass:: DateTimeFeatures
+
+.. include:: sktime.transformations.series.date.DateTimeFeatures.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿TimeSeriesLloyds
+=============================================================
+
+.. currentmodule:: sktime.clustering.partitioning
+
+.. autoclass:: TimeSeriesLloyds
+
+.. include:: sktime.clustering.partitioning.TimeSeriesLloyds.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

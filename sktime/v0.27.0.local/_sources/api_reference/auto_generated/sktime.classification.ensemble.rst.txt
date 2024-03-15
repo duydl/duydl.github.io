@@ -1,0 +1,7 @@
+sktime.classification.ensemble package
+======================================
+
+.. automodule:: sktime.classification.ensemble
+   :members:
+   :undoc-members:
+   :show-inheritance:

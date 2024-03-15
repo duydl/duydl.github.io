@@ -1,0 +1,12 @@
+﻿TEASER
+===============================================================
+
+.. currentmodule:: sktime.classification.early_classification
+
+.. autoclass:: TEASER
+
+.. include:: sktime.classification.early_classification.TEASER.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

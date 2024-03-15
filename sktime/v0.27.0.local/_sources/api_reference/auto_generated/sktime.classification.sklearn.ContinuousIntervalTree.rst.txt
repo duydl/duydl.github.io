@@ -1,0 +1,12 @@
+﻿ContinuousIntervalTree
+==================================================================
+
+.. currentmodule:: sktime.classification.sklearn
+
+.. autoclass:: ContinuousIntervalTree
+
+.. include:: sktime.classification.sklearn.ContinuousIntervalTree.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

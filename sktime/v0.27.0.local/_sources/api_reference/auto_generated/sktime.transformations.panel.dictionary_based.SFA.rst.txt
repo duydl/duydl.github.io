@@ -1,0 +1,12 @@
+﻿SFA
+===============================================================
+
+.. currentmodule:: sktime.transformations.panel.dictionary_based
+
+.. autoclass:: SFA
+
+.. include:: sktime.transformations.panel.dictionary_based.SFA.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

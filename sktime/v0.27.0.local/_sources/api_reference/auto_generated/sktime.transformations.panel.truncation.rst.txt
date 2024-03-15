@@ -1,0 +1,7 @@
+sktime.transformations.panel.truncation module
+==============================================
+
+.. automodule:: sktime.transformations.panel.truncation
+   :members:
+   :undoc-members:
+   :show-inheritance:

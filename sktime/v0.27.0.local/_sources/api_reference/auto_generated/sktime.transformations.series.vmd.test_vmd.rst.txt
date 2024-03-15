@@ -1,0 +1,7 @@
+sktime.transformations.series.vmd.test\_vmd module
+==================================================
+
+.. automodule:: sktime.transformations.series.vmd.test_vmd
+   :members:
+   :undoc-members:
+   :show-inheritance:

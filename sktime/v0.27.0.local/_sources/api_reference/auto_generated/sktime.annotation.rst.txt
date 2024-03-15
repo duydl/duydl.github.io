@@ -1,0 +1,32 @@
+sktime.annotation package
+=========================
+
+.. automodule:: sktime.annotation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.annotation.adapters
+   sktime.annotation.base
+   sktime.annotation.hmm_learn
+   sktime.annotation.plotting
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.annotation.clasp
+   sktime.annotation.datagen
+   sktime.annotation.eagglo
+   sktime.annotation.ggs
+   sktime.annotation.hmm
+   sktime.annotation.igts
+   sktime.annotation.stray

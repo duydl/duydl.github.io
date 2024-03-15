@@ -1,0 +1,12 @@
+﻿SummaryTransformer
+========================================================================
+
+.. currentmodule:: sktime.transformations.series.summarize
+
+.. autoclass:: SummaryTransformer
+
+.. include:: sktime.transformations.series.summarize.SummaryTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

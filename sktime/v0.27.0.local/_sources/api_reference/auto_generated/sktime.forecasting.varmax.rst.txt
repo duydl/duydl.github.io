@@ -1,0 +1,7 @@
+sktime.forecasting.varmax module
+================================
+
+.. automodule:: sktime.forecasting.varmax
+   :members:
+   :undoc-members:
+   :show-inheritance:

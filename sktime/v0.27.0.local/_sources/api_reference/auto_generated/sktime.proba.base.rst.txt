@@ -1,0 +1,7 @@
+sktime.proba.base module
+========================
+
+.. automodule:: sktime.proba.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

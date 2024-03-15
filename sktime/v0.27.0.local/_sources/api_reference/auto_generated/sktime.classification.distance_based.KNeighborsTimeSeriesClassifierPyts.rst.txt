@@ -1,0 +1,12 @@
+﻿KNeighborsTimeSeriesClassifierPyts
+=====================================================================================
+
+.. currentmodule:: sktime.classification.distance_based
+
+.. autoclass:: KNeighborsTimeSeriesClassifierPyts
+
+.. include:: sktime.classification.distance_based.KNeighborsTimeSeriesClassifierPyts.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

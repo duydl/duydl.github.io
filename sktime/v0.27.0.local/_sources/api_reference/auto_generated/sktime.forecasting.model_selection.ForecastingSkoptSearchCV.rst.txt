@@ -1,0 +1,12 @@
+﻿ForecastingSkoptSearchCV
+=========================================================================
+
+.. currentmodule:: sktime.forecasting.model_selection
+
+.. autoclass:: ForecastingSkoptSearchCV
+
+.. include:: sktime.forecasting.model_selection.ForecastingSkoptSearchCV.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

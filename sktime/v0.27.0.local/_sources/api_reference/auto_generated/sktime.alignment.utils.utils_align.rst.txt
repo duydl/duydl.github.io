@@ -1,0 +1,7 @@
+sktime.alignment.utils.utils\_align module
+==========================================
+
+.. automodule:: sktime.alignment.utils.utils_align
+   :members:
+   :undoc-members:
+   :show-inheritance:

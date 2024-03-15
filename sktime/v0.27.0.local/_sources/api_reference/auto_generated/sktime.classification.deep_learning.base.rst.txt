@@ -1,0 +1,7 @@
+sktime.classification.deep\_learning.base module
+================================================
+
+.. automodule:: sktime.classification.deep_learning.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

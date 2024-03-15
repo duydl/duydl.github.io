@@ -1,0 +1,12 @@
+﻿write_tabular_transformation_to_arff
+========================================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: write_tabular_transformation_to_arff
+
+.. include:: sktime.datasets.write_tabular_transformation_to_arff.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

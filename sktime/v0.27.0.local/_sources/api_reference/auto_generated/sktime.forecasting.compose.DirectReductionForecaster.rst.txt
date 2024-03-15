@@ -1,0 +1,12 @@
+﻿DirectReductionForecaster
+==================================================================
+
+.. currentmodule:: sktime.forecasting.compose
+
+.. autoclass:: DirectReductionForecaster
+
+.. include:: sktime.forecasting.compose.DirectReductionForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

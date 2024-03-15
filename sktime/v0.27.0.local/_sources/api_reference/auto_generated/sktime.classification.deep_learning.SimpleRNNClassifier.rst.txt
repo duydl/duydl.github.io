@@ -1,0 +1,12 @@
+﻿SimpleRNNClassifier
+=====================================================================
+
+.. currentmodule:: sktime.classification.deep_learning
+
+.. autoclass:: SimpleRNNClassifier
+
+.. include:: sktime.classification.deep_learning.SimpleRNNClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿OnlineEnsembleForecaster
+=========================================================================
+
+.. currentmodule:: sktime.forecasting.online_learning
+
+.. autoclass:: OnlineEnsembleForecaster
+
+.. include:: sktime.forecasting.online_learning.OnlineEnsembleForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

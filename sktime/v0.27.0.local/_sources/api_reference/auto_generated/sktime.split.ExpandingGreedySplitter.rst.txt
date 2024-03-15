@@ -1,0 +1,12 @@
+﻿ExpandingGreedySplitter
+==================================================
+
+.. currentmodule:: sktime.split
+
+.. autoclass:: ExpandingGreedySplitter
+
+.. include:: sktime.split.ExpandingGreedySplitter.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

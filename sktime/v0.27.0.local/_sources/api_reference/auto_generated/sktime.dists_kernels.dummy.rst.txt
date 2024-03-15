@@ -1,0 +1,7 @@
+sktime.dists\_kernels.dummy module
+==================================
+
+.. automodule:: sktime.dists_kernels.dummy
+   :members:
+   :undoc-members:
+   :show-inheritance:

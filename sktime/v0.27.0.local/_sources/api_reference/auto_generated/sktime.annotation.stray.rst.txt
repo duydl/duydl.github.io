@@ -1,0 +1,7 @@
+sktime.annotation.stray module
+==============================
+
+.. automodule:: sktime.annotation.stray
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sktime.forecasting.ltsf module
+==============================
+
+.. automodule:: sktime.forecasting.ltsf
+   :members:
+   :undoc-members:
+   :show-inheritance:

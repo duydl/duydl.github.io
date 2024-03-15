@@ -1,0 +1,7 @@
+sktime.param\_est.base module
+=============================
+
+.. automodule:: sktime.param_est.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

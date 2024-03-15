@@ -1,0 +1,12 @@
+﻿IndividualTDE
+==================================================================
+
+.. currentmodule:: sktime.classification.dictionary_based
+
+.. autoclass:: IndividualTDE
+
+.. include:: sktime.classification.dictionary_based.IndividualTDE.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

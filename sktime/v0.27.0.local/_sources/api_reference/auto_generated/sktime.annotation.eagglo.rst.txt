@@ -1,0 +1,7 @@
+sktime.annotation.eagglo module
+===============================
+
+.. automodule:: sktime.annotation.eagglo
+   :members:
+   :undoc-members:
+   :show-inheritance:

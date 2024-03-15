@@ -1,0 +1,7 @@
+sktime.transformations.series.lag module
+========================================
+
+.. automodule:: sktime.transformations.series.lag
+   :members:
+   :undoc-members:
+   :show-inheritance:

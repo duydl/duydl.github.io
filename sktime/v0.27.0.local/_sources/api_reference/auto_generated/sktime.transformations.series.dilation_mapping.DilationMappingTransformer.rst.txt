@@ -1,0 +1,12 @@
+﻿DilationMappingTransformer
+=======================================================================================
+
+.. currentmodule:: sktime.transformations.series.dilation_mapping
+
+.. autoclass:: DilationMappingTransformer
+
+.. include:: sktime.transformations.series.dilation_mapping.DilationMappingTransformer.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

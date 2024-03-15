@@ -1,0 +1,2357 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.dists_kernels.signature_kernel module &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.dists_kernels.signature_kernel';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sktime.dists_kernels.base.html">sktime.dists_kernels.base package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.dists_kernels.base.adapters.html">sktime.dists_kernels.base.adapters package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.dtw.html">sktime.dists_kernels.dtw package</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.algebra.html">sktime.dists_kernels.algebra module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.compose.html">sktime.dists_kernels.compose module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.compose_from_align.html">sktime.dists_kernels.compose_from_align module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.compose_tab_to_panel.html">sktime.dists_kernels.compose_tab_to_panel module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.ctw.html">sktime.dists_kernels.ctw module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.dist_to_kern.html">sktime.dists_kernels.dist_to_kern module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.dummy.html">sktime.dists_kernels.dummy module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.edit_dist.html">sktime.dists_kernels.edit_dist module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.gak.html">sktime.dists_kernels.gak module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.indep.html">sktime.dists_kernels.indep module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.lcss.html">sktime.dists_kernels.lcss module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.lucky.html">sktime.dists_kernels.lucky module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.dists_kernels.scipy_dist.html">sktime.dists_kernels.scipy_dist module</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">sktime.dists_kernels.signature_kernel module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.dists...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.dists_kernels.signature_kernel">
+<span id="sktime-dists-kernels-signature-kernel-module"></span><h1>sktime.dists_kernels.signature_kernel module<a class="headerlink" href="#module-sktime.dists_kernels.signature_kernel" title="Link to this heading">#</a></h1>
+<p>Signature kernels from Kiraly et al, 2016.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.cumsum_rev_first">
+<span class="sig-name descname"><span class="pre">cumsum_rev_first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L26-L30"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.cumsum_rev_first" title="Link to this definition">#</a></dt>
+<dd><p>Reverse cumsum over 0th axis.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.cumsum_rev">
+<span class="sig-name descname"><span class="pre">cumsum_rev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L33-L37"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.cumsum_rev" title="Link to this definition">#</a></dt>
+<dd><p>Reverse cumsum over both axes 0 and 1.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.cumsum_mult">
+<span class="sig-name descname"><span class="pre">cumsum_mult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L40-L45"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.cumsum_mult" title="Link to this definition">#</a></dt>
+<dd><p>Cumsum over all axes in dims.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.roll_mult">
+<span class="sig-name descname"><span class="pre">roll_mult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L48-L53"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.roll_mult" title="Link to this definition">#</a></dt>
+<dd><p>Roll over all axes in dims.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.makeinds">
+<span class="sig-name descname"><span class="pre">makeinds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indlist</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L56-L58"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.makeinds" title="Link to this definition">#</a></dt>
+<dd><p>Make mesh from sequences.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.cumsum_shift_mult">
+<span class="sig-name descname"><span class="pre">cumsum_shift_mult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L61-L76"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.cumsum_shift_mult" title="Link to this definition">#</a></dt>
+<dd><p>Apply cumsum and shift to all axes in dims.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.rankreduce">
+<span class="sig-name descname"><span class="pre">rankreduce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankbound</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L83-L86"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.rankreduce" title="Link to this definition">#</a></dt>
+<dd><p>Project 2D array on top rankbound singular values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.rankreduce_batch">
+<span class="sig-name descname"><span class="pre">rankreduce_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankbound</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L89-L94"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.rankreduce_batch" title="Link to this definition">#</a></dt>
+<dd><p>Apply rankreduce to axis 0 stack of arrays.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.sqdist">
+<span class="sig-name descname"><span class="pre">sqdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L101-L108"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.sqdist" title="Link to this definition">#</a></dt>
+<dd><p>Row-wise squared distance between 2D array X and 2D array Y.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.k_polynom">
+<span class="sig-name descname"><span class="pre">k_polynom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L111-L113"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.k_polynom" title="Link to this definition">#</a></dt>
+<dd><p>Polynomial kernel of degree deg, with scale coeff.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.k_gauss">
+<span class="sig-name descname"><span class="pre">k_gauss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L116-L118"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.k_gauss" title="Link to this definition">#</a></dt>
+<dd><p>Gaussian kernel with scale coeff.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.k_euclid">
+<span class="sig-name descname"><span class="pre">k_euclid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L121-L123"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.k_euclid" title="Link to this definition">#</a></dt>
+<dd><p>Euclidean kernel with scale coeff.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.k_laplace">
+<span class="sig-name descname"><span class="pre">k_laplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L126-L128"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.k_laplace" title="Link to this definition">#</a></dt>
+<dd><p>Laplace kernel with scale coeff.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.k_tanh">
+<span class="sig-name descname"><span class="pre">k_tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">off</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L131-L133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.k_tanh" title="Link to this definition">#</a></dt>
+<dd><p>Tanh kernel with scale and offset.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.mirror">
+<span class="sig-name descname"><span class="pre">mirror</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L136-L138"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.mirror" title="Link to this definition">#</a></dt>
+<dd><p>Mirrors an upper triangular kernel matrix, helper for Sqize_kernel.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.sqize_kernel">
+<span class="sig-name descname"><span class="pre">sqize_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L145-L182"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.sqize_kernel" title="Link to this definition">#</a></dt>
+<dd><p>Compute the sequential kernel from a pairwise kernel matrix.</p>
+<p>aka compute “sequentialization of the kernel K”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K</strong><span class="classifier">2D np.ndarray</span></dt><dd><p>the kernel matrix of increments, i.e.,
+K[i,j] is the kernel between the i-th increment of path 1 (rows),
+and the j-th increment of path 2 (columns)</p>
+</dd>
+<dt><strong>L</strong><span class="classifier">an integer &gt;= 1, representing the level of truncation</span></dt><dd></dd>
+<dt><strong>theta</strong><span class="classifier">float, optional, default=1.0</span></dt><dd><p>a positive scaling factor for the levels, i-th level is scaled by theta^i</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether the output kernel matrix is normalized
+if True, sums and cumsums are divided by prod(K.shape)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>a real number, the sequential kernel between path 1 (rows of K) and path 2 (cols)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.sqize_kernel_ho">
+<span class="sig-name descname"><span class="pre">sqize_kernel_ho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L185-L229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.sqize_kernel_ho" title="Link to this definition">#</a></dt>
+<dd><p>Compute the higher-order sequential kernel from a pairwise kernel matrix.</p>
+<p>aka compute “sequentialization of the kernel K”, higher-order approximation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K</strong><span class="classifier">2D np.ndarray</span></dt><dd><p>the kernel matrix of increments, i.e.,
+K[i,j] is the kernel between the i-th increment of path 1 (rows),
+and the j-th increment of path 2 (columns)</p>
+</dd>
+<dt><strong>L</strong><span class="classifier">an integer &gt;= 1, representing the level of truncation</span></dt><dd></dd>
+<dt><strong>D</strong><span class="classifier">int, optional, default = 1</span></dt><dd><p>an integer &gt;= 1, representing the order of approximation</p>
+</dd>
+<dt><strong>theta</strong><span class="classifier">float, optional, default=1.0</span></dt><dd><p>a positive scaling factor for the levels, i-th level is scaled by theta^i</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether the output kernel matrix is normalized
+if True, sums and cumsums are divided by prod(K.shape)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>a real number, the sequential kernel between path 1 (rows of K) and path 2 (cols)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.LRdec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LRdec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.LRdec" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>U</strong></dt><dd><p>Alias for field number 0</p>
+</dd>
+<dt><strong>V</strong></dt><dd><p>Alias for field number 1</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.LRdec.count" title="sktime.dists_kernels.signature_kernel.LRdec.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a>(value, /)</p></td>
+<td><p>Return number of occurrences of value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.LRdec.index" title="sktime.dists_kernels.signature_kernel.LRdec.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(value[, start, stop])</p></td>
+<td><p>Return first index of value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.LRdec.U">
+<span class="sig-name descname"><span class="pre">U</span></span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.LRdec.U" title="Link to this definition">#</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.LRdec.V">
+<span class="sig-name descname"><span class="pre">V</span></span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.LRdec.V" title="Link to this definition">#</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.LRdec.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.LRdec.count" title="Link to this definition">#</a></dt>
+<dd><p>Return number of occurrences of value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.LRdec.index">
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">sys.maxsize</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.LRdec.index" title="Link to this definition">#</a></dt>
+<dd><p>Return first index of value.</p>
+<p>Raises ValueError if the value is not present.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.get_low_rank_matrix">
+<span class="sig-name descname"><span class="pre">get_low_rank_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L241-L252"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.get_low_rank_matrix" title="Link to this definition">#</a></dt>
+<dd><p>Produce the matrix from the LRdec object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K</strong><span class="classifier">LRdec type object</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>2D np.ndarray the matrix K.U x K.V.T modelled by the LRdec object</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.add_low_rank">
+<span class="sig-name descname"><span class="pre">add_low_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L255-L270"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.add_low_rank" title="Link to this definition">#</a></dt>
+<dd><p>Efficient addition of two low-rank matrices.</p>
+<p>efficient computation of sum of low-rank representations
+using this and then get_low_rank_matrix is more efficient than an
+explicit computation if the rank of the final matrix is not full</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K, R</strong><span class="classifier">LRdec type objects to add</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>LRdec type object for sum of K and R</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.add_low_rank_one">
+<span class="sig-name descname"><span class="pre">add_low_rank_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L273-L275"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.add_low_rank_one" title="Link to this definition">#</a></dt>
+<dd><p>Efficient addition of low-rank matrices (symmetric).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.mult_low_rank">
+<span class="sig-name descname"><span class="pre">mult_low_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L278-L293"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.mult_low_rank" title="Link to this definition">#</a></dt>
+<dd><p>Efficient multiplication of two low-rank matrices.</p>
+<p>efficient multiplication of sum of low-rank representations
+using this and then get_low_rank_matrix is more efficient than an
+explicit computation if the rank of the final matrix is not full</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K, R</strong><span class="classifier">LRdec type objects to add</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>LRdec type object for product of K and R</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.hadamard_low_rank">
+<span class="sig-name descname"><span class="pre">hadamard_low_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L296-L315"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.hadamard_low_rank" title="Link to this definition">#</a></dt>
+<dd><p>Efficient Hadamard product of two low-rank matrices.</p>
+<p>efficient multiplication of sum of low-rank representations
+using this and then get_low_rank_matrix is more efficient than an
+explicit computation if the rank of the final matrix is not full</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K, R</strong><span class="classifier">LRdec type objects to add</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>LRdec type object for Hadamard product of K and R</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.hadamard_low_rank_batch">
+<span class="sig-name descname"><span class="pre">hadamard_low_rank_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L327-L331"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.hadamard_low_rank_batch" title="Link to this definition">#</a></dt>
+<dd><p>Hadamard multiply U and P component-wise (1st).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.hadamard_low_rank_subsample">
+<span class="sig-name descname"><span class="pre">hadamard_low_rank_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L334-L339"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.hadamard_low_rank_subsample" title="Link to this definition">#</a></dt>
+<dd><p>Hadamard multiply U and P component-wise (1st), with Nyström type subsampling.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.cumsum_rev_low_rank">
+<span class="sig-name descname"><span class="pre">cumsum_rev_low_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L342-L355"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.cumsum_rev_low_rank" title="Link to this definition">#</a></dt>
+<dd><p>Compute cumsum for LRdec type collections.</p>
+<p>equivalent of cumsum_rev for LRdec type objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K</strong><span class="classifier">LRdec type object to compute cumsum of</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.sum_low_rank">
+<span class="sig-name descname"><span class="pre">sum_low_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L358-L371"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.sum_low_rank" title="Link to this definition">#</a></dt>
+<dd><p>Compute cumsum for LRdec type collections.</p>
+<p>equivalent of sum for LRdec type objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K</strong><span class="classifier">LRdec type object to compute sum of</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.sqize_kernel_low_rank">
+<span class="sig-name descname"><span class="pre">sqize_kernel_low_rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankbound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L378-L423"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.sqize_kernel_low_rank" title="Link to this definition">#</a></dt>
+<dd><p>Compute the sequential kernel from kernel matrix, with low-rank approximation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>K</strong><span class="classifier">2D np.ndarray</span></dt><dd><p>the kernel matrix of increments, i.e.,
+K[i,j] is the kernel between the i-th increment of path 1 (rows),
+and the j-th increment of path 2 (columns)</p>
+</dd>
+<dt><strong>L</strong><span class="classifier">an integer &gt;= 1, representing the level of truncation</span></dt><dd></dd>
+<dt><strong>theta</strong><span class="classifier">float, optional, default=1.0</span></dt><dd><p>a positive scaling factor for the levels, i-th level is scaled by theta^i</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether the output kernel matrix is normalized
+if True, sums and cumsums are divided by prod(K.shape)</p>
+</dd>
+<dt><strong>rankbound</strong><span class="classifier">int, optional, default = infinity</span></dt><dd><p>a hard threshold for the rank of the level matrices</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>a real number, the sequential kernel between path 1 (rows of K) and path 2 (cols)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.sqize_kernel_low_rank_fast">
+<span class="sig-name descname"><span class="pre">sqize_kernel_low_rank_fast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankbound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L426-L501"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.sqize_kernel_low_rank_fast" title="Link to this definition">#</a></dt>
+<dd><p>Compute the sequential kernel from kernel matrix, with low-rank approximation.</p>
+<p>Vectorized across series, and using (faster) low-rank approximation across series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>K</strong><span class="classifier">3D np.ndarray</span></dt><dd><dl class="simple">
+<dt>containing joint low-rank factors (symmetric singular factor)</dt><dd><p>1st index counts sequences
+2nd index counts time
+3rd index counts features</p>
+</dd>
+</dl>
+<p>so K[m,:,:] is the mth factor,
+and K[m,:,:] x K[m,:,:]^t is the kernel matrix of the mth factor</p>
+</dd>
+<dt><strong>L</strong><span class="classifier">an integer &gt;= 1, representing the level of truncation</span></dt><dd></dd>
+<dt><strong>theta</strong><span class="classifier">float, optional, default=1.0</span></dt><dd><p>a positive scaling factor for the levels, i-th level is scaled by theta^i</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether the output kernel matrix is normalized
+if True, sums and cumsums are divided by prod(K.shape)</p>
+</dd>
+<dt><strong>rankbound</strong><span class="classifier">int, optional, default = infinity</span></dt><dd><p>a hard threshold for the rank of the level matrices</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (m, r), where r = min(rankbound, K.shape[2])</dt><dd><p>a matrix R such that R*R^t is the sequential kernel matrix
+R*R^t[i,j] is sequential kernel (low-rank) between i-th and j-th sequence in K</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.seq_kernel">
+<span class="sig-name descname"><span class="pre">seq_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernelfun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowrank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankbound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L508-L592"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.seq_kernel" title="Link to this definition">#</a></dt>
+<dd><p>Compute the sequential kernel between sequence/time series.</p>
+<p>Provides interface for vanilla sequential kernel, low-rank, and higher-order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">3D np.ndarray of shape (N, d, _)</span></dt><dd><p>collection of sequences/time series
+1st index = instance index
+2nd index = variable/feature index
+3rd index = time index</p>
+</dd>
+<dt><strong>kernelfun</strong><span class="classifier">function (2D np.ndarray x 2D np.ndarray) -&gt; 2D np.ndarray</span></dt><dd><p>pairwise kernel function, matrix sizes (n, d) x (m, d) -&gt; (n x m)
+optional, default = Euclidean (linear) kernel with scale parameter 1</p>
+</dd>
+<dt><strong>L</strong><span class="classifier">int, optional, default = 2</span></dt><dd><p>an integer &gt;= 1, representing the level of truncation</p>
+</dd>
+<dt><strong>D</strong><span class="classifier">int, optional, default = 1</span></dt><dd><p>an integer &gt;= 1, representing the order of approximation
+can be set only if lowrank = False, otherwise ignored (always = 1)</p>
+</dd>
+<dt><strong>theta</strong><span class="classifier">float, optional, default=1.0</span></dt><dd><p>a positive scaling factor for the levels, i-th level is scaled by theta^i</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether the output kernel matrix is normalized
+if True, sums and cumsums are divided by prod(K.shape)</p>
+</dd>
+<dt><strong>lowrank</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether to use low rank approximation in computing the kernel</p>
+</dd>
+<dt><strong>rankbound</strong><span class="classifier">int, optional, default = infinity</span></dt><dd><p>a hard threshold for the rank of the level matrices
+used only if lowrank = True</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (N, N), sequential kernel matrix</dt><dd><p>[i,j]-th entry is sequential kernel between X[i] and X[j]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.seq_kernel_XY">
+<span class="sig-name descname"><span class="pre">seq_kernel_XY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernelfun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowrank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankbound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L595-L693"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.seq_kernel_XY" title="Link to this definition">#</a></dt>
+<dd><p>Compute the sequential kernel between two different collections of sequence.</p>
+<p>Provides interface for vanilla sequential kernel, low-rank, and higher-order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">3D np.ndarray of shape (N, d, _)</span></dt><dd><p>collection of sequences/time series
+1st index = instance index
+2nd index = variable/feature index
+3rd index = time index</p>
+</dd>
+<dt><strong>Y</strong><span class="classifier">3D np.ndarray of shape (M, d, _)</span></dt><dd><p>collection of sequences/time series
+1st index = instance index
+2nd index = variable/feature index
+3rd index = time index</p>
+</dd>
+<dt><strong>kernelfun</strong><span class="classifier">function (2D np.ndarray x 2D np.ndarray) -&gt; 2D np.ndarray</span></dt><dd><p>pairwise kernel function, matrix sizes (n, d) x (m, d) -&gt; (n x m)
+optional, default = Euclidean (linear) kernel with scale parameter 1</p>
+</dd>
+<dt><strong>L</strong><span class="classifier">int, optional, default = 2</span></dt><dd><p>an integer &gt;= 1, representing the level of truncation</p>
+</dd>
+<dt><strong>D</strong><span class="classifier">int, optional, default = 1</span></dt><dd><p>an integer &gt;= 1, representing the order of approximation
+can be set only if lowrank = False, otherwise ignored (always = 1)</p>
+</dd>
+<dt><strong>theta</strong><span class="classifier">float, optional, default=1.0</span></dt><dd><p>a positive scaling factor for the levels, i-th level is scaled by theta^i</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether the output kernel matrix is normalized
+if True, sums and cumsums are divided by prod(K.shape)</p>
+</dd>
+<dt><strong>lowrank</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether to use low rank approximation in computing the kernel</p>
+</dd>
+<dt><strong>rankbound</strong><span class="classifier">int, optional, default = infinity</span></dt><dd><p>a hard threshold for the rank of the level matrices
+used only if lowrank = True</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (N, M), sequential kernel matrix</dt><dd><p>[i,j]-th entry is sequential kernel between X[i] and Y[j]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.data_tabulator">
+<span class="sig-name descname"><span class="pre">data_tabulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L696-L699"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.data_tabulator" title="Link to this definition">#</a></dt>
+<dd><p>Tabulates sequence 3D np.ndarray into sklearn compatible 2D np.ndarray format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.time_series_reshaper">
+<span class="sig-name descname"><span class="pre">time_series_reshaper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Xflat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numfeatures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">differences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L702-L731"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.time_series_reshaper" title="Link to this definition">#</a></dt>
+<dd><p>Convert 2D np.ndarray into a time series 3D np.ndarray.</p>
+<p>Useful as part of sklearn pipeline for internal conversion to time series 3D format.</p>
+<p>optionally, subsamples or differences time series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Xflat</strong><span class="classifier">2D np.ndarray (instances, flattened time series)</span></dt><dd></dd>
+<dt><strong>numfeatures</strong><span class="classifier">number of features/variables in the time series</span></dt><dd></dd>
+<dt><strong>subsample</strong><span class="classifier">int, optional, default = 1</span></dt><dd><p>time index step size to sub-sample</p>
+</dd>
+<dt><strong>differences</strong><span class="classifier">bool, optional, default = True</span></dt><dd><p>whether to take first temporal differences (True) or not (False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Xflat, as a 3D array</dt><dd><p>regular subsampling is applied if subsample &gt; 1
+differencing is applied (after subsampling) if differences=True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SeqKernelizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SeqKernelizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numfeatures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">differences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowrank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankbound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L737-L862"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code></a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="(in scikit-learn v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransformerMixin</span></code></a></p>
+<p>Compute the sequential kernel matrix row features on collection of series.</p>
+<p>Original implementation of signature kernel in <a class="reference internal" href="#r3db6c9ac5659-1" id="id1">[1]</a> and <a class="reference internal" href="#r3db6c9ac5659-2" id="id2">[2]</a>.
+The algorithm used therein is sklearn GridSearchCV wrapping
+the sklearn pipeline of SeqKernelizer and SVC.</p>
+<p>Identical behaviour can be obtained in sktime as
+a grid search wrapped DistanceFeatures(SignatureKernel()) * SVC() pipeline</p>
+<p>Included for historical purposes only, as reference to original paper code,
+and for reproduction of the original experiments in the JMLR publication.
+Users and developers should use/modify SequentialKernel instead.</p>
+<p>This sklearn estimator requires passing of integer “numfeatures” as parameter,
+and will interpret rows of X as time series with <code class="docutils literal notranslate"><span class="pre">numfeatures</span></code> features/vars,
+and X.shape[1]/numfeatures time stamps, reshaped in (vars, time stamps) order.</p>
+<p>In transform, will transform a series to the row of the kernel matrix
+between that series and all the series seen in fit,, via seq_kernel_XY.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>level</strong><span class="classifier">int, optional, default = 2</span></dt><dd><p>an integer &gt;= 1, representing the level of truncation of the sequential kernel</p>
+</dd>
+<dt><strong>degree</strong><span class="classifier">int, optional, default = 1</span></dt><dd><p>an integer &gt;= 1, representing the order of approximation of sequential kernel
+can be set only if lowrank = False, otherwise ignored (always = 1)</p>
+</dd>
+<dt><strong>theta</strong><span class="classifier">float, optional, default=1.0</span></dt><dd><p>a positive scaling factor for the levels, i-th level is scaled by theta^i</p>
+</dd>
+<dt><strong>kernel</strong><span class="classifier">str, one of “linear”, “Gauss”, “Laplace”, “poly”</span></dt><dd><p>code for inner kernel in the sequential kernel, with kernel parameters
+“linear” - Euclidean kernel with scale parameter
+“Gauss” - Gaussian kernel with scale parameter
+“Laplace” - Laplace kernel with scale parameter
+“poly” - polynomial kernel with degree deg and scale parameter</p>
+</dd>
+<dt><strong>scale</strong><span class="classifier">float, optional, default = 1.0</span></dt><dd><p>a positive scaling factor for the inner kernel</p>
+</dd>
+<dt><strong>degree</strong><span class="classifier">int, optional, default = 1, used only for polynomial kernel (kernel=”poly”)</span></dt><dd><p>degree of the polynomial kernel (if used)</p>
+</dd>
+<dt><strong>numfeatures</strong><span class="classifier">int, optional, default = 2</span></dt><dd><p>number of features/variables in the time series</p>
+</dd>
+<dt><strong>subsample</strong><span class="classifier">int, optional, default = 1</span></dt><dd><p>time index step size to sub-sample</p>
+</dd>
+<dt><strong>differences</strong><span class="classifier">bool, optional, default = True</span></dt><dd><p>whether to take first temporal differences (True) or not (False)</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether the output kernel matrix is normalized
+if True, sums and cumsums are divided by prod(K.shape)</p>
+</dd>
+<dt><strong>lowrank</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether to use low rank approximation in computing the kernel</p>
+</dd>
+<dt><strong>rankbound</strong><span class="classifier">int, optional, default = infinity</span></dt><dd><p>a hard threshold for the rank of the level matrices
+used only if lowrank = True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r3db6c9ac5659-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>F. Kiraly, H. Oberhauser. 2016. “Kernels for sequentially ordered data.”,
+arXiv: 1601.08169.</p>
+</div>
+<div class="citation" id="r3db6c9ac5659-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>F. Kiraly, H. Oberhauser. 2019. “Kernels for sequentially ordered data.”,
+Journal of Machine Learning Research.</p>
+</div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.fit" title="sktime.dists_kernels.signature_kernel.SeqKernelizer.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X[, y])</p></td>
+<td><p>Fit = reshape the series X.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.fit_transform" title="sktime.dists_kernels.signature_kernel.SeqKernelizer.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a>(X[, y])</p></td>
+<td><p>Fit to data, then transform it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.get_metadata_routing" title="sktime.dists_kernels.signature_kernel.SeqKernelizer.get_metadata_routing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_metadata_routing</span></code></a>()</p></td>
+<td><p>Get metadata routing of this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.get_params" title="sktime.dists_kernels.signature_kernel.SeqKernelizer.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.set_output" title="sktime.dists_kernels.signature_kernel.SeqKernelizer.set_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_output</span></code></a>(*[, transform])</p></td>
+<td><p>Set output container.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.set_params" title="sktime.dists_kernels.signature_kernel.SeqKernelizer.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.transform" title="sktime.dists_kernels.signature_kernel.SeqKernelizer.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(X)</p></td>
+<td><p>Transform the data to kernel matrix rows.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SeqKernelizer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L842-L845"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.fit" title="Link to this definition">#</a></dt>
+<dd><p>Fit = reshape the series X.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SeqKernelizer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../sklearn/utils/_set_output.py#L847-L862"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.transform" title="Link to this definition">#</a></dt>
+<dd><p>Transform the data to kernel matrix rows.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SeqKernelizer.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../sklearn/utils/_set_output.py#L1043-L1101"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.fit_transform" title="Link to this definition">#</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Input samples.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</span></dt><dd><p>Target values (None for unsupervised transformations).</p>
+</dd>
+<dt><strong>**fit_params</strong><span class="classifier">dict</span></dt><dd><p>Additional fit parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>X_new</strong><span class="classifier">ndarray array of shape (n_samples, n_features_new)</span></dt><dd><p>Transformed array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SeqKernelizer.get_metadata_routing">
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../sklearn/utils/_metadata_requests.py#L1470-L1482"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.get_metadata_routing" title="Link to this definition">#</a></dt>
+<dd><p>Get metadata routing of this object.</p>
+<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.4)"><span class="xref std std-ref">User Guide</span></a> on how the routing
+mechanism works.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
+routing information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SeqKernelizer.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../sklearn/base.py#L227-L249"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.get_params" title="Link to this definition">#</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SeqKernelizer.set_output">
+<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../sklearn/utils/_available_if.py#L368-L400"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.set_output" title="Link to this definition">#</a></dt>
+<dd><p>Set output container.</p>
+<p>See <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py" title="(in scikit-learn v1.4)"><span>Introducing the set_output API</span></a>
+for an example on how to use the API.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>transform</strong><span class="classifier">{“default”, “pandas”}, default=None</span></dt><dd><p>Configure output of <cite>transform</cite> and <cite>fit_transform</cite>.</p>
+<ul class="simple">
+<li><p><cite>“default”</cite>: Default output format of a transformer</p></li>
+<li><p><cite>“pandas”</cite>: DataFrame output</p></li>
+<li><p><cite>“polars”</cite>: Polars output</p></li>
+<li><p><cite>None</cite>: Transform configuration is unchanged</p></li>
+</ul>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.4: </span><cite>“polars”</cite> option was added.</p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SeqKernelizer.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../sklearn/base.py#L251-L293"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.set_params" title="Link to this definition">#</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SignatureKernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowrank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rankbound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L869-L1009"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sktime.dists_kernels.base.html#sktime.dists_kernels.base.BasePairwiseTransformerPanel" title="sktime.dists_kernels.base._base.BasePairwiseTransformerPanel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePairwiseTransformerPanel</span></code></a></p>
+<p>Time series signature kernel, including high-order and low-rank variants.</p>
+<p>Implements the signature kernel of Kiraly et al, see <a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#r514c10b34fe5-1" id="id5">[1]</a> and <a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#r514c10b34fe5-2" id="id6">[2]</a>,
+including higher-order and low-rank approximation variants described therein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>kernel</strong><span class="classifier">sktime pairwise (tabular) transformer, callable, or None</span></dt><dd><p>inner (tabular) kernel used in the signature sequence kernel
+if callable: function (2D np.ndarray x 2D np.ndarray) -&gt; 2D np.ndarray
+pairwise kernel function, matrix sizes (n, d) x (m, d) -&gt; (n x m)
+optional, default = None = Euclidean (linear) kernel with scale parameter 1</p>
+</dd>
+<dt><strong>level</strong><span class="classifier">int, optional, default = 2</span></dt><dd><p>an integer &gt;= 1, representing the level of truncation of the sequential kernel</p>
+</dd>
+<dt><strong>degree</strong><span class="classifier">int, optional, default = 1</span></dt><dd><p>an integer &gt;= 1, representing the order of approximation of sequential kernel
+can be set only if lowrank = False, otherwise ignored (always = 1)</p>
+</dd>
+<dt><strong>theta</strong><span class="classifier">float, optional, default=1.0</span></dt><dd><p>a positive scaling factor for the levels, i-th level is scaled by theta^i</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether the output kernel matrix is normalized
+if True, sums and cumsums are divided by prod(K.shape)</p>
+</dd>
+<dt><strong>lowrank</strong><span class="classifier">bool, optional, default = False</span></dt><dd><p>whether to use low rank approximation in computing the kernel</p>
+</dd>
+<dt><strong>rankbound</strong><span class="classifier">int, optional, default = infinity</span></dt><dd><p>a hard threshold for the rank of the level matrices
+used only if lowrank = True</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.is_fitted" title="sktime.dists_kernels.signature_kernel.SignatureKernel.is_fitted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_fitted</span></code></a></dt><dd><p>Whether <code class="docutils literal notranslate"><span class="pre">fit</span></code> has been called.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r514c10b34fe5-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>F. Kiraly, H. Oberhauser. 2016. “Kernels for sequentially ordered data.”,
+arXiv: 1601.08169.</p>
+</div>
+<div class="citation" id="r514c10b34fe5-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p>F. Kiraly, H. Oberhauser. 2019. “Kernels for sequentially ordered data.”,
+Journal of Machine Learning Research.</p>
+</div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(X[, X2])</p></td>
+<td><p>Compute distance/kernel matrix, call shorthand.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.check_is_fitted" title="sktime.dists_kernels.signature_kernel.SignatureKernel.check_is_fitted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_is_fitted</span></code></a>()</p></td>
+<td><p>Check if the estimator has been fitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.clone" title="sktime.dists_kernels.signature_kernel.SignatureKernel.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a>()</p></td>
+<td><p>Obtain a clone of the object with same hyper-parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.clone_tags" title="sktime.dists_kernels.signature_kernel.SignatureKernel.clone_tags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone_tags</span></code></a>(estimator[, tag_names])</p></td>
+<td><p>Clone tags from another estimator as dynamic override.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instance" title="sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_test_instance</span></code></a>([parameter_set])</p></td>
+<td><p>Construct Estimator instance if possible.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instances_and_names" title="sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instances_and_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_test_instances_and_names</span></code></a>([parameter_set])</p></td>
+<td><p>Create list of all test instances and a list of names for them.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.fit" title="sktime.dists_kernels.signature_kernel.SignatureKernel.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>([X, X2])</p></td>
+<td><p>Fit method for interface compatibility (no logic inside).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tag" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_class_tag</span></code></a>(tag_name[, tag_value_default])</p></td>
+<td><p>Get a class tag's value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tags" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_class_tags</span></code></a>()</p></td>
+<td><p>Get class tags from the class and all its parent classes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_config" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_config</span></code></a>()</p></td>
+<td><p>Get config flags for self.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_fitted_params" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_fitted_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_fitted_params</span></code></a>([deep])</p></td>
+<td><p>Get fitted parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_defaults" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_param_defaults</span></code></a>()</p></td>
+<td><p>Get object's parameter defaults.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_names" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_param_names</span></code></a>()</p></td>
+<td><p>Get object's parameter names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_params" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get a dict of parameters values for this object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_tag" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_tag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_tag</span></code></a>(tag_name[, tag_value_default, ...])</p></td>
+<td><p>Get tag value from estimator class and dynamic tag overrides.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_tags" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_tags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_tags</span></code></a>()</p></td>
+<td><p>Get tags from estimator class and dynamic tag overrides.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.get_test_params" title="sktime.dists_kernels.signature_kernel.SignatureKernel.get_test_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_test_params</span></code></a>([parameter_set])</p></td>
+<td><p>Return testing parameter settings for the estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.is_composite" title="sktime.dists_kernels.signature_kernel.SignatureKernel.is_composite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_composite</span></code></a>()</p></td>
+<td><p>Check if the object is composed of other BaseObjects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_path" title="sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_from_path</span></code></a>(serial)</p></td>
+<td><p>Load object from file location.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_serial" title="sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_serial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_from_serial</span></code></a>(serial)</p></td>
+<td><p>Load object from serialized memory container.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.reset" title="sktime.dists_kernels.signature_kernel.SignatureKernel.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<td><p>Reset the object to a clean post-init state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.save" title="sktime.dists_kernels.signature_kernel.SignatureKernel.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>([path, serialization_format])</p></td>
+<td><p>Save serialized self to bytes-like object or to (.zip) file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.set_config" title="sktime.dists_kernels.signature_kernel.SignatureKernel.set_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_config</span></code></a>(**config_dict)</p></td>
+<td><p>Set config flags to given values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.set_params" title="sktime.dists_kernels.signature_kernel.SignatureKernel.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.set_random_state" title="sktime.dists_kernels.signature_kernel.SignatureKernel.set_random_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_random_state</span></code></a>([random_state, deep, ...])</p></td>
+<td><p>Set random_state pseudo-random seed parameters for self.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.set_tags" title="sktime.dists_kernels.signature_kernel.SignatureKernel.set_tags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_tags</span></code></a>(**tag_dict)</p></td>
+<td><p>Set dynamic tags to given values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.transform" title="sktime.dists_kernels.signature_kernel.SignatureKernel.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(X[, X2])</p></td>
+<td><p>Compute distance/kernel matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sktime.dists_kernels.signature_kernel.SignatureKernel.html#sktime.dists_kernels.signature_kernel.SignatureKernel.transform_diag" title="sktime.dists_kernels.signature_kernel.SignatureKernel.transform_diag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform_diag</span></code></a>(X)</p></td>
+<td><p>Compute diagonal of distance/kernel matrix.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.check_is_fitted">
+<span class="sig-name descname"><span class="pre">check_is_fitted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/base/_base.py#L517-L529"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.check_is_fitted" title="Link to this definition">#</a></dt>
+<dd><p>Check if the estimator has been fitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>NotFittedError</dt><dd><p>If the estimator has not been fitted yet.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L146-L163"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.clone" title="Link to this definition">#</a></dt>
+<dd><p>Obtain a clone of the object with same hyper-parameters.</p>
+<p>A clone is a different object without shared references, in post-init state.
+This function is equivalent to returning sklearn.clone of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>RuntimeError if the clone is non-conforming, due to faulty <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If successful, equal in value to <code class="docutils literal notranslate"><span class="pre">type(self)(**self.get_params(deep=False))</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.clone_tags">
+<span class="sig-name descname"><span class="pre">clone_tags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L512-L536"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.clone_tags" title="Link to this definition">#</a></dt>
+<dd><p>Clone tags from another estimator as dynamic override.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimator</strong><span class="classifier">estimator inheriting from :class:BaseEstimator</span></dt><dd></dd>
+<dt><strong>tag_names</strong><span class="classifier">str or list of str, default = None</span></dt><dd><p>Names of tags to clone. If None then all tags in estimator are used
+as <cite>tag_names</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Self</dt><dd><p>Reference to self.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Changes object state by setting tag values in tag_set from estimator as
+dynamic tags in self.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instance">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_test_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L606-L640"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instance" title="Link to this definition">#</a></dt>
+<dd><p>Construct Estimator instance if possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>parameter_set</strong><span class="classifier">str, default=”default”</span></dt><dd><p>Name of the set of test parameters to return, for use in tests. If no
+special parameters are defined for a value, will return <cite>“default”</cite> set.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>instance</strong><span class="classifier">instance of the class with default parameters</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><cite>get_test_params</cite> can return dict or list of dict.
+This function takes first or single dict that get_test_params returns, and
+constructs the object with that.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instances_and_names">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_test_instances_and_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L642-L688"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instances_and_names" title="Link to this definition">#</a></dt>
+<dd><p>Create list of all test instances and a list of names for them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>parameter_set</strong><span class="classifier">str, default=”default”</span></dt><dd><p>Name of the set of test parameters to return, for use in tests. If no
+special parameters are defined for a value, will return <cite>“default”</cite> set.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>objs</strong><span class="classifier">list of instances of cls</span></dt><dd><p>i-th instance is cls(<a href="#id9"><span class="problematic" id="id10">**</span></a>cls.get_test_params()[i])</p>
+</dd>
+<dt><strong>names</strong><span class="classifier">list of str, same length as objs</span></dt><dd><p>i-th element is name of i-th instance of obj in tests
+convention is {cls.__name__}-{i} if more than one instance
+otherwise {cls.__name__}</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/base/_base.py#L480-L485"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.fit" title="Link to this definition">#</a></dt>
+<dd><p>Fit method for interface compatibility (no logic inside).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tag">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_class_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_value_default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L423-L447"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tag" title="Link to this definition">#</a></dt>
+<dd><p>Get a class tag’s value.</p>
+<p>Does not return information from dynamic tags (set via set_tags or clone_tags)
+that are defined on instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tag_name</strong><span class="classifier">str</span></dt><dd><p>Name of tag value.</p>
+</dd>
+<dt><strong>tag_value_default</strong><span class="classifier">any</span></dt><dd><p>Default/fallback value if tag is not found.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>tag_value</dt><dd><p>Value of the <cite>tag_name</cite> tag in self. If not found, returns
+<cite>tag_value_default</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tags">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_class_tags</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L407-L421"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tags" title="Link to this definition">#</a></dt>
+<dd><p>Get class tags from the class and all its parent classes.</p>
+<p>Retrieves tag: value pairs from _tags class attribute. Does not return
+information from dynamic tags (set via set_tags or clone_tags)
+that are defined on instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>collected_tags</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of class tag name: tag value pairs. Collected from _tags
+class attribute via nested inheritance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L538-L548"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_config" title="Link to this definition">#</a></dt>
+<dd><p>Get config flags for self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>config_dict</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of config name : config value pairs. Collected from _config
+class attribute via nested inheritance and then any overrides
+and new tags from _onfig_dynamic object attribute.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_fitted_params">
+<span class="sig-name descname"><span class="pre">get_fitted_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/base/_base.py#L531-L606"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_fitted_params" title="Link to this definition">#</a></dt>
+<dd><p>Get fitted parameters.</p>
+<dl class="simple">
+<dt>State required:</dt><dd><p>Requires state to be “fitted”.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether to return fitted parameters of components.</p>
+<ul class="simple">
+<li><p>If True, will return a dict of parameter name : value for this object,
+including fitted parameters of fittable components
+(= BaseEstimator-valued parameters).</p></li>
+<li><p>If False, will return a dict of parameter name : value for this object,
+but not include fitted parameters of components.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fitted_params</strong><span class="classifier">dict with str-valued keys</span></dt><dd><p>Dictionary of fitted parameters, paramname : paramvalue
+keys-value pairs include:</p>
+<ul class="simple">
+<li><p>always: all fitted parameters of this object, as via <code class="docutils literal notranslate"><span class="pre">get_param_names</span></code>
+values are fitted parameter value for that key, of this object</p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">deep=True</span></code>, also contains keys/value pairs of component parameters
+parameters of components are indexed as <code class="docutils literal notranslate"><span class="pre">[componentname]__[paramname]</span></code>
+all parameters of <code class="docutils literal notranslate"><span class="pre">componentname</span></code> appear as <code class="docutils literal notranslate"><span class="pre">paramname</span></code> with its value</p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">deep=True</span></code>, also contains arbitrary levels of component recursion,
+e.g., <code class="docutils literal notranslate"><span class="pre">[componentname]__[componentcomponentname]__[paramname]</span></code>, etc</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_defaults">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_param_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L221-L235"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_defaults" title="Link to this definition">#</a></dt>
+<dd><p>Get object’s parameter defaults.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>default_dict: dict[str, Any]</dt><dd><p>Keys are all parameters of cls that have a default defined in __init__
+values are the defaults, as defined in __init__.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_names">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_param_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L208-L219"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_names" title="Link to this definition">#</a></dt>
+<dd><p>Get object’s parameter names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>param_names: list[str]</dt><dd><p>Alphabetically sorted list of parameter names of cls.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L237-L275"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_params" title="Link to this definition">#</a></dt>
+<dd><p>Get a dict of parameters values for this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether to return parameters of components.</p>
+<ul class="simple">
+<li><p>If True, will return a dict of parameter name : value for this object,
+including parameters of components (= BaseObject-valued parameters).</p></li>
+<li><p>If False, will return a dict of parameter name : value for this object,
+but not include parameters of components.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict with str-valued keys</span></dt><dd><p>Dictionary of parameters, paramname : paramvalue
+keys-value pairs include:</p>
+<ul class="simple">
+<li><p>always: all parameters of this object, as via <cite>get_param_names</cite>
+values are parameter value for that key, of this object
+values are always identical to values passed at construction</p></li>
+<li><p>if <cite>deep=True</cite>, also contains keys/value pairs of component parameters
+parameters of components are indexed as <cite>[componentname]__[paramname]</cite>
+all parameters of <cite>componentname</cite> appear as <cite>paramname</cite> with its value</p></li>
+<li><p>if <cite>deep=True</cite>, also contains arbitrary levels of component recursion,
+e.g., <cite>[componentname]__[componentcomponentname]__[paramname]</cite>, etc</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_tag">
+<span class="sig-name descname"><span class="pre">get_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_value_default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L461-L489"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_tag" title="Link to this definition">#</a></dt>
+<dd><p>Get tag value from estimator class and dynamic tag overrides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tag_name</strong><span class="classifier">str</span></dt><dd><p>Name of tag to be retrieved</p>
+</dd>
+<dt><strong>tag_value_default</strong><span class="classifier">any type, optional; default=None</span></dt><dd><p>Default/fallback value if tag is not found</p>
+</dd>
+<dt><strong>raise_error</strong><span class="classifier">bool</span></dt><dd><p>whether a ValueError is raised when the tag is not found</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>tag_value</strong><span class="classifier">Any</span></dt><dd><p>Value of the <cite>tag_name</cite> tag in self. If not found, returns an error if
+<cite>raise_error</cite> is True, otherwise it returns <cite>tag_value_default</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError if raise_error is True i.e. if <cite>tag_name</cite> is not in</dt><dd></dd>
+<dt>self.get_tags().keys()</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_tags">
+<span class="sig-name descname"><span class="pre">get_tags</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L449-L459"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_tags" title="Link to this definition">#</a></dt>
+<dd><p>Get tags from estimator class and dynamic tag overrides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>collected_tags</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of tag name : tag value pairs. Collected from _tags
+class attribute via nested inheritance and then any overrides
+and new tags from _tags_dynamic object attribute.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.get_test_params">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_test_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py#L976-L1009"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_test_params" title="Link to this definition">#</a></dt>
+<dd><p>Return testing parameter settings for the estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>parameter_set</strong><span class="classifier">str, default=”default”</span></dt><dd><p>Name of the set of test parameters to return, for use in tests. If no
+special parameters are defined for a value, will return <code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code> set.
+There are currently no reserved values for distance/kernel transformers.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict or list of dict, default = {}</span></dt><dd><p>Parameters to create testing instances of the class
+Each dict are parameters to construct an “interesting” test instance, i.e.,
+<code class="docutils literal notranslate"><span class="pre">MyClass(**params)</span></code> or <code class="docutils literal notranslate"><span class="pre">MyClass(**params[i])</span></code> creates a valid test
+instance.
+<code class="docutils literal notranslate"><span class="pre">create_test_instance</span></code> uses the first (or only) dictionary in <code class="docutils literal notranslate"><span class="pre">params</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.is_composite">
+<span class="sig-name descname"><span class="pre">is_composite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L740-L757"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.is_composite" title="Link to this definition">#</a></dt>
+<dd><p>Check if the object is composed of other BaseObjects.</p>
+<p>A composite object is an object which contains objects, as parameters.
+Called on an instance, since this may differ by instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>composite: bool</dt><dd><p>Whether an object has any parameters whose values
+are BaseObjects.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.is_fitted">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_fitted</span></span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/signature_kernel.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.is_fitted" title="Link to this definition">#</a></dt>
+<dd><p>Whether <code class="docutils literal notranslate"><span class="pre">fit</span></code> has been called.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_path">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serial</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/base/_base.py#L303-L319"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_path" title="Link to this definition">#</a></dt>
+<dd><p>Load object from file location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>serial</strong><span class="classifier">result of ZipFile(path).open(“object)</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>deserialized self resulting in output at <code class="docutils literal notranslate"><span class="pre">path</span></code>, of <code class="docutils literal notranslate"><span class="pre">cls.save(path)</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_serial">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_from_serial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serial</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/base/_base.py#L287-L301"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_serial" title="Link to this definition">#</a></dt>
+<dd><p>Load object from serialized memory container.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>serial</strong><span class="classifier">1st element of output of <code class="docutils literal notranslate"><span class="pre">cls.save(None)</span></code></span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>deserialized self resulting in output <code class="docutils literal notranslate"><span class="pre">serial</span></code>, of <code class="docutils literal notranslate"><span class="pre">cls.save(None)</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L107-L144"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.reset" title="Link to this definition">#</a></dt>
+<dd><p>Reset the object to a clean post-init state.</p>
+<p>Using reset, runs __init__ with current values of hyper-parameters
+(result of get_params). This Removes any object attributes, except:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>hyper-parameters = arguments of __init__</p></li>
+<li><p>object attributes containing double-underscores, i.e., the string “__”</p></li>
+</ul>
+</div></blockquote>
+<p>Class and object methods, and class attributes are also unaffected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>self</dt><dd><p>Instance of class reset to a clean post-init state but retaining
+the current hyper-parameter values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Equivalent to sklearn.clone but overwrites self. After self.reset()
+call, self is equal in value to <cite>type(self)(**self.get_params(deep=False))</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serialization_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pickle'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/base/_base.py#L208-L285"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.save" title="Link to this definition">#</a></dt>
+<dd><p>Save serialized self to bytes-like object or to (.zip) file.</p>
+<p>Behaviour:
+if <code class="docutils literal notranslate"><span class="pre">path</span></code> is None, returns an in-memory serialized self
+if <code class="docutils literal notranslate"><span class="pre">path</span></code> is a file location, stores self at that location as a zip file</p>
+<p>saved files are zip files with following contents:
+_metadata - contains class of self, i.e., type(self)
+_obj - serialized self. This class uses the default serialization (pickle).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>path</strong><span class="classifier">None or file location (str or Path)</span></dt><dd><p>if None, self is saved to an in-memory object
+if file location, self is saved to that file location. If:</p>
+<blockquote>
+<div><p>path=”estimator” then a zip file <code class="docutils literal notranslate"><span class="pre">estimator.zip</span></code> will be made at cwd.
+path=”/home/stored/estimator” then a zip file <code class="docutils literal notranslate"><span class="pre">estimator.zip</span></code> will be
+stored in <code class="docutils literal notranslate"><span class="pre">/home/stored/</span></code>.</p>
+</div></blockquote>
+</dd>
+<dt><strong>serialization_format: str, default = “pickle”</strong></dt><dd><p>Module to use for serialization.
+The available options are “pickle” and “cloudpickle”.
+Note that non-default formats might require
+installation of other soft dependencies.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>if <code class="docutils literal notranslate"><span class="pre">path</span></code> is None - in-memory serialized self</dt><dd></dd>
+<dt>if <code class="docutils literal notranslate"><span class="pre">path</span></code> is file location - ZipFile with reference to the file</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.set_config">
+<span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config_dict</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L550-L568"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.set_config" title="Link to this definition">#</a></dt>
+<dd><p>Set config flags to given values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>config_dict</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of config name : config value pairs.
+Valid configs, values, and their meaning is listed below:</p>
+</dd>
+<dt><strong>display</strong><span class="classifier">str, “diagram” (default), or “text”</span></dt><dd><p>how jupyter kernels display instances of self</p>
+<ul class="simple">
+<li><p>“diagram” = html box diagram representation</p></li>
+<li><p>“text” = string printout</p></li>
+</ul>
+</dd>
+<dt><strong>print_changed_only</strong><span class="classifier">bool, default=True</span></dt><dd><p>whether printing of self lists only self-parameters that differ
+from defaults (False), or all parameter names and values (False).
+Does not nest, i.e., only affects self and not component estimators.</p>
+</dd>
+<dt><strong>warnings</strong><span class="classifier">str, “on” (default), or “off”</span></dt><dd><p>whether to raise warnings, affects warnings from sktime only</p>
+<ul class="simple">
+<li><p>“on” = will raise warnings from sktime</p></li>
+<li><p>“off” = will not raise warnings from sktime</p></li>
+</ul>
+</dd>
+<dt><strong>backend:parallel</strong><span class="classifier">str, optional, default=”None”</span></dt><dd><p>backend to use for parallelization when broadcasting/vectorizing, one of</p>
+<ul class="simple">
+<li><p>“None”: executes loop sequentally, simple list comprehension</p></li>
+<li><p>“loky”, “multiprocessing” and “threading”: uses <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code></p></li>
+<li><p>“joblib”: custom and 3rd party <code class="docutils literal notranslate"><span class="pre">joblib</span></code> backends, e.g., <code class="docutils literal notranslate"><span class="pre">spark</span></code></p></li>
+<li><p>“dask”: uses <code class="docutils literal notranslate"><span class="pre">dask</span></code>, requires <code class="docutils literal notranslate"><span class="pre">dask</span></code> package in environment</p></li>
+</ul>
+</dd>
+<dt><strong>backend:parallel:params</strong><span class="classifier">dict, optional, default={} (no parameters passed)</span></dt><dd><p>additional parameters passed to the parallelization backend as config.
+Valid keys depend on the value of <code class="docutils literal notranslate"><span class="pre">backend:parallel</span></code>:</p>
+<ul class="simple">
+<li><p>“None”: no additional parameters, <code class="docutils literal notranslate"><span class="pre">backend_params</span></code> is ignored</p></li>
+<li><p>“loky”, “multiprocessing” and “threading”: default <code class="docutils literal notranslate"><span class="pre">joblib</span></code> backends
+any valid keys for <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code> can be passed here, e.g.,
+<code class="docutils literal notranslate"><span class="pre">n_jobs</span></code>, with the exception of <code class="docutils literal notranslate"><span class="pre">backend</span></code> which is directly
+controlled by <code class="docutils literal notranslate"><span class="pre">backend</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> is not passed, it will default to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, other parameters
+will default to <code class="docutils literal notranslate"><span class="pre">joblib</span></code> defaults.</p></li>
+<li><p>“joblib”: custom and 3rd party <code class="docutils literal notranslate"><span class="pre">joblib</span></code> backends,
+e.g., <code class="docutils literal notranslate"><span class="pre">spark</span></code>. Any valid keys for <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code>
+can be passed here, e.g., <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code>,
+<code class="docutils literal notranslate"><span class="pre">backend</span></code> must be passed as a key of <code class="docutils literal notranslate"><span class="pre">backend_params</span></code> in this case.
+If <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> is not passed, it will default to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, other parameters
+will default to <code class="docutils literal notranslate"><span class="pre">joblib</span></code> defaults.</p></li>
+<li><p>“dask”: any valid keys for <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> can be passed,
+e.g., <code class="docutils literal notranslate"><span class="pre">scheduler</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">reference to self.</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Changes object state, copies configs in config_dict to self._config_dynamic.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L277-L351"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.set_params" title="Link to this definition">#</a></dt>
+<dd><p>Set the parameters of this object.</p>
+<p>The method works on simple estimators as well as on composite objects.
+Parameter key strings <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> can be used for composites,
+i.e., objects that contain other objects, to access <code class="docutils literal notranslate"><span class="pre">&lt;parameter&gt;</span></code> in
+the component <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;</span></code>.
+The string <code class="docutils literal notranslate"><span class="pre">&lt;parameter&gt;</span></code>, without <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__</span></code>, can also be used if
+this makes the reference unambiguous, e.g., there are no two parameters of
+components with the name <code class="docutils literal notranslate"><span class="pre">&lt;parameter&gt;</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>BaseObject parameters, keys must be <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> strings.
+__ suffixes can alias full strings, if unique among get_params keys.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">reference to self (after parameters have been set)</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.set_random_state">
+<span class="sig-name descname"><span class="pre">set_random_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'copy'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L891-L937"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.set_random_state" title="Link to this definition">#</a></dt>
+<dd><p>Set random_state pseudo-random seed parameters for self.</p>
+<p>Finds <code class="docutils literal notranslate"><span class="pre">random_state</span></code> named parameters via <code class="docutils literal notranslate"><span class="pre">estimator.get_params</span></code>,
+and sets them to integers derived from <code class="docutils literal notranslate"><span class="pre">random_state</span></code> via <code class="docutils literal notranslate"><span class="pre">set_params</span></code>.
+These integers are sampled from chain hashing via <code class="docutils literal notranslate"><span class="pre">sample_dependent_seed</span></code>,
+and guarantee pseudo-random independence of seeded random generators.</p>
+<p>Applies to <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameters in <code class="docutils literal notranslate"><span class="pre">estimator</span></code> depending on
+<code class="docutils literal notranslate"><span class="pre">self_policy</span></code>, and remaining component estimators
+if and only if <code class="docutils literal notranslate"><span class="pre">deep=True</span></code>.</p>
+<p>Note: calls <code class="docutils literal notranslate"><span class="pre">set_params</span></code> even if <code class="docutils literal notranslate"><span class="pre">self</span></code> does not have a <code class="docutils literal notranslate"><span class="pre">random_state</span></code>,
+or none of the components have a <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter.
+Therefore, <code class="docutils literal notranslate"><span class="pre">set_random_state</span></code> will reset any <code class="docutils literal notranslate"><span class="pre">scikit-base</span></code> estimator,
+even those without a <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, default=None</span></dt><dd><p>Pseudo-random number generator to control the generation of the random
+integers. Pass int for reproducible output across multiple function calls.</p>
+</dd>
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether to set the random state in sub-estimators.
+If False, will set only <code class="docutils literal notranslate"><span class="pre">self</span></code>’s <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter, if exists.
+If True, will set <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameters in sub-estimators as well.</p>
+</dd>
+<dt><strong>self_policy</strong><span class="classifier">str, one of {“copy”, “keep”, “new”}, default=”copy”</span></dt><dd><ul class="simple">
+<li><p>“copy” : <code class="docutils literal notranslate"><span class="pre">estimator.random_state</span></code> is set to input <code class="docutils literal notranslate"><span class="pre">random_state</span></code></p></li>
+<li><p>“keep” : <code class="docutils literal notranslate"><span class="pre">estimator.random_state</span></code> is kept as is</p></li>
+<li><p>“new” : <code class="docutils literal notranslate"><span class="pre">estimator.random_state</span></code> is set to a new random state,</p></li>
+</ul>
+<p>derived from input <code class="docutils literal notranslate"><span class="pre">random_state</span></code>, and in general different from it</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">reference to self</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.set_tags">
+<span class="sig-name descname"><span class="pre">set_tags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">tag_dict</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/../skbase/base/_base.py#L491-L510"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.set_tags" title="Link to this definition">#</a></dt>
+<dd><p>Set dynamic tags to given values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**tag_dict</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of tag name: tag value pairs.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Self</dt><dd><p>Reference to self.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Changes object state by setting tag values in tag_dict as dynamic tags in self.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/base/_base.py#L382-L419"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.transform" title="Link to this definition">#</a></dt>
+<dd><p>Compute distance/kernel matrix.</p>
+<dl class="simple">
+<dt>Behaviour: returns pairwise distance/kernel matrix</dt><dd><p>between samples in X and X2 (equal to X if not passed)</p>
+</dd>
+</dl>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>X</strong><span class="classifier">Series or Panel, any supported mtype, of n instances</span></dt><dd><dl>
+<dt>Data to transform, of python type as follows:</dt><dd><p>Series: pd.Series, pd.DataFrame, or np.ndarray (1D or 2D)
+Panel: pd.DataFrame with 2-level MultiIndex, list of pd.DataFrame,</p>
+<blockquote>
+<div><p>nested pd.DataFrame, or pd.DataFrame in long/wide format</p>
+</div></blockquote>
+<dl class="simple">
+<dt>subject to sktime mtype format specifications, for further details see</dt><dd><p>examples/AA_datatypes_and_datasets.ipynb</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt><strong>X2</strong><span class="classifier">Series or Panel, any supported mtype, of m instances</span></dt><dd><blockquote>
+<div><p>optional, default: X = X2</p>
+</div></blockquote>
+<dl>
+<dt>Data to transform, of python type as follows:</dt><dd><p>Series: pd.Series, pd.DataFrame, or np.ndarray (1D or 2D)
+Panel: pd.DataFrame with 2-level MultiIndex, list of pd.DataFrame,</p>
+<blockquote>
+<div><p>nested pd.DataFrame, or pd.DataFrame in long/wide format</p>
+</div></blockquote>
+<dl class="simple">
+<dt>subject to sktime mtype format specifications, for further details see</dt><dd><p>examples/AA_datatypes_and_datasets.ipynb</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>X and X2 need not have the same mtype</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>distmat: np.array of shape [n, m]</dt><dd><p>(i,j)-th entry contains distance/kernel between X[i] and X2[j]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sktime.dists_kernels.signature_kernel.SignatureKernel.transform_diag">
+<span class="sig-name descname"><span class="pre">transform_diag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/dists_kernels/base/_base.py#L446-L478"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.transform_diag" title="Link to this definition">#</a></dt>
+<dd><p>Compute diagonal of distance/kernel matrix.</p>
+<p>Behaviour: returns diagonal of distance/kernel matrix for samples in X</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>X</strong><span class="classifier">Series or Panel, any supported mtype, of n instances</span></dt><dd><dl>
+<dt>Data to transform, of python type as follows:</dt><dd><p>Series: pd.Series, pd.DataFrame, or np.ndarray (1D or 2D)
+Panel: pd.DataFrame with 2-level MultiIndex, list of pd.DataFrame,</p>
+<blockquote>
+<div><p>nested pd.DataFrame, or pd.DataFrame in long/wide format</p>
+</div></blockquote>
+<dl class="simple">
+<dt>subject to sktime mtype format specifications, for further details see</dt><dd><p>examples/AA_datatypes_and_datasets.ipynb</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>diag: np.array of shape [n]</dt><dd><p>i-th entry contains distance/kernel between X[i] and X[i]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.cumsum_rev_first"><code class="docutils literal notranslate"><span class="pre">cumsum_rev_first</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.cumsum_rev"><code class="docutils literal notranslate"><span class="pre">cumsum_rev</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.cumsum_mult"><code class="docutils literal notranslate"><span class="pre">cumsum_mult</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.roll_mult"><code class="docutils literal notranslate"><span class="pre">roll_mult</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.makeinds"><code class="docutils literal notranslate"><span class="pre">makeinds</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.cumsum_shift_mult"><code class="docutils literal notranslate"><span class="pre">cumsum_shift_mult</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.rankreduce"><code class="docutils literal notranslate"><span class="pre">rankreduce</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.rankreduce_batch"><code class="docutils literal notranslate"><span class="pre">rankreduce_batch</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.sqdist"><code class="docutils literal notranslate"><span class="pre">sqdist</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.k_polynom"><code class="docutils literal notranslate"><span class="pre">k_polynom</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.k_gauss"><code class="docutils literal notranslate"><span class="pre">k_gauss</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.k_euclid"><code class="docutils literal notranslate"><span class="pre">k_euclid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.k_laplace"><code class="docutils literal notranslate"><span class="pre">k_laplace</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.k_tanh"><code class="docutils literal notranslate"><span class="pre">k_tanh</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.mirror"><code class="docutils literal notranslate"><span class="pre">mirror</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.sqize_kernel"><code class="docutils literal notranslate"><span class="pre">sqize_kernel</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.sqize_kernel_ho"><code class="docutils literal notranslate"><span class="pre">sqize_kernel_ho</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.LRdec"><code class="docutils literal notranslate"><span class="pre">LRdec</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.LRdec.U"><code class="docutils literal notranslate"><span class="pre">LRdec.U</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.LRdec.V"><code class="docutils literal notranslate"><span class="pre">LRdec.V</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.LRdec.count"><code class="docutils literal notranslate"><span class="pre">LRdec.count</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.LRdec.index"><code class="docutils literal notranslate"><span class="pre">LRdec.index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.get_low_rank_matrix"><code class="docutils literal notranslate"><span class="pre">get_low_rank_matrix</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.add_low_rank"><code class="docutils literal notranslate"><span class="pre">add_low_rank</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.add_low_rank_one"><code class="docutils literal notranslate"><span class="pre">add_low_rank_one</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.mult_low_rank"><code class="docutils literal notranslate"><span class="pre">mult_low_rank</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.hadamard_low_rank"><code class="docutils literal notranslate"><span class="pre">hadamard_low_rank</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.hadamard_low_rank_batch"><code class="docutils literal notranslate"><span class="pre">hadamard_low_rank_batch</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.hadamard_low_rank_subsample"><code class="docutils literal notranslate"><span class="pre">hadamard_low_rank_subsample</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.cumsum_rev_low_rank"><code class="docutils literal notranslate"><span class="pre">cumsum_rev_low_rank</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.sum_low_rank"><code class="docutils literal notranslate"><span class="pre">sum_low_rank</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.sqize_kernel_low_rank"><code class="docutils literal notranslate"><span class="pre">sqize_kernel_low_rank</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.sqize_kernel_low_rank_fast"><code class="docutils literal notranslate"><span class="pre">sqize_kernel_low_rank_fast</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.seq_kernel"><code class="docutils literal notranslate"><span class="pre">seq_kernel</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.seq_kernel_XY"><code class="docutils literal notranslate"><span class="pre">seq_kernel_XY</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.data_tabulator"><code class="docutils literal notranslate"><span class="pre">data_tabulator</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.time_series_reshaper"><code class="docutils literal notranslate"><span class="pre">time_series_reshaper</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer"><code class="docutils literal notranslate"><span class="pre">SeqKernelizer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.fit"><code class="docutils literal notranslate"><span class="pre">SeqKernelizer.fit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.transform"><code class="docutils literal notranslate"><span class="pre">SeqKernelizer.transform</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.fit_transform"><code class="docutils literal notranslate"><span class="pre">SeqKernelizer.fit_transform</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">SeqKernelizer.get_metadata_routing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.get_params"><code class="docutils literal notranslate"><span class="pre">SeqKernelizer.get_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.set_output"><code class="docutils literal notranslate"><span class="pre">SeqKernelizer.set_output</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SeqKernelizer.set_params"><code class="docutils literal notranslate"><span class="pre">SeqKernelizer.set_params</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel"><code class="docutils literal notranslate"><span class="pre">SignatureKernel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.check_is_fitted"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.check_is_fitted</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.clone"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.clone</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.clone_tags"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.clone_tags</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instance"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.create_test_instance</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.create_test_instances_and_names"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.create_test_instances_and_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.fit"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.fit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tag"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_class_tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_class_tags"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_class_tags</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_config"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_fitted_params"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_fitted_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_defaults"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_param_defaults</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_param_names"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_param_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_params"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_tag"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_tags"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_tags</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.get_test_params"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.get_test_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.is_composite"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.is_composite</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.is_fitted"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.is_fitted</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_path"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.load_from_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.load_from_serial"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.load_from_serial</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.reset"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.reset</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.save"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.save</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.set_config"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.set_config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.set_params"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.set_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.set_random_state"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.set_random_state</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.set_tags"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.set_tags</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.transform"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.transform</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.dists_kernels.signature_kernel.SignatureKernel.transform_diag"><code class="docutils literal notranslate"><span class="pre">SignatureKernel.transform_diag</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

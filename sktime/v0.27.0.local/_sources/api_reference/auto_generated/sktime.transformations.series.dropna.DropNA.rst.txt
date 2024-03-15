@@ -1,0 +1,12 @@
+﻿DropNA
+=========================================================
+
+.. currentmodule:: sktime.transformations.series.dropna
+
+.. autoclass:: DropNA
+
+.. include:: sktime.transformations.series.dropna.DropNA.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

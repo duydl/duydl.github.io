@@ -1,0 +1,12 @@
+﻿SARIMAX
+================================================
+
+.. currentmodule:: sktime.forecasting.sarimax
+
+.. autoclass:: SARIMAX
+
+.. include:: sktime.forecasting.sarimax.SARIMAX.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

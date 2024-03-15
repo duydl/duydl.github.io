@@ -1,0 +1,7 @@
+sktime.forecasting.stream package
+=================================
+
+.. automodule:: sktime.forecasting.stream
+   :members:
+   :undoc-members:
+   :show-inheritance:

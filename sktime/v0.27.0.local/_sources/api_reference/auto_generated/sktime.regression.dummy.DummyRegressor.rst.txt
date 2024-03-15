@@ -1,0 +1,12 @@
+﻿DummyRegressor
+====================================================
+
+.. currentmodule:: sktime.regression.dummy
+
+.. autoclass:: DummyRegressor
+
+.. include:: sktime.regression.dummy.DummyRegressor.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

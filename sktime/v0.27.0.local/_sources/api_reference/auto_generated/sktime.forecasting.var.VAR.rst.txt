@@ -1,0 +1,12 @@
+﻿VAR
+========================================
+
+.. currentmodule:: sktime.forecasting.var
+
+.. autoclass:: VAR
+
+.. include:: sktime.forecasting.var.VAR.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

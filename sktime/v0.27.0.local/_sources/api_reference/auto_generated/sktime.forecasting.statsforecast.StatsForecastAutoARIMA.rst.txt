@@ -1,0 +1,12 @@
+﻿StatsForecastAutoARIMA
+=====================================================================
+
+.. currentmodule:: sktime.forecasting.statsforecast
+
+.. autoclass:: StatsForecastAutoARIMA
+
+.. include:: sktime.forecasting.statsforecast.StatsForecastAutoARIMA.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

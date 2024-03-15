@@ -1,0 +1,12 @@
+﻿ARDL
+==========================================
+
+.. currentmodule:: sktime.forecasting.ardl
+
+.. autoclass:: ARDL
+
+.. include:: sktime.forecasting.ardl.ARDL.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

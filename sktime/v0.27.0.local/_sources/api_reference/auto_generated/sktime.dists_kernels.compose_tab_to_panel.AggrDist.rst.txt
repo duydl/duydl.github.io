@@ -1,0 +1,12 @@
+﻿AggrDist
+================================================================
+
+.. currentmodule:: sktime.dists_kernels.compose_tab_to_panel
+
+.. autoclass:: AggrDist
+
+.. include:: sktime.dists_kernels.compose_tab_to_panel.AggrDist.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿load_japanese_vowels
+========================================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_japanese_vowels
+
+.. include:: sktime.datasets.load_japanese_vowels.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

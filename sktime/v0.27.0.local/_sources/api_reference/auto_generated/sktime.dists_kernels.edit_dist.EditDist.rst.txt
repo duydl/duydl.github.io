@@ -1,0 +1,12 @@
+﻿EditDist
+=====================================================
+
+.. currentmodule:: sktime.dists_kernels.edit_dist
+
+.. autoclass:: EditDist
+
+.. include:: sktime.dists_kernels.edit_dist.EditDist.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

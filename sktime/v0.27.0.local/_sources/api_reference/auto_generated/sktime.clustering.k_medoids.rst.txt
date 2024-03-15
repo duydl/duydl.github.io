@@ -1,0 +1,7 @@
+sktime.clustering.k\_medoids module
+===================================
+
+.. automodule:: sktime.clustering.k_medoids
+   :members:
+   :undoc-members:
+   :show-inheritance:

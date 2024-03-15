@@ -1,0 +1,15 @@
+sktime.dists\_kernels.base package
+==================================
+
+.. automodule:: sktime.dists_kernels.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sktime.dists_kernels.base.adapters

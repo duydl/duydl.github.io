@@ -1,0 +1,7 @@
+sktime.networks.tapnet module
+=============================
+
+.. automodule:: sktime.networks.tapnet
+   :members:
+   :undoc-members:
+   :show-inheritance:

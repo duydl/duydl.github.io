@@ -1,0 +1,7 @@
+sktime.transformations.panel.supervised\_intervals module
+=========================================================
+
+.. automodule:: sktime.transformations.panel.supervised_intervals
+   :members:
+   :undoc-members:
+   :show-inheritance:

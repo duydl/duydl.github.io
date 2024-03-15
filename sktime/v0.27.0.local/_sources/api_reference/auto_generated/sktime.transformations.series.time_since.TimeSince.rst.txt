@@ -1,0 +1,12 @@
+﻿TimeSince
+================================================================
+
+.. currentmodule:: sktime.transformations.series.time_since
+
+.. autoclass:: TimeSince
+
+.. include:: sktime.transformations.series.time_since.TimeSince.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

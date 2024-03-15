@@ -1,0 +1,12 @@
+﻿load_acsf1
+==============================================
+
+.. currentmodule:: sktime.datasets
+
+.. autofunction:: load_acsf1
+
+.. include:: sktime.datasets.load_acsf1.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

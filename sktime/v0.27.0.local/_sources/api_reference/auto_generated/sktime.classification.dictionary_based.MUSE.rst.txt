@@ -1,0 +1,12 @@
+﻿MUSE
+=========================================================
+
+.. currentmodule:: sktime.classification.dictionary_based
+
+.. autoclass:: MUSE
+
+.. include:: sktime.classification.dictionary_based.MUSE.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

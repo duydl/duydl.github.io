@@ -1,0 +1,12 @@
+﻿edr_distance
+=================================================
+
+.. currentmodule:: sktime.distances
+
+.. autofunction:: edr_distance
+
+.. include:: sktime.distances.edr_distance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,2434 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sktime.datasets package &#8212; sktime  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fields.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="icon" sizes="16x16" type="image/ico" href="../../_static/images/sktime-favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b9193c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=99362dbf"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/auto_generated/sktime.datasets';</script>
+    <script src="../../_static/js/dynamic_table.js?v=5bdd14f0"></script>
+    <link rel="icon" href="../../_static/sktime-favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+    
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-light" alt="sktime  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/sktime-logo-text-horizontal.png" class="logo__image only-dark" alt="sktime  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_started.html">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../users.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api_reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../get_involved.html">
+                        Get Involved
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../examples.html">
+                        Examples
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sktime/sktime" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discord.com/invite/54ACzaFsn7" title="Discord" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-discord fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Discord</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/scikit-time/" title="LinkedIn" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sktime.datasets.setup.html">sktime.datasets.setup module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.datasets.tsc_dataset_names.html">sktime.datasets.tsc_dataset_names module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.datasets.tsf_dataset_names.html">sktime.datasets.tsf_dataset_names module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sktime.datas...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-sktime.datasets">
+<span id="sktime-datasets-package"></span><h1>sktime.datasets package<a class="headerlink" href="#module-sktime.datasets" title="Link to this heading">#</a></h1>
+<p>Functions to load and write datasets.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_airline">
+<span class="sig-name descname"><span class="pre">load_airline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L882-L922"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_airline" title="Link to this definition">#</a></dt>
+<dd><p>Load the airline univariate time series dataset [1].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">pd.Series</span></dt><dd><p>Time series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The classic Box &amp; Jenkins airline data. Monthly totals of international
+airline passengers, 1949 to 1960.</p>
+<p>Dimensionality:     univariate
+Series length:      144
+Frequency:          Monthly
+Number of cases:    1</p>
+<p>This data shows an increasing trend, non-constant (increasing) variance
+and periodic, seasonal patterns.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r0e1904d4bf8b-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series
+Analysis, Forecasting and Control. Third Edition. Holden-Day.
+Series G.</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_airline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_airline</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_arrow_head">
+<span class="sig-name descname"><span class="pre">load_arrow_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L540-L602"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_arrow_head" title="Link to this definition">#</a></dt>
+<dd><p>Load the ArrowHead time series classification problem and returns X and y.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: sktime data container, following mtype specification <code class="docutils literal notranslate"><span class="pre">return_type</span></code></dt><dd><p>The time series data for the problem, with n instances</p>
+</dd>
+<dt>y: 1D numpy array of length n, only returned if return_X_y if True</dt><dd><p>The class labels for each time series instance in X
+If return_X_y is False, y is appended to X instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dimensionality:     univariate
+Series length:      251
+Train cases:        36
+Test cases:         175
+Number of classes:  3</p>
+<p>The arrowhead data consists of outlines of the images of arrowheads. The
+shapes of the
+projectile points are converted into a time series using the angle-based
+method. The
+classification of projectile points is an important topic in
+anthropology. The classes
+are based on shape distinctions such as the presence and location of a
+notch in the
+arrow. The problem in the repository is a length normalised version of
+that used in
+Ye09shapelets. The three classes are called “Avonlea”, “Clovis” and “Mix”.”</p>
+<p>Dataset details: <a class="reference external" href="http://timeseriesclassification.com/description.php">http://timeseriesclassification.com/description.php</a>
+?Dataset=ArrowHead</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_arrow_head</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_arrow_head</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_gunpoint">
+<span class="sig-name descname"><span class="pre">load_gunpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L231-L296"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_gunpoint" title="Link to this definition">#</a></dt>
+<dd><p>Load the GunPoint time series classification problem and returns X and y.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: sktime data container, following mtype specification <code class="docutils literal notranslate"><span class="pre">return_type</span></code></dt><dd><p>The time series data for the problem, with n instances</p>
+</dd>
+<dt>y: 1D numpy array of length n, only returned if return_X_y if True</dt><dd><p>The class labels for each time series instance in X
+If return_X_y is False, y is appended to X instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dimensionality:     univariate
+Series length:      150
+Train cases:        50
+Test cases:         150
+Number of classes:  2</p>
+<p>This dataset involves one female actor and one male actor making a
+motion with their
+hand. The two classes are: Gun-Draw and Point: For Gun-Draw the actors
+have their
+hands by their sides. They draw a replicate gun from a hip-mounted
+holster, point it
+at a target for approximately one second, then return the gun to the
+holster, and
+their hands to their sides. For Point the actors have their gun by their
+sides.
+They point with their index fingers to a target for approximately one
+second, and
+then return their hands to their sides. For both classes, we tracked the
+centroid
+of the actor’s right hands in both X- and Y-axes, which appear to be highly
+correlated. The data in the archive is just the X-axis.</p>
+<p>Dataset details: <a class="reference external" href="http://timeseriesclassification.com/description.php">http://timeseriesclassification.com/description.php</a>
+?Dataset=GunPoint</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_gunpoint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_gunpoint</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_basic_motions">
+<span class="sig-name descname"><span class="pre">load_basic_motions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L665-L730"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_basic_motions" title="Link to this definition">#</a></dt>
+<dd><p>Load the BasicMotions time series classification problem and returns X and y.</p>
+<p>This is an equal length multivariate time series classification problem. It loads a
+4 class classification problem with number of cases, n, where n = 80 (if
+split is None) or 40 (if split is “train”/”test”) of series length m = 100.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: sktime data container, following mtype specification <code class="docutils literal notranslate"><span class="pre">return_type</span></code></dt><dd><p>The time series data for the problem, with n instances</p>
+</dd>
+<dt>y: 1D numpy array of length n, only returned if return_X_y if True</dt><dd><p>The class labels for each time series instance in X
+If return_X_y is False, y is appended to X instead.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError if argument “numpy2d”/”numpyflat” is passed as return_type</dt><dd></dd>
+<dt>Notes</dt><dd></dd>
+</dl>
+<blockquote>
+<div></div></blockquote>
+<dl class="simple">
+<dt>Dimensionality:     multivariate, 6</dt><dd></dd>
+<dt>Series length:      100</dt><dd></dd>
+<dt>Train cases:        40</dt><dd></dd>
+<dt>Test cases:         40</dt><dd></dd>
+<dt>Number of classes:  4</dt><dd></dd>
+<dt>The data was generated as part of a student project where four students performed</dt><dd></dd>
+<dt>four activities whilst wearing a smart watch. The watch collects 3D accelerometer</dt><dd></dd>
+<dt>and a 3D gyroscope It consists of four classes, which are walking, resting,</dt><dd></dd>
+<dt>running and badminton. Participants were required to record motion a total of</dt><dd></dd>
+<dt>five times, and the data is sampled once every tenth of a second, for a ten second</dt><dd></dd>
+<dt>period.</dt><dd></dd>
+<dt>Dataset details: <a class="reference external" href="http://www.timeseriesclassification.com/description.php?Dataset">http://www.timeseriesclassification.com/description.php?Dataset</a></dt><dd></dd>
+<dt>=BasicMotions</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_osuleaf">
+<span class="sig-name descname"><span class="pre">load_osuleaf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L299-L354"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_osuleaf" title="Link to this definition">#</a></dt>
+<dd><p>Load the OSULeaf time series classification problem and returns X and y.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: sktime data container, following mtype specification <code class="docutils literal notranslate"><span class="pre">return_type</span></code></dt><dd><p>The time series data for the problem, with n instances</p>
+</dd>
+<dt>y: 1D numpy array of length n, only returned if return_X_y if True</dt><dd><p>The class labels for each time series instance in X
+If return_X_y is False, y is appended to X instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dimensionality:     univariate
+Series length:      427
+Train cases:        200
+Test cases:         242
+Number of classes:  6</p>
+<p>The OSULeaf data set consist of one dimensional outlines of leaves.
+The series were obtained by color image segmentation and boundary
+extraction (in the anti-clockwise direction) from digitized leaf images
+of six classes: Acer Circinatum, Acer Glabrum, Acer Macrophyllum,
+Acer Negundo, Quercus Garryanaand Quercus Kelloggii for the MSc thesis
+“Content-Based Image Retrieval: Plant Species Identification” by A Grandhi.</p>
+<p>Dataset details: <a class="reference external" href="http://www.timeseriesclassification.com/description.php">http://www.timeseriesclassification.com/description.php</a>
+?Dataset=OSULeaf</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_osuleaf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_osuleaf</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_italy_power_demand">
+<span class="sig-name descname"><span class="pre">load_italy_power_demand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L357-L409"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_italy_power_demand" title="Link to this definition">#</a></dt>
+<dd><p>Load ItalyPowerDemand time series classification problem.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: sktime data container, following mtype specification <code class="docutils literal notranslate"><span class="pre">return_type</span></code></dt><dd><p>The time series data for the problem, with n instances</p>
+</dd>
+<dt>y: 1D numpy array of length n, only returned if return_X_y if True</dt><dd><p>The class labels for each time series instance in X
+If return_X_y is False, y is appended to X instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dimensionality:     univariate
+Series length:      24
+Train cases:        67
+Test cases:         1029
+Number of classes:  2</p>
+<p>The data was derived from twelve monthly electrical power demand time series from
+Italy and first used in the paper “Intelligent Icons: Integrating Lite-Weight Data
+Mining and Visualization into GUI Operating Systems”. The classification task is to
+distinguish days from Oct to March (inclusive) from April to September.
+Dataset details:
+<a class="reference external" href="http://timeseriesclassification.com/description.php?Dataset=ItalyPowerDemand">http://timeseriesclassification.com/description.php?Dataset=ItalyPowerDemand</a></p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_italy_power_demand</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_italy_power_demand</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_japanese_vowels">
+<span class="sig-name descname"><span class="pre">load_japanese_vowels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L473-L537"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_japanese_vowels" title="Link to this definition">#</a></dt>
+<dd><p>Load the JapaneseVowels time series classification problem.</p>
+<p>Example of a multivariate problem with unequal length series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: pd.DataFrame with m rows and c columns</dt><dd><p>The time series data for the problem with m cases and c dimensions</p>
+</dd>
+<dt>y: numpy array</dt><dd><p>The class labels for each case in X</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dimensionality:     multivariate, 12
+Series length:      7-29
+Train cases:        270
+Test cases:         370
+Number of classes:  9</p>
+<p>A UCI Archive dataset. 9 Japanese-male speakers were recorded saying
+the vowels ‘a’ and ‘e’. A ‘12-degree
+linear prediction analysis’ is applied to the raw recordings to
+obtain time-series with 12 dimensions and series lengths between 7 and 29.
+The classification task is to predict the speaker. Therefore,
+each instance is a transformed utterance,
+12*29 values with a single class label attached, [1…9]. The given
+training set is comprised of 30
+utterances for each speaker, however the test set has a varied
+distribution based on external factors of
+timing and experimental availability, between 24 and 88 instances per
+speaker. Reference: M. Kudo, J. Toyama
+and M. Shimbo. (1999). “Multidimensional Curve Classification Using
+Passing-Through Regions”. Pattern
+Recognition Letters, Vol. 20, No. 11–13, pages 1103–1111.
+Dataset details: <a class="reference external" href="http://timeseriesclassification.com/description.php">http://timeseriesclassification.com/description.php</a>
+?Dataset=JapaneseVowels</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_japanese_vowels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_japanese_vowels</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_plaid">
+<span class="sig-name descname"><span class="pre">load_plaid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L189-L228"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_plaid" title="Link to this definition">#</a></dt>
+<dd><p>Load the PLAID time series classification problem and returns X and y.</p>
+<p>Example of a univariate problem with unequal length series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: sktime data container, following mtype specification <code class="docutils literal notranslate"><span class="pre">return_type</span></code></dt><dd><p>The time series data for the problem, with n instances</p>
+</dd>
+<dt>y: 1D numpy array of length n, only returned if return_X_y if True</dt><dd><p>The class labels for each time series instance in X
+If return_X_y is False, y is appended to X instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_plaid</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_plaid</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_longley">
+<span class="sig-name descname"><span class="pre">load_longley</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOTEMP'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L773-L829"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_longley" title="Link to this definition">#</a></dt>
+<dd><p>Load the Longley dataset for forecasting with exogenous variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y_name: str, optional (default=”TOTEMP”)</strong></dt><dd><p>Name of target variable (y)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>y: pd.Series</dt><dd><p>The target series to be predicted.</p>
+</dd>
+<dt>X: pd.DataFrame</dt><dd><p>The exogenous time series data for the problem.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This mulitvariate time series dataset contains various US macroeconomic
+variables from 1947 to 1962 that are known to be highly collinear.</p>
+<p>Dimensionality:     multivariate, 6
+Series length:      16
+Frequency:          Yearly
+Number of cases:    1</p>
+<p>Variable description:</p>
+<p>TOTEMP - Total employment
+GNPDEFL - Gross national product deflator
+GNP - Gross national product
+UNEMP - Number of unemployed
+ARMED - Size of armed forces
+POP - Population</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r27fba8f93df0-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Longley, J.W. (1967) “An Appraisal of Least Squares Programs for the
+Electronic Computer from the Point of View of the User.”  Journal of
+the American Statistical Association.  62.319, 819-41.
+(<a class="reference external" href="https://www.itl.nist.gov/div898/strd/lls/data/LINKS/DATA/Longley.dat">https://www.itl.nist.gov/div898/strd/lls/data/LINKS/DATA/Longley.dat</a>)</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_longley</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">load_longley</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_lynx">
+<span class="sig-name descname"><span class="pre">load_lynx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L832-L879"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_lynx" title="Link to this definition">#</a></dt>
+<dd><p>Load the lynx univariate time series dataset for forecasting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">pd.Series/DataFrame</span></dt><dd><p>Lynx sales dataset</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The annual numbers of lynx trappings for 1821–1934 in Canada. This
+time-series records the number of skins of
+predators (lynx) that were collected over several years by the Hudson’s
+Bay Company. The dataset was
+taken from Brockwell &amp; Davis (1991) and appears to be the series
+considered by Campbell &amp; Walker (1977).</p>
+<p>Dimensionality:     univariate
+Series length:      114
+Frequency:          Yearly
+Number of cases:    1</p>
+<p>This data shows aperiodic, cyclical patterns, as opposed to periodic,
+seasonal patterns.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r412460166e04-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988). The New S</p>
+</div>
+</div>
+<p>Language. Wadsworth &amp; Brooks/Cole.</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r412460166e04-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Campbell, M. J. and Walker, A. M. (1977). A Survey of statistical</p>
+</div>
+</div>
+<p>work on the Mackenzie River series of
+annual Canadian lynx trappings for the years 1821–1934 and a new
+analysis. Journal of the Royal Statistical Society
+series A, 140, 411–431.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_lynx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_lynx</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_shampoo_sales">
+<span class="sig-name descname"><span class="pre">load_shampoo_sales</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L734-L770"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_shampoo_sales" title="Link to this definition">#</a></dt>
+<dd><p>Load the shampoo sales univariate time series dataset for forecasting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">pd.Series/DataFrame</span></dt><dd><p>Shampoo sales dataset</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This dataset describes the monthly number of sales of shampoo over a 3
+year period.
+The units are a sales count.</p>
+<p>Dimensionality:     univariate
+Series length:      36
+Frequency:          Monthly
+Number of cases:    1</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rbab7977e6af7-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Makridakis, Wheelwright and Hyndman (1998) Forecasting: methods</p>
+</div>
+</div>
+<dl class="simple">
+<dt>and applications,</dt><dd><p>John Wiley &amp; Sons: New York. Chapter 3.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_shampoo_sales</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_shampoo_sales</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_UCR_UEA_dataset">
+<span class="sig-name descname"><span class="pre">load_UCR_UEA_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L67-L124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_UCR_UEA_dataset" title="Link to this definition">#</a></dt>
+<dd><p>Load dataset from UCR UEA time series archive.</p>
+<p>Downloads and extracts dataset if not already downloaded. Data is assumed to be
+in the standard .ts format: each row is a (possibly multivariate) time series.
+Each dimension is separated by a colon, each value in a series is comma
+separated. For examples see sktime.datasets.data.tsc. ArrowHead is an example of
+a univariate equal length problem, BasicMotions an equal length multivariate
+problem.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Name of data set. If a dataset that is listed in tsc_dataset_names is given,
+this function will look in the extract_path first, and if it is not present,
+attempt to download the data from www.timeseriesclassification.com, saving it to
+the extract_path.</p>
+</dd>
+<dt><strong>split</strong><span class="classifier">None or str{“train”, “test”}, optional (default=None)</span></dt><dd><p>Whether to load the train or test partition of the problem. By default it
+loads both into a single dataset, otherwise it looks only for files of the
+format &lt;name&gt;_TRAIN.ts or &lt;name&gt;_TEST.ts.</p>
+</dd>
+<dt><strong>return_X_y</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>it returns two objects, if False, it appends the class labels to the dataframe.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+<dt><strong>extract_path</strong><span class="classifier">str, optional (default=None)</span></dt><dd><p>the path to look for the data. If no path is provided, the function
+looks in <code class="docutils literal notranslate"><span class="pre">sktime/datasets/data/</span></code>. If a path is given, it can be absolute,
+e.g. C:/Temp or relative, e.g. Temp or ./Temp.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: pd.DataFrame</dt><dd><p>The time series data for the problem with n_cases rows and either
+n_dimensions or n_dimensions+1 columns. Columns 1 to n_dimensions are the
+series associated with each case. If return_X_y is False, column
+n_dimensions+1 contains the class labels/target variable.</p>
+</dd>
+<dt>y: numpy array, optional</dt><dd><p>The class labels for each case in X, returned separately if return_X_y is
+True, or appended to X if False</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_UCR_UEA_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_UCR_UEA_dataset</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ArrowHead&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_unit_test">
+<span class="sig-name descname"><span class="pre">load_unit_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L412-L470"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_unit_test" title="Link to this definition">#</a></dt>
+<dd><p>Load UnitTest data.</p>
+<p>This is an equal length univariate time series classification problem. It is a
+stripped down version of the ChinaTown problem that is used in correctness tests
+for classification. It loads a two class classification problem with number of
+cases, n, where n = 42 (if split is None) or 20/22 (if split is “train”/”test”)
+of series length m = 24</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X:  The time series data for the problem. If return_type is either</dt><dd><p>“numpy2d”/”numpyflat”, it returns 2D numpy array of shape (n,m), if “numpy3d” it
+returns 3D numpy array of shape (n,1,m) and if “nested_univ” or None it returns
+a nested pandas DataFrame of shape (n,1), where each cell is a pd.Series of
+length m.</p>
+</dd>
+<dt>y: (optional) numpy array shape (n,1). The class labels for each case in X.</dt><dd><p>If return_X_y is False, y is appended to X.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_unit_test</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_unit_test</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_uschange">
+<span class="sig-name descname"><span class="pre">load_uschange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Consumption'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L925-L977"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_uschange" title="Link to this definition">#</a></dt>
+<dd><p>Load MTS dataset for forecasting Growth rates of personal consumption and income.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">pd.Series</span></dt><dd><p>selected column, default consumption</p>
+</dd>
+<dt><strong>X</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>columns with explanatory variables</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Percentage changes in quarterly personal consumption expenditure,
+personal disposable income, production, savings and the
+unemployment rate for the US, 1960 to 2016.</p>
+<p>Dimensionality:     multivariate
+Columns:            [‘Quarter’, ‘Consumption’, ‘Income’, ‘Production’,</p>
+<blockquote>
+<div><p>‘Savings’, ‘Unemployment’]</p>
+</div></blockquote>
+<p>Series length:      188
+Frequency:          Quarterly
+Number of cases:    1</p>
+<p>This data shows an increasing trend, non-constant (increasing) variance
+and periodic, seasonal patterns.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rcbb2fad2f121-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Data for “Forecasting: Principles and Practice” (2nd Edition)</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_uschange</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">load_uschange</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_PBS_dataset">
+<span class="sig-name descname"><span class="pre">load_PBS_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L1060-L1102"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_PBS_dataset" title="Link to this definition">#</a></dt>
+<dd><p>Load the Pharmaceutical Benefit Scheme univariate time series dataset <a class="reference internal" href="#rb55bedc6cebf-1" id="id7">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">pd.Series</span></dt><dd><p>Time series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The Pharmaceutical Benefits Scheme (PBS) is the Australian government drugs
+subsidy scheme.
+Data comprises of the numbers of scripts sold each month for immune sera
+and immunoglobulin products in Australia.</p>
+<p>Dimensionality:     univariate
+Series length:      204
+Frequency:          Monthly
+Number of cases:    1</p>
+<p>The time series is intermittent, i.e contains small counts,
+with many months registering no sales at all,
+and only small numbers of items sold in other months.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rb55bedc6cebf-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">1</a><span class="fn-bracket">]</span></span>
+<p>Data for “Forecasting: Principles and Practice” (3rd Edition)</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_PBS_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_PBS_dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_gun_point_segmentation">
+<span class="sig-name descname"><span class="pre">load_gun_point_segmentation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L980-L1017"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_gun_point_segmentation" title="Link to this definition">#</a></dt>
+<dd><p>Load the GunPoint time series segmentation problem and returns X.</p>
+<p>We group TS of the UCR GunPoint dataset by class label and concatenate
+all TS to create segments with repeating temporal patterns and
+characteristics. The location at which different classes were
+concatenated are marked as change points.</p>
+<p>We resample the resulting TS to control the TS resolution.
+The window sizes for these datasets are hand-selected to capture
+temporal patterns but are approximate and limited to the values
+[10,20,50,100] to avoid over-fitting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">pd.Series</span></dt><dd><p>Single time series for segmentation</p>
+</dd>
+<dt><strong>period_length</strong><span class="classifier">int</span></dt><dd><p>The annotated period length by a human expert</p>
+</dd>
+<dt><strong>change_points</strong><span class="classifier">numpy array</span></dt><dd><p>The change points annotated within the dataset</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_gun_point_segmentation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">period_length</span><span class="p">,</span> <span class="n">change_points</span> <span class="o">=</span> <span class="n">load_gun_point_segmentation</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_electric_devices_segmentation">
+<span class="sig-name descname"><span class="pre">load_electric_devices_segmentation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L1020-L1057"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_electric_devices_segmentation" title="Link to this definition">#</a></dt>
+<dd><p>Load the Electric Devices segmentation problem and returns X.</p>
+<p>We group TS of the UCR Electric Devices dataset by class label and concatenate
+all TS to create segments with repeating temporal patterns and
+characteristics. The location at which different classes were
+concatenated are marked as change points.</p>
+<p>We resample the resulting TS to control the TS resolution.
+The window sizes for these datasets are hand-selected to capture
+temporal patterns but are approximate and limited to the values
+[10,20,50,100] to avoid over-fitting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">pd.Series</span></dt><dd><p>Single time series for segmentation</p>
+</dd>
+<dt><strong>period_length</strong><span class="classifier">int</span></dt><dd><p>The annotated period length by a human expert</p>
+</dd>
+<dt><strong>change_points</strong><span class="classifier">numpy array</span></dt><dd><p>The change points annotated within the dataset</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_electric_devices_segmentation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">period_length</span><span class="p">,</span> <span class="n">change_points</span> <span class="o">=</span> <span class="n">load_electric_devices_segmentation</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_acsf1">
+<span class="sig-name descname"><span class="pre">load_acsf1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L605-L662"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_acsf1" title="Link to this definition">#</a></dt>
+<dd><p>Load dataset on power consumption of typical appliances.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: sktime data container, following mtype specification <code class="docutils literal notranslate"><span class="pre">return_type</span></code></dt><dd><p>The time series data for the problem, with n instances</p>
+</dd>
+<dt>y: 1D numpy array of length n, only returned if return_X_y if True</dt><dd><p>The class labels for each time series instance in X
+If return_X_y is False, y is appended to X instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dimensionality:     univariate
+Series length:      1460
+Train cases:        100
+Test cases:         100
+Number of classes:  10</p>
+<p>The dataset contains the power consumption of typical appliances.
+The recordings are characterized by long idle periods and some high bursts
+of energy consumption when the appliance is active.
+The classes correspond to 10 categories of home appliances;
+mobile phones (via chargers), coffee machines, computer stations
+(including monitor), fridges and freezers, Hi-Fi systems (CD players),
+lamp (CFL), laptops (via chargers), microwave ovens, printers, and
+televisions (LCD or LED).”</p>
+<p>Dataset details: <a class="reference external" href="http://www.timeseriesclassification.com/description.php?Dataset">http://www.timeseriesclassification.com/description.php?Dataset</a>
+=ACSF1</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_acsf1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_acsf1</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_macroeconomic">
+<span class="sig-name descname"><span class="pre">load_macroeconomic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L1105-L1149"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_macroeconomic" title="Link to this definition">#</a></dt>
+<dd><p>Load the US Macroeconomic Data <a class="reference internal" href="sktime.datasets.load_macroeconomic.html#r7ccb796becb7-1" id="id9">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Time series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>US Macroeconomic Data for 1959Q1 - 2009Q3.</p>
+<p>Dimensionality:     multivariate, 14
+Series length:      203
+Frequency:          Quarterly
+Number of cases:    1</p>
+<p>This data is kindly wrapped via <code class="docutils literal notranslate"><span class="pre">statsmodels.datasets.macrodata</span></code>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r7ccb796becb7-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">1</a><span class="fn-bracket">]</span></span>
+<p>Wrapped via statsmodels:
+<a class="reference external" href="https://www.statsmodels.org/dev/datasets/generated/macrodata.html">https://www.statsmodels.org/dev/datasets/generated/macrodata.html</a></p>
+</div>
+<div class="citation" id="r7ccb796becb7-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Data Source: FRED, Federal Reserve Economic Data, Federal Reserve
+Bank of St. Louis; <a class="reference external" href="http://research.stlouisfed.org/fred2/">http://research.stlouisfed.org/fred2/</a>;
+accessed December 15, 2009.</p>
+</div>
+<div class="citation" id="r7ccb796becb7-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>Data Source: Bureau of Labor Statistics, U.S. Department of Labor;
+<a class="reference external" href="http://www.bls.gov/data/">http://www.bls.gov/data/</a>; accessed December 15, 2009.</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_macroeconomic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_macroeconomic</span><span class="p">()</span>  
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.generate_example_long_table">
+<span class="sig-name descname"><span class="pre">generate_example_long_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_cases</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_data_io.py#L359-L394"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.generate_example_long_table" title="Link to this definition">#</a></dt>
+<dd><p>Generate example from long table format file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>num_cases: int</strong></dt><dd><p>Number of cases.</p>
+</dd>
+<dt><strong>series_len: int</strong></dt><dd><p>Length of the series.</p>
+</dd>
+<dt><strong>num_dims: int</strong></dt><dd><p>Number of dimensions.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>DataFrame</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_from_arff_to_dataframe">
+<span class="sig-name descname"><span class="pre">load_from_arff_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path_and_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_class_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_separate_X_and_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_missing_vals_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NaN'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/arff.py#L22-L131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_from_arff_to_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Load data from a .arff file into a Pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>full_file_path_and_name: str</strong></dt><dd><p>The full pathname of the .arff file to read.</p>
+</dd>
+<dt><strong>has_class_labels: bool</strong></dt><dd><p>true then line contains separated strings and class value contains
+list of separated strings, check for ‘return_separate_X_and_y’
+false otherwise.</p>
+</dd>
+<dt><strong>return_separate_X_and_y: bool</strong></dt><dd><p>true then X and Y values should be returned as separate Data Frames (
+X) and a numpy array (y), false otherwise.
+This is only relevant for data.</p>
+</dd>
+<dt><strong>replace_missing_vals_with: str</strong></dt><dd><p>The value that missing values in the text file should be replaced
+with prior to parsing.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>DataFrame, ndarray</dt><dd><p>If return_separate_X_and_y then a tuple containing a DataFrame and a
+numpy array containing the relevant time-series and corresponding
+class values.</p>
+</dd>
+<dt>DataFrame</dt><dd><p>If not return_separate_X_and_y then a single DataFrame containing
+all time-series and (if relevant) a column “class_vals” the
+associated class values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_from_long_to_dataframe">
+<span class="sig-name descname"><span class="pre">load_from_long_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path_and_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/long.py#L12-L41"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_from_long_to_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Load data from a long format file into a Pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>full_file_path_and_name: str</strong></dt><dd><p>The full pathname of the .csv file to read.</p>
+</dd>
+<dt><strong>separator: str</strong></dt><dd><p>The character that the csv uses as a delimiter</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>DataFrame</dt><dd><p>A dataframe with sktime-formatted data</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_from_tsfile">
+<span class="sig-name descname"><span class="pre">load_from_tsfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path_and_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_missing_vals_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NaN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nested_univ'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/ts.py#L611-L691"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_from_tsfile" title="Link to this definition">#</a></dt>
+<dd><p>Load time series .ts file into X and (optionally) y.</p>
+<p>Data from a .ts file is loaded into a nested pd.DataFrame, or optionally into a
+2d np.ndarray (equal length, univariate problem) or 3d np.ndarray (equal length,
+multivariate problem) if requested. If present, y is loaded into a 1d np.ndarray.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>full_file_path_and_name</strong><span class="classifier">str</span></dt><dd><p>The full pathname and file name of the .ts file to read.</p>
+</dd>
+<dt><strong>replace_missing_vals_with</strong><span class="classifier">str, default NaN</span></dt><dd><p>The value that missing values in the text file should be replaced with prior
+to parsing.</p>
+</dd>
+<dt><strong>return_y</strong><span class="classifier">boolean, default True</span></dt><dd><p>whether to return the y variable, if it is present.</p>
+</dd>
+<dt><strong>return_data_type</strong><span class="classifier">str, optional, default = “nested_univ”</span></dt><dd><p>memory data format specification to return X in.
+str can be any other supported Panel mtype</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.SCITYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+<dt><strong>encoding: str</strong></dt><dd><p>encoding is the name of the encoding used to read file using the open function.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">sktime compatible in-memory container of mtype return_data_type</span></dt><dd><p>for list of mtypes, see datatypes.SCITYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">returned only if return_y=True, np.ndarray</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>IOError if the requested file does not exist</dt><dd></dd>
+<dt>IOError if input series are not all the same dimension (not supported)</dt><dd></dd>
+<dt>IOError if class labels have been requested but are not present in the file</dt><dd></dd>
+<dt>IOError if the input file has no cases</dt><dd></dd>
+<dt>ValueError if return_data_type = numpy3d but the data are unequal length series</dt><dd></dd>
+<dt>ValueError if return_data_type = numpy2d but the data are multivariate and/</dt><dd></dd>
+<dt>or unequal length series</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_from_tsfile_to_dataframe">
+<span class="sig-name descname"><span class="pre">load_from_tsfile_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path_and_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_separate_X_and_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_missing_vals_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NaN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/ts.py#L28-L608"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_from_tsfile_to_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Load data from a .ts file into a Pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>full_file_path_and_name: str</strong></dt><dd><p>The full pathname of the .ts file to read.</p>
+</dd>
+<dt><strong>return_separate_X_and_y: bool</strong></dt><dd><p>true if X and Y values should be returned as separate Data Frames (
+X) and a numpy array (y), false otherwise.
+This is only relevant for data that</p>
+</dd>
+<dt><strong>replace_missing_vals_with: str</strong></dt><dd><p>The value that missing values in the text file should be replaced
+with prior to parsing.</p>
+</dd>
+<dt><strong>encoding: str</strong></dt><dd><p>encoding is the name of the encoding used to read file using the open function.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>DataFrame (default) or ndarray (i</dt><dd><p>If return_separate_X_and_y then a tuple containing a DataFrame and a
+numpy array containing the relevant time-series and corresponding
+class values.</p>
+</dd>
+<dt>DataFrame</dt><dd><p>If not return_separate_X_and_y then a single DataFrame containing
+all time-series and (if relevant) a column “class_vals” the
+associated class values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_from_ucr_tsv_to_dataframe">
+<span class="sig-name descname"><span class="pre">load_from_ucr_tsv_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path_and_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_separate_X_and_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/tsv.py#L10-L43"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_from_ucr_tsv_to_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Load data from a .tsv file into a Pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>full_file_path_and_name: str</strong></dt><dd><p>The full pathname of the .tsv file to read.</p>
+</dd>
+<dt><strong>return_separate_X_and_y: bool</strong></dt><dd><p>true then X and Y values should be returned as separate Data Frames (
+X) and a numpy array (y), false otherwise.
+This is only relevant for data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>DataFrame, ndarray</dt><dd><p>If return_separate_X_and_y then a tuple containing a DataFrame and a
+numpy array containing the relevant time-series and corresponding
+class values.</p>
+</dd>
+<dt>DataFrame</dt><dd><p>If not return_separate_X_and_y then a single DataFrame containing
+all time-series and (if relevant) a column “class_vals” the
+associated class values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.make_multi_index_dataframe">
+<span class="sig-name descname"><span class="pre">make_multi_index_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_instances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_timepoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_data_io.py#L397-L422"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.make_multi_index_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Generate example multi-index DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_instances</strong><span class="classifier">int</span></dt><dd><p>Number of instances.</p>
+</dd>
+<dt><strong>n_columns</strong><span class="classifier">int</span></dt><dd><p>Number of columns (series) in multi-indexed DataFrame.</p>
+</dd>
+<dt><strong>n_timepoints</strong><span class="classifier">int</span></dt><dd><p>Number of timepoints per instance-column pair.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>mi_df</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>The multi-indexed DataFrame with
+shape (n_instances*n_timepoints, n_column).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_tsf_to_dataframe">
+<span class="sig-name descname"><span class="pre">load_tsf_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path_and_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_missing_vals_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NaN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'series_value'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pd_multiindex_hier'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/tsf.py#L83-L302"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_tsf_to_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Convert the contents in a .tsf file into a dataframe.</p>
+<p>This code was extracted from
+<a class="github reference external" href="https://github.com/rakshitha123/TSForecasting/blob">rakshitha123/TSForecasting</a>
+/master/utils/data_loader.py.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>full_file_path_and_name: str</strong></dt><dd><p>The full path to the .tsf file.</p>
+</dd>
+<dt><strong>replace_missing_vals_with: str, default=”NAN”</strong></dt><dd><p>A term to indicate the missing values in series in the returning dataframe.</p>
+</dd>
+<dt><strong>value_column_name: str, default=”series_value”</strong></dt><dd><p>Any name that is preferred to have as the name of the column containing series
+values in the returning dataframe.</p>
+</dd>
+<dt><strong>return_type</strong><span class="classifier">str - “pd_multiindex_hier” (default), “tsf_default”, or valid sktime</span></dt><dd><p>mtype string for in-memory data container format specification of the
+return type:
+- “pd_multiindex_hier” = pd.DataFrame of sktime type <code class="docutils literal notranslate"><span class="pre">pd_multiindex_hier</span></code>
+- “tsf_default” = container that faithfully mirrors tsf format from the original</p>
+<blockquote>
+<div><p>implementation in: <a class="github reference external" href="https://github.com/rakshitha123/TSForecasting/">rakshitha123/TSForecasting</a>
+blob/master/utils/data_loader.py.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>other valid mtype strings are Panel or Hierarchical mtypes in</dt><dd><p>datatypes.MTYPE_REGISTER. If Panel or Hierarchical mtype str is given, a
+conversion to that mtype will be attempted</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>For tutorials and detailed specifications, see
+examples/AA_datatypes_and_datasets.ipynb</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>loaded_data: pd.DataFrame</dt><dd><p>The converted dataframe containing the time series.</p>
+</dd>
+<dt>metadata: dict</dt><dd><p>The metadata for the forecasting problem. The dictionary keys are:
+“frequency”, “forecast_horizon”, “contain_missing_values”,
+“contain_equal_length”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_unit_test_tsf">
+<span class="sig-name descname"><span class="pre">load_unit_test_tsf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L1152-L1183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_unit_test_tsf" title="Link to this definition">#</a></dt>
+<dd><p>Load tsf UnitTest dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>loaded_data: pd.DataFrame</dt><dd><p>The converted dataframe containing the time series.</p>
+</dd>
+<dt>frequency: str</dt><dd><p>The frequency of the dataset.</p>
+</dd>
+<dt>forecast_horizon: int</dt><dd><p>The expected forecast horizon of the dataset.</p>
+</dd>
+<dt>contain_missing_values: bool</dt><dd><p>Whether the dataset contains missing values or not.</p>
+</dd>
+<dt>contain_equal_length: bool</dt><dd><p>Whether the series have equal lengths or not.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_solar">
+<span class="sig-name descname"><span class="pre">load_solar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2021-05-01'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2021-09-01'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_full_df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'v4'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L1186-L1295"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_solar" title="Link to this definition">#</a></dt>
+<dd><p>Get national solar estimates for GB from Sheffield Solar PV_Live API.</p>
+<p>This function calls the Sheffield Solar PV_Live API to extract national solar data
+for the GB electricity network. Note that these are estimates of the true solar
+generation, since the true values are “behind the meter” and essentially
+unknown.</p>
+<p>The returned time series is half hourly. For more information please refer
+to [1, 2]_.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>start</strong><span class="classifier">string, default=”2021-05-01”</span></dt><dd><p>The start date of the time-series in “YYYY-MM-DD” format</p>
+</dd>
+<dt><strong>end</strong><span class="classifier">string, default=”2021-09-01”</span></dt><dd><p>The end date of the time-series in “YYYY-MM-DD” format</p>
+</dd>
+<dt><strong>normalise</strong><span class="classifier">boolean, default=True</span></dt><dd><p>Normalise the returned time-series by installed capacity?</p>
+</dd>
+<dt><strong>return_full_df</strong><span class="classifier">boolean, default=False</span></dt><dd><p>Return a pd.DataFrame with power, capacity, and normalised estimates?</p>
+</dd>
+<dt><strong>api_version</strong><span class="classifier">string or None, default=”v4”</span></dt><dd><p>API version to call. If None then a stored sample of the data is loaded.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">pd.Series</span></dt><dd><p>The solar generation time-series, as requested by parameters, see above</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r1766b81beee0-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.solar.sheffield.ac.uk/pvlive/">https://www.solar.sheffield.ac.uk/pvlive/</a></p>
+</div>
+<div class="citation" id="r1766b81beee0-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.solar.sheffield.ac.uk/pvlive/api/">https://www.solar.sheffield.ac.uk/pvlive/api/</a></p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_solar</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">load_solar</span><span class="p">()</span>  
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_covid_3month">
+<span class="sig-name descname"><span class="pre">load_covid_3month</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L1298-L1342"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_covid_3month" title="Link to this definition">#</a></dt>
+<dd><p>Load dataset of last three months confirmed covid cases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>split: None or str{“train”, “test”}, optional (default=None)</strong></dt><dd><p>Whether to load the train or test partition of the problem. By
+default, it loads both.</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for
+features and the target.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: pd.DataFrame with m rows and c columns</dt><dd><p>The time series data for the problem with m cases and c dimensions</p>
+</dd>
+<dt>y: numpy array</dt><dd><p>The regression values for each case in X</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dimensionality:     univariate
+Series length:      84
+Train cases:        140
+Test cases:         61
+Number of classes:  -</p>
+<p>The goal of this dataset is to predict COVID-19’s death rate on 1st April 2020 for
+each country using daily confirmed cases for the last three months. This dataset
+contains 201 time series with no missing values, where each time series is
+the daily confirmed cases for a country.
+The data was obtained from WHO’s COVID-19 database.
+Please refer to <a class="reference external" href="https://covid19.who.int/">https://covid19.who.int/</a> for more details</p>
+<p>Dataset details: <a class="reference external" href="https://zenodo.org/record/3902690#.Yy1z_HZBxEY">https://zenodo.org/record/3902690#.Yy1z_HZBxEY</a>
+=Covid3Month</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_covid_3month</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_covid_3month</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_forecastingdata">
+<span class="sig-name descname"><span class="pre">load_forecastingdata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_missing_vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NAN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'series_value'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default_tsf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L1345-L1441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_forecastingdata" title="Link to this definition">#</a></dt>
+<dd><p>Fetch forecasting datasets from Monash Time Series Forecasting Archive.</p>
+<p>Downloads and extracts dataset if not already downloaded. Fetched dataset is
+in the standard .tsf format. See <a class="reference external" href="https://forecastingdata.org/">https://forecastingdata.org/</a> for more details.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>name: str</strong></dt><dd><p>Name of data set. If a dataset that is listed in tsf_all_dataset is given,
+this function will look in the extract_path first, and if it is not present,
+attempt to download the data from <a class="reference external" href="https://forecastingdata.org/">https://forecastingdata.org/</a>, saving it to
+the extract_path.</p>
+</dd>
+<dt><strong>replace_missing_vals: str, default=”NAN”</strong></dt><dd><p>A term to indicate the missing values in series in the returning dataframe.</p>
+</dd>
+<dt><strong>value_column_name: str, default=”series_value”</strong></dt><dd><p>Any name that is preferred to have as the name of the column containing series
+values in the returning dataframe.</p>
+</dd>
+<dt><strong>return_type</strong><span class="classifier">str - “pd_multiindex_hier”, “default_tsf” (default), or valid sktime</span></dt><dd><p>mtype string for in-memory data container format specification of the
+return type:
+- “pd_multiindex_hier” = pd.DataFrame of sktime type <code class="docutils literal notranslate"><span class="pre">pd_multiindex_hier</span></code>
+- “default_tsf” = container that faithfully mirrors tsf format from the original</p>
+<blockquote>
+<div><p>implementation in: <a class="github reference external" href="https://github.com/rakshitha123/TSForecasting/">rakshitha123/TSForecasting</a>
+blob/master/utils/data_loader.py.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>other valid mtype strings are Panel or Hierarchical mtypes in</dt><dd><p>datatypes.MTYPE_REGISTER. If Panel or Hierarchical mtype str is given, a
+conversion to that mtype will be attempted</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>For tutorials and detailed specifications, see
+examples/AA_datatypes_and_datasets.ipynb</p>
+</dd>
+<dt><strong>extract_path</strong><span class="classifier">str, optional (default=None)</span></dt><dd><p>the path to look for the data. If no path is provided, the function
+looks in <code class="docutils literal notranslate"><span class="pre">sktime/datasets/data/</span></code>. If a path is given, it can be absolute,
+e.g. C:/Temp or relative, e.g. Temp or ./Temp.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>loaded_data: pd.DataFrame</dt><dd><p>The converted dataframe containing the time series.</p>
+</dd>
+<dt>metadata: dict</dt><dd><p>The metadata for the forecasting problem. The dictionary keys are:
+“frequency”, “forecast_horizon”, “contain_missing_values”,
+“contain_equal_length”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.write_panel_to_tsfile">
+<span class="sig-name descname"><span class="pre">write_panel_to_tsfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sample_data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/ts.py#L913-L968"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.write_panel_to_tsfile" title="Link to this definition">#</a></dt>
+<dd><p>Write an sktime multi-instance dataset to text file in .ts format.</p>
+<p>Write metadata and data stored in sktime compatible data set to file.
+A description of the ts format is in docs/source/api_reference/data_format.rst</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">Panel.</span></dt><dd><p>dataset containing multiple time series instances, referred to as a Panel in
+sktime.
+Series can univariate, multivariate, equal or unequal length</p>
+</dd>
+<dt><strong>path</strong><span class="classifier">String.</span></dt><dd><p>Location of the directory to write file</p>
+</dd>
+<dt><strong>target: None or ndarray, default = None</strong></dt><dd><p>Response variable, discrete for classification, continuous for regression
+None if clustering.</p>
+</dd>
+<dt><strong>problem_name</strong><span class="classifier">String, default = “sample_data”</span></dt><dd><p>The file is written to &lt;path&gt;/&lt;problem_name&gt;/&lt;problem_name&gt;.ts</p>
+</dd>
+<dt><strong>header: String, default = None</strong></dt><dd><p>Optional text at the top of the file that is ignored when loading.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.write_dataframe_to_tsfile">
+<span class="sig-name descname"><span class="pre">write_dataframe_to_tsfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sample_data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_value_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NaN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/ts.py#L699-L806"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.write_dataframe_to_tsfile" title="Link to this definition">#</a></dt>
+<dd><p>Output a dataset in dataframe format to .ts file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>data: pandas dataframe</strong></dt><dd><p>The dataset in a dataframe to be written as a ts file
+which must be of the structure specified in the documentation
+examples/loading_data.ipynb.
+index |   dim_0   |   dim_1   |    …    |  dim_c-1</p>
+<blockquote>
+<div><blockquote>
+<div><p>0  | pd.Series | pd.Series | pd.Series | pd.Series
+1  | pd.Series | pd.Series | pd.Series | pd.Series</p>
+</div></blockquote>
+<dl class="simple">
+<dt>… |    …    |    …    |    …    |    …</dt><dd><p>n  | pd.Series | pd.Series | pd.Series | pd.Series</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt><strong>path: str</strong></dt><dd><p>The full path to output the ts file to.</p>
+</dd>
+<dt><strong>problem_name: str, default=”sample_data”</strong></dt><dd><p>The problemName to print in the header of the ts file and also the name of
+the file.</p>
+</dd>
+<dt><strong>class_label: list of str or None, default=None</strong></dt><dd><p>The problems class labels to show the possible class values for in the file
+header, optional.</p>
+</dd>
+<dt><strong>class_value_list: list, ndarray or None, default=None</strong></dt><dd><p>The class values for each case, optional.</p>
+</dd>
+<dt><strong>equal_length: bool, default=False</strong></dt><dd><p>Indicates whether each series is of equal length.</p>
+</dd>
+<dt><strong>series_length: int, default=-1</strong></dt><dd><p>Indicates the series length if they are of equal length.</p>
+</dd>
+<dt><strong>missing_values: str, default=”NaN”</strong></dt><dd><p>Representation for missing values.</p>
+</dd>
+<dt><strong>comment: str or None, default=None</strong></dt><dd><p>Comment text to be inserted before the header in a block.</p>
+</dd>
+<dt><strong>fold: str or None, default=None</strong></dt><dd><p>Addon at the end of the filename, i.e. _TRAIN or _TEST.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This version currently does not support writing timestamp data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.write_ndarray_to_tsfile">
+<span class="sig-name descname"><span class="pre">write_ndarray_to_tsfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sample_data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_value_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NaN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/ts.py#L809-L910"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.write_ndarray_to_tsfile" title="Link to this definition">#</a></dt>
+<dd><p>Output a dataset in ndarray format to .ts file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data: pandas dataframe</strong></dt><dd><p>The dataset in a 3d ndarray to be written as a ts file
+which must be of the structure specified in the documentation
+examples/loading_data.ipynb.
+(n_instances, n_columns, n_timepoints)</p>
+</dd>
+<dt><strong>path: str</strong></dt><dd><p>The full path to output the ts file to.</p>
+</dd>
+<dt><strong>problem_name: str, default=”sample_data”</strong></dt><dd><p>The problemName to print in the header of the ts file and also the name of
+the file.</p>
+</dd>
+<dt><strong>class_label: list of str or None, default=None</strong></dt><dd><p>The problems class labels to show the possible class values for in the file
+header.</p>
+</dd>
+<dt><strong>class_value_list: list, ndarray or None, default=None</strong></dt><dd><p>The class values for each case, optional.</p>
+</dd>
+<dt><strong>equal_length: bool, default=False</strong></dt><dd><p>Indicates whether each series is of equal length.</p>
+</dd>
+<dt><strong>series_length: int, default=-1</strong></dt><dd><p>Indicates the series length if they are of equal length.</p>
+</dd>
+<dt><strong>missing_values: str, default=”NaN”</strong></dt><dd><p>Representation for missing values.</p>
+</dd>
+<dt><strong>comment: str or None, default=None</strong></dt><dd><p>Comment text to be inserted before the header in a block.</p>
+</dd>
+<dt><strong>fold: str or None, default=None</strong></dt><dd><p>Addon at the end of the filename, i.e. _TRAIN or _TEST.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This version currently does not support writing timestamp data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.write_results_to_uea_format">
+<span class="sig-name descname"><span class="pre">write_results_to_uea_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted_probs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TEST'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'N/A'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_line_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'No</span> <span class="pre">Parameter</span> <span class="pre">Info'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">third_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'N/A'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/utils.py#L154-L271"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.write_results_to_uea_format" title="Link to this definition">#</a></dt>
+<dd><p>Write the predictions for an experiment in the standard format used by sktime.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimator_name</strong><span class="classifier">str,</span></dt><dd><p>Name of the object that made the predictions, written to file and can
+determine file structure of output_root is True</p>
+</dd>
+<dt><strong>dataset_name</strong><span class="classifier">str</span></dt><dd><p>name of the problem the classifier was built on</p>
+</dd>
+<dt><strong>y_pred</strong><span class="classifier">np.array</span></dt><dd><p>predicted values</p>
+</dd>
+<dt><strong>output_path</strong><span class="classifier">str</span></dt><dd><p>Path where to put results. Either a root path, or a full path</p>
+</dd>
+<dt><strong>full_path</strong><span class="classifier">boolean, default = True</span></dt><dd><p>If False, then the standard file structure is created. If false, results are
+written directly to the directory passed in output_path</p>
+</dd>
+<dt><strong>y_true</strong><span class="classifier">np.array, default = None</span></dt><dd><p>Actual values, written to file with the predicted values if present</p>
+</dd>
+<dt><strong>predicted_probs</strong><span class="classifier">np.ndarray, default = None</span></dt><dd><p>Estimated class probabilities. If passed, these are written after the
+predicted values. Regressors should not pass anything</p>
+</dd>
+<dt><strong>split</strong><span class="classifier">str, default = “TEST”</span></dt><dd><p>Either TRAIN or TEST, depending on the results, influences file name.</p>
+</dd>
+<dt><strong>resample_seed</strong><span class="classifier">int, default = 0</span></dt><dd><p>Indicates what data</p>
+</dd>
+<dt><strong>timing_type</strong><span class="classifier">str or None, default = None</span></dt><dd><p>The format used for timings in the file, i.e. Seconds, Milliseconds, Nanoseconds</p>
+</dd>
+<dt><strong>first_line_comment</strong><span class="classifier">str or None, default = None</span></dt><dd><p>Optional comment appended to the end of the first line</p>
+</dd>
+<dt><strong>second_line</strong><span class="classifier">str</span></dt><dd><p>unstructured, used for predictor parameters</p>
+</dd>
+<dt><strong>third_line</strong><span class="classifier">str</span></dt><dd><p>summary performance information (see comment below)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.write_tabular_transformation_to_arff">
+<span class="sig-name descname"><span class="pre">write_tabular_transformation_to_arff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sample_data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_value_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_readers_writers/arff.py#L140-L234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.write_tabular_transformation_to_arff" title="Link to this definition">#</a></dt>
+<dd><p>Transform dataset using a tabular transformer and write the result to arff file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data: pandas dataframe or 3d numpy array</strong></dt><dd><p>The dataset to build the transformation with which must be of the structure
+specified in the documentation examples/loading_data.ipynb.</p>
+</dd>
+<dt><strong>transformation: BaseTransformer</strong></dt><dd><p>Transformation use and to save to arff.</p>
+</dd>
+<dt><strong>path: str</strong></dt><dd><p>The full path to output the arff file to.</p>
+</dd>
+<dt><strong>problem_name: str, default=”sample_data”</strong></dt><dd><p>The problemName to print in the header of the arff file and also the name of
+the file.</p>
+</dd>
+<dt><strong>class_label: list of str or None, default=None</strong></dt><dd><p>The problems class labels to show the possible class values for in the file
+header, optional.</p>
+</dd>
+<dt><strong>class_value_list: list, ndarray or None, default=None</strong></dt><dd><p>The class values for each case, optional.</p>
+</dd>
+<dt><strong>comment: str or None, default=None</strong></dt><dd><p>Comment text to be inserted before the header in a block.</p>
+</dd>
+<dt><strong>fold: str or None, default=None</strong></dt><dd><p>Addon at the end of the filename, i.e. _TRAIN or _TEST.</p>
+</dd>
+<dt><strong>fit_transform: bool, default=True</strong></dt><dd><p>Whether to fit the transformer prior to calling transform.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sktime.datasets.load_tecator">
+<span class="sig-name descname"><span class="pre">load_tecator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/sktime/sktime/blob/v0.27.0/sktime/datasets/_single_problem_loaders.py#L127-L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sktime.datasets.load_tecator" title="Link to this definition">#</a></dt>
+<dd><p>Load the Tecator time series regression problem and returns X and y.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>split: None or one of “TRAIN”, “TEST”, optional (default=None)</strong></dt><dd><p>Whether to load the train or test instances of the problem.
+By default it loads both train and test instances (in a single container).</p>
+</dd>
+<dt><strong>return_X_y: bool, optional (default=True)</strong></dt><dd><p>If True, returns (features, target) separately instead of a single
+dataframe with columns for features and the target.</p>
+</dd>
+<dt><strong>return_type: valid Panel mtype str or None, optional (default=None=”nested_univ”)</strong></dt><dd><p>Memory data format specification to return X in, None = “nested_univ” type.
+str can be any supported sktime Panel mtype,</p>
+<blockquote>
+<div><p>for list of mtypes, see datatypes.MTYPE_REGISTER
+for specifications, see examples/AA_datatypes_and_datasets.ipynb</p>
+</div></blockquote>
+<dl class="simple">
+<dt>commonly used specifications:</dt><dd><p>“nested_univ: nested pd.DataFrame, pd.Series in cells
+“numpy3D”/”numpy3d”/”np3D”: 3D np.ndarray (instance, variable, time index)
+“numpy2d”/”np2d”/”numpyflat”: 2D np.ndarray (instance, time index)
+“pd-multiindex”: pd.DataFrame with 2-level (instance, time) MultiIndex</p>
+</dd>
+</dl>
+<p>Exception is raised if the data cannot be stored in the requested type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>X: sktime data container, following mtype specification <code class="docutils literal notranslate"><span class="pre">return_type</span></code></dt><dd><p>The time series data for the problem, with n instances</p>
+</dd>
+<dt>y: 1D numpy array of length n, only returned if return_X_y if True</dt><dd><p>The target values for each time series instance in X
+If return_X_y is False, y is appended to X instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dimensionality:     univariate
+Series length:      100
+Train cases:        172
+Test cases:         43</p>
+<dl class="simple">
+<dt>The purpose of this dataset is to measure the fat content of meat based off its near</dt><dd><p>infrared absorbance spectrum.</p>
+</dd>
+</dl>
+<p>The absorbance spectrum is measured in the wavelength range of 850 nm to 1050 nm.
+The fat content is measured by standard chemical analysis methods.
+The dataset contains 215 samples of meat, each with 100 spectral measurements.
+For more information see:
+<a class="reference external" href="https://www.openml.org/search?type=data&amp;sort=runs&amp;id=505&amp;status=active">https://www.openml.org/search?type=data&amp;sort=runs&amp;id=505&amp;status=active</a>
+References
+———-
+[1] C.Borggaard and H.H.Thodberg, “Optimal Minimal Neural Interpretation of Spectra”
+, Analytical Chemistry 64 (1992), p 545-551.
+[2] H.H.Thodberg, “Ace of Bayes: Application of Neural Networks with Pruning”
+Manuscript 1132, Danish Meat Research Institute (1993), p 1-12.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sktime.datasets</span> <span class="kn">import</span> <span class="n">load_tecator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_tecator</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sktime.datasets.setup.html">sktime.datasets.setup module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.datasets.setup.html#sktime.datasets.setup.configuration"><code class="docutils literal notranslate"><span class="pre">configuration</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.datasets.tsc_dataset_names.html">sktime.datasets.tsc_dataset_names module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sktime.datasets.tsc_dataset_names.html#sktime.datasets.tsc_dataset_names.univariate"><code class="docutils literal notranslate"><span class="pre">univariate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.datasets.tsc_dataset_names.html#sktime.datasets.tsc_dataset_names.multivariate"><code class="docutils literal notranslate"><span class="pre">multivariate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.datasets.tsc_dataset_names.html#sktime.datasets.tsc_dataset_names.univariate_equal_length"><code class="docutils literal notranslate"><span class="pre">univariate_equal_length</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.datasets.tsc_dataset_names.html#sktime.datasets.tsc_dataset_names.univariate_variable_length"><code class="docutils literal notranslate"><span class="pre">univariate_variable_length</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.datasets.tsc_dataset_names.html#sktime.datasets.tsc_dataset_names.univariate_missing_values"><code class="docutils literal notranslate"><span class="pre">univariate_missing_values</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sktime.datasets.tsc_dataset_names.html#sktime.datasets.tsc_dataset_names.multivariate_equal_length"><code class="docutils literal notranslate"><span class="pre">multivariate_equal_length</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sktime.datasets.tsf_dataset_names.html">sktime.datasets.tsf_dataset_names module</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_airline"><code class="docutils literal notranslate"><span class="pre">load_airline</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_arrow_head"><code class="docutils literal notranslate"><span class="pre">load_arrow_head</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_gunpoint"><code class="docutils literal notranslate"><span class="pre">load_gunpoint</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_basic_motions"><code class="docutils literal notranslate"><span class="pre">load_basic_motions</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_osuleaf"><code class="docutils literal notranslate"><span class="pre">load_osuleaf</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_italy_power_demand"><code class="docutils literal notranslate"><span class="pre">load_italy_power_demand</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_japanese_vowels"><code class="docutils literal notranslate"><span class="pre">load_japanese_vowels</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_plaid"><code class="docutils literal notranslate"><span class="pre">load_plaid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_longley"><code class="docutils literal notranslate"><span class="pre">load_longley</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_lynx"><code class="docutils literal notranslate"><span class="pre">load_lynx</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_shampoo_sales"><code class="docutils literal notranslate"><span class="pre">load_shampoo_sales</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_UCR_UEA_dataset"><code class="docutils literal notranslate"><span class="pre">load_UCR_UEA_dataset</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_unit_test"><code class="docutils literal notranslate"><span class="pre">load_unit_test</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_uschange"><code class="docutils literal notranslate"><span class="pre">load_uschange</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_PBS_dataset"><code class="docutils literal notranslate"><span class="pre">load_PBS_dataset</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_gun_point_segmentation"><code class="docutils literal notranslate"><span class="pre">load_gun_point_segmentation</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_electric_devices_segmentation"><code class="docutils literal notranslate"><span class="pre">load_electric_devices_segmentation</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_acsf1"><code class="docutils literal notranslate"><span class="pre">load_acsf1</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_macroeconomic"><code class="docutils literal notranslate"><span class="pre">load_macroeconomic</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.generate_example_long_table"><code class="docutils literal notranslate"><span class="pre">generate_example_long_table</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_from_arff_to_dataframe"><code class="docutils literal notranslate"><span class="pre">load_from_arff_to_dataframe</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_from_long_to_dataframe"><code class="docutils literal notranslate"><span class="pre">load_from_long_to_dataframe</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_from_tsfile"><code class="docutils literal notranslate"><span class="pre">load_from_tsfile</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_from_tsfile_to_dataframe"><code class="docutils literal notranslate"><span class="pre">load_from_tsfile_to_dataframe</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_from_ucr_tsv_to_dataframe"><code class="docutils literal notranslate"><span class="pre">load_from_ucr_tsv_to_dataframe</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.make_multi_index_dataframe"><code class="docutils literal notranslate"><span class="pre">make_multi_index_dataframe</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_tsf_to_dataframe"><code class="docutils literal notranslate"><span class="pre">load_tsf_to_dataframe</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_unit_test_tsf"><code class="docutils literal notranslate"><span class="pre">load_unit_test_tsf</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_solar"><code class="docutils literal notranslate"><span class="pre">load_solar</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_covid_3month"><code class="docutils literal notranslate"><span class="pre">load_covid_3month</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_forecastingdata"><code class="docutils literal notranslate"><span class="pre">load_forecastingdata</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.write_panel_to_tsfile"><code class="docutils literal notranslate"><span class="pre">write_panel_to_tsfile</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.write_dataframe_to_tsfile"><code class="docutils literal notranslate"><span class="pre">write_dataframe_to_tsfile</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.write_ndarray_to_tsfile"><code class="docutils literal notranslate"><span class="pre">write_ndarray_to_tsfile</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.write_results_to_uea_format"><code class="docutils literal notranslate"><span class="pre">write_results_to_uea_format</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.write_tabular_transformation_to_arff"><code class="docutils literal notranslate"><span class="pre">write_tabular_transformation_to_arff</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sktime.datasets.load_tecator"><code class="docutils literal notranslate"><span class="pre">load_tecator</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script>
+        $(document).ready(function() {
+            /* Add a [>>>] button on the top-right corner of code samples to hide
+             * the >>> and ... prompts and the output and thus make the code
+             * copyable. */
+            var div = $('.highlight-python .highlight,' +
+                        '.highlight-python3 .highlight,' +
+                        '.highlight-pycon .highlight,' +
+                '.highlight-default .highlight')
+            var pre = div.find('pre');
+
+            // get the styles from the current theme
+            pre.parent().parent().css('position', 'relative');
+            var hide_text = 'Hide prompts and outputs';
+            var show_text = 'Show prompts and outputs';
+
+            // create and add the button to all the code blocks that contain >>>
+            div.each(function(index) {
+                var jthis = $(this);
+                if (jthis.find('.gp').length > 0) {
+                    var button = $('<span class="example_toggle">&gt;&gt;&gt;</span>');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                    jthis.prepend(button);
+                }
+                // tracebacks (.gt) contain bare text elements that need to be
+                // wrapped in a span to work with .nextUntil() (see later)
+                jthis.find('pre:has(.gt)').contents().filter(function() {
+                    return ((this.nodeType == 3) && (this.data.trim().length > 0));
+                }).wrap('<span>');
+            });
+
+            // define the behavior of the button when it's clicked
+            $('.example_toggle').click(function(e){
+                e.preventDefault();
+                var button = $(this);
+                if (button.data('hidden') === 'false') {
+                    // hide the code output
+                    button.parent().find('.go, .gp, .gt').hide();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+                    button.css('text-decoration', 'line-through');
+                    button.attr('title', show_text);
+                    button.data('hidden', 'true');
+                } else {
+                    // show the code output
+                    button.parent().find('.go, .gp, .gt').show();
+                    button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+                    button.css('text-decoration', 'none');
+                    button.attr('title', hide_text);
+                    button.data('hidden', 'false');
+                }
+            });
+        });
+    </script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2019 - 2024 (BSD-3-Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

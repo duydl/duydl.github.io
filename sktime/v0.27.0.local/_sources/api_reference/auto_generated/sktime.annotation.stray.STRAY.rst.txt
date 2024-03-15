@@ -1,0 +1,12 @@
+﻿STRAY
+===========================================
+
+.. currentmodule:: sktime.annotation.stray
+
+.. autoclass:: STRAY
+
+.. include:: sktime.annotation.stray.STRAY.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

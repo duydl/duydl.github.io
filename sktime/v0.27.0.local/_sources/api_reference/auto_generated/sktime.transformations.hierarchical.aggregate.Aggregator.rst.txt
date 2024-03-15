@@ -1,0 +1,12 @@
+﻿Aggregator
+======================================================================
+
+.. currentmodule:: sktime.transformations.hierarchical.aggregate
+
+.. autoclass:: Aggregator
+
+.. include:: sktime.transformations.hierarchical.aggregate.Aggregator.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

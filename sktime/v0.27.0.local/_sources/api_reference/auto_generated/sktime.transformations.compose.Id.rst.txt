@@ -1,0 +1,12 @@
+﻿Id
+===============================================
+
+.. currentmodule:: sktime.transformations.compose
+
+.. autoclass:: Id
+
+.. include:: sktime.transformations.compose.Id.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

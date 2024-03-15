@@ -1,0 +1,12 @@
+﻿AlignerDTW
+====================================================
+
+.. currentmodule:: sktime.alignment.dtw_python
+
+.. autoclass:: AlignerDTW
+
+.. include:: sktime.alignment.dtw_python.AlignerDTW.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

@@ -1,0 +1,12 @@
+﻿UnobservedComponents
+================================================================
+
+.. currentmodule:: sktime.forecasting.structural
+
+.. autoclass:: UnobservedComponents
+
+.. include:: sktime.forecasting.structural.UnobservedComponents.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

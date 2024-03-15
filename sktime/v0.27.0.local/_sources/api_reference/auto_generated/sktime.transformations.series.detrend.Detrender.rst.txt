@@ -1,0 +1,12 @@
+﻿Detrender
+=============================================================
+
+.. currentmodule:: sktime.transformations.series.detrend
+
+.. autoclass:: Detrender
+
+.. include:: sktime.transformations.series.detrend.Detrender.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

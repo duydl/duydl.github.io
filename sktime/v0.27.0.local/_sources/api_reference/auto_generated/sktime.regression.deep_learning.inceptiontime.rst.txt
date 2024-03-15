@@ -1,0 +1,7 @@
+sktime.regression.deep\_learning.inceptiontime module
+=====================================================
+
+.. automodule:: sktime.regression.deep_learning.inceptiontime
+   :members:
+   :undoc-members:
+   :show-inheritance:

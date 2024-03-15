@@ -1,0 +1,12 @@
+﻿CurveFitForecaster
+=========================================================
+
+.. currentmodule:: sktime.forecasting.trend
+
+.. autoclass:: CurveFitForecaster
+
+.. include:: sktime.forecasting.trend.CurveFitForecaster.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

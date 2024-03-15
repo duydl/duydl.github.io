@@ -1,0 +1,7 @@
+sktime.split.sameloc module
+===========================
+
+.. automodule:: sktime.split.sameloc
+   :members:
+   :undoc-members:
+   :show-inheritance:

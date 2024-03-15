@@ -1,0 +1,7 @@
+sktime.forecasting.neuralforecast module
+========================================
+
+.. automodule:: sktime.forecasting.neuralforecast
+   :members:
+   :undoc-members:
+   :show-inheritance:

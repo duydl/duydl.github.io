@@ -1,0 +1,12 @@
+﻿Arsenal
+========================================================
+
+.. currentmodule:: sktime.classification.kernel_based
+
+.. autoclass:: Arsenal
+
+.. include:: sktime.classification.kernel_based.Arsenal.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>
