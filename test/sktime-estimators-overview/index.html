@@ -40,7 +40,7 @@
 </style>
 
 
-<label for="myInput"></label><input type="text" id="myInput" placeholder="Search the table ..." />
+<label for="searchInput"></label><input type="text" id="searchInput" placeholder="Search the table ..." />
 
 
 <div id="dropdownContainer">
@@ -63,170 +63,170 @@
 <!-- Buttons for pages -->
 </div> 
 
-
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var myInput = document.getElementById("myInput");
-    
-      myInput.addEventListener("keyup", function () {
+
+let filter = "all";
+let tableAll = "";
+let visibleTagsOfTypes = {};
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("keyup", function () {
         var value = this.value.toLowerCase();
         var rows = document.getElementsByTagName("tr");
     
         for (var i = 0; i < rows.length; i++) {
-          var rowText = rows[i].textContent.toLowerCase();
-          rows[i].style.display = rowText.indexOf(value) > -1 ? "" : "none";
-        }
-      });
-    });
-    
-    
-    document.addEventListener("DOMContentLoaded", function () {
-        var myInput = document.getElementById("myInput");
-      
-        myInput.addEventListener("keyup", function () {
-          var value = this.value.toLowerCase();
-          var rows = document.getElementsByTagName("tr");
-      
-          for (var i = 0; i < rows.length; i++) {
             var rowText = rows[i].textContent.toLowerCase();
             rows[i].style.display = rowText.indexOf(value) > -1 ? "" : "none";
-          }
-        });
-      });
-      
-    
-    let filter = "all";
-    let tableAll = "";
-    let visibleTagsOfTypes = {};
-    
-    filterTable();
-    
-    function filterTable() {
-    
-        filter = document.getElementById("filterOptions").value;
-        
-        let header = ["Class Name", "Estimator Type", "Dependencies", "Import Path", "Maintainers"];
-    
-        const cachedData = sessionStorage.getItem("jsonData");
-        
-        if (cachedData) {
-            const data = JSON.parse(cachedData);
-            if (filter != "all") {
-                let header = ["Class Name", "Dependencies", "Import Path", "Maintainers"];
-                const filteredData = data.filter(row => row["Estimator Type"] === filter);
-                
-                if (visibleTagsOfTypes[filter]) {
-                    const tags = visibleTagsOfTypes[filter];
-                    header.push(Object.keys(tags).filter(key => tags[key]));
-    
-                } else {
-                    visibleTagsOfTypes[filter] = {};
-                    const tags = Object.keys(filteredData[0].Tags);
-                    tags.forEach(tag => {
-                        visibleTagsOfTypes[filter][tag] = false;
-                    });
-                }
-                renderTable(filteredData, header); 
-            } else {
-                visibleTagsOfTypes[filter] = [];
-                const table = document.getElementById("tableContainer");
-                if (tableAll) {
-                  table.innerHTML = tableAll;
-                } else {
-                  renderTable(data, header);
-                  tableAll = table.innerHTML;
-                }
-            }
-            populateCheckboxes();
-        } else {
-            fetchAndRenderTable(header, filter);
         }
-    }
-    
-    function renderTable(data, header) {
-        const table = document.getElementById("tableContainer");
-    
-        
-        table.innerHTML = "";
-        console.log(header);
-       // Table header
-        let headerRow = "<tr>";
-        header.forEach((headerItem, index) => {
-            if (Array.isArray(headerItem)) {
-                // Handle the case where headerItem is a list
-                headerItem.forEach(item => {
-                    headerRow += `<th>${item}</th>`;
-                });
-            } else {
-                headerRow += `<th>${headerItem}</th>`;
-            }
-        });
-        headerRow += "</tr>";
-        table.innerHTML += headerRow;
-        console.log(filter)
-    
-        // Table rows
-        data.forEach(rowData => {
-            let rowContent = "<tr>";
-            header.forEach(headerItem => {
-                if (Array.isArray(headerItem)) {
-                    // Handle the case where headerItem is a list
-                    headerItem.forEach(item => {
-                        rowContent += `<td>${rowData.Tags[item]}</td>`;
-                    });
-                } else {
-                    rowContent += `<td>${rowData[headerItem]}</td>`;
-                }
-            });
-            rowContent += "</tr>";
-            table.innerHTML += rowContent;
-        });
-    }
-    
-    function fetchAndRenderTable(header) {
-        fetch("_static/estimator_overview_db.json") 
-          .then(response => response.json())
-          .then(data => {
-            renderTable(data, header)
-            // Store data in sessionStorage
-            sessionStorage.setItem("jsonData", JSON.stringify(data));
-          })
-          .catch(error => console.error("Error:", error));
-    }
-    
-    // Function to populate the checkboxes
-    function populateCheckboxes() {
-      const checkboxContainer = document.getElementById("checkboxContainer");
-      checkboxContainer.innerHTML = "Check to Show Tags:"; 
-    
-      for (const [key, value] of Object.entries(visibleTagsOfTypes[filter])) {
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.id = key;
-        checkbox.name = key;
-        checkbox.checked = value;
-        
-        const label = document.createElement("label");
-        label.htmlFor = key;
-        label.textContent = key;
-    
-        checkboxContainer.appendChild(checkbox);
-        checkboxContainer.appendChild(label);
-      }
-    }
-    
+    });
+
     // Event listener for checkbox change
     document.addEventListener("change", function(event) {
-      const target = event.target;
-      if (target.type === "checkbox") {
-        visibleTagsOfTypes[filter][target.id] = target.checked;
-        console.log(filter)
-        console.log(visibleTagsOfTypes[filter])
-        filterTable();
-      }
+        const target = event.target;
+        if (target.type === "checkbox") {
+            visibleTagsOfTypes[filter][target.id] = target.checked;
+            console.log(filter)
+            console.log(visibleTagsOfTypes[filter])
+            filterTable();
+        };
+    })
+
+    fetchTableAll();
+    filterTable();
+    
+});
+
+function fetchTableAll() {
+    fetch('_static/table_all.html')
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error('Failed to fetch the HTML content.');
+        })
+        .then(html => {
+            tableAll = html;
+        })
+        // .catch(error => {
+        //     console.error('Error:', error);
+        //     document.getElementById('content-area').innerHTML = '<p>Error loading content.</p>';
+        // });
+}
+
+function filterTable() {
+
+    filter = document.getElementById("filterOptions").value;
+    
+    let header = ["Class Name", "Estimator Type", "Dependencies", "Import Path", "Maintainers"];
+
+    const cachedData = sessionStorage.getItem("jsonData");
+    
+    if (cachedData) {
+        const data = JSON.parse(cachedData);
+        if (filter != "all") {
+            let dynamicHeader = ["Class Name", "Dependencies", "Import Path", "Maintainers"];
+            const filteredData = data.filter(row => row["Estimator Type"] === filter);
+            const tags = visibleTagsOfTypes[filter]
+            if (tags) {
+                dynamicHeader.push(Object.keys(tags).filter(key => tags[key]));
+                // dynamicHeader.push(...Object.keys(tags).filter(key => tags[key]));
+            } else {
+                visibleTagsOfTypes[filter] = {};
+                Object.keys(filteredData[0].Tags).forEach(tag => {
+                    visibleTagsOfTypes[filter][tag] = false;
+                });
+            }
+            renderTable(filteredData, dynamicHeader); 
+        } else {
+            visibleTagsOfTypes[filter] = [];
+            const table = document.getElementById("tableContainer");
+            if (tableAll) {
+                table.innerHTML = tableAll;
+            } else {
+                renderTable(data, header);
+                tableAll = table.innerHTML;
+            }
+        }
+        populateCheckboxes();
+    } else {
+        fetchAndRenderTable(header, filter);
+    }
+}
+
+function renderTable(data, header) {
+    const table = document.getElementById("tableContainer");
+
+    table.innerHTML = "";
+    console.log(header);
+    // Table header
+    let headerRow = "<tr>";
+    header.forEach((headerItem, index) => {
+        if (Array.isArray(headerItem)) {
+            // Handle the case where headerItem is a list (of Tags)
+            headerItem.forEach(item => {
+                headerRow += `<th>${item}</th>`;
+            });
+        } else {
+            headerRow += `<th>${headerItem}</th>`;
+        }
     });
+    headerRow += "</tr>";
+    table.innerHTML += headerRow;
+    console.log(filter)
+
+    // Table rows
+    data.forEach(rowData => {
+        let rowContent = "<tr>";
+        header.forEach(headerItem => {
+            if (Array.isArray(headerItem)) {
+                // Handle the case where headerItem is a list (of Tags)
+                headerItem.forEach(item => {
+                    rowContent += `<td>${rowData.Tags[item]}</td>`;
+                });
+            } else {
+                rowContent += `<td>${rowData[headerItem]}</td>`;
+            }
+        });
+        rowContent += "</tr>";
+        table.innerHTML += rowContent;
+    });
+}
+
+function fetchAndRenderTable(header) {
+    fetch("_static/estimator_overview_db.json") 
+        .then(response => response.json())
+        .then(data => {
+        renderTable(data, header)
+        // Store data in sessionStorage
+        sessionStorage.setItem("jsonData", JSON.stringify(data));
+        })
+        .catch(error => console.error("Error:", error));
+}
+
+// Function to populate the checkboxes
+function populateCheckboxes() {
+    const checkboxContainer = document.getElementById("checkboxContainer");
+    checkboxContainer.innerHTML = "Check to Show Tags:"; 
+
+    for (const [key, value] of Object.entries(visibleTagsOfTypes[filter])) {
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = key;
+    checkbox.name = key;
+    checkbox.checked = value;
     
-    
-     </script>
+    const label = document.createElement("label");
+    label.htmlFor = key;
+    label.textContent = key;
+
+    checkboxContainer.appendChild(checkbox);
+    checkboxContainer.appendChild(label);
+    }
+}
+
+
+    </script>
 </body>
 </html>
