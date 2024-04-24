@@ -40,11 +40,10 @@
 </style>
 
 
-<label for="searchInput"></label><input type="text" id="searchInput" placeholder="Search the table ..." />
-
+<input type="text" id="searchInput" placeholder="Search the table ..." />
 
 <div id="dropdownContainer">
-<select id="filterOptions" onchange="filterTable()">
+<select id="filterOptions">
     <option value="all" selected>ALL</option>
     <option value="forecaster">Forecaster</option>
     <option value="transformer">Transformer</option>
@@ -53,10 +52,12 @@
     <option value="clusterer">Clusterer</option>
     <option value="classifier">Classifier</option>
 </select>
+
 <p>
-<span id="checkboxContainer">
-</span></p>
+<span id="checkboxContainer"></span>
+</p>
 </div>
+
 <div class="table-container">
 <!-- Table to render estimators overview -->
 <table id="tableContainer"></table>
@@ -65,12 +66,9 @@
 
 <script>
 
-let filter = "all";
-let tableAll = "";
-let visibleTagsOfTypes = {};
-
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Event listener for search
     const searchInput = document.getElementById("searchInput");
     searchInput.addEventListener("keyup", function () {
         var value = this.value.toLowerCase();
@@ -82,8 +80,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Event listener for filter change
+    const filterOptions = document.getElementById("filterOptions");
+    filterOptions.addEventListener("change", function(event) {
+        filterTable();
+    })
+
     // Event listener for checkbox change
+    // const checkboxContainer = document.getElementById("searchInput");
     document.addEventListener("change", function(event) {
+        const filter = document.getElementById("filterOptions").value;
         const target = event.target;
         if (target.type === "checkbox") {
             visibleTagsOfTypes[filter][target.id] = target.checked;
@@ -92,41 +98,28 @@ document.addEventListener("DOMContentLoaded", function () {
             filterTable();
         };
     })
-
-    fetchTableAll();
-    filterTable();
     
+    initTableFromURL();
+
+    filterTable();
+
 });
 
-function fetchTableAll() {
-    fetch('_static/table_all.html')
-        .then(response => {
-            if (response.ok) {
-                return response.text();
-            }
-            throw new Error('Failed to fetch the HTML content.');
-        })
-        .then(html => {
-            tableAll = html;
-        })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        //     document.getElementById('content-area').innerHTML = '<p>Error loading content.</p>';
-        // });
-}
+let visibleTagsOfTypes = {};
 
+// Main logic 
 function filterTable() {
 
-    filter = document.getElementById("filterOptions").value;
-    
-    let header = ["Class Name", "Estimator Type", "Dependencies", "Import Path", "Maintainers"];
+    const filter = document.getElementById("filterOptions").value;
+
+    const header = ["Class Name", "Estimator Type", "Dependencies", "Import Path", "Maintainers"];
 
     const cachedData = sessionStorage.getItem("jsonData");
-    
+
     if (cachedData) {
-        const data = JSON.parse(cachedData);
         if (filter != "all") {
             let dynamicHeader = ["Class Name", "Dependencies", "Import Path", "Maintainers"];
+            const data = JSON.parse(cachedData);
             const filteredData = data.filter(row => row["Estimator Type"] === filter);
             const tags = visibleTagsOfTypes[filter]
             if (tags) {
@@ -142,19 +135,75 @@ function filterTable() {
         } else {
             visibleTagsOfTypes[filter] = [];
             const table = document.getElementById("tableContainer");
-            if (tableAll) {
-                table.innerHTML = tableAll;
+            const contentTableAll = sessionStorage.getItem("contentTableAll");
+            if (contentTableAll) {
+                table.innerHTML = contentTableAll;
             } else {
-                renderTable(data, header);
-                tableAll = table.innerHTML;
+                fetchTableAll();
             }
         }
-        populateCheckboxes();
-    } else {
-        fetchAndRenderTable(header, filter);
+    }
+    populateCheckboxes();
+    updateURL(filter, visibleTagsOfTypes[filter]);
+
+}
+
+// Initialize the table based on URL hash
+function initTableFromURL() {
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const filter = params.get('filter');
+    const tags = params.get('tags');
+
+    if (filter) {
+        document.getElementById("filterOptions").value = filter;
+    }
+    if (tags) {
+        visibleTagsOfTypes[filter] = JSON.parse(tags);
     }
 }
 
+// Update URL hash
+function updateURL(filter, tags) {
+    const params = new URLSearchParams();
+    params.set('filter', filter);
+    if (tags) {
+        params.set('tags', JSON.stringify(tags));
+    }
+    window.location.hash = params.toString();
+}
+
+// Fetch json database of estimators
+function fetchJsonData() {
+    return fetch("_static/estimator_overview_db.json") 
+        .then(response => response.json())
+        .then(data => {
+        // Store data in sessionStorage
+        sessionStorage.setItem("jsonData", JSON.stringify(data));
+        filterTable()
+        })
+        .catch(error => console.error("Error:", error));
+}
+
+// Fetch pre-rendered html of "all" table
+function fetchTableAll() {
+    return fetch('_static/table_all.html')
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error('Failed to fetch the HTML content.');
+        })
+        .then(html => {
+            sessionStorage.setItem("contentTableAll", html);
+            filterTable();
+        })
+        // .catch(error => {
+        //     console.error('Error:', error);
+        //     document.getElementById('content-area').innerHTML = '<p>Error loading content.</p>';
+        // });
+}
+
+// Render table
 function renderTable(data, header) {
     const table = document.getElementById("tableContainer");
 
@@ -174,7 +223,6 @@ function renderTable(data, header) {
     });
     headerRow += "</tr>";
     table.innerHTML += headerRow;
-    console.log(filter)
 
     // Table rows
     data.forEach(rowData => {
@@ -194,39 +242,30 @@ function renderTable(data, header) {
     });
 }
 
-function fetchAndRenderTable(header) {
-    fetch("_static/estimator_overview_db.json") 
-        .then(response => response.json())
-        .then(data => {
-        renderTable(data, header)
-        // Store data in sessionStorage
-        sessionStorage.setItem("jsonData", JSON.stringify(data));
-        })
-        .catch(error => console.error("Error:", error));
-}
-
-// Function to populate the checkboxes
+// Populate the checkboxes
 function populateCheckboxes() {
+
+    const filter = document.getElementById("filterOptions").value;
+
     const checkboxContainer = document.getElementById("checkboxContainer");
     checkboxContainer.innerHTML = "Check to Show Tags:"; 
 
     for (const [key, value] of Object.entries(visibleTagsOfTypes[filter])) {
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = key;
-    checkbox.name = key;
-    checkbox.checked = value;
-    
-    const label = document.createElement("label");
-    label.htmlFor = key;
-    label.textContent = key;
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = key;
+        checkbox.name = key;
+        checkbox.checked = value;
+        
+        const label = document.createElement("label");
+        label.htmlFor = key;
+        label.textContent = key;
 
-    checkboxContainer.appendChild(checkbox);
-    checkboxContainer.appendChild(label);
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(label);
     }
 }
 
-
-    </script>
+</script>
 </body>
 </html>
