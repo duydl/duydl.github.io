@@ -3,25 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
+    .tableContainer {
+        width: 100%;
+        /* border: 4px solid #888;  */
+        padding: 10px;
+        overflow: auto;
+    }
+    
+    #tableContainer {
+        border-collapse: collapse;
+        table-layout: auto;
+    }
+    
+    #tableContainer th, #typeTable td {
+        border: 2px solid #888; 
+        padding: 8px;
+        text-align: left;
+        white-space: nowrap; 
+    }
+    </style>
 
-table {
-      border-collapse: collapse;
-      width: 100%;
-}
-
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-}
-</style>
-</head>
-
-
-<body>
-<!-- Dropdown menu for options -->
-<select id="options" onchange="filterTable()">
+<div id="dropdownContainer">
+<select id="filterOptions" onchange="filterTable()">
   <option value="all">ALL</option>
   <option value="forecaster">Forecaster</option>
   <option value="transformer">Transformer</option>
@@ -30,192 +35,138 @@ th, td {
   <option value="clusterer">Clusterer</option>
   <option value="classifier">Classifier</option>
 </select>
-<table id="jsonTable"></table>
-<div id="pagination"></div>
+
+<span id="checkboxContainer">
+</span>
+</div>
+
+<table id="tableContainer">
+
+</table> 
 
 <script>
+
 let filter = "all";
+let visibleTagsOfTypes = {};
+
 filterTable();
-function fetchAndRenderTable(header) {
-    fetch('estimator_overview_db.json') 
-      .then(response => response.json())
-      .then(data => {
-        renderTable (data, header)
-        // Store data in sessionStorage
-        sessionStorage.setItem('jsonData', JSON.stringify(data));
-      })
-      .catch(error => console.error('Error:', error));
-}
-
-function renderTable(data, header, page = 1, pageSize = 100) {
-    const table = document.getElementById('jsonTable');
-    const pagination = document.getElementById('pagination');
-    
-    // Clear table and pagination content
-    table.innerHTML = '';
-    pagination.innerHTML = '';
-
-    // Calculate pagination indexes
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = Math.min(startIndex + pageSize, data.length);
-
-    // Table header
-    let headerRow = '<tr>';
-    header.forEach(headerItem => {
-        headerRow += `<th>${headerItem}</th>`;
-    });
-
-    if (filter != "all") {
-        for (const key in data[startIndex].Tags) {
-              headerRow += `<th>${key}</th>`;
-        }
-    }
-
-    headerRow += '</tr>';
-    table.innerHTML += headerRow;
-    
-    // Table rows
-
-    if (filter != "all") {
-        for (let i = startIndex; i < endIndex; i++) {
-            let rowContent = '<tr>';
-
-            header.forEach(headerItem => {
-                rowContent += `<td>${data[i][headerItem]}</td>`;
-            });
-
-            Object.keys(data[startIndex].Tags).forEach(key => {
-                rowContent += `<td>${data[i].Tags[key]}</td>`;
-            });
-            
-            rowContent += '</tr>';
-            table.innerHTML += rowContent;
-        }
-    } else {
-        for (let i = startIndex; i < endIndex; i++) {
-              let rowContent = '<tr>';
-
-              header.forEach(headerItem => {
-                  rowContent += `<td>${data[i][headerItem]}</td>`;
-              });
-              rowContent += '</tr>';
-              table.innerHTML += rowContent;
-        }
-    }
-
-    
-
-    // Pagination buttons
-    const totalPages = Math.ceil(data.length / pageSize);
-    const currentPage = page;
-
-    // Calculate start and end page indexes
-    let startPage = Math.max(1, currentPage - 1);
-    let endPage = Math.min(totalPages, startPage + 3);
-
-    // If there are less than 4 pages, adjust the end page index
-    if (endPage - startPage < 3) {
-        endPage = Math.min(totalPages, startPage + 3);
-        startPage = Math.max(1, endPage - 3);
-    }
-
-    // Add first page button
-    const firstButton = document.createElement('button');
-    firstButton.innerText = '<<';
-    firstButton.addEventListener('click', () => renderTable(data, header, 1, pageSize));
-    pagination.appendChild(firstButton);
-
-    // Add previous button
-    if (currentPage > 1) {
-        const prevButton = document.createElement('button');
-        prevButton.innerText = '<';
-        prevButton.addEventListener('click', () => renderTable(data, header, currentPage - 1, pageSize));
-        pagination.appendChild(prevButton);
-    }
-
-    // Add numbered buttons
-    for (let i = startPage; i <= endPage; i++) {
-        const button = document.createElement('button');
-        button.innerText = i;
-        if (i === currentPage) {
-            button.style.fontWeight = 'bold'; // Bolden the current page button
-        }
-        button.addEventListener('click', () => renderTable(data, header, i, pageSize));
-        pagination.appendChild(button);
-    }
-
-    // Add next button
-    if (currentPage < totalPages) {
-        const nextButton = document.createElement('button');
-        nextButton.innerText = '>';
-        nextButton.addEventListener('click', () => renderTable(data, header, currentPage + 1, pageSize));
-        pagination.appendChild(nextButton);
-    }
-
-    // Add last page button
-    const lastButton = document.createElement('button');
-    lastButton.innerText = '>>';
-    lastButton.addEventListener('click', () => renderTable(data, header, totalPages, pageSize));
-    pagination.appendChild(lastButton);
-}
 
 function filterTable() {
-    const selectedOption = document.getElementById('options').value;
-    let header, filterKey;
 
-    switch(selectedOption) {
-        case 'forecaster':
-            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
-            filterKey = "Estimator Type";
-            filter = 'forecaster';
-            break;
-        case 'transformer':
-            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
-            filterKey = "Estimator Type";
-            filter = 'transformer';
-            break;
-        case 'regressor':
-            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
-            filterKey = "Estimator Type";
-            filter = 'regressor';
-            break;
-        case 'aligner':
-            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
-            filterKey = "Estimator Type";
-            filter = 'aligner';
-            break;
-        case 'clusterer':
-            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
-            filterKey = "Estimator Type";
-            filter = 'clusterer';
-            break;
-        case 'classifier':
-            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
-            filterKey = "Estimator Type";
-            filter = 'classifier';
-            break;
-        default:
-            header = ["Class Name", "Estimator Type", "Maintainers", "Dependencies"];
-            filterKey = null;
-            filter = 'all';
-    }
+    filter = document.getElementById("filterOptions").value;
+    
+    let header = ["Class Name", "Estimator Type", "Dependencies", "Maintainers"];
 
-    const cachedData = sessionStorage.getItem('jsonData');
+    const cachedData = sessionStorage.getItem("jsonData");
+    
     if (cachedData) {
         const data = JSON.parse(cachedData);
-        if (filterKey) {
-            const filteredData = data.filter(row => row[filterKey] === selectedOption);
+        if (filter != "all") {
+            let header = ["Class Name", "Dependencies", "Maintainers"];
+            const filteredData = data.filter(row => row["Estimator Type"] === filter);
+            
+            if (visibleTagsOfTypes[filter]) {
+                const tags = visibleTagsOfTypes[filter];
+                header.push(Object.keys(tags).filter(key => tags[key]));
+
+            } else {
+                visibleTagsOfTypes[filter] = {};
+                const tags = Object.keys(filteredData[0].Tags);
+                tags.forEach(tag => {
+                    visibleTagsOfTypes[filter][tag] = false;
+                });
+            }
+            populateCheckboxes();
             renderTable(filteredData, header); 
         } else {
             renderTable(data, header);
         }
     } else {
-        fetchAndRenderTable(header, selectedOption);
+        fetchAndRenderTable(header, filter);
     }
 }
-</script>
 
+function renderTable(data, header) {
+    const table = document.getElementById("tableContainer");
 
+    table.innerHTML = "";
+    console.log(header);
+   // Table header
+    let headerRow = "<tr>";
+    header.forEach((headerItem, index) => {
+        if (Array.isArray(headerItem)) {
+            // Handle the case where headerItem is a list
+            headerItem.forEach(item => {
+                headerRow += `<th>${item}</th>`;
+            });
+        } else {
+            headerRow += `<th>${headerItem}</th>`;
+        }
+    });
+    headerRow += "</tr>";
+    table.innerHTML += headerRow;
+    console.log(filter)
+
+    // Table rows
+    data.forEach(rowData => {
+        let rowContent = "<tr>";
+        header.forEach(headerItem => {
+            if (Array.isArray(headerItem)) {
+                // Handle the case where headerItem is a list
+                headerItem.forEach(item => {
+                    rowContent += `<td>${rowData.Tags[item]}</td>`;
+                });
+            } else {
+                rowContent += `<td>${rowData[headerItem]}</td>`;
+            }
+        });
+        rowContent += "</tr>";
+        table.innerHTML += rowContent;
+    });
+}
+
+function fetchAndRenderTable(header) {
+    fetch("_static/estimator_overview_db.json") 
+      .then(response => response.json())
+      .then(data => {
+        renderTable(data, header)
+        // Store data in sessionStorage
+        sessionStorage.setItem("jsonData", JSON.stringify(data));
+      })
+      .catch(error => console.error("Error:", error));
+}
+
+// Function to populate the checkboxes
+function populateCheckboxes() {
+  const checkboxContainer = document.getElementById("checkboxContainer");
+  checkboxContainer.innerHTML = "Hidden Tags - Uncheck to Show:"; 
+
+  for (const [key, value] of Object.entries(visibleTagsOfTypes[filter])) {
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = key;
+    checkbox.name = key;
+    checkbox.checked = value;
+    
+    const label = document.createElement("label");
+    label.htmlFor = key;
+    label.textContent = key;
+
+    checkboxContainer.appendChild(checkbox);
+    checkboxContainer.appendChild(label);
+  }
+}
+
+// Event listener for checkbox change
+document.addEventListener("change", function(event) {
+  const target = event.target;
+  if (target.type === "checkbox") {
+    visibleTagsOfTypes[filter][target.id] = target.checked;
+    console.log(filter)
+    console.log(visibleTagsOfTypes[filter])
+    filterTable();
+  }
+});
 
 </script>
 </body>
