@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var rowText = rows[i].textContent.toLowerCase();
             rows[i].style.display = rowText.indexOf(value) > -1 ? "" : "none";
         }
+        // TODO: move this logic into filterTable
     });
 
     // Event listener for filter change
@@ -98,7 +99,21 @@ document.addEventListener("DOMContentLoaded", function () {
             filterTable();
         };
     })
-    
+
+    // Initialize the table based on URL hash
+    function initTableFromURL() {
+        const params = new URLSearchParams(window.location.hash.slice(1));
+        const filter = params.get('filter');
+        const tags = params.get('tags');
+
+        if (filter) {
+            document.getElementById("filterOptions").value = filter;
+        }
+        if (tags) {
+            visibleTagsOfTypes[filter] = JSON.parse(tags);
+        }
+    }
+
     initTableFromURL();
 
     filterTable();
@@ -107,17 +122,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let visibleTagsOfTypes = {};
 
-// Main logic 
+//// Main logic 
 function filterTable() {
 
     const filter = document.getElementById("filterOptions").value;
-
     const header = ["Class Name", "Estimator Type", "Dependencies", "Import Path", "Maintainers"];
 
-    const cachedData = sessionStorage.getItem("jsonData");
-
-    if (cachedData) {
-        if (filter != "all") {
+    // Process and render one type of estimators
+    if (filter != "all") {
+        const cachedData = sessionStorage.getItem("jsonData");
+        if (cachedData) {
             let dynamicHeader = ["Class Name", "Dependencies", "Import Path", "Maintainers"];
             const data = JSON.parse(cachedData);
             const filteredData = data.filter(row => row["Estimator Type"] === filter);
@@ -133,45 +147,35 @@ function filterTable() {
             }
             renderTable(filteredData, dynamicHeader); 
         } else {
-            visibleTagsOfTypes[filter] = [];
-            const table = document.getElementById("tableContainer");
-            const contentTableAll = sessionStorage.getItem("contentTableAll");
-            if (contentTableAll) {
-                table.innerHTML = contentTableAll;
-            } else {
-                fetchTableAll();
-            }
+        fetchJsonData();
+        }
+    // Render all estimators
+    } else {
+        visibleTagsOfTypes[filter] = {}; // TODO: add tags to ALL table (need or not?)
+        const table = document.getElementById("tableContainer");
+        const contentTableAll = sessionStorage.getItem("contentTableAll");
+        if (contentTableAll) {
+            table.innerHTML = contentTableAll;
+        } else {
+            fetchTableAll();
         }
     }
+    
     populateCheckboxes();
+
+    // Update URL hash
     updateURL(filter, visibleTagsOfTypes[filter]);
-
-}
-
-// Initialize the table based on URL hash
-function initTableFromURL() {
-    const params = new URLSearchParams(window.location.hash.slice(1));
-    const filter = params.get('filter');
-    const tags = params.get('tags');
-
-    if (filter) {
-        document.getElementById("filterOptions").value = filter;
-    }
-    if (tags) {
-        visibleTagsOfTypes[filter] = JSON.parse(tags);
+    function updateURL(filter, tags) {
+        const params = new URLSearchParams();
+        params.set('filter', filter);
+        if (tags) {
+            params.set('tags', JSON.stringify(tags));
+        }
+        window.location.hash = params.toString();
     }
 }
 
-// Update URL hash
-function updateURL(filter, tags) {
-    const params = new URLSearchParams();
-    params.set('filter', filter);
-    if (tags) {
-        params.set('tags', JSON.stringify(tags));
-    }
-    window.location.hash = params.toString();
-}
-
+//// Fetching
 // Fetch json database of estimators
 function fetchJsonData() {
     return fetch("_static/estimator_overview_db.json") 
@@ -203,6 +207,7 @@ function fetchTableAll() {
         // });
 }
 
+//// Rendering
 // Render table
 function renderTable(data, header) {
     const table = document.getElementById("tableContainer");
