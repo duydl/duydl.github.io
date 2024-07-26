@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Archives - About DUY DOLE</title>
+    <title>Archives - About Me</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -13,11 +13,11 @@
         <meta name="author" content="duydl" />
 
     <!-- Open Graph tags -->
-        <meta property="og:site_name" content="About DUY DOLE" />
+        <meta property="og:site_name" content="About Me" />
         <meta property="og:type" content="website"/>
-        <meta property="og:title" content="About DUY DOLE"/>
+        <meta property="og:title" content="About Me"/>
         <meta property="og:url" content=""/>
-        <meta property="og:description" content="About DUY DOLE"/>
+        <meta property="og:description" content="About Me"/>
 
 
 
@@ -44,17 +44,17 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="/" class="navbar-brand">
-about duy dole            </a>
+<img class="img-responsive pull-left gap-right" src="/static/images/logo.png" width="30px"/> About Me            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="archives.html">Archives</a></li>
-                    <li><a href="tags.html">Tags</a></li>
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                         <li >
                             <a href="/category/blogs.html">Blogs</a>
                         </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -69,15 +69,15 @@ about duy dole            </a>
     <div class="row">
         <div class="col-sm-9">
     <section id="content">
-      <!-- <h1>Archives for About DUY DOLE</h1> -->
+      <!-- <h1>Archives for About Me</h1> -->
       <h2>Archives</h2>
         <div id="archives">
                 <p>
-                    <span class="categories-timestamp"><time datetime="2024-07-23T00:00:00+09:00">Tue 23 July 2024</time></span>
+                    <span class="categories-timestamp"><time datetime="2024-07-23T00:00:00-04:00">Tue 23 July 2024</time></span>
                     <a href="/blogs/midterm-report-gsoc24.html">Midterm Report - GSoC24</a>
                 </p>
                 <p>
-                    <span class="categories-timestamp"><time datetime="2020-05-03T10:20:00+09:00">Sun 03 May 2020</time></span>
+                    <span class="categories-timestamp"><time datetime="2020-05-03T10:20:00-04:00">Sun 03 May 2020</time></span>
                     <a href="/blogs/wave-and-fourier-transform.html">Wave and Fourier Transform</a>
                 </p>
         </div>
@@ -161,4 +161,26 @@ about duy dole            </a>
 
 
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbarHeight = document.querySelector(".navbar").offsetHeight; // * 2;
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                // console.log(navbarHeight);
+                window.scrollTo({
+                    top: targetPosition - navbarHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+</script>
+
 </html>

@@ -239,3 +239,21 @@ figure.floatcenter, .align-center {
 .gap-left {
   margin-left: 10px;
 }
+
+#sidebar {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 10vh;
+    height: 90vh; /* Full height */
+    overflow-y: auto; /* Scrollable content */
+}
+
+figure {
+    margin: 20px 0;
+    text-align: center;
+  }
+  figcaption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+  }

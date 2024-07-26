@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Midterm Report - GSoC24 - About DUY DOLE</title>
+    <title>Midterm Report - GSoC24 - About Me</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -13,15 +13,16 @@
 
         <meta name="author" content="duydl" />
         <meta name="keywords" content="GSoC,Machine Learning,Quantum Computing" />
-        <meta name="description" content="Quantum Contrastive Representation Learning" />
+        <meta name="description" content="My progress and learnings during the GSoC24 project Quantum Contrastive Representation Learning for High Energy Physics in ML4Sci organization." />
 
-        <meta property="og:site_name" content="About DUY DOLE" />
+
+        <meta property="og:site_name" content="About Me" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Midterm Report - GSoC24"/>
         <meta property="og:url" content="/blogs/midterm-report-gsoc24.html"/>
-        <meta property="og:description" content="Quantum Contrastive Representation Learning"/>
+        <meta property="og:description" content="My progress and learnings during the GSoC24 project Quantum Contrastive Representation Learning for High Energy Physics in ML4Sci organization."/>
         <meta property="article:published_time" content="2024-07-23" />
-            <meta property="article:section" content="Blogs" />
+            <meta property="article:section" content="blogs" />
             <meta property="article:tag" content="GSoC" />
             <meta property="article:tag" content="Machine Learning" />
             <meta property="article:tag" content="Quantum Computing" />
@@ -52,17 +53,17 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="/" class="navbar-brand">
-about duy dole            </a>
+<img class="img-responsive pull-left gap-right" src="/static/images/logo.png" width="30px"/> About Me            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="archives.html">Archives</a></li>
-                    <li><a href="tags.html">Tags</a></li>
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                         <li class="active">
                             <a href="/category/blogs.html">Blogs</a>
                         </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -75,7 +76,7 @@ about duy dole            </a>
 <!-- Content Container -->
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-sm-8 col-sm-push-4">
     <section id="content">
         <article>
             <header class="page-header">
@@ -91,9 +92,10 @@ about duy dole            </a>
                 <div class="panel">
                     <div class="panel-body">
 <footer class="post-info">
+    <span class="label label-success">15 min. read</span>
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2024-07-23T00:00:00+09:00"> Tue 23 July 2024</time>
+        <i class="fa fa-calendar"></i><time datetime="2024-07-23T00:00:00-04:00"> Tue 23 July 2024</time>
     </span>
 
 
@@ -109,29 +111,258 @@ about duy dole            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <h2>Quantum Contrastive Representation Learning</h2>
-<h3>Abstract</h3>
-<h3>Introduction</h3>
-<h3>Objectives</h3>
-<h4>Supervised Learning</h4>
-<h4>Self-Supervised Learning</h4>
-<h3>Contrastive Losses</h3>
-<h4>Alignment and Uniformity</h4>
-<h4>Quantum Fidelity Loss</h4>
-<h3>Datasets</h3>
-<h4>MNIST</h4>
-<h4>Photon-Electron Images</h4>
-<p>2 channels</p>
-<h4>Quark-Gluon Images</h4>
-<p>3 channels</p>
-<h4>Quark-Gluon Particle Clouds</h4>
-<p>Node Features etc</p>
-<h3>Methods and Results</h3>
-<h4>CNN Encoder</h4>
-<h4>QCNN Encoder</h4>
-<p>Equivariant Invariant</p>
-<h4>GCN Encoder</h4>
-<h3>Conclusion</h3>
+                <p><img alt="Image 2" src="./media/GSoC24/image-2.png" style="height: 150px;"/>
+<img alt="Image 1" src="./media/GSoC24/image-1.png" style="height: 120px;"/></p>
+<p>In this post, I would like to share the progress of my GSoC24 project <a href="https://summerofcode.withgoogle.com/programs/2024/projects/4hPKaqPv">Quantum Contrastive Representation Learning for High Energy Physics</a> in ML4Sci organization. Google Summer of Code (GSoC) aims to introduce open source development by providing opportunities for new contributors to work with an open source organization on a project. My GSoC experience with ML4Sci has been incredibly challenging and rewarding: Much has been learned, and a lot more to be discovered.</p>
+<p>The code and relevant resources could be found at <a href="https://github.com/duydl/gsoc24-qml-workspace">Github</a>. </p>
+<h3 id="1-introduction">1. Introduction</h3>
+<p>This is a Machine Learning for Science project, as indicated by the name of my organization. Our goal is to train models using data from experiments and simulations to address scientific problems. The project title "Quantum Contrastive Representation Learning for High Energy Physics" may sound abstract, but it encompasses well the project's scope and challenge, after taking each component individually into consideration.  </p>
+<blockquote>
+<p>Quantum</p>
+</blockquote>
+<p>Quantum as in "quantum physics", "quantum computing", "quantum machine learning", and finally "quantum variational algorithm", by the level of specificity, indicates this project will strive to incorporate this novel method in the machine learning model to explore advantage of quantum computing. </p>
+<blockquote>
+<p>Contrastive Representation Learning</p>
+</blockquote>
+<p>"Representation learning" involves creating features from data that are useful for various tasks like classification or clustering. "Contrastive Representation Learning" is one approach that learns these features through contrasting similar and dissimilar data points. Instead of predicting labels, it focuses on predicting a similarity metric, using contrastive loss functions to pull similar data points together and push dissimilar ones apart.</p>
+<blockquote>
+<p>High Energy Physics (HEP)</p>
+</blockquote>
+<p>This refers to the target data domain of the project, which is particularly important consideration for representation learning. The HEP datasets used include Photon-Electron images, Quark-Gluon images, and Quark-Gluon Jet Clouds. Additionally, standard classical datasets like MNIST are employed for benchmarking and initially evaluating the models' performance.</p>
+<p>The potential scope to investigate is still, indeed, very large. We are not limited to any particular network architecture, be it MLP, CNN, or GNN, along with more advanced considerations like equivariance. Quantum circuits have also evolved into many analogs of the classical networks, with options to be incorporated in either hybrid or pure forms. In addition, contrastive learning includes both supervised and self-supervised approaches, with very different objectives and data utilities. Finally, steps such as data augmentation require not only understanding of the datasets but also trials and errors, and models working well on one domain are not guaranteed to perform on others.</p>
+<h3 id="2-quantum-variational-algorithm">2. Quantum Variational Algorithm</h3>
+<p>The Quantum Variational Algorithm (QVA) is a hybrid quantum-classical approach designed to solve optimization problems. The core idea is to use a parameterized quantum circuit whose  trainable parameters are adjusted by a classical optimizer. The quantum circuit prepares a quantum state, and measurements of this state are used to evaluate a cost function, which the classical optimizer then minimizes by adjusting the quantum circuit parameters.</p>
+<p>Quantum state encoding in QVAs can be done using amplitude or angle embedding. Angle embedding involves encoding data into the rotation angles of quantum gates. A classical data point <span class="math">\(x\)</span> can be encoded into a qubit state <span class="math">\(|\psi\rangle = \cos(x/2)|0\rangle + \sin(x/2)|1\rangle\)</span>. In amplitude embedding, classical data is encoded into the amplitudes of a quantum state. A classical vector <span class="math">\(\mathbf{x} = (x_1, x_2, \ldots, x_n)\)</span> can be encoded into a quantum state <span class="math">\(|\psi\rangle = \sum_{i=1}^{n} x_i |i\rangle\)</span>. Thus, a quantum state with n qubits can represent <span class="math">\(2^n\)</span> states simultaneously.</p>
+<figure>
+<img alt="Quantum Variational Algorithm" src="./media/GSoC24/image.png" style="height: 200px;"/>
+<figcaption>Quantum Variational Algorithm</figcaption>
+</figure>
+<p>Quantum gates i.e the Pauli-X (NOT), Hadamard (H), Controlled-NOT (CNOT) are the building blocks of quantum circuits, creating superpositions and entanglements to enable complex computations. The gate functions (angles) are parameterized and our goal is to find the optimized values to encode the representation. </p>
+<h3 id="3-contrastive-learning">3. Contrastive Learning</h3>
+<h4 id="objectives">Objectives</h4>
+<p>Contrastive learning has proven to be an effective framework for representation learning. It encompasses both supervised and self-supervised learning, characterized by the use of class labels during training. Different from other representation learning methods like autoencoders, which aim to capture the overall structure of the data for tasks such as dimensionality reduction, contrastive learning specifically aims to distinguish between instances to learn representations that are more discriminative and robust for various downstream tasks. <a class="citation" href="#ref1" id="cite">[1]</a></p>
+<p><strong>Self-Supervised Contrastive Learning</strong> aims to learn meaningful representations from unlabeled data. Positive pairs are generated by applying different augmentations to the same instance i.e different views of the same instance should be close in the representation space. Negative pairs are formed from different instances, even if they may belong to the same class, since class labels are not available during initial (pre)training. </p>
+<p>Afterwards, the learned representations are evaluated and used for downstream tasks such as linear probing or fine-tuning on a small amount of labeled data. Frameworks such as SimCLR, MoCo, and BYOL have shown the effectiveness of this approach, often matching or even surpassing supervised learning performance on various tasks.</p>
+<p><strong>Supervised Contrastive Learning</strong>, on the other hand, includes labeled data in the training process. Positive pairs are created from different instances of the same class and negative pairs from instances of different classes. This supervised approach helps in learning representations that not only distinguish between classes but also capture intra-class variations. <a class="citation" href="#ref2" id="cite">[2]</a></p>
+<p>Unlike traditional supervised learning that optimizes for class likelihoods, supervised contrastive learning optimizes for representation quality. This can lead to better generalization, especially in distributions where intra-class variability is high, and outperform likelihood predictors by providing more robust features that are useful across various tasks. However, the effectiveness can depend on specific dataset and task. </p>
+<h4 id="contrastive-losses">Contrastive Losses</h4>
+<p>Contrastive losses are the core mechanism to bring similar pairs closer and push dissimilar pairs apart in the representation space. There are a number of loss functions, however, we have studied only a few representative ones. <a class="citation" href="#ref4" id="cite">[4]</a> <a class="citation" href="#ref5" id="cite">[5]</a></p>
+<p><strong>Pair Contrastive Losses</strong></p>
+<p>Pair contrastive losses aim minimize the distance between positive pairs while ensuring that negative pairs are separated by a margin <span class="math">\(m\)</span>. The loss function <span class="math">\(\mathcal{L}\)</span>  is defined as:</p>
+<div class="math">$$\mathcal{L} = \sum_{i=1}^{N} (1 - y_{ij}) \cdot \max(0, m - d(x_i, x_j) ) + y_{ij} \cdot d(x_i, x_j)^2$$</div>
+<p>where:</p>
+<ul>
+<li><span class="math">\(y_{ij}\)</span> is a binary label indicating whether the pair <span class="math">\((x_i, x_j)\)</span> is positive (1) or negative (0).</li>
+<li><span class="math">\(d(x_i, x_j)\)</span> is the Euclidean distance between the embeddings.</li>
+<li><span class="math">\(m\)</span> is the margin parameter i.e the minimum acceptable distance for negative pairs.</li>
+</ul>
+<p>The distance could be replaced with other metrics like the cosine similarity. Each choices of distance metrics have their pros and cons considerations.</p>
+<p><strong>Temperature-Scaled Losses</strong></p>
+<p>Temperature-scaled losses, such as the NT-Xent (Normalized Temperature-scaled Cross Entropy Loss) and InfoNCE (Information Noise Contrastive Estimation), introduce a temperature parameter <span class="math">\(\tau\)</span> to control the sharpness of the similarity distribution. For instance, the InfoNCE loss is:</p>
+<div class="math">$$\mathcal{L}_{\text{InfoNCE}} = -\sum_{i=1}^{N} \log \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{N} \exp(\text{sim}(z_i, z_k)/\tau)}$$</div>
+<p>where:</p>
+<ul>
+<li><span class="math">\(\text{sim}(z_i, z_j) = \sum_{k} \frac{z_{i,k} z_{j,k}^*}{\|\mathbf{z_i}\| \|\mathbf{z_j}\|}\)</span> is the cosine similarity.</li>
+<li><span class="math">\(z_i\)</span> and <span class="math">\(z_j\)</span> form a positive pair (e.g., two augmentations of the same instance).</li>
+<li><span class="math">\(z_k\)</span> are negative samples in the batch.</li>
+<li><span class="math">\(\tau\)</span> is the temperature parameter.</li>
+</ul>
+<!-- Temperature-scaled losses are particularly effective in self-supervised learning frameworks such as SimCLR and MoCo. They help in managing the similarity distribution's sharpness, which influences the quality of the learned representations. -->
+<p><strong>Alignment and Uniformity</strong></p>
+<p>The two metrics are shown to be very effective at evaluating the quality of embeddings. The alignment loss measures how close positive pairs are in the representation space, given by:</p>
+<div class="math">$$\mathcal{L}_{\text{alignment}} = \mathbb{E}_{(z, z^+)} \| f(z) - f(z^+) \|_2^2$$</div>
+<p>where:</p>
+<ul>
+<li><span class="math">\(f(z)\)</span> and <span class="math">\(f(z^+)\)</span> are the embeddings of a positive pair <span class="math">\((z, z^+)\)</span>.</li>
+</ul>
+<p>Thus, it makes the positive pairs tightly clustered, improving the representation quality. The uniformity loss, on the other hand, measures the dispersion of embeddings on a hypersphere, given by:</p>
+<div class="math">$$\mathcal{L}_{\text{uniformity}} = \log \mathbb{E}_{z_i, z_j } e^{-2 \| z_i - z_j \|^2}$$</div>
+<p>where:</p>
+<ul>
+<li><span class="math">\(z_i\)</span> and <span class="math">\(z_j\)</span> are representations from any two samples.</li>
+</ul>
+<p>This metric encourage embeddings to spread out the representations as much as possible and utilize the latent space more effectively. These two losses could be used together for same or better effect than other contrastive losses:</p>
+<div class="math">$$\mathcal{L} = a \mathcal{L}_{\text{uniformity}} + (1-a) \mathcal{L}_{\text{alignment}}$$</div>
+<p>, or even alongside other losses for improved performance.</p>
+<figure>
+<img alt="Alignment and Uniformity" src="media/GSoC24/img_2024_07_26_07_53_pic_1721955213137.png" style="height: 250px;"/>
+<figcaption>Alignment and Uniformity</figcaption>
+</figure>
+<p><strong>Quantum Fidelity Loss</strong></p>
+<p>In quantum computing, there is a relevant concept of "Fidelity Loss" that measures the similarity between two quantum states. This provided some promising directions: for example, how uniformity and alignment in the quantum representation space could be optimized with fidelity metrics. However, the results of further considerations and experimentations have been mixed. In fact, for two <em>pure quantum states</em>, the fidelity is simply the squared magnitude of their inner product:</p>
+<div class="math">$$F(|\psi_1\rangle, |\psi_2\rangle) = |\langle \psi_1 | \psi_2 \rangle|^2 = (\text{sim}(|\psi_1\rangle, |\psi_2\rangle))^2 $$</div>
+<p>This value can be measured directly using the SWAP Test procedure, which employs an auxiliary qubit and a controlled-SWAP operation. Result of measurement on the the auxiliary qubit i.e <span class="math">\(P(|0\rangle)\)</span> can be used to infer the fidelity:</p>
+<div class="math">$$P(|0\rangle) = \frac{1 + F(|\psi_1\rangle, |\psi_2\rangle)}{2}$$</div>
+<p>The fidelity loss for a pair of states can be defined as:
+</p>
+<div class="math">$$ L_{\text{fidelity}} = 1 - F(|\psi_i\rangle, |\psi_j\rangle) $$</div>
+<p>By substituting into the pair contrastive loss function, we get:</p>
+<div class="math">$$
+L_{\text{contrastive}} = \sum_{i=1}^{N} \left[ (1 - y_{ij}) \max(0, m + |\langle \psi_i | \psi_n \rangle|^2 - 1)  + y_{ij}  (1 - |\langle \psi_i | \psi_p \rangle|^2) \right]
+$$</div>
+<p>This is a usable loss functions for contrastive learning. We could also formulate a function similar to the InfoNCE.</p>
+<p>However, there are actually no advantage to this approach but some disadvantages. The usage of fidelity as a metric leads to lost orientation information due to the squaring operation compared to the cosine similarity: Two vectors pointing in opposite directions will have the same fidelity, even though they are dissimilar in direction. Thus, fidelity may not capture the full geometric relationships between quantum states as effectively as cosine similarity. We would like to consider further the dynamic impact of this approach on learning.  </p>
+<h4 id="contrastive-networks">Contrastive Networks</h4>
+<figure>
+<img alt="Contrastive Network" src="./media/GSoC24/image-3.png" style="height: 300px;"/>
+<figcaption>Contrastive Network</figcaption>
+</figure>
+<p>(Siamese) Contrastive Networks employ a <strong>shared-weight encoder</strong> that maps input to features in a latent space. In self-supervised contrastive learning, <strong>data augmentation</strong> module is critical to generates different views of the same instance, forming positive pairs, while other instances in the batch act as negative pairs. The approach can be similar in supervised contrastive learning but with additional flexibility. While <strong>data augmentation</strong> is still often used to increase the diversity of training data, it is optional since labeled data provides natural positive and negative pairs based on class labels. Additional <strong>projection head</strong> can be attached after the encoder for downstream tasks like classification. </p>
+<h3 id="5-datasets_1">5. Datasets</h3>
+<p>The first and arguably most important key of contrastive representation learning is data i.e how to augment, how to create pair, how to encode, etc. So far, we have experimented with all the mentioned datasets, with various degree of success and comprehensiveness. </p>
+<h4 id="mnist">MNIST</h4>
+<p>The well-known MNIST dataset contains 70,000 images of handwritten digits, each 28x28 pixels. We downscale the dimension to 16x16 and use it for initial validation of models and training objectives. </p>
+<figure>
+<img alt="MNIST Figure 1" src="media/GSoC24/img_2024_07_26_08_15_Figure_1.png" style="height: 200px;"/>
+<img alt="MNIST Figure 2" src="media/GSoC24/img_2024_07_26_08_15_Figure_2.png" style="height: 200px;"/>
+<figcaption>MNIST</figcaption>
+</figure>
+<p>Data augmentation used in our experiments include random flip, random rotations, random zoom in/out, Gaussian noise addition. These would create positive pair in self-supervised mode and also help model learn invariant features insensitive to transformations. </p>
+<p>If something doesn't work on MNIST, there must be something wrong in our theories or implementations. If it does work though, there is still no guarantee of success on HEP data. </p>
+<h4 id="photon-electron-images">Photon-Electron Images</h4>
+<p>The Photon-Electron dataset contains 498,000 images with 32x32 shape and 2-channels representing energy and timing information. The energy channel captures the energy deposited by particles, while the timing channel records the temporal interaction characteristics with detector materials. Our objective is to learn a representation that distinguishes between photon and electron interactions in these HEP experiments. We also downscale each sample to dimension of 16x16 pixels.</p>
+<figure>
+<img alt="Photon-Electron 1" src="media/GSoC24/img_2024_07_26_08_20_pic_1721956839874.png" style="height: 200px;"/>
+<img alt="Photon-Electron 2" src="media/GSoC24/img_2024_07_26_08_29_pic_1721957355908.png" style="height: 200px;"/>
+<img alt="Photon-Electron 3" src="media/GSoC24/img_2024_07_26_08_19_pic_1721956782703.png" style="height: 200px;"/>
+<img alt="Photon-Electron 4" src="media/GSoC24/img_2024_07_26_08_22_pic_1721956918579.png" style="height: 200px;"/>
+<figcaption>Photon-Electron</figcaption>
+</figure>
+<p>The key question is how the HEP data could be augmented. Would approach for image processing still be applicable here?</p>
+<h4 id="quark-gluon-images">Quark-Gluon Images</h4>
+<p>The Quark-Gluon dataset is derived from the CMS experiment at CERN's Large Hadron Collider (LHC). It consists of 933,206 images, each with three channels and a 125x125 resolution. The channels correspond to tracks from the Inner Tracking System, energy deposits from the Electromagnetic Calorimeter (ECAL), and energy deposits from the Hadronic Calorimeter (HCAL). </p>
+<p>At this point, after some unpromising results with CNN encoder for MNIST, I decided to conduct some exploratory data analysis on the HEP data:</p>
+<figure>
+<img alt="Quark Gluon" src="media/GSoC24/img_2024_07_26_07_59_pic_1721955574558.png" style="height: 400px;"/>
+<figcaption>Quark Gluon</figcaption>
+</figure>
+<p>The data is much sparser than classical MNIST. Furthermore, we could not really discern any geometric patterns that separate the two classes.</p>
+<figure>
+<img alt="Quark Gluon - Average Distribution" src="media/GSoC24/img_2024_07_26_08_04_pic_1721955844126.png" style="height: 400px;"/>
+<figcaption>Quark Gluon - Average Distribution</figcaption>
+</figure>
+<p>However, there is a clear difference in terms of intensity. The distribution seems invariant with regard to flipping transformations but not for rotation. </p>
+<figure>
+<img alt="Quark Gluon - Difference" src="media/GSoC24/img_2024_07_26_08_00_pic_1721955603607.png" style="height: 250px;"/>
+<figcaption>Quark Gluon - Difference</figcaption>
+</figure>
+<p>Finally, instead of CNN Encoder, we evaluate the approach of using GNN for this dataset. With the training set of 6000, we get promising result with classifying based on the first channel. </p>
+<figure>
+<img alt="GNN for Dataset" src="media/GSoC24/img_2024_07_26_10_26_pic_1721964412703.png" style="height: 200px;"/>
+<figcaption>GNN Classification Result on Quark Gluon Images</figcaption>
+</figure>
+<h4 id="quark-gluon-particle-jet-clouds">Quark-Gluon Particle Jet Clouds</h4>
+<p>The Quark-Gluon Jet Clouds dataset consists of two million jets generated using Pythia8, with each jet containing the physical properties of several particles denoted by the 4-tuple <span class="math">\((pT, y, \phi, id)\)</span>. These represent the transverse momentum, rapidity, azimuthal angle, and particle ID, respectively. Each jet has a class label indicating whether it originated from quarks (1) or gluons (0). </p>
+<p>Particle clouds is a completely different type of data now. In the past, we need to address permutation invariance with either network architecture and data preprocessing/augmenting, but with usage of Graph Neural Networks (GNNs), this is no longer an issue. However, we still need to study how to augment this data correctly.</p>
+<p>One particular aspect to verify is the significance of the highest momentum particle in the jet. Experiments have shown that even with only the highest momentum particle, models can achieve good results. So we analyze how the GNN encoder performs on supervised classification tasks with varying numbers of nodes <span class="math">\(k\)</span> sorted by momentum.</p>
+<figure>
+<img src="media/GSoC24/img_2024_07_26_08_02_pic_1721955759857.png" style="height: 250px;"/>
+<figcaption>Classification Result with Varying Node Number k</figcaption>
+</figure>
+<p>We expect potential data augmentations for this dataset include rotation, momentum perturbation, random (or momentum priority) subsampling.</p>
+<h3 id="6-methods-and-results_1">6. Methods and Results</h3>
+<h4 id="cnn-encoder-classicalhybrid">CNN Encoder - Classical/Hybrid</h4>
+<p>Classical convolutional neural networks (CNNs) are used to extract features from image data. The results of self-supervised on MNIST and supervised on electron-photon dataset are as follow:</p>
+<figure>
+<img alt="Representation Result on MNIST" src="media/GSoC24/img_2024_07_26_09_53_pic_1721962383956.png" style="height: 200px;"/>
+<figcaption>Representation Result on MNIST</figcaption>
+</figure>
+<figure>
+<img alt="Quantum Head Architecture" src="media/GSoC24/img_2024_07_26_09_49_pic_1721962167847.png" style="height: 150px;"/>
+<figcaption>Quantum Head Architecture</figcaption>
+</figure>
+<figure>
+<img alt="Result on Photon-Electron 1" src="media/GSoC24/img_2024_07_26_09_46_pic_1721961988201.png" style="height: 200px;"/>
+<img alt="Result on Photon-Electron 2" src="media/GSoC24/img_2024_07_26_09_46_pic_1721961966960.png" style="height: 200px;"/>
+<figcaption>Result on Photon-Electron</figcaption>
+</figure>
+<p>In addition to the classical model, we also evaluate the integration of a quantum head after CNN encoder for a hybrid model.</p>
+<h4 id="qcnn-encoder-fidelity-loss">QCNN Encoder - Fidelity Loss</h4>
+<p>We utilize Data-Reuploading Circuits (DRCs) <a class="citation" href="#ref8" id="cite">[8]</a> as the convolution kernels. Similar to Siamese network, we utilize two VQCs sharing the parameters as the encoders, and fidelity is calculated using a swap test.</p>
+<figure>
+<img alt="Quantum CNN Encoder with Fidelity Loss" src="media/GSoC24/img_2024_07_26_11_21_%24%7Bfilename%7D.png" style="height: 200px;"/>
+<img alt="Quantum CNN Encoder with Fidelity Loss" src="media/GSoC24/img_2024_07_26_10_15_pic_1721963705341.png"/>
+<figcaption>Quantum CNN Encoder with Fidelity Loss</figcaption>
+</figure>
+<p>While observing the loss decreases, I realize that this approach is not effective. For once, the utilization of two quantum circuit encoder require double the numbers of qubit, which is highly inefficient for classical quantum simulators as qubits are the main bottleneck. </p>
+<h3 id="7-challenges-and-future-plan_1">7. Challenges and Future Plan</h3>
+<p>Contrastive Representation Learning apply to images augmentation have been tested verified CNN encoder proven . However, our target dataset, is not conventional image data, even with similar format. While effective augmentations are critical for self-supervised pretraining objective on non-label HEP data, meaningful augmentations may be hard to define.</p>
+<p>In addition, rigorous baseline is needed for comparative study. Clustering-based methods is one self-supervised learning strategies that do not rely heavily on augmentations with similar goal as contrastive learning.</p>
+<p>Another significant challenge is computing resources, as contrastive learning requires large batch sizes, further complicated by the need to evaluate each pair within the batch. </p>
+<p>Our next step is to apply supervised and self-supervised contrastive learning with GNN encoders. I would also like to explore using not only graph-level features but also node-level feature contrasts as self-supervised tasks <a class="citation" href="#ref6" id="cite">[6]</a>. </p>
+<p>On the full quantum implementation, I would consider in more detail the behavior of using fidelity as a metric in quantum contrastive learning is crucial. Additionally, calculating quantum state differences using classical contrastive loss functions would likely be a more effective approach. </p>
+<p>Finally, I will work toward implementing graph quantum neural network with techniques like <a href="https://pennylane.ai/qml/demos/tutorial_equivariant_graph_embedding/">equivariant graph embedding</a>, GSoC projects of previous years, and other research.</p>
+<h3 id="references">References</h3>
+<p><span id="ref1">[1]</span> P. H. Le-Khac, G. Healy, and A. F. Smeaton, &ldquo;Contrastive Representation Learning: A Framework and Review,&rdquo; IEEE Access, vol. 8, pp. 193907&ndash;193934, 2020, doi: 10.1109/ACCESS.2020.3031549.</p>
+<p><span id="ref2">[2]</span> P. Khosla et al., &ldquo;Supervised Contrastive Learning,&rdquo; Mar. 10, 2021, arXiv: arXiv:2004.11362. doi: 10.48550/arXiv.2004.11362.</p>
+<p><span id="ref3">[3]</span> B. Jaderberg, L. W. Anderson, W. Xie, S. Albanie, M. Kiffner, and D. Jaksch, &ldquo;Quantum Self-Supervised Learning,&rdquo; Apr. 04, 2022, arXiv: arXiv:2103.14653. doi: 10.48550/arXiv.2103.14653.</p>
+<p><span id="ref4">[4]</span> F. Wang and H. Liu, &ldquo;Understanding the Behaviour of Contrastive Loss,&rdquo; Mar. 20, 2021, arXiv: arXiv:2012.09740. doi: 10.48550/arXiv.2012.09740.</p>
+<p><span id="ref5">[5]</span> T. Wang and P. Isola, &ldquo;Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere,&rdquo; Aug. 15, 2022, arXiv: arXiv:2005.10242. doi: 10.48550/arXiv.2005.10242.</p>
+<p><span id="ref6">[6]</span> R. Dangovski et al., &ldquo;Equivariant Contrastive Learning,&rdquo; Mar. 14, 2022, arXiv: arXiv:2111.00899. doi: 10.48550/arXiv.2111.00899.</p>
+<p><span id="ref7">[7]</span> W. Ju et al., &ldquo;Towards Graph Contrastive Learning: A Survey and Beyond,&rdquo; May 20, 2024, arXiv: arXiv:2405.11868. doi: 10.48550/arXiv.2405.11868.</p>
+<p><span id="ref8">[8]</span> A. P&eacute;rez-Salinas, A. Cervera-Lierta, E. Gil-Fuster, and J. I. Latorre, &ldquo;Data re-uploading for a universal quantum classifier,&rdquo; Quantum, vol. 4, p. 226, Feb. 2020, doi: 10.22331/q-2020-02-06-226.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
             </div>
             <!-- /.entry-content -->
     <hr/>
@@ -166,6 +397,18 @@ about duy dole            </a>
         </article>
     </section>
 
+        </div>
+        <div class="col-sm-4 col-sm-pull-8" id="sidebar">
+            <aside>
+<section class="well well-sm">
+    <div id="toc"><ul><li><a class="toc-href" href="#1-introduction" title="1. Introduction">1. Introduction</a></li><li><a class="toc-href" href="#2-quantum-variational-algorithm" title="2. Quantum Variational Algorithm">2. Quantum Variational Algorithm</a></li><li><a class="toc-href" href="#3-contrastive-learning" title="3. Contrastive Learning">3. Contrastive Learning</a><ul><li><a class="toc-href" href="#objectives" title="Objectives">Objectives</a></li><li><a class="toc-href" href="#contrastive-losses" title="Contrastive Losses">Contrastive Losses</a></li><li><a class="toc-href" href="#contrastive-networks" title="Contrastive Networks">Contrastive Networks</a></li></ul></li><li><a class="toc-href" href="#5-datasets_1" title="5. Datasets">5. Datasets</a><ul><li><a class="toc-href" href="#mnist" title="MNIST">MNIST</a></li><li><a class="toc-href" href="#photon-electron-images" title="Photon-Electron Images">Photon-Electron Images</a></li><li><a class="toc-href" href="#quark-gluon-images" title="Quark-Gluon Images">Quark-Gluon Images</a></li><li><a class="toc-href" href="#quark-gluon-particle-jet-clouds" title="Quark-Gluon Particle Jet Clouds">Quark-Gluon Particle Jet Clouds</a></li></ul></li><li><a class="toc-href" href="#6-methods-and-results_1" title="6. Methods and Results">6. Methods and Results</a><ul><li><a class="toc-href" href="#cnn-encoder-classicalhybrid" title="CNN Encoder - Classical/Hybrid">CNN Encoder - Classical/Hybrid</a></li><li><a class="toc-href" href="#qcnn-encoder-fidelity-loss" title="QCNN Encoder - Fidelity Loss">QCNN Encoder - Fidelity Loss</a></li></ul></li><li><a class="toc-href" href="#7-challenges-and-future-plan_1" title="7. Challenges and Future Plan">7. Challenges and Future Plan</a></li><li><a class="toc-href" href="#references" title="References">References</a></li></ul></div>
+    <!-- <ul class="list-group list-group-flush">
+        <div class="col-lg-3 hidden-xs hidden-sm">
+            
+        </div> -->
+    </ul>
+</section>
+            </aside>
         </div>
     </div>
 </div>
@@ -210,4 +453,26 @@ about duy dole            </a>
 
 
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbarHeight = document.querySelector(".navbar").offsetHeight; // * 2;
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                // console.log(navbarHeight);
+                window.scrollTo({
+                    top: targetPosition - navbarHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+</script>
+
 </html>
