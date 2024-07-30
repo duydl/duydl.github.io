@@ -275,8 +275,8 @@ init_mathjax();
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p><img alt="Image 2" src="./media/GSoC24/image-2.png" style="height: 150px;"/>
-<img alt="Image 1" src="./media/GSoC24/image-1.png" style="height: 120px;"/></p>
+                <p><img alt="Image 2" src="./media/GSoC24/GSoC.png" style="height: 150px;"/>
+<img alt="Image 1" src="./media/GSoC24/ML4Sci.png" style="height: 120px;"/></p>
 <p>In this post, I would like to share the progress of my GSoC24 project <a href="https://summerofcode.withgoogle.com/programs/2024/projects/4hPKaqPv">Quantum Contrastive Representation Learning for High Energy Physics</a> in ML4Sci organization. Google Summer of Code (GSoC) aims to introduce open source development by providing opportunities for new contributors to work with an open source organization on a project. My GSoC experience with ML4Sci has been incredibly challenging and rewarding: Much has been learned, and a lot more to be discovered.</p>
 <p>The code and relevant resources could be found at <a href="https://github.com/duydl/gsoc24-qml-workspace">Github</a>. </p>
 <h3 id="1-introduction">1. Introduction</h3>
@@ -298,7 +298,7 @@ init_mathjax();
 <p>The Quantum Variational Algorithm (QVA) is a hybrid quantum-classical approach designed to solve optimization problems. The core idea is to use a parameterized quantum circuit whose  trainable parameters are adjusted by a classical optimizer. The quantum circuit prepares a quantum state, and measurements of this state are used to evaluate a cost function, which the classical optimizer then minimizes by adjusting the quantum circuit parameters.</p>
 <p>Quantum state encoding in QVAs can be done using amplitude or angle embedding. Angle embedding involves encoding data into the rotation angles of quantum gates. A classical data point <span class="math">\(x\)</span> can be encoded into a qubit state <span class="math">\(|\psi\rangle = \cos(x/2)|0\rangle + \sin(x/2)|1\rangle\)</span>. In amplitude embedding, classical data is encoded into the amplitudes of a quantum state. A classical vector <span class="math">\(\mathbf{x} = (x_1, x_2, \ldots, x_n)\)</span> can be encoded into a quantum state <span class="math">\(|\psi\rangle = \sum_{i=1}^{n} x_i |i\rangle\)</span>. Thus, a quantum state with n qubits can represent <span class="math">\(2^n\)</span> states simultaneously.</p>
 <figure>
-<img alt="Quantum Variational Algorithm" src="./media/GSoC24/image.png" style="height: 200px;"/>
+<img alt="Quantum Variational Algorithm" src="./media/GSoC24/QVA.png" style="height: 200px;"/>
 <figcaption>Quantum Variational Algorithm</figcaption>
 </figure>
 <p>Quantum gates i.e the Pauli-X (NOT), Hadamard (H), Controlled-NOT (CNOT) are the building blocks of quantum circuits, creating superpositions and entanglements to enable complex computations. The gate functions (angles) are parameterized and our goal is to find the optimized values to encode the representation. </p>
@@ -349,7 +349,7 @@ init_mathjax();
 <div class="math">$$\mathcal{L} = a \mathcal{L}_{\text{uniformity}} + (1-a) \mathcal{L}_{\text{alignment}}$$</div>
 <p>, or even alongside other losses for improved performance.</p>
 <figure>
-<img alt="Alignment and Uniformity" src="media/GSoC24/img_2024_07_26_07_53_pic_1721955213137.png" style="height: 250px;"/>
+<img alt="Alignment and Uniformity" src="media/GSoC24/AlignmentUniformity.png" style="height: 250px;"/>
 <figcaption>Alignment and Uniformity</figcaption>
 </figure>
 <p><strong>Quantum Fidelity Loss</strong></p>
@@ -368,7 +368,7 @@ $$</div>
 <p>However, there are actually no advantage to this approach but some disadvantages. The usage of fidelity as a metric leads to lost orientation information due to the squaring operation compared to the cosine similarity: Two vectors pointing in opposite directions will have the same fidelity, even though they are dissimilar in direction. Thus, fidelity may not capture the full geometric relationships between quantum states as effectively as cosine similarity. We would like to consider further the dynamic impact of this approach on learning.  </p>
 <h4 id="contrastive-networks">Contrastive Networks</h4>
 <figure>
-<img alt="Contrastive Network" src="./media/GSoC24/image-3.png" style="height: 300px;"/>
+<img alt="Contrastive Network" src="./media/GSoC24/ContrastiveNetwork.png" style="height: 300px;"/>
 <figcaption>Contrastive Network</figcaption>
 </figure>
 <p>(Siamese) Contrastive Networks employ a <strong>shared-weight encoder</strong> that maps input to features in a latent space. In self-supervised contrastive learning, <strong>data augmentation</strong> module is critical to generates different views of the same instance, forming positive pairs, while other instances in the batch act as negative pairs. The approach can be similar in supervised contrastive learning but with additional flexibility. While <strong>data augmentation</strong> is still often used to increase the diversity of training data, it is optional since labeled data provides natural positive and negative pairs based on class labels. Additional <strong>projection head</strong> can be attached after the encoder for downstream tasks like classification. </p>
@@ -397,7 +397,7 @@ $$</div>
 <p>The Quark-Gluon dataset is derived from the CMS experiment at CERN's Large Hadron Collider (LHC). It consists of 933,206 images, each with three channels and a 125x125 resolution. The channels correspond to tracks from the Inner Tracking System, energy deposits from the Electromagnetic Calorimeter (ECAL), and energy deposits from the Hadronic Calorimeter (HCAL). </p>
 <p>At this point, after some unpromising results with CNN encoder, I decided to conduct some exploratory data analysis on the HEP data:</p>
 <figure>
-<img alt="Quark Gluon" src="media/GSoC24/img_2024_07_26_07_59_pic_1721955574558.png" style="height: 400px;"/>
+<img alt="Quark Gluon" src="media/GSoC24/QuarkGluon.png" style="height: 400px;"/>
 <figcaption>Quark Gluon</figcaption>
 </figure>
 <p>The data is much sparser than classical MNIST. Furthermore, we could not really discern any geometric patterns that separate the two classes.</p>
@@ -407,7 +407,7 @@ $$</div>
 </figure>
 <p>However, there is a clear difference in terms of intensity. The distribution seems invariant with regard to flipping transformations but not for rotation. </p>
 <figure>
-<img alt="Quark Gluon - Difference" src="media/GSoC24/img_2024_07_26_08_00_pic_1721955603607.png" style="height: 250px;"/>
+<img alt="Quark Gluon - Difference" src="media/GSoC24/QuarkGluonDiff.png" style="height: 250px;"/>
 <figcaption>Quark Gluon - Difference</figcaption>
 </figure>
 <p>Finally, instead of CNN Encoder, we evaluate the approach of using GNN for this dataset. With the training set of 6000, we get promising result with classifying based on the first channel. </p>
