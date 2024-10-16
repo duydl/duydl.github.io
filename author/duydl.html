@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Articles by duydl - About Me</title>
+    <title>duydl - Articles by duydl</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -174,15 +174,15 @@ init_mathjax();
 </script>
     <link href="/static/images/logo.png" rel="icon">
 
-
+<link rel="canonical" href="">
         <meta name="author" content="duydl" />
 
     <!-- Open Graph tags -->
-        <meta property="og:site_name" content="About Me" />
+        <meta property="og:site_name" content="duydl" />
         <meta property="og:type" content="website"/>
-        <meta property="og:title" content="About Me"/>
+        <meta property="og:title" content="duydl"/>
         <meta property="og:url" content=""/>
-        <meta property="og:description" content="About Me"/>
+        <meta property="og:description" content="duydl"/>
 
 
 
@@ -191,6 +191,7 @@ init_mathjax();
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="/theme/css/pygments/colorful.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -209,18 +210,24 @@ init_mathjax();
                 <span class="icon-bar"></span>
             </button>
             <a href="/" class="navbar-brand">
-<img class="img-responsive pull-left gap-right" src="/static/images/logo.png" width="30px"/> About Me            </a>
+<img class="img-responsive pull-left gap-right" src="/static/images/logo.png" width="30px"/> duydl            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
+                    <li><a href="/projects.html">Projects</a></li>
                     <li><a href="/archives.html">Archives</a></li>
                     <li><a href="/tags.html">Tags</a></li>
-                    <li><a href="/wiki/index.html">Wiki</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                         <li >
-                            <a href="/category/blogs.html">Blogs</a>
+                            <a href="/category/blog.html">Blog</a>
                         </li>
+                    <li><a href="/wiki/index.html">Wiki</a></li>
+                <li><span>
+                    <form class="navbar-search" action="/search.html">
+                    <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                    </form></span>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -231,70 +238,111 @@ init_mathjax();
 <!-- End Banner -->
 
 <!-- Content Container -->
+ <!-- or ABOUT_ME or AVATAR  -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <article>
-                <h2><a href="/blogs/end-term-report-gsoc24.html">End-Term Report - GSoC24</a></h2>
-                    <div class="well well-sm">
-<footer class="post-info">
-    <span class="label label-success">19 min. read</span>
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2024-09-20T00:00:00-04:00"> Fri 20 September 2024</time>
-    </span>
+<div class="col-10 mt-2">
+	<h3 class="text-dark-emphasis pb-3"> Hi, I’m Duy! </h3>
+	<div class="row">
+	  <div class="col-6">
+		<p class="blockquote">👨🏻‍🎓 I have an Undergraduate Degree in EEE at Kyoto University.</p>
+		<p class="blockquote">🔬 My current interests are Quantum Computing, Topological Learning, AI4Sci.</p>
+	  </div>   
+	  <div class="col-6 border-start">
+		<p class="blockquote mb-0">📋 Other Information:</p>
+		<ul>
+		  <li class="mb-1"><strong>Languages:</strong> Vietnamese, English, Japanese.</li>
+		  <li class="mb-1"><strong>Programming Languages:</strong> Python, Javascript, C/C++, Rust.</li>
+		</ul>
+	  </div>
+	</div> 
+	<!-- <p class="blockquote text-secondary"> <span class="blockquote-footer"></span> Further Details: 
+	  [<a class="link-underline link-underline-opacity-0" href="https://github.com/tranganhthuan/tranganhthuan.github.io/blob/main/CV.pdf">CV</a>] 
+	  [<a class="link-underline link-underline-opacity-0" href="https://github.com/tranganhthuan/tranganhthuan.github.io/blob/main/IELTS.pdf">IELTS</a>] 
+	  [<a class="link-underline link-underline-opacity-0" href="https://github.com/tranganhthuan/tranganhthuan.github.io/blob/main/Scholarship.pdf">Scholarship</a>]  
+	</p>   
+	<h3 class="text-dark-emphasis pb-3"> 📚 Publications </h3>
 
+	<div class="card">
+	  <div class="card-body">
+		<h5 class="card-title">E(3)-Equivariant Mesh Neural Networks</h5>
+		<h6 class="card-subtitle text-body-secondary"><strong>Thuan N.A. Trang*</strong>, Khang Nhat Ngo*, Daniel Levy*, Thieu N. Vo, Siamak Ravanbakhsh, Truong Son Hy</h6>
+		<p class="card-text text-secondary mb-0"><span class="blockquote-footer"></span> AISTAT 2024</p>
+		<a href="https://proceedings.mlr.press/v238/anh-trang24a/anh-trang24a.pdf" class="card-link link-underline link-underline-opacity-0">Paper</a>
+		<a href="https://proceedings.mlr.press/v238/anh-trang24a.html" class="card-link link-underline link-underline-opacity-0">Abstract</a>
+		<a href="https://github.com/HySonLab/EquiMesh" class="card-link link-underline link-underline-opacity-0">Code</a>
+		<a href="https://people.cs.uchicago.edu/~hytruongson/posters/AISTATS_2024_E3_Poster.pdf" class="card-link link-underline link-underline-opacity-0">Poster</a>
+	  </div>
+	</div>
 
+	<div class="card mt-2">
+	  <div class="card-body">
+		<h5 class="card-title">Scalable Hierarchical Self-Attention with Learnable Hierarchy for Long-Range Interactions </h5>
+		<h6 class="card-subtitle text-body-secondary"><strong>Thuan N.A. Trang*</strong>, Khang Nhat Ngo*, Hugo Sonnery*, Thieu N. Vo, Siamak Ravanbakhsh, Truong Son Hy</h6>
+		<p class="card-text text-secondary mb-0"><span class="blockquote-footer"></span> TMLR 2024</p>
+		<a href="https://openreview.net/pdf?id=qH4YFMyhce" class="card-link link-underline link-underline-opacity-0">Paper</a>
+		<a href="https://openreview.net/forum?id=qH4YFMyhce" class="card-link link-underline link-underline-opacity-0">Abstract</a>
+		<a href="https://www.overleaf.com/project/63f1a40939aeee61b43fe452" class="card-link link-underline link-underline-opacity-0">Code</a>
+		<a href="https://www.youtube.com/watch?v=WIq9e3doBNc" class="card-link link-underline link-underline-opacity-0">Video</a>
+	  </div>
+	</div>
 
+	<div class="card mt-2">
+	  <div class="card-body">
+		<h5 class="card-title">Sequoia: Hierarchical Self-Attention Layer with Sparse Updates for Point Clouds and Long Sequences</h5>
+		<h6 class="card-subtitle text-body-secondary">Hugo Sonnery*, <strong>Thuan N.A. Trang*</strong>, Thieu N. Vo, Siamak Ravanbakhsh, Truong Son Hy</h6>
+		<p class="card-text text-secondary mb-0"> <span class="blockquote-footer"></span> ICLR 2023 Workshop SNN</p>
+		<a href="http://people.cs.uchicago.edu/~hytruongson/Sequoia_ICLR_2023.pdf" class="card-link link-underline link-underline-opacity-0">Paper</a>
+		<a href="http://people.cs.uchicago.edu/~hytruongson/posters/ICLR_2023_Poster.pdf" class="card-link link-underline link-underline-opacity-0">Poster</a>
+	  </div>
+	</div>
 
-
-<span class="label label-default">Tags</span>
-	<a href="/tag/gsoc.html">GSoC</a>
-        /
-	<a href="/tag/machine-learning.html">Machine Learning</a>
-        /
-	<a href="/tag/quantum-computing.html">Quantum Computing</a>
-    
-</footer><!-- /.post-info -->                    </div>
-                <div class="summary"><p>My final progress and results during the GSoC24 project <a href="https://summerofcode.withgoogle.com/programs/2024/projects/4hPKaqPv">Quantum Contrastive Representation Learning for High Energy Physics</a> in ML4Sci organization.</p>
-                    <a class="btn btn-default btn-xs" href="/blogs/end-term-report-gsoc24.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/blogs/midterm-report-gsoc24.html">Midterm Report - GSoC24</a></h2>
-                    <div class="well well-sm">
-<footer class="post-info">
-    <span class="label label-success">15 min. read</span>
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2024-07-23T00:00:00-04:00"> Tue 23 July 2024</time>
-    </span>
-
-
-
-
-
-<span class="label label-default">Tags</span>
-	<a href="/tag/gsoc.html">GSoC</a>
-        /
-	<a href="/tag/machine-learning.html">Machine Learning</a>
-        /
-	<a href="/tag/quantum-computing.html">Quantum Computing</a>
-    
-</footer><!-- /.post-info -->                    </div>
-                <div class="summary"><p>My progress and learnings during the GSoC24 project <a href="https://summerofcode.withgoogle.com/programs/2024/projects/4hPKaqPv">Quantum Contrastive Representation Learning for High Energy Physics</a> in ML4Sci organization.</p>
-                    <a class="btn btn-default btn-xs" href="/blogs/midterm-report-gsoc24.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-
+	<h3 class="text-dark-emphasis pt-3 pb-3 mb-0"> ✒️ References </h3>
+	<ul class="list-group list-group-flush">
+	  <li class="list-group-item">
+		<p class="blockquote mb-0 h6">Dr. Thieu N. Vo</p>
+		<p class="mb-0">Lecturer &amp; Researcher at TDTU, Research Fellow at NUS</p>
+		<p class="mb-0"> [<a class="link-underline link-underline-opacity-0" href="https://fms.tdtu.edu.vn/en/people/phd-vo-ngoc-thieu">Website</a>]   [<a class="link-underline link-underline-opacity-0" href="mailto:thieuvo@nus.edu.sg">Email</a>] </p>
+	  </li>
+	  <li class="list-group-item">
+		<p class="blockquote mb-0 h6">Prof. Truong Son Hy</p>
+		<p class="mb-0">Assistant Professor at Indiana State University</p>
+		<p class="mb-0"> [<a class="link-underline link-underline-opacity-0" href="http://people.cs.uchicago.edu/~hytruongson/">Website</a>]   [<a class="link-underline link-underline-opacity-0" href="mailto:TruongSon.Hy@indstate.edu">Email</a>] </p>
+	  </li>
+	  <li class="list-group-item">
+		<p class="blockquotemb-0 h6">Prof. Siamak Ravanbakhsh</p>
+		<p class="mb-0">Assistant Professor, McGill University, Canada CIFAR AI Chair</p>
+		<p class="mb-0"> [<a class="link-underline link-underline-opacity-0" href="https://mila.quebec/en/person/siamak-ravanbakhsh/">Website</a>]   [<a class="link-underline link-underline-opacity-0" href="mailto:siamak@cs.mcgill.ca">Email</a>] </p>
+	  </li>
+	</ul> -->
+   
+</div>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
 <!-- Sidebar -->
 <section class="well well-sm">
   <ul class="list-group list-group-flush">
+      <style>
+        .avatar-circle {
+            width: 150px; /* Set a fixed width and height */
+            height: 150px;
+            border-radius: 75%;
+            object-fit: cover; /* Ensure the image fits within the circle */
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
+      </style>
+      <img class="img-thumbnail avatar-circle" src="/static/images/avatar.png"/>
+    <p>
+      <!-- <strong>About duydl</strong><br/> -->
+        
+      <center><strong>DO LE DUY</strong><br/>
+      - AI Researcher
+      </center>
+
+    </p>
 
 <!-- Sidebar/Social -->
 <li class="list-group-item">

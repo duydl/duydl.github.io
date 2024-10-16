@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Search - About Me
+    <title>Search - duydl
 </title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -179,11 +179,11 @@ init_mathjax();
         <meta name="author" content="duydl" />
 
     <!-- Open Graph tags -->
-        <meta property="og:site_name" content="About Me" />
+        <meta property="og:site_name" content="duydl" />
         <meta property="og:type" content="website"/>
-        <meta property="og:title" content="About Me"/>
+        <meta property="og:title" content="duydl"/>
         <meta property="og:url" content=""/>
-        <meta property="og:description" content="About Me"/>
+        <meta property="og:description" content="duydl"/>
 
 
 
@@ -192,6 +192,7 @@ init_mathjax();
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="/theme/css/pygments/colorful.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
@@ -210,18 +211,24 @@ init_mathjax();
                 <span class="icon-bar"></span>
             </button>
             <a href="/" class="navbar-brand">
-<img class="img-responsive pull-left gap-right" src="/static/images/logo.png" width="30px"/> About Me            </a>
+<img class="img-responsive pull-left gap-right" src="/static/images/logo.png" width="30px"/> duydl            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
+                    <li><a href="/projects.html">Projects</a></li>
                     <li><a href="/archives.html">Archives</a></li>
                     <li><a href="/tags.html">Tags</a></li>
-                    <li><a href="/wiki/index.html">Wiki</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                         <li >
-                            <a href="/category/blogs.html">Blogs</a>
+                            <a href="/category/blog.html">Blog</a>
                         </li>
+                    <li><a href="/wiki/index.html">Wiki</a></li>
+                <li><span>
+                    <form class="navbar-search" action="/search.html">
+                    <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                    </form></span>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -232,6 +239,7 @@ init_mathjax();
 <!-- End Banner -->
 
 <!-- Content Container -->
+ <!-- or ABOUT_ME or AVATAR  -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -242,6 +250,25 @@ init_mathjax();
 <!-- Sidebar -->
 <section class="well well-sm">
   <ul class="list-group list-group-flush">
+      <style>
+        .avatar-circle {
+            width: 150px; /* Set a fixed width and height */
+            height: 150px;
+            border-radius: 75%;
+            object-fit: cover; /* Ensure the image fits within the circle */
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
+      </style>
+      <img class="img-thumbnail avatar-circle" src="/static/images/avatar.png"/>
+    <p>
+      <!-- <strong>About duydl</strong><br/> -->
+        
+      <center><strong>DO LE DUY</strong><br/>
+      - AI Researcher
+      </center>
+
+    </p>
 
 <!-- Sidebar/Social -->
 <li class="list-group-item">
