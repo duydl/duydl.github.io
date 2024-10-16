@@ -253,8 +253,8 @@ init_mathjax();
 		  </span>
 		</li>
 		<li class="list-group-item d-flex justify-content-between align-items-center">
-		  <a href="https://offline-example.com" target="_blank" class="project-link">Project 2</a>
-		  <span class="status-icon" data-url="https://offline-example.com">
+		  <a href="https://atts.duydl.xyz" target="_blank" class="project-link">Project 2</a>
+		  <span class="status-icon" data-url="https://atts.duydl.xyz">
 			🔄 <!-- Initial placeholder before checking status -->
 		  </span>
 		</li>
@@ -274,7 +274,8 @@ init_mathjax();
     const projects = document.querySelectorAll('.status-icon');
     projects.forEach(function(project) {
       const url = project.getAttribute('data-url');
-      fetch(url, { method: 'HEAD' })
+	  console.log(url)
+      fetch(url, { mode: 'no-cors' })
         .then(response => {
           if (response.ok) {
             project.innerHTML = '🟢'; // Green circle emoji if online
